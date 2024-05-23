@@ -269,6 +269,26 @@ set numberwidth=1
 " hi normal guibg=NONE
 
 " vimtex
+" Requieres tree-sitter-cli
+
+" Wayland"
+
+function! Synctex()
+	let vimura_param = " --synctex-forward " . line('.') . ":" . col('.') . ":" . expand('%:p') . " " . substitute(expand('%:p'),"tex$","pdf","")
+	if has('nvim')
+		call jobstart("vimura neovim" . vimura_param)
+	else
+		exec "silent !vimura vim" . vimura_param . "&"
+	endif
+	redraw!
+endfunction 
+
+map <silent> <C-enter> :call Synctex()<cr>
+
+augroup vimtex
+	au!
+	au User VimtexEventCompileSuccess call Synctex()
+augroup END
 
 let g:vimtex_compiler_method = 'latexmk'
 let g:vimtex_view_method = 'zathura'
@@ -303,10 +323,12 @@ let g:vimtex_compiler_latexmk = {
         \ ],
         \}
 
-augroup vimtex
-	au!
-	au User VimtexEventCompiling VimtexView
-augroup END
+" X11
+
+"augroup vimtex
+	"au!
+	"au User VimtexEventCompiling VimtexView
+"augroup END
 
 " LuaSnip
 
@@ -422,5 +444,11 @@ endfunction
 
 set tabline=%!Tabline()
 
-" Copiar todo el documento al clipboard
+" Clipboard"
+
+" Copy all document to clipboard
 nmap <C-d> ggVG"+y
+
+" Wayland clipboard, requires wl-clipboard
+
+nnoremap "+y :call system("wl-copy", @") <CR>

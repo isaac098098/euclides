@@ -21,16 +21,22 @@ $mantle: #181825;
 
 // Es la ventana que contiene toda la barra
 
-.cattpuccin {
+.cattpuccin_X11 {
   margin: 15px 25px 16px 25px;
   padding: 10px 10px 10px 10px;
   border-radius: 15px;
 }
 
-.cattpuccin_no_pcm {
+.cattpuccin_X11_no_pcm {
   margin: 0px 0px 0px 0px;
   padding: 10px 10px 10px 10px;
   border-radius: 0px;
+}
+
+.cattpuccin_Wayland {
+  margin: 15px 25px 16px 25px;
+  padding: 10px 10px 10px 10px;
+  border-radius: 15px;
 }
 
 // Es la caja que contiene a los modulos left, center y right. Cambiando su color de fondo se pueden "desacoplar" los módulos
@@ -47,6 +53,12 @@ $mantle: #181825;
   color: $text;
 }
 
+.cattpuccin_widget_Wayland {
+  background-color: $mantle;
+  box-shadow: 3px 3px 5px rgba($color: #000000, $alpha: 0.8);
+  color: $text;
+}
+
 .left_cattpuccin {
   background-color: $mantle;
   color: $text;
@@ -58,7 +70,17 @@ $mantle: #181825;
   color: $text;
 }
 
+.center_cattpuccin_Wayland {
+  background-color: $mantle;
+  color: $text;
+}
+
 .right_cattpuccin {
+  background-color: $mantle;
+  color: $text;
+}
+
+.right_cattpuccin_Wayland {
   background-color: $mantle;
   color: $text;
 }
@@ -67,7 +89,7 @@ $mantle: #181825;
 
 .poweroff_button {
   background-color: $red;
-  color: $surface1;
+  color: $mantle;
   font-family: Iosevka NF;
   font-weight: bold;
   font-size: 12pt;
@@ -126,7 +148,7 @@ $mantle: #181825;
   background-color: $surface0;
   font-family: Iosevka NF;
   font-weight: bold;
-  font-size: 17pt;
+  font-size: 14pt;
   padding: 0px 20px 0px 0px;
   border-radius: 10px;
 }
@@ -152,7 +174,7 @@ $mantle: #181825;
   font-family: Iosevka NF;
   font-weight: bold;
   font-size: 14pt;
-  padding: 0px 17px 0px 10px;
+  padding: 0px 19px 0px 10px;
   border-radius: 10px;
 }
 
@@ -170,7 +192,7 @@ $mantle: #181825;
   font-family: Iosevka NF;
   font-weight: bold;
   font-size: 12pt;
-  padding: 0px 5px 0px 0px;
+  padding: 0px 0px 0px 0px;
   border-radius: 0px;
 }
 
@@ -211,7 +233,7 @@ $mantle: #181825;
   border-radius: 10px;
 }
 
-.workspaces_box {
+.xworkspaces_box {
   background-color: $surface0;
   font-family: Iosevka NF;
   font-weight: bold;
@@ -220,7 +242,7 @@ $mantle: #181825;
   border-radius: 10px;
 }
 
-.active_workspace {
+.active_xworkspace {
   background-color: $surface1;
   color: $text;
   font-family: Iosevka NF;
@@ -230,7 +252,7 @@ $mantle: #181825;
   border-radius: 0px;
 }
 
-.active_workspace_1 {
+.active_xworkspace_1 {
   background-color: $surface1;
   color: $text;
   font-family: Iosevka NF;
@@ -240,7 +262,7 @@ $mantle: #181825;
   border-radius: 10px 0px 0px 10px;
 }
 
-.active_workspace_10 {
+.active_xworkspace_10 {
   background-color: $surface1;
   color: $text;
   font-family: Iosevka NF;
@@ -250,7 +272,7 @@ $mantle: #181825;
   border-radius: 0px 10px 10px 0px;
 }
 
-.focused_workspace {
+.focused_xworkspace {
   background-color: $red;
   color: $surface1;
   font-family: Iosevka NF;
@@ -260,7 +282,7 @@ $mantle: #181825;
   border-radius: 0px;
 }
 
-.focused_workspace_1 {
+.focused_xworkspace_1 {
   background-color: $red;
   color: $surface1;
   font-family: Iosevka NF;
@@ -270,7 +292,76 @@ $mantle: #181825;
   border-radius: 10px 0px 0px 10px;
 }
 
-.focused_workspace_10 {
+.focused_xworkspace_10 {
+  background-color: $red;
+  color: $surface1;
+  font-family: Iosevka NF;
+  font-weight: bold;
+  font-size: 11pt;
+  padding: 0px 15px 0px 15px;
+  border-radius: 0px 10px 10px 0px;
+}
+
+.hworkspaces_box {
+  background-color: $surface0;
+  font-family: Iosevka NF;
+  font-weight: bold;
+  font-size: 11pt;
+  padding: 0px 0px 0px 0px;
+  border-radius: 10px;
+}
+
+.active_hworkspace {
+  background-color: $surface1;
+  color: $text;
+  font-family: Iosevka NF;
+  font-weight: bold;
+  font-size: 11pt;
+  padding: 0px 15px 0px 15px;
+  border-radius: 0px;
+}
+
+.active_hworkspace_1 {
+  background-color: $surface1;
+  color: $text;
+  font-family: Iosevka NF;
+  font-weight: bold;
+  font-size: 11pt;
+  padding: 0px 15px 0px 15px;
+  border-radius: 10px 0px 0px 10px;
+}
+
+.active_hworkspace_10 {
+  background-color: $surface1;
+  color: $text;
+  font-family: Iosevka NF;
+  font-weight: bold;
+  font-size: 11pt;
+  padding: 0px 15px 0px 15px;
+  border-radius: 0px 10px 10px 0px;
+}
+
+.focused_hworkspace {
+  background-color: $red;
+  color: $surface1;
+  font-family: Iosevka NF;
+  font-weight: bold;
+  font-size: 11pt;
+  padding: 0px 15px 0px 15px;
+  border-radius: 0px;
+}
+
+.focused_hworkspace_1 {
+  background-color: $red;
+  color: $surface1;
+  font-family: Iosevka NF;
+  font-weight: bold;
+  font-size: 11pt;
+  padding: 0px 15px 0px 15px;
+  border-radius: 10px 0px 0px 10px;
+}
+
+.focused_hworkspace_10 {
   background-color: $red;
   color: $surface1;
   font-family: Iosevka NF;
