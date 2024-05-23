@@ -200,7 +200,7 @@ bindsym $mod+r mode "resize"
 #}
 
 #exec_always --no-startup-id /home/isaac09809/.config/polybar/launch.sh
-exec --no-startup-id eww open cattpuccin
+exec --no-startup-id eww open cattpuccin_X11
 
 #exec_always --no-startup-id feh --bg-scale /home/isaac09809/Documents/images/wallpapers/1.png
 #exec_always --no-startup-id feh --bg-scale /home/isaac09809/Documents/images/wallpapers/2.jpg

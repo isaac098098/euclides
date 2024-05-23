@@ -217,43 +217,43 @@
 		:hexpand "false"
 		(button
 			:class {focused_xworkspace == "1" ? "focused_xworkspace_1" : active_xworkspaces =~ '"1"' ? "active_xworkspace_1" : ""}
-			:onclick "i3-msg xworkspace 1" 
+			:onclick "i3-msg workspace 1" 
 			1
 		)(button
 			:class {focused_xworkspace == "2" ? "focused_xworkspace" : active_xworkspaces =~ '"2"' ? "active_xworkspace" : ""}
-			:onclick "i3-msg xworkspace 2" 
+			:onclick "i3-msg workspace 2" 
 			2
 		)(button
 			:class {focused_xworkspace == "3" ? "focused_xworkspace" : active_xworkspaces =~ '"3"' ? "active_xworkspace" : ""}
-			:onclick "i3-msg xworkspace 3" 
+			:onclick "i3-msg workspace 3" 
 			3
 		)(button
 			:class {focused_xworkspace == "4" ? "focused_xworkspace" : active_xworkspaces =~ '"4"' ? "active_xworkspace" : ""}
-			:onclick "i3-msg xworkspace 4" 
+			:onclick "i3-msg workspace 4" 
 			4
 		)(button
 			:class {focused_xworkspace == "5" ? "focused_xworkspace" : active_xworkspaces =~ '"5"' ? "active_xworkspace" : ""}
-			:onclick "i3-msg xworkspace 5" 
+			:onclick "i3-msg workspace 5" 
 			5
 		)(button
 			:class {focused_xworkspace == "6" ? "focused_xworkspace" : active_xworkspaces =~ '"6"' ? "active_xworkspace" : ""}
-			:onclick "i3-msg xworkspace 6" 
+			:onclick "i3-msg workspace 6" 
 			6
 		)(button
 			:class {focused_xworkspace == "7" ? "focused_xworkspace" : active_xworkspaces =~ '"7"' ? "active_xworkspace" : ""}
-			:onclick "i3-msg xworkspace 7" 
+			:onclick "i3-msg workspace 7" 
 			7
 		)(button
 			:class {focused_xworkspace == "8" ? "focused_xworkspace" : active_xworkspaces =~ '"8"' ? "active_xworkspace" : ""}
-			:onclick "i3-msg xworkspace 8" 
+			:onclick "i3-msg workspace 8" 
 			8
 		)(button
 			:class {focused_xworkspace == "9" ? "focused_xworkspace" : active_xworkspaces =~ '"9"' ? "active_xworkspace" : ""}
-			:onclick "i3-msg xworkspace 9" 
+			:onclick "i3-msg workspace 9" 
 			9
 		)(button
 			:class {focused_xworkspace == "10" ? "focused_xworkspace_10" : active_xworkspaces =~ '"10"' ? "active_xworkspace_10" : ""}
-			:onclick "i3-msg xworkspace 10" 
+			:onclick "i3-msg workspace 10" 
 			0
 		)
 	)
