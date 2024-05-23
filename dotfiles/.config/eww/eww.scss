@@ -1,0 +1,281 @@
+* {
+  all: unset // Desconfigurar todo para estilizar todo desde cero
+}
+
+// Estilos globales
+
+// Colores
+
+$red: #f38ba8;
+$maroon: #eba0ac;
+$green: #a6e3a1;
+$teal: #94e2d5;
+$blue: #89b4fa;
+$text: #cdd6f4;
+$surface1: #45475a;
+$surface0: #313244;
+$base: #1e1e2e;
+$mantle: #181825;
+
+// Barras
+
+// Es la ventana que contiene toda la barra
+
+.cattpuccin {
+  margin: 15px 25px 16px 25px;
+  padding: 10px 10px 10px 10px;
+  border-radius: 15px;
+}
+
+.cattpuccin_no_pcm {
+  margin: 0px 0px 0px 0px;
+  padding: 10px 10px 10px 10px;
+  border-radius: 0px;
+}
+
+// Es la caja que contiene a los modulos left, center y right. Cambiando su color de fondo se pueden "desacoplar" los módulos
+
+.cattpuccin_widget {
+  background-color: $mantle;
+  box-shadow: 3px 3px 5px rgba($color: #000000, $alpha: 0.8);
+  color: $text;
+}
+
+.cattpuccin_widget_no_pcm {
+  background-color: $mantle;
+  box-shadow: 3px 3px 5px rgba($color: #000000, $alpha: 0.8);
+  color: $text;
+}
+
+.left_cattpuccin {
+  background-color: $mantle;
+  color: $text;
+  border-radius: 10px;
+}
+
+.center_cattpuccin {
+  background-color: $mantle;
+  color: $text;
+}
+
+.right_cattpuccin {
+  background-color: $mantle;
+  color: $text;
+}
+
+// Widgets
+
+.poweroff_button {
+  background-color: $red;
+  color: $surface1;
+  font-family: Iosevka NF;
+  font-weight: bold;
+  font-size: 12pt;
+  padding: 5px 16px 5px 10px;
+  border-radius: 10px;
+}
+
+.volume_box{
+  background-color: $surface0;
+  font-family: Iosevka NF;
+  font-size: 17pt;
+  padding: 0px 20px 0px 0px;
+  border-radius: 10px;
+}
+
+.volume_box scale trough highlight { 
+  all: unset;
+  background-color: $red;
+  border-radius: 10px;
+}
+
+.volume_box scale trough {
+  all: unset;
+  background-color: $surface1;
+  min-height: 12px;
+  min-width: 50px;
+  border-radius: 10px;
+  margin: 0px 0px 0px 0px;
+}
+
+.filesystem_box {
+  background-color: $surface0;
+  font-family: Iosevka NF;
+  font-weight: bold;
+  font-size: 17pt;
+  padding: 0px 20px 0px 0px;
+  border-radius: 10px;
+}
+
+.filesystem_box scale trough highlight { 
+  all: unset;
+  background-color: $green;
+  border-radius: 10px;
+}
+
+.filesystem_box scale trough {
+  all: unset;
+  background-color: $surface1;
+  min-height: 12px;
+  min-width: 50px;
+  border-radius: 10px;
+  margin: 0px 0px 0px 0px;
+}
+
+.memory_box {
+  background-color: $surface0;
+  font-family: Iosevka NF;
+  font-weight: bold;
+  font-size: 17pt;
+  padding: 0px 20px 0px 0px;
+  border-radius: 10px;
+}
+
+.memory_box scale trough highlight { 
+  all: unset;
+  background-color: $blue;
+  border-radius: 10px;
+}
+
+.memory_box scale trough {
+  all: unset;
+  background-color: $surface1;
+  min-height: 12px;
+  min-width: 50px;
+  border-radius: 10px;
+  margin: 0px 0px 0px 0px;
+}
+
+.spotify_button {
+  background-color: $surface0;
+  color: $green;
+  font-family: Iosevka NF;
+  font-weight: bold;
+  font-size: 14pt;
+  padding: 0px 17px 0px 10px;
+  border-radius: 10px;
+}
+
+.prev_button {
+  background-color: $surface0;
+  font-family: Iosevka NF;
+  font-weight: bold;
+  font-size: 18pt;
+  padding: 0px 0px 0px 0px;
+  border-radius: 10px 0px 0px 10px;
+}
+
+.play_pause_button {
+  background-color: $surface0;
+  font-family: Iosevka NF;
+  font-weight: bold;
+  font-size: 12pt;
+  padding: 0px 5px 0px 0px;
+  border-radius: 0px;
+}
+
+.next_button {
+  background-color: $surface0;
+  font-family: Iosevka NF;
+  font-weight: bold;
+  font-size: 18pt;
+  padding: 0px 10px 0px 12px;
+  border-radius: 0px 10px 10px 0px;
+}
+
+.music_box {
+  background-color: $surface0;
+  font-family: Iosevka NF;
+  font-weight: bold;
+  font-size: 11pt;
+  padding: 0px 10px 0px 10px;
+  border-radius: 10px;
+}
+
+.pcm_button {
+  background-color: $surface0;
+  color: $teal;
+  font-family: Iosevka NF;
+  font-weight: bold;
+  font-size: 14pt;
+  padding: 0px 20px 0px 10px;
+  border-radius: 10px;
+}
+
+.date_box {
+  background-color: $surface0;
+  font-family: Iosevka NF;
+  font-weight: bold;
+  font-size: 11pt;
+  padding: 0px 10px 0px 10px;
+  border-radius: 10px;
+}
+
+.workspaces_box {
+  background-color: $surface0;
+  font-family: Iosevka NF;
+  font-weight: bold;
+  font-size: 11pt;
+  padding: 0px 0px 0px 0px;
+  border-radius: 10px;
+}
+
+.active_workspace {
+  background-color: $surface1;
+  color: $text;
+  font-family: Iosevka NF;
+  font-weight: bold;
+  font-size: 11pt;
+  padding: 0px 15px 0px 15px;
+  border-radius: 0px;
+}
+
+.active_workspace_1 {
+  background-color: $surface1;
+  color: $text;
+  font-family: Iosevka NF;
+  font-weight: bold;
+  font-size: 11pt;
+  padding: 0px 15px 0px 15px;
+  border-radius: 10px 0px 0px 10px;
+}
+
+.active_workspace_10 {
+  background-color: $surface1;
+  color: $text;
+  font-family: Iosevka NF;
+  font-weight: bold;
+  font-size: 11pt;
+  padding: 0px 15px 0px 15px;
+  border-radius: 0px 10px 10px 0px;
+}
+
+.focused_workspace {
+  background-color: $red;
+  color: $surface1;
+  font-family: Iosevka NF;
+  font-weight: bold;
+  font-size: 11pt;
+  padding: 0px 15px 0px 15px;
+  border-radius: 0px;
+}
+
+.focused_workspace_1 {
+  background-color: $red;
+  color: $surface1;
+  font-family: Iosevka NF;
+  font-weight: bold;
+  font-size: 11pt;
+  padding: 0px 15px 0px 15px;
+  border-radius: 10px 0px 0px 10px;
+}
+
+.focused_workspace_10 {
+  background-color: $red;
+  color: $surface1;
+  font-family: Iosevka NF;
+  font-weight: bold;
+  font-size: 11pt;
+  padding: 0px 15px 0px 15px;
+  border-radius: 0px 10px 10px 0px;
+}
