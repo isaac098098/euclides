@@ -1,5 +1,4 @@
 #!/bin/bash
-# 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
 cp -r ~/.config/dunst ~/euclides/dotfiles/.config
 cp -r ~/.config/i3 ~/euclides/dotfiles/.config
 cp -r ~/.config/nvim ~/euclides/dotfiles/.config
