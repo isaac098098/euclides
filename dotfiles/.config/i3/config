@@ -153,6 +153,7 @@ assign [class="brave-browser"] $ws3
 assign [class="Zathura"] $ws4
 assign [class="krita"] $ws5
 assign [class="sxiv"] $ws5
+assign [class="Eog"] $ws5
 assign [class="Sxiv"] $ws5
 assign [class="vlc"] $ws6
 assign [class="obsidian"] $ws7

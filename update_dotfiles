@@ -1,4 +1,5 @@
 #!/bin/bash
+# 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
 cp -r ~/.config/dunst ~/euclides/dotfiles/.config
 cp -r ~/.config/i3 ~/euclides/dotfiles/.config
 cp -r ~/.config/nvim ~/euclides/dotfiles/.config
@@ -11,6 +12,7 @@ cp -r ~/.config/zathura ~/euclides/dotfiles/.config
 #cp -r ~/.config/xournalpp ~/euclides/dotfiles/.config
 cp -r ~/.config/eww ~/euclides/dotfiles/.config
 cp -r ~/.config/hypr ~/euclides/dotfiles/.config
+cp ~/.config/kwalletrc ~/euclides/dotfiles/.config
 #cp -r ~/Documents/academic/esfm/tesis/tesis/tesis.tex ~/Documentos/academic/esfm/tesis/tesis/bibliography.bib ~/euclides/tesis_esfm
 #rm -r Documentos/linux/ubuntu/dotfiles/.config/xournalpp/autosave
 
