@@ -157,6 +157,7 @@ assign [class="Eog"] $ws5
 assign [class="Sxiv"] $ws5
 assign [class="vlc"] $ws6
 assign [class="obsidian"] $ws7
+assign [class="kdenlive"] $ws8
 assign [class="Spotify Premium"] $ws9
 assign [class="Spotify"] $ws9
 
