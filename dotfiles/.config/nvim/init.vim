@@ -30,6 +30,8 @@ Plug 'nvim-telescope/telescope-media-files.nvim'
 
 Plug 'L3MON4D3/LuaSnip', {'tag': 'v2.*', 'do': 'make install_jsregexp'}
 
+Plug 'chrisbra/colorizer'
+
 call plug#end()
 
 " Filetype plugins
@@ -452,3 +454,9 @@ nmap <C-d> ggVG"+y
 " Wayland clipboard, requires wl-clipboard
 
 nnoremap "+y :call system("wl-copy", @") <CR>
+
+set guicursor=i:hor10
+
+" Hex color plugin
+:let g:colorizer_auto_color = 1
+:let g:colorizer_auto_filetype = 'css,html'

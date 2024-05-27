@@ -150,7 +150,7 @@ assign [class="org.gnome.Nautilus"] $ws2
 assign [class="firefox"] $ws3
 assign [class="Brave-browser"] $ws3
 assign [class="brave-browser"] $ws3
-assign [class="Zathura"] $ws4
+#assign [class="Zathura"] $ws4
 assign [class="krita"] $ws5
 assign [class="sxiv"] $ws5
 assign [class="Eog"] $ws5
@@ -158,8 +158,13 @@ assign [class="Sxiv"] $ws5
 assign [class="vlc"] $ws6
 assign [class="obsidian"] $ws7
 assign [class="kdenlive"] $ws8
-assign [class="Spotify Premium"] $ws9
-assign [class="Spotify"] $ws9
+assign [class="Spotify"] $ws10
+assign [class="Gnome-pomodoro"] $ws10
+
+# Enable floatiing windows
+for_window [class="Gnome-pomodoro"] floating enable
+for_window [class="Gpick"] floating enable
+for_window [class="gnome-calculator"] floating enable
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -262,3 +267,11 @@ bindsym $mod+Shift+a focus parent, focus parent, focus parent, focus parent, foc
 # Spotify
 bindsym $mod+n exec --no-startup-id dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next
 bindsym $mod+m exec --no-startup-id dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous
+
+#Hide cursor
+bindsym $mod+u exec --no-startup-id unclutter -idle 3.0 -root
+bindsym $mod+t exec --no-startup-id killall unclutter
+
+# Krita layers
+bindsym $mod+c [title="Capas"] move scratchpad
+bindsym $mod+z [title="Capas"] scratchpad show

@@ -51,6 +51,12 @@ s(
 	{f( function(_, snip) return snip.captures[1] end ),t("\\sqrt{"), i(1), t("}")},
 	{condition = in_mathzone}
 ),
+
+s(
+	{trig = "([^%a])Pm", dscr = "Plus minus", snippetType="autosnippet", regTrig = true, wordTrig = false},
+    {f( function(_, snip) return snip.captures[1] end ),t("\\pm ")},
+	{condition = in_mathzone}
+),
  
 s(
 	{trig = "([^%a])Sq", dscr = "n-th square root", snippetType="autosnippet", regTrig = true, wordTrig = false},
