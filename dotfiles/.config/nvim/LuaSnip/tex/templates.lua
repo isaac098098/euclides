@@ -945,4 +945,31 @@ s(
     {}
     )
 ),
+
+s(
+    {trig = "min-math", dscr = "Minimal math template"},
+    fmta(
+    [[
+    \documentclass{article}
+    \usepackage[utf8]{inputenc}
+    \usepackage{amsmath,amssymb,amsfonts,amsthm}
+
+    \title{<>}
+    \author{<>}
+    \date{\today}
+
+    \begin{document}
+    \maketitle
+
+    <>
+
+    \end{document}
+    ]],
+    {
+        i(1),
+        i(2),
+        i(3)
+    }
+    )
+),
 }
