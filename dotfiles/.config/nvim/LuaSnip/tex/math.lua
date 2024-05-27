@@ -201,25 +201,25 @@ s(
 -- Superscripts, subscripts and dots
 
 s(
-	{trig = "¨", dscr = "Superscript", snippetType="autosnippet", wordTrig = false},
+	{trig = ":", dscr = "Superscript", snippetType="autosnippet", wordTrig = false},
 	{t("^")},
 	{condition = in_mathzone}
 ),
  
 s(
-	{trig = "´", dscr = "Subscript", snippetType="autosnippet", wordTrig = false},
+	{trig = ";", dscr = "Subscript", snippetType="autosnippet", wordTrig = false},
 	{t("_")},
 	{condition = in_mathzone}
 ),
 
 s(
-	{trig = ":", dscr = "Complete superscript", snippetType="autosnippet", regTrig = true, wordTrig = false},
+	{trig = "¨", dscr = "Complete superscript", snippetType="autosnippet", regTrig = true, wordTrig = false},
 	{f( function(_, snip) return snip.captures[1] end ),t("^{"), i(1), t("}")},
 	{condition = in_mathzone}
 ),
 
 s(
-	{trig = ";", dscr = "Complete subscript", snippetType="autosnippet", regTrig = true, wordTrig = false},
+	{trig = "´", dscr = "Complete subscript", snippetType="autosnippet", regTrig = true, wordTrig = false},
 	{f( function(_, snip) return snip.captures[1] end ),t("_{"), i(1), t("}")},
 	{condition = in_mathzone}
 ),
