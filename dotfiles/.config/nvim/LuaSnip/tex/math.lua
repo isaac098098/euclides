@@ -805,6 +805,12 @@ s(
 -- Symbols
 
 s(
+	{trig = "([^%a])Pm", dscr = "Plus minus symbol", snippetType="autosnippet", regTrig = true, wordTrig = false},
+	{f( function(_, snip) return snip.captures[1] end ), t("\\infty")},
+    {condition = in_mathzone}
+),
+
+s(
 	{trig = "([^%a])fy", dscr = "Infinity symbol", snippetType="autosnippet", regTrig = true, wordTrig = false},
 	{f( function(_, snip) return snip.captures[1] end ), t("\\infty")},
     {condition = in_mathzone}

@@ -1,3 +1,7 @@
+local in_mathzone = function()
+  return vim.fn['vimtex#syntax#in_mathzone']() == 1
+end
+
 return {
 
 -- Inline
@@ -5,6 +9,13 @@ return {
 s(
 	{trig = "([^%a])mm", dscr = "Inline math mode", snippetType="autosnippet", regTrig = true, wordTrig = false},
 	{t(" $"), i(1), t("$")}
+),
+
+s(
+	{trig = "([^%a])dis", dscr = "Displaystyle", snippetType="autosnippet", regTrig = true, wordTrig = false},
+    {f( function(_, snip) return snip.captures[1] end ), t("\\displaystyle ")},
+    {condition = in_mathzone}
+
 ),
 
 -- Lists

@@ -283,7 +283,7 @@ s(
 ),
 
 s(
-	{trig = "([^%a])ti", dscr = "Italic text", snippetType = "autosnippet", regTrig = true, wordTrig = false},
+	{trig = "([^%a])em", dscr = "Italic text", regTrig = true, wordTrig = false},
 	{f( function(_, snip) return snip.captures[1] end ), t("\\textit{"), i(1), t("}")}
 ),
 
