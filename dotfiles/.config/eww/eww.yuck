@@ -1,3 +1,5 @@
+; X11 & Picom
+
 (defwindow cattpuccin_X11
 	:monitor 0
 	:windowtype "dock"
@@ -16,83 +18,22 @@
 		:side "top"
 	)
 	:wm-ignore "false"
-	(cattpuccin_widget)
+	(cattpuccin_widget_X11)
 )
 
-(defwindow cattpuccin_X11_no_pcm
-	:monitor 0
-	:windowtype "dock"
-	:geometry (
-		geometry 
-		:anchor "top center"
-		:x "0%"
-		:y "0px"
-		:width "100%"
-		:height "10px"
-	)
-	:reserve (
-		struts 
-		:distance "10px" 
-		:side "top"
-	)
-	:wm-ignore "false"
-	(cattpuccin_widget)
-)
-
-(defwindow cattpuccin_Wayland
-	:monitor 0
-	:windowtype "dock"
-    :exclusive "true"
-	:geometry (
-		geometry 
-		:anchor "top center"
-		:x "0%"
-		:y "0px"
-		:width "100%"
-		:height "10px"
-	)
-	:reserve (
-		struts 
-		:distance "10px" 
-		:side "top"
-	)
-	:wm-ignore "false"
-	(cattpuccin_widget_Wayland)
-)
-
-(defwidget cattpuccin_widget_Wayland []
+(defwidget cattpuccin_widget_X11 []
 	(box
-		:class "cattpuccin_widget_Wayland"
+		:class "cattpuccin_widget_X11"
 		:orientation "horizontal"
-		(left_cattpuccin)
-		(center_cattpuccin_Wayland)
-		(right_cattpuccin_Wayland)
+		(left_cattpuccin_X11)
+		(center_cattpuccin_X11)
+		(right_cattpuccin_X11)
 	)
 )
 
-(defwidget cattpuccin_widget []
+(defwidget left_cattpuccin_X11 []
 	(box
-		:class "cattpuccin_widget"
-		:orientation "horizontal"
-		(left_cattpuccin)
-		(center_cattpuccin)
-		(right_cattpuccin)
-	)
-)
-
-(defwidget cattpuccin_widget_no_pcm []
-	(box
-		:class "cattpuccin_widget"
-		:orientation "horizontal"
-		(left_cattpuccin)
-		(center_cattpuccin)
-		(right_cattpuccin)
-	)
-)
-
-(defwidget left_cattpuccin []
-	(box
-		:class "left_cattpuccin"
+		:class "left_cattpuccin_X11"
 		:orientation "horizontal"
 		:halign "start"
 		:space-evenly "false"
@@ -104,27 +45,18 @@
 	)
 )
 
-(defwidget center_cattpuccin []
+(defwidget center_cattpuccin_X11 []
 	(box
-		:class "center_cattpuccin"
+		:class "center_cattpuccin_X11"
 		:orientation "horizontal"
 		:halign "center"
 		(xworkspaces)
 	)
 )
 
-(defwidget center_cattpuccin_Wayland []
+(defwidget right_cattpuccin_X11 []
 	(box
-		:class "center_cattpuccin_Wayland"
-		:orientation "horizontal"
-		:halign "center"
-		(hworkspaces)
-	)
-)
-
-(defwidget right_cattpuccin []
-	(box
-		:class "right_cattpuccin"
+		:class "right_cattpuccin_X11"
 		:orientation "horizontal"
 		:halign "end"
 		:space-evenly "false"
@@ -134,74 +66,6 @@
 		(music)
 		(pcm)
 		(time)
-	)
-)
-
-(defwidget right_cattpuccin_Wayland []
-	(box
-		:class "right_cattpuccin_Wayland"
-		:orientation "horizontal"
-		:halign "end"
-		:space-evenly "false"
-		:spacing "10"
-		(spotify)
-		(music_ctl)
-		(music)
-		(time)
-	)
-)
-
-(defwidget poweroff []
-	(box
-		:orientation "horizontal"
-		:halign "center"
-		(button
-			:class "poweroff_button"
-			:onclick "poweroff"
-			:onrightclick "reboot"
-			""
-		)
-	)
-)
-
-(defpoll volume :interval "1s" "/home/isaac09809/.config/eww/scripts/getvol")
-
-(defwidget volume []
-	(box
-		:class "volume_box"
-		:orientation "horizontal"
-		:halign "start"
-		(metric
-			:label "󰕾"
-			:value volume
-			:onchange "amixer -D pulse sset Master {}%"
-		)
-	)
-)
-
-(defwidget filesystem []
-	(box
-		:class "filesystem_box"
-		:orientation "horizontal"
-		:halign "start"
-		(metric
-			:label "󱛟"
-			:value {round((1 - (EWW_DISK["/"].free / EWW_DISK["/"].total)) * 100, 0)}
-			:onchange ""
-		)
-	)
-)
-
-(defwidget memory []
-	(box
-		:class "memory_box"
-		:orientation "horizontal"
-		:halign "start"
-		(metric
-			:label ""
-			:value {EWW_RAM.used_mem_perc}
-			:onchange ""
-		)
 	)
 )
 
@@ -259,6 +123,351 @@
 	)
 )
 
+; X11 & Picom Off
+
+(defwindow cattpuccin_X11_no_pcm
+	:monitor 0
+	:windowtype "dock"
+	:geometry (
+		geometry 
+		:anchor "top center"
+		:x "0%"
+		:y "0px"
+		:width "100%"
+		:height "10px"
+	)
+	:reserve (
+		struts 
+		:distance "10px" 
+		:side "bottom"
+	)
+	:wm-ignore "false"
+	(cattpuccin_widget_X11_no_pcm)
+)
+
+(defwidget cattpuccin_widget_X11_no_pcm []
+	(box
+		:class "cattpuccin_widget_X11_no_pcm"
+		:orientation "horizontal"
+		(left_cattpuccin_X11_no_pcm)
+		(center_cattpuccin_X11_no_pcm)
+		(right_cattpuccin_X11_no_pcm)
+	)
+)
+
+(defwidget left_cattpuccin_X11_no_pcm []
+	(box
+		:class "left_cattpuccin_X11_no_pcm"
+		:orientation "horizontal"
+		:halign "start"
+		:space-evenly "false"
+		:spacing "10"
+		(poweroff_X11_no_pcm)
+		(volume_X11_no_pcm)
+		(filesystem_X11_no_pcm)
+		(memory_X11_no_pcm)
+	)
+)
+
+(defwidget center_cattpuccin_X11_no_pcm []
+	(box
+		:class "center_cattpuccin_X11_no_pcm"
+		:orientation "horizontal"
+		:halign "center"
+		(xworkspaces_no_pcm)
+	)
+)
+
+(defwidget right_cattpuccin_X11_no_pcm []
+	(box
+		:class "right_cattpuccin"
+		:orientation "horizontal"
+		:halign "end"
+		:space-evenly "false"
+		:spacing "10"
+		(spotify_X11_no_pcm)
+		(music_ctl_X11_no_pcm)
+		(music_X11_no_pcm)
+		(pcm_X11_no_pcm)
+		(time_X11_no_pcm)
+	)
+)
+
+(deflisten active_xworkspaces_no_pcm :initial "N/A" "xprop -spy -root _NET_DESKTOP_NAMES")
+(defpoll focused_xworkspace_no_pcm :interval "0.05s" :initial "N/A" "i3-msg -t get_workspaces | jq '.[] | select(.focused).num'")
+
+(defwidget xworkspaces_no_pcm []
+	(box
+		:class "xworkspaces_box_no_pcm"
+		:orientation "horizontal"
+		:halign "center"
+		:spacing "0"
+		:hexpand "false"
+		(button
+			:class {focused_xworkspace_no_pcm == "1" ? "focused_xworkspace_no_pcm" : active_xworkspaces_no_pcm =~ '"1"' ? "active_xworkspace_no_pcm" : ""}
+			:onclick "i3-msg workspace 1" 
+			1
+		)(button
+			:class {focused_xworkspace_no_pcm == "2" ? "focused_xworkspace_no_pcm" : active_xworkspaces_no_pcm =~ '"2"' ? "active_workspace_no_pcm" : ""}
+			:onclick "i3-msg workspace 2" 
+			2
+		)(button
+			:class {focused_xworkspace_no_pcm == "3" ? "focused_xworkspace_no_pcm" : active_xworkspaces_no_pcm =~ '"3"' ? "active_workspace_no_pcm" : ""}
+			:onclick "i3-msg workspace 3" 
+			3
+		)(button
+			:class {focused_xworkspace_no_pcm == "4" ? "focused_xworkspace_no_pcm" : active_xworkspaces_no_pcm =~ '"4"' ? "active_workspace_no_pcm" : ""}
+			:onclick "i3-msg workspace 4" 
+			4
+		)(button
+			:class {focused_xworkspace_no_pcm == "5" ? "focused_xworkspace_no_pcm" : active_xworkspaces_no_pcm =~ '"5"' ? "active_workspace_no_pcm" : ""}
+			:onclick "i3-msg workspace 5" 
+			5
+		)(button
+			:class {focused_xworkspace_no_pcm == "6" ? "focused_xworkspace_no_pcm" : active_xworkspaces_no_pcm =~ '"6"' ? "active_workspace_no_pcm" : ""}
+			:onclick "i3-msg workspace 6" 
+			6
+		)(button
+			:class {focused_xworkspace_no_pcm == "7" ? "focused_xworkspace_no_pcm" : active_xworkspaces_no_pcm =~ '"7"' ? "active_workspace_no_pcm" : ""}
+			:onclick "i3-msg workspace 7" 
+			7
+		)(button
+			:class {focused_xworkspace_no_pcm == "8" ? "focused_xworkspace_no_pcm" : active_xworkspaces_no_pcm =~ '"8"' ? "active_workspace_no_pcm" : ""}
+			:onclick "i3-msg workspace 8" 
+			8
+		)(button
+			:class {focused_xworkspace_no_pcm == "9" ? "focused_xworkspace_no_pcm" : active_xworkspaces_no_pcm =~ '"9"' ? "active_workspace_no_pcm" : ""}
+			:onclick "i3-msg workspace 9" 
+			9
+		)(button
+			:class {focused_xworkspace_no_pcm == "10" ? "focused_xworkspace_no_pcm" : active_xworkspaces_no_pcm =~ '"10"' ? "active_xworkspace_no_pcm" : ""}
+			:onclick "i3-msg workspace 10" 
+			0
+		)
+	)
+)
+
+(defwidget poweroff_X11_no_pcm []
+	(box
+		:orientation "horizontal"
+		:halign "center"
+		(button
+			:class "poweroff_button_X11_no_pcm"
+			:onclick "poweroff"
+			:onrightclick "reboot"
+			""
+		)
+	)
+)
+
+(defwidget volume_X11_no_pcm []
+	(box
+		:class "volume_box_X11_no_pcm"
+		:orientation "horizontal"
+		:halign "start"
+		(metric
+			:label "󰕾"
+			:value volume
+			:onchange "amixer -D pulse sset Master {}%"
+		)
+	)
+)
+
+(defwidget filesystem_X11_no_pcm []
+	(box
+		:class "filesystem_box_X11_no_pcm"
+		:orientation "horizontal"
+		:halign "start"
+		(metric
+			:label "󱛟"
+			:value {round((1 - (EWW_DISK["/"].free / EWW_DISK["/"].total)) * 100, 0)}
+			:onchange ""
+		)
+	)
+)
+
+(defwidget memory_X11_no_pcm []
+	(box
+		:class "memory_box_X11_no_pcm"
+		:orientation "horizontal"
+		:halign "start"
+		(metric
+			:label ""
+			:value {EWW_RAM.used_mem_perc}
+			:onchange ""
+		)
+	)
+)
+
+(defwidget spotify_X11_no_pcm []
+	(box
+       	:orientation "horizontal"
+       	:halign "start"
+		(button
+			:class "spotify_button_X11_no_pcm"
+			:onclick "bash ~/.config/eww/scripts/sptf-init.sh"
+			;:onclick "spotify-adblock"
+			:onrightclick "bash ~/.config/eww/scripts/sptf-stop.sh"
+			""
+		)
+	)
+)
+
+(defwidget music_ctl_X11_no_pcm []
+	(box
+       	:orientation "horizontal"
+       	:halign "start"
+		(prev_X11_no_pcm)
+		(play_pause_X11_no_pcm)
+		(next_X11_no_pcm)
+	)
+)
+
+(defwidget prev_X11_no_pcm []
+	(box
+       	:orientation "horizontal"
+       	:halign "fill"
+		(button
+			:class "prev_button_X11_no_pcm"
+			:onclick "playerctl previous -p spotify"
+			"󰒮"
+		)
+	)
+)
+
+(defwidget play_pause_X11_no_pcm []
+	(box
+       	:orientation "horizontal"
+       	:halign "fill"
+		(button
+			:class "play_pause_button_X11_no_pcm"
+			:onclick "playerctl play-pause -p spotify"
+			{spotify_status == "Paused" ? "" : ""}
+		)
+	)
+)
+
+(defwidget next_X11_no_pcm []
+	(box
+       	:orientation "horizontal"
+       	:halign "fill"
+		(button
+			:class "next_button_X11_no_pcm"
+			:onclick "playerctl next -p spotify"
+			"󰒭"
+		)
+	)
+)
+
+(defwidget music_X11_no_pcm []
+	(box
+		:class "music_box_X11_no_pcm"
+       	:orientation "horizontal"
+       	:halign "end"
+       	:space-evenly "false"
+		{music != "No player is running" ? "${music}" : "No player is running"}
+	)
+)
+
+(defwidget pcm_X11_no_pcm []
+	(box
+		:orientation "horizontal"
+		:halign "end"
+		(button
+			:class "pcm_button_X11_no_pcm"
+			:onclick "bash /home/isaac09809/.config/eww/scripts/pcm_toggle.sh"
+			;:onclick "bash /home/isaac09809/.config/eww/scripts/pcm_toggle.sh && if [ ${is_pcm_active} -eq '1' ]; then eww update is_pcm_active=0; else eww update is_pcm_active=1; fi"
+			{is_pcm_active == "0" ? "": ""}
+		)
+	)
+)
+
+(defwidget time_X11_no_pcm []
+	(box
+		:class "date_box_X11_no_pcm"
+		:orientation "horizontal"
+		:halign "end"
+		:space-evenly "false"
+		"󰥔  "
+		(button
+			:class "time_button_X11_no_pcm"
+			:onclick "if [ ${time_var} -eq '0' ]; then eww update time_var=1; else eww update time_var=0; fi"
+			{time_var == "0" ? time : timealt}
+		)
+	)
+)
+
+; Hyprland
+
+(defwindow cattpuccin_Wayland
+	:monitor 0
+	:windowtype "dock"
+    :exclusive "true"
+	:geometry (
+		geometry 
+		:anchor "top center"
+		:x "0%"
+		:y "0px"
+		:width "100%"
+		:height "10px"
+	)
+	:reserve (
+		struts 
+		:distance "10px" 
+		:side "top"
+	)
+	:wm-ignore "false"
+	(cattpuccin_widget_Wayland)
+)
+
+(defwidget cattpuccin_widget_Wayland []
+	(box
+		:class "cattpuccin_widget_Wayland"
+		:orientation "horizontal"
+		(left_cattpuccin_Wayland)
+		(center_cattpuccin_Wayland)
+		(right_cattpuccin_Wayland)
+	)
+)
+
+(defwidget left_cattpuccin_Wayland []
+	(box
+		:class "left_cattpuccin_Wayland"
+		:orientation "horizontal"
+		:halign "start"
+		:space-evenly "false"
+		:spacing "10"
+		(poweroff)
+		(volume)
+		(filesystem)
+		(memory)
+	)
+)
+
+(defwidget center_cattpuccin_Wayland []
+	(box
+		:class "center_cattpuccin_Wayland"
+		:orientation "horizontal"
+		:halign "center"
+		(hworkspaces)
+	)
+)
+
+(defwidget right_cattpuccin_Wayland []
+	(box
+		:class "right_cattpuccin_Wayland"
+		:orientation "horizontal"
+		:halign "end"
+		:space-evenly "false"
+		:spacing "10"
+		(spotify)
+		(music_ctl)
+		(music)
+		(pcm)
+		(time)
+	)
+)
+
 (defpoll active_hworkspaces :interval "0.05s" :initial "N/A" "hyprctl workspaces -j | jq 'map({key: .id | tostring, value: .windows}) | from_entries'")
 (defpoll focused_hworkspace :interval "0.05s" :initial "N/A" "hyprctl activewindow | grep 'workspace: ' | cut -d' ' -f2")
 
@@ -309,6 +518,62 @@
 			:class {focused_hworkspace == "10" ? "focused_hworkspace_10" : active_hworkspaces =~ '"10"' ? "active_hworkspace_10" : ""}
 			:onclick "hyprctl dispatch workspace 10" 
 			0
+		)
+	)
+)
+
+; Global widgets
+
+(defwidget poweroff []
+	(box
+		:orientation "horizontal"
+		:halign "center"
+		(button
+			:class "poweroff_button"
+			:onclick "poweroff"
+			:onrightclick "reboot"
+			""
+		)
+	)
+)
+
+(defpoll volume :interval "1s" "/home/isaac09809/.config/eww/scripts/getvol")
+
+(defwidget volume []
+	(box
+		:class "volume_box"
+		:orientation "horizontal"
+		:halign "start"
+		(metric
+			:label "󰕾"
+			:value volume
+			:onchange "amixer -D pulse sset Master {}%"
+		)
+	)
+)
+
+(defwidget filesystem []
+	(box
+		:class "filesystem_box"
+		:orientation "horizontal"
+		:halign "start"
+		(metric
+			:label "󱛟"
+			:value {round((1 - (EWW_DISK["/"].free / EWW_DISK["/"].total)) * 100, 0)}
+			:onchange ""
+		)
+	)
+)
+
+(defwidget memory []
+	(box
+		:class "memory_box"
+		:orientation "horizontal"
+		:halign "start"
+		(metric
+			:label ""
+			:value {EWW_RAM.used_mem_perc}
+			:onchange ""
 		)
 	)
 )

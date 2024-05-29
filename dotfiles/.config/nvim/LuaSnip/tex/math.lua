@@ -803,6 +803,12 @@ s(
 ),
 
 -- Symbols
+ 
+s(
+	{trig = "([^%a])in", dscr = "Circle", snippetType="autosnippet", regTrig = true, wordTrig = false},
+	{f( function(_, snip) return snip.captures[1] end ), t("\\circ")},
+	{condition = in_mathzone}
+),
 
 s(
 	{trig = "([^%a])Pm", dscr = "Plus minus symbol", snippetType="autosnippet", regTrig = true, wordTrig = false},

@@ -242,17 +242,10 @@ client.placeholder		#FFFFFF 	#FFFFFF 	#FFFFFF 	#FFFFFF		#FFFFFF
 client.background		#FFFFFF		#FFFFFF 	#FFFFFF 	#FFFFFF		#FFFFFF
 
 # Tama~no de los bordes
-default_border pixel 0
+default_border pixel 5
 default_floating_border none
 
-gaps top -15
-gaps right 10
-gaps bottom 10
-gaps left 10
-gaps inner 15
-
-#smart_borders on
-
+smart_borders on
 focus_on_window_activation none
 
 bindsym Print exec --no-startup-id scrot
