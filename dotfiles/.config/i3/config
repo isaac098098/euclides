@@ -253,8 +253,6 @@ gaps inner 15
 
 #smart_borders on
 
-smart_borders on
-
 focus_on_window_activation none
 
 bindsym Print exec --no-startup-id scrot
