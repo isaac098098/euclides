@@ -234,26 +234,18 @@ bindsym $mod+w exec --no-startup-id setxkbmap us -variant intl
 
 # Colores de los bordes
 # 						Border 		Background	Text 		Indicator 	Child Border
-client.focused 			#FFFFFF		#FFFFFF		#FFFFFF		#88C0D0		#88C0D0
-client.focused_inactive	#FFFFFF 	#FFFFFF		#FFFFFF 	#2E3440		#2E3440
-client.unfocused		#FFFFFF 	#FFFFFF		#FFFFFF 	#2E3440		#2E3440
+client.focused 			#FFFFFF		#FFFFFF		#FFFFFF		#b4befe     #b4befe
+client.focused_inactive	#FFFFFF 	#FFFFFF		#FFFFFF 	#313244		#313244
+client.unfocused		#FFFFFF 	#FFFFFF		#FFFFFF 	#313244		#313244
 client.urgent			#FFFFFF 	#FFFFFF 	#FFFFFF 	#FFFFFF		#FFFFFF
 client.placeholder		#FFFFFF 	#FFFFFF 	#FFFFFF 	#FFFFFF		#FFFFFF
 client.background		#FFFFFF		#FFFFFF 	#FFFFFF 	#FFFFFF		#FFFFFF
 
 # Tama~no de los bordes
-default_border pixel 0
+default_border pixel 5
 default_floating_border none
 
-gaps right 10
-gaps bottom 10
-gaps left 10
-gaps inner 15
-
-gaps top -15
-
-smart_gaps off
-#smart_borders on
+smart_borders on
 
 focus_on_window_activation none
 
