@@ -208,35 +208,35 @@
 			:onclick "i3-msg workspace 1" 
 			1
 		)(button
-			:class {focused_xworkspace_no_pcm == "2" ? "focused_xworkspace_no_pcm" : active_xworkspaces_no_pcm =~ '"2"' ? "active_workspace_no_pcm" : ""}
+			:class {focused_xworkspace_no_pcm == "2" ? "focused_xworkspace_no_pcm" : active_xworkspaces_no_pcm =~ '"2"' ? "active_xworkspace_no_pcm" : ""}
 			:onclick "i3-msg workspace 2" 
 			2
 		)(button
-			:class {focused_xworkspace_no_pcm == "3" ? "focused_xworkspace_no_pcm" : active_xworkspaces_no_pcm =~ '"3"' ? "active_workspace_no_pcm" : ""}
+			:class {focused_xworkspace_no_pcm == "3" ? "focused_xworkspace_no_pcm" : active_xworkspaces_no_pcm =~ '"3"' ? "active_xworkspace_no_pcm" : ""}
 			:onclick "i3-msg workspace 3" 
 			3
 		)(button
-			:class {focused_xworkspace_no_pcm == "4" ? "focused_xworkspace_no_pcm" : active_xworkspaces_no_pcm =~ '"4"' ? "active_workspace_no_pcm" : ""}
+			:class {focused_xworkspace_no_pcm == "4" ? "focused_xworkspace_no_pcm" : active_xworkspaces_no_pcm =~ '"4"' ? "active_xworkspace_no_pcm" : ""}
 			:onclick "i3-msg workspace 4" 
 			4
 		)(button
-			:class {focused_xworkspace_no_pcm == "5" ? "focused_xworkspace_no_pcm" : active_xworkspaces_no_pcm =~ '"5"' ? "active_workspace_no_pcm" : ""}
+			:class {focused_xworkspace_no_pcm == "5" ? "focused_xworkspace_no_pcm" : active_xworkspaces_no_pcm =~ '"5"' ? "active_xworkspace_no_pcm" : ""}
 			:onclick "i3-msg workspace 5" 
 			5
 		)(button
-			:class {focused_xworkspace_no_pcm == "6" ? "focused_xworkspace_no_pcm" : active_xworkspaces_no_pcm =~ '"6"' ? "active_workspace_no_pcm" : ""}
+			:class {focused_xworkspace_no_pcm == "6" ? "focused_xworkspace_no_pcm" : active_xworkspaces_no_pcm =~ '"6"' ? "active_xworkspace_no_pcm" : ""}
 			:onclick "i3-msg workspace 6" 
 			6
 		)(button
-			:class {focused_xworkspace_no_pcm == "7" ? "focused_xworkspace_no_pcm" : active_xworkspaces_no_pcm =~ '"7"' ? "active_workspace_no_pcm" : ""}
+			:class {focused_xworkspace_no_pcm == "7" ? "focused_xworkspace_no_pcm" : active_xworkspaces_no_pcm =~ '"7"' ? "active_xworkspace_no_pcm" : ""}
 			:onclick "i3-msg workspace 7" 
 			7
 		)(button
-			:class {focused_xworkspace_no_pcm == "8" ? "focused_xworkspace_no_pcm" : active_xworkspaces_no_pcm =~ '"8"' ? "active_workspace_no_pcm" : ""}
+			:class {focused_xworkspace_no_pcm == "8" ? "focused_xworkspace_no_pcm" : active_xworkspaces_no_pcm =~ '"8"' ? "active_xworkspace_no_pcm" : ""}
 			:onclick "i3-msg workspace 8" 
 			8
 		)(button
-			:class {focused_xworkspace_no_pcm == "9" ? "focused_xworkspace_no_pcm" : active_xworkspaces_no_pcm =~ '"9"' ? "active_workspace_no_pcm" : ""}
+			:class {focused_xworkspace_no_pcm == "9" ? "focused_xworkspace_no_pcm" : active_xworkspaces_no_pcm =~ '"9"' ? "active_xworkspace_no_pcm" : ""}
 			:onclick "i3-msg workspace 9" 
 			9
 		)(button
