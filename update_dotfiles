@@ -1,0 +1,22 @@
+#!/bin/bash
+# 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
+cp -r ~/.config/dunst ~/euclides/dotfiles/.config/
+cp -r ~/.config/i3 ~/euclides/dotfiles/.config
+cp -r ~/.config/nvim ~/euclides/dotfiles/.config
+cp -r ~/.config/picom ~/euclides/dotfiles/.config
+#cp -r ~/.config/polybar ~/euclides/dotfiles/.config
+cp -r ~/.config/rofi ~/euclides/dotfiles/.config
+cp -r ~/.config/zathura ~/euclides/dotfiles/.config
+#cp -r ~/.config/gtk-3.0 ~/euclides/dotfiles/.config
+#cp -r ~/.config/gtk-4.0 ~/euclides/dotfiles/.config
+#cp -r ~/.config/xournalpp ~/euclides/dotfiles/.config
+cp -r ~/.config/eww ~/euclides/dotfiles/.config
+cp -r ~/.config/hypr ~/euclides/dotfiles/.config
+cp ~/.config/kwalletrc ~/euclides/dotfiles/.config
+#cp -r ~/Documents/academic/esfm/tesis/tesis/tesis.tex ~/Documentos/academic/esfm/tesis/tesis/bibliography.bib ~/euclides/tesis_esfm
+#rm -r Documentos/linux/ubuntu/dotfiles/.config/xournalpp/autosave
+
+#cp ~/.p10k.zsh ~/euclides/dotfiles/
+cp ~/.zshrc ~/euclides/dotfiles/
+cp ~/.xinitrc ~/euclides/dotfiles/
+#cp ~/.Xresources ~/euclides/dotfiles/

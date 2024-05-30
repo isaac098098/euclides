@@ -104,3 +104,23 @@ bindkey '^ ' autosuggest-accept
 
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="/usr/local/texlive/2024/bin/x86_64-linux:$PATH"
+export PATH="/opt/cuda/bin:$PATH"
+
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:"$HOME/.conda/envs/openvoice/lib/python3.9/site-packages/nvidia/cudnn/lib/"
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:"$HOME/.conda/envs/openvoice/lib/python3.9/site-packages/nvidia/cublas/lib/"
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/usr/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/usr/etc/profile.d/conda.sh" ]; then
+        . "/usr/etc/profile.d/conda.sh"
+    else
+        export PATH="/usr/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
