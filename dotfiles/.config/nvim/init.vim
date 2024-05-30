@@ -393,8 +393,8 @@ imap <silent><expr> jk luasnip#expand_or_jumpable() ? '<Plug>luasnip-expand-or-j
 smap <silent><expr> jk luasnip#jumpable(1) ? '<Plug>luasnip-jump-next' : '<Tab>'
 
 " Use Shift-Tab to jump backwards through snippets
-imap <silent><expr> ds luasnip#jumpable(-1) ? '<Plug>luasnip-jump-prev' : '<S-Tab>'
-smap <silent><expr> ds  luasnip#jumpable(-1) ? '<Plug>luasnip-jump-prev' : '<S-Tab>'
+imap <silent><expr> wq luasnip#jumpable(-1) ? '<Plug>luasnip-jump-prev' : '<S-Tab>'
+smap <silent><expr> wq  luasnip#jumpable(-1) ? '<Plug>luasnip-jump-prev' : '<S-Tab>'
 
 " Cycle forward through choice nodes with Control-f (for example)
 imap <silent><expr> <C-f> luasnip#choice_active() ? '<Plug>luasnip-next-choice' : '<C-f>'

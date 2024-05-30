@@ -155,6 +155,12 @@ s(
 ),
  
 s(
+	{trig = "([^%a])Ver", dscr = "Bigger double bars", snippetType="autosnippet", regTrig = true, wordTrig = false},
+	{f( function(_, snip) return snip.captures[1] end ), t("\\left\\lVert "), i(1), t(" \\right\\rVert")},
+	{condition = in_mathzone}
+),
+ 
+s(
 	{trig = "([^%a])inn", dscr = "Angled bars", snippetType="autosnippet", regTrig = true, wordTrig = false},
 	{f( function(_, snip) return snip.captures[1] end ), t("\\langle "), i(1), t(" \\rangle")},
 	{condition = in_mathzone}
@@ -794,7 +800,7 @@ s(
 ),
 
 s(
-	{trig = "([^%a])to", dscr = "Arrow limit", snippetType="autosnippet", regTrig = true, wordTrig = false},
+	{trig = "([^%a])arr", dscr = "Arrow limit with text", snippetType="autosnippet", regTrig = true, wordTrig = false},
 	{
         f( function(_, snip) return snip.captures[1] end ),
         t("\\xrightarrow["), i(1), t("]{"), i(2), t("} ")
@@ -802,10 +808,19 @@ s(
     {condition = in_mathzone}
 ),
 
+s(
+	{trig = "([^%a])to", dscr = "Arrow limit", snippetType="autosnippet", regTrig = true, wordTrig = false},
+	{
+        f( function(_, snip) return snip.captures[1] end ),
+        t("\\rightarrow ")
+	},
+    {condition = in_mathzone}
+),
+
 -- Symbols
  
 s(
-	{trig = "([^%a])in", dscr = "Circle", snippetType="autosnippet", regTrig = true, wordTrig = false},
+	{trig = "([^%a])cir", dscr = "Circle", snippetType="autosnippet", regTrig = true, wordTrig = false},
 	{f( function(_, snip) return snip.captures[1] end ), t("\\circ")},
 	{condition = in_mathzone}
 ),
