@@ -271,3 +271,6 @@ bindsym $mod+t exec --no-startup-id killall unclutter
 # Krita layers
 bindsym $mod+c [title="Layers"] move scratchpad
 bindsym $mod+z [title="Layers"] scratchpad show
+
+# Float
+for_window [class="org.gnome.clocks"] floating enable
