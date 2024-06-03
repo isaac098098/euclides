@@ -264,12 +264,6 @@ set lbr
 set nu
 set numberwidth=1
 
-" Power symbol
-
-" Tkransparent bg
-
-" hi normal guibg=NONE
-
 " vimtex
 " Requieres tree-sitter-cli
 
@@ -287,10 +281,10 @@ endfunction
 
 map <silent> <C-enter> :call Synctex()<cr>
 
-augroup vimtex
-	au!
-	au User VimtexEventCompileSuccess call Synctex()
-augroup END
+"augroup vimtex
+	"au!
+	"au User VimtexEventCompileSuccess call Synctex()
+"augroup END
 
 let g:vimtex_compiler_method = 'latexmk'
 let g:vimtex_view_method = 'zathura'
@@ -327,10 +321,10 @@ let g:vimtex_compiler_latexmk = {
 
 " X11
 
-"augroup vimtex
-	"au!
-	"au User VimtexEventCompiling VimtexView
-"augroup END
+augroup vimtex
+	au!
+	au User VimtexEventCompileSuccess VimtexView 
+augroup END
 
 " LuaSnip
 

@@ -9,6 +9,7 @@ cp -r ~/.config/xournalpp ~/euclides/dotfiles/.config
 cp -r ~/.config/eww ~/euclides/dotfiles/.config
 cp -r ~/.config/hypr ~/euclides/dotfiles/.config
 cp ~/.config/kwalletrc ~/euclides/dotfiles/.config
+cp ~/.config/kritarc ~/euclides/dotfiles/.config
 
 #cp ~/.p10k.zsh ~/euclides/dotfiles/
 cp ~/.zshrc ~/euclides/dotfiles/

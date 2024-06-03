@@ -13,6 +13,12 @@ s(
 ),
 
 s(
+	{trig = "([^%a])Pp", dscr = "Hardcoded parskip", snippetType="autosnippet", regTrig = true, wordTrig = false},
+	{t({"","\\par $ $",""}),i(1), 
+	}
+),
+
+s(
 	{trig = "([^%a])pm", dscr = "Medium skip", snippetType="autosnippet", regTrig = true, wordTrig = false},
 	{t({"","\\medskip","",""}), i(1)}
 ),

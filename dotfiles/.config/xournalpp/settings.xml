@@ -6,16 +6,16 @@
   <property name="pressureMultiplier" value="1"/>
   <property name="zoomGesturesEnabled" value="true"/>
   <property name="selectedToolbar" value="Catppuccin"/>
-  <property name="lastSavePath" value=""/>
-  <property name="lastOpenPath" value=""/>
+  <property name="lastSavePath" value="/home/isaac09809/Documents/xournalpp"/>
+  <property name="lastOpenPath" value="/home/isaac09809/Downloads"/>
   <property name="lastImagePath" value=""/>
   <property name="edgePanSpeed" value="20"/>
   <property name="edgePanMaxMult" value="5"/>
   <property name="zoomStep" value="10"/>
   <property name="zoomStepScroll" value="2"/>
   <property name="displayDpi" value="72"/>
-  <property name="mainWndWidth" value="1920"/>
-  <property name="mainWndHeight" value="1048"/>
+  <property name="mainWndWidth" value="928"/>
+  <property name="mainWndHeight" value="973"/>
   <property name="maximized" value="false"/>
   <property name="showToolbar" value="true"/>
   <property name="showSidebar" value="false"/>
@@ -58,7 +58,7 @@
   <property name="disableScrollbarFadeout" value="false"/>
   <property name="disableAudio" value="false"/>
   <!--Hides scroolbars in the main window, allowed values: "none", "horizontal", "vertical", "both"-->
-  <property name="scrollbarHideType" value="none"/>
+  <property name="scrollbarHideType" value="both"/>
   <property name="autoloadMostRecent" value="false"/>
   <property name="autoloadPdfXoj" value="true"/>
   <property name="defaultSaveName" value="%F-Note-%H-%M"/>
@@ -80,9 +80,9 @@
   <property name="touchDrawing" value="false"/>
   <property name="gtkTouchInertialScrolling" value="true"/>
   <property name="pressureGuessing" value="false"/>
-  <property name="selectionBorderColor" value="4290427889"/>
-  <property name="backgroundColor" value="4280493620"/>
-  <property name="selectionMarkerColor" value="4287408878"/>
+  <property name="selectionBorderColor" value="4290231800"/>
+  <property name="backgroundColor" value="4279769382"/>
+  <property name="selectionMarkerColor" value="4287278580"/>
   <property name="touchZoomStartThreshold" value="0"/>
   <property name="pageRerenderThreshold" value="5"/>
   <!--The count of rendered PDF pages which will be cached.-->
@@ -91,8 +91,8 @@
   <property name="preloadPagesAfter" value="5"/>
   <property name="eagerPageCleanup" value="true"/>
   <!--Config for new pages-->
-  <property name="pageTemplate" value="xoj/template&#10;copyLastPageSize=false&#10;copyLastPageSettings=true&#10;size=595.275591x841.889764&#10;backgroundType=plain&#10;backgroundColor=#303446&#10;"/>
-  <property name="sizeUnit" value=""/>
+  <property name="pageTemplate" value="xoj/template&#10;copyLastPageSize=false&#10;copyLastPageSettings=true&#10;size=907.086614x510.228000&#10;backgroundType=plain&#10;backgroundColor=#303446&#10;"/>
+  <property name="sizeUnit" value="cm"/>
   <property name="audioFolder" value=""/>
   <property name="audioInputDevice" value="-1"/>
   <property name="audioOutputDevice" value="-1"/>
@@ -173,6 +173,10 @@
       <attribute name="deviceClass" type="int" value="1"/>
       <attribute name="deviceSource" type="int" value="0"/>
     </data>
+    <data name="Wacom Intuos S Pad pad">
+      <attribute name="deviceClass" type="int" value="0"/>
+      <attribute name="deviceSource" type="int" value="8"/>
+    </data>
     <data name="Wacom Intuos S Pen stylus">
       <attribute name="deviceClass" type="int" value="2"/>
       <attribute name="deviceSource" type="int" value="1"/>
@@ -212,7 +216,7 @@
     </data>
     <data name="eraser">
       <attribute name="drawingType" type="string" value="default"/>
-      <attribute name="size" type="string" value="MEDIUM"/>
+      <attribute name="size" type="string" value="THIN"/>
       <attribute name="type" type="string" value="deleteStroke"/>
     </data>
     <data name="hand">
@@ -229,11 +233,11 @@
       <attribute name="drawingType" type="string" value="default"/>
     </data>
     <data name="pen">
-      <attribute name="color" type="hex" value="51576d"/>
+      <attribute name="color" type="hex" value="babbf1"/>
       <attribute name="drawingType" type="string" value="default"/>
       <attribute name="fill" type="int" value="0"/>
       <attribute name="fillAlpha" type="int" value="128"/>
-      <attribute name="size" type="string" value="MEDIUM"/>
+      <attribute name="size" type="string" value="BIG"/>
       <attribute name="style" type="string" value="plain"/>
     </data>
     <data name="playObject">

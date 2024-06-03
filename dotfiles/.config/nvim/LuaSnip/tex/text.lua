@@ -325,14 +325,14 @@ s(
 -- Characters
 
 s(
-	{trig = "([^%a])co", dscr = "Colon", snippetType = "autosnippet", regTrig = true, wordTrig = false},
-	{f( function(_, snip) return snip.captures[1] end ), t(":")},
+	{trig = "Co", dscr = "Colon", snippetType = "autosnippet", wordTrig = false},
+	{t(";")},
     {condition = in_mathzone}
 ),
 
 s(
-	{trig = "([^%a])Co", dscr = "Semicolon", snippetType = "autosnippet", regTrig = true, wordTrig = false},
-	{f( function(_, snip) return snip.captures[1] end ), t(";")},
+	{trig = "co", dscr = "Colon", snippetType = "autosnippet", wordTrig = false},
+	{t(":")},
     {condition = in_mathzone}
 ),
 }
