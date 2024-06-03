@@ -1,11 +1,14 @@
 #!/bin/bash
+# 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 
 cp -r ~/.config/dunst ~/euclides/dotfiles/.config/
 cp -r ~/.config/i3 ~/euclides/dotfiles/.config
 cp -r ~/.config/nvim ~/euclides/dotfiles/.config
 cp -r ~/.config/picom ~/euclides/dotfiles/.config
 cp -r ~/.config/rofi ~/euclides/dotfiles/.config
 cp -r ~/.config/zathura ~/euclides/dotfiles/.config
-cp -r ~/.config/xournalpp ~/euclides/dotfiles/.config
+cp -r ~/.config/xournalpp/palette.gpl ~/euclides/dotfiles/.config/xournalpp
+cp -r ~/.config/xournalpp/settings.xml ~/euclides/dotfiles/.config/xournalpp
+cp -r ~/.config/xournalpp/toolbar.ini ~/euclides/dotfiles/.config/xournalpp
 cp -r ~/.config/eww ~/euclides/dotfiles/.config
 cp -r ~/.config/hypr ~/euclides/dotfiles/.config
 cp ~/.config/kwalletrc ~/euclides/dotfiles/.config
