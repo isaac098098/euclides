@@ -165,6 +165,12 @@ s(
 	{f( function(_, snip) return snip.captures[1] end ), t("\\langle "), i(1), t(" \\rangle")},
 	{condition = in_mathzone}
 ),
+ 
+s(
+	{trig = "([^%a])Tm", dscr = "Tensor product", snippetType="autosnippet", regTrig = true, wordTrig = false},
+	{f( function(_, snip) return snip.captures[1] end ), t("\\otimes ")},
+	{condition = in_mathzone}
+),
 
 --- Binary
  
@@ -227,6 +233,12 @@ s(
 s(
 	{trig = "´", dscr = "Complete subscript", snippetType="autosnippet", regTrig = true, wordTrig = false},
 	{f( function(_, snip) return snip.captures[1] end ),t("_{"), i(1), t("}")},
+	{condition = in_mathzone}
+),
+
+s(
+	{trig = "lf", dscr = "Left superscript", snippetType="autosnippet", regTrig = true, wordTrig = false},
+	{f( function(_, snip) return snip.captures[1] end ), t("\\leftindex^"), i(1), t("{"), i(2), t("} ")},
 	{condition = in_mathzone}
 ),
 
@@ -818,6 +830,12 @@ s(
 ),
 
 -- Symbols
+ 
+s(
+	{trig = "([^%a])wd", dscr = "Triangle without base", snippetType="autosnippet", regTrig = true, wordTrig = false},
+	{f( function(_, snip) return snip.captures[1] end ), t("\\bigwedge ")},
+	{condition = in_mathzone}
+),
  
 s(
 	{trig = "([^%a])cir", dscr = "Circle", snippetType="autosnippet", regTrig = true, wordTrig = false},

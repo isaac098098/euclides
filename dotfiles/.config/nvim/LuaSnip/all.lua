@@ -42,7 +42,7 @@ s(
 -- Dots
 
 s(
-    {trig = "dt", descr = "bmk dots", snippetType = "autosnippet", wordTrig = false},
+    {trig = "dt", descr = "bmk dots"},
     {
         t("................")
     }
