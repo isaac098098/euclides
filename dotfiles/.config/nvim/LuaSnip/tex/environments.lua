@@ -252,7 +252,7 @@ s(
 s(
 	{trig = "([^%a])pr", dscr = "Proof", regTrig = true, wordTrig = false},
 	{
-		t({"","","\\begin{proof}",""}), 
+		t({"","\\begin{proof}",""}), 
 		i(1), 
 		t({"","\\end{proof}"}),
 		i(2)

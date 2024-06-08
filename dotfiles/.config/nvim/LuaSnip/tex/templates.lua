@@ -201,6 +201,7 @@ s(
         %\usepackage{scalerel} %Aumentar tamaño de símbolos
         %\usepackage{centernot} %Para el símbolo "no divide"
         %\usepackage{leftindex} %Índices izquierdos
+        %\usepackage{esvect} %Mejores flechas de vectores
 
         % Matemáticas
 
@@ -526,6 +527,7 @@ s(
         \usepackage{cellspace,makecell} %Necesario para el alineamiento Sc de tablas
         %\usepackage{centernot} %Para el símbolo "no divide"
         %\usepackage{leftindex} %Índices izquierdos
+        %\usepackage{esvect} %Mejores flechas de vectores
 
         % Matemáticas
 

@@ -1,0 +1,11 @@
+#!/bin/bash
+
+while true
+do
+    nws=$(i3-msg -t get_workspaces | jq '.[] | select(.focused).num')
+    if [[ "$ws" != "$nws" ]]
+    then
+        echo "${nws}"
+        ws=$nws
+    fi
+done

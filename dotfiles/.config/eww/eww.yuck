@@ -69,8 +69,8 @@
 	)
 )
 
-(deflisten active_xworkspaces :initial "N/A" "xprop -spy -root _NET_DESKTOP_NAMES")
-(defpoll focused_xworkspace :interval "0.05s" :initial "N/A" "i3-msg -t get_workspaces | jq '.[] | select(.focused).num'")
+(deflisten active_xworkspaces "xprop -spy -root _NET_DESKTOP_NAMES")
+(deflisten focused_xworkspace "bash $HOME/.config/eww/scripts/get_active_workspace")
 
 (defwidget xworkspaces []
 	(box
