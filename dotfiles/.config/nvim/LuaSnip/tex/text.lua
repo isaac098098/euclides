@@ -283,6 +283,11 @@ s(
 ),
 
 s(
+	{trig = "([^%a])Tb", dscr = "Bold text mode in math mode", snippetType = "autosnippet", regTrig = true, wordTrig = false},
+	{f( function(_, snip) return snip.captures[1] end ), t("\\bf")}
+),
+
+s(
 	{trig = "([^%a])em", dscr = "Italic text", regTrig = true, wordTrig = false},
 	{f( function(_, snip) return snip.captures[1] end ), t("\\textit{"), i(1), t("}")}
 ),

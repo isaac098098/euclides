@@ -229,7 +229,7 @@ endfunction
 "inoremap <silent> \| <Cmd>call UltiSnips#Anon('\|$1\|','','i','',1)<cr>
 "inoremap <silent> ' <Cmd>call UltiSnips#Anon("'$1'",'','i','',1)<cr>
 
-inoremap iu <Esc>
+inoremap oi <Esc>
 map j gj
 map k gk
 
@@ -291,6 +291,11 @@ let g:vimtex_view_method = 'zathura'
 let g:vimtex_view_forward_search_on_start = 'false'
 let g:vimtex_quickfix_mode = 0
 let g:vimtex_view_automatic = 0
+
+" Remove lag due to match search
+let g:loaded_matchparen = 0
+let g:vimtex_motion_matchparen = 0
+let g:vimtex_matchparen_enabled = 0
 
 let g:vimtex_compiler_latexmk_engines = {
         \ '_'                : '-pdf',

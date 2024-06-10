@@ -202,6 +202,7 @@ s(
         %\usepackage{centernot} %Para el símbolo "no divide"
         %\usepackage{leftindex} %Índices izquierdos
         %\usepackage{esvect} %Mejores flechas de vectores
+        %\usepackage{statmath} %Negritas en modo matemático, /bf(any letter)
 
         % Matemáticas
 
@@ -323,7 +324,7 @@ s(
         \newcommand{\R}{\mathbb{R}}
         \newcommand{\C}{\mathbb{C}}
         \newcommand{\F}{\mathbb{F}}
-        \newcommand{\vc}{\textnormal{\O}}
+        \newcommand{\vcc}{\textnormal{\O}}
         \newcommand{\dif}{\textnormal{d}}
         \newcommand{\Dif}{\textnormal{ d}}
         \newcommand{\der}[2]{\frac{\dif#1}{\dif#2}}
@@ -650,7 +651,7 @@ s(
         \newcommand{\R}{\mathbb{R}}
         \newcommand{\C}{\mathbb{C}}
         \newcommand{\F}{\mathbb{F}}
-        \newcommand{\vc}{\textnormal{\O}}
+        \newcommand{\vcc}{\textnormal{\O}}
         \newcommand{\dif}{\textnormal{d}}
         \newcommand{\Dif}{\textnormal{ d}}
         \newcommand{\der}[2]{\frac{\dif#1}{\dif#2}}

@@ -869,7 +869,7 @@ s(
 
 s(
 	{trig = "([^%a])vac", dscr = "Empty set", snippetType="autosnippet", regTrig = true, wordTrig = false},
-	{f( function(_, snip) return snip.captures[1] end ), t("\\vc")},
+	{f( function(_, snip) return snip.captures[1] end ), t("\\vcc")},
     {condition = in_mathzone}
 ),
 
