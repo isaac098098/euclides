@@ -7,23 +7,23 @@
   <property name="zoomGesturesEnabled" value="true"/>
   <property name="selectedToolbar" value="Catppuccin"/>
   <property name="lastSavePath" value="/home/isaac09809/Documents/xournalpp"/>
-  <property name="lastOpenPath" value="/home/isaac09809/Downloads"/>
+  <property name="lastOpenPath" value="/home/isaac09809/Documents/xournalpp"/>
   <property name="lastImagePath" value=""/>
   <property name="edgePanSpeed" value="20"/>
   <property name="edgePanMaxMult" value="5"/>
   <property name="zoomStep" value="10"/>
   <property name="zoomStepScroll" value="2"/>
   <property name="displayDpi" value="72"/>
-  <property name="mainWndWidth" value="928"/>
+  <property name="mainWndWidth" value="1870"/>
   <property name="mainWndHeight" value="973"/>
   <property name="maximized" value="false"/>
   <property name="showToolbar" value="true"/>
   <property name="showSidebar" value="false"/>
-  <property name="sidebarWidth" value="50"/>
+  <property name="sidebarWidth" value="144"/>
   <property name="sidebarNumberingStyle" value="1"/>
   <property name="sidebarOnRight" value="false"/>
   <property name="scrollbarOnLeft" value="false"/>
-  <property name="menubarVisible" value="false"/>
+  <property name="menubarVisible" value="true"/>
   <property name="filepathShownInTitlebar" value="false"/>
   <property name="numColumns" value="1"/>
   <property name="numRows" value="1"/>

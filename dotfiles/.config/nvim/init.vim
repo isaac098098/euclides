@@ -2,7 +2,7 @@
 
 call plug#begin('~/.local/share/nvim/plugged')
 
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+"Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 Plug 'lervag/vimtex'
 
@@ -30,7 +30,7 @@ Plug 'nvim-telescope/telescope-media-files.nvim'
 
 Plug 'L3MON4D3/LuaSnip', {'tag': 'v2.*', 'do': 'make install_jsregexp'}
 
-Plug 'chrisbra/colorizer'
+"Plug 'chrisbra/colorizer'
 
 call plug#end()
 
@@ -200,19 +200,19 @@ EOF
 
 " coc-vim
 
-inoremap <silent><expr> <C-d>
-      \ coc#pum#visible() ? coc#pum#next(1) :
-      \ CheckBackspace() ? "\<C-d>" :
-      \ coc#refresh()
-inoremap <expr><C-e> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
+"inoremap <silent><expr> <C-d>
+      "\ coc#pum#visible() ? coc#pum#next(1) :
+      "\ CheckBackspace() ? "\<C-d>" :
+      "\ coc#refresh()
+"inoremap <expr><C-e> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
+"
+"inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+                              "\: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
-inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
-                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
-
-function! CheckBackspace() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
+"function! CheckBackspace() abort
+  "let col = col('.') - 1
+  "return !col || getline('.')[col - 1]  =~# '\s'
+"endfunction
 
 " ulti-snippets
 
@@ -253,7 +253,7 @@ map k gk
 "set tw=160
 "set wrapmargin=0
 
-" Preservar identación al ajustar las líneas
+" Indentation
 
 set breakindent
 set formatoptions=l
@@ -269,17 +269,17 @@ set numberwidth=1
 
 " Wayland"
 
-function! Synctex()
-	let vimura_param = " --synctex-forward " . line('.') . ":" . col('.') . ":" . expand('%:p') . " " . substitute(expand('%:p'),"tex$","pdf","")
-	if has('nvim')
-		call jobstart("vimura neovim" . vimura_param)
-	else
-		exec "silent !vimura vim" . vimura_param . "&"
-	endif
-	redraw!
-endfunction 
-
-map <silent> <C-enter> :call Synctex()<cr>
+"function! Synctex()
+	"let vimura_param = " --synctex-forward " . line('.') . ":" . col('.') . ":" . expand('%:p') . " " . substitute(expand('%:p'),"tex$","pdf","")
+	"if has('nvim')
+		"call jobstart("vimura neovim" . vimura_param)
+	"else
+		"exec "silent !vimura vim" . vimura_param . "&"
+	"endif
+	"redraw!
+"endfunction 
+"
+"map <silent> <C-enter> :call Synctex()<cr>
 
 "augroup vimtex
 	"au!
@@ -404,7 +404,7 @@ smap <silent><expr> <C-f> luasnip#choice_active() ? '<Plug>luasnip-next-choice' 
 iunmap <tab>
 set tabstop=4
 set shiftwidth=4
-set expandtab
+"set expandtab
 
 " Título de las pestañas 
 
@@ -448,14 +448,14 @@ set tabline=%!Tabline()
 " Clipboard"
 
 " Copy all document to clipboard
-nmap <C-d> ggVG"+y
+"nmap <C-d> ggVG"+y
 
 " Wayland clipboard, requires wl-clipboard
 
-nnoremap "+y :call system("wl-copy", @") <CR>
+"nnoremap "+y :call system("wl-copy", @") <CR>
 
 set guicursor=i:hor10
 
 " Hex color plugin
-:let g:colorizer_auto_color = 1
-:let g:colorizer_auto_filetype = 'css,html'
+":let g:colorizer_auto_color = 1
+":let g:colorizer_auto_filetype = 'css,html'

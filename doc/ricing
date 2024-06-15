@@ -1,0 +1,6 @@
+# Ricing guide
+https://nam.is-a.dev/blog/ricing/
+
+#Printer
+rm -r /usr/lib/cups/driver/
+lpinfo -v (fill cups Connection field with this)

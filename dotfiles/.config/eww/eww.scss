@@ -17,6 +17,7 @@ $surface1: #45475a;
 $surface0: #313244;
 $base: #1e1e2e;
 $mantle: #181825;
+$crust: #11111b;
 
 // X11 & Picom
 
@@ -25,30 +26,30 @@ $mantle: #181825;
 .cattpuccin_X11 {
   margin: 15px 25px 16px 25px;
   padding: 10px 10px 10px 10px;
-  border-radius: 15px;
+  border-radius: 8px;
 }
 
 // Es la caja que contiene a los modulos left, center y right. Cambiando su color de fondo se pueden "desacoplar" los módulos
 
 .cattpuccin_widget_X11 {
-  background-color: $mantle;
+  background-color: $base;
   box-shadow: 3px 3px 5px rgba($color: #000000, $alpha: 0.8);
   color: $text;
 }
 
 .left_cattpuccin_X11 {
-  background-color: $mantle;
+  background-color: $base;
   color: $text;
   border-radius: 10px;
 }
 
 .center_cattpuccin_X11 {
-  background-color: $mantle;
+  background-color: $base;
   color: $text;
 }
 
 .right_cattpuccin_X11 {
-  background-color: $mantle;
+  background-color: $base;
   color: $text;
 }
 
@@ -301,6 +302,33 @@ $mantle: #181825;
   border-radius: 0px;
 }
 
+.gaps_toggle_X11 {
+  background-color: $lavender;
+  color: $surface0;
+  font-family: Iosevka NF;
+  font-size: 15pt;
+  padding: 0px 19px 0px 13px;
+  border-radius: 8px;
+}
+
+.gaps_toggle_X11_no_pcm {
+  background-color: $lavender;
+  color: $surface0;
+  font-family: Iosevka NF;
+  font-size: 15pt;
+  padding: 0px 19px 0px 13px;
+}
+
+.no_gaps_button {
+  font-size: 16pt;
+  padding: 0px 17px 0px 0px;
+}
+
+.gaps_button {
+  font-size: 16pt;
+  padding: 0px 20px 0px 0px;
+}
+
 .date_box_X11_no_pcm {
   background-color: $surface0;
   font-family: Iosevka NF;
@@ -324,19 +352,19 @@ $mantle: #181825;
   color: $text;
 }
 
-.left_cattpuccin_X11 {
-  background-color: $mantle;
+.left_cattpuccin_Wayland {
+  background-color: $base;
   color: $text;
   border-radius: 10px;
 }
 
 .center_cattpuccin_Wayland {
-  background-color: $mantle;
+  background-color: $base;
   color: $text;
 }
 
 .right_cattpuccin_Wayland {
-  background-color: $mantle;
+  background-color: $base;
   color: $text;
 }
 

@@ -64,7 +64,8 @@
 		(spotify)
 		(music_ctl)
 		(music)
-		(pcm)
+		(gaps_toggle_X11)
+		;(pcm)
 		(time)
 	)
 )
@@ -188,7 +189,8 @@
 		(spotify_X11_no_pcm)
 		(music_ctl_X11_no_pcm)
 		(music_X11_no_pcm)
-		(pcm_X11_no_pcm)
+		;(pcm_X11_no_pcm)
+		(gaps_toggle_X11_no_pcm)
 		(time_X11_no_pcm)
 	)
 )
@@ -253,7 +255,7 @@
 		:halign "center"
 		(button
 			:class "poweroff_button_X11_no_pcm"
-			:onclick "poweroff"
+			:onclick "shutdown -h now"
 			:onrightclick "reboot"
 			""
 		)
@@ -530,7 +532,7 @@
 		:halign "center"
 		(button
 			:class "poweroff_button"
-			:onclick "poweroff"
+			:onclick "shutdown -h now"
 			:onrightclick "reboot"
 			""
 		)
@@ -665,6 +667,62 @@
 			{is_pcm_active == "0" ? "": ""}
 		)
 	)
+)
+
+(defvar show_gaps_toggle false)
+
+(defwidget gaps_toggle_X11 []
+    (eventbox
+        :halign "end"
+        :onhover "eww update show_gaps_toggle=true"
+        :onhoverlost "eww update show_gaps_toggle=false"
+        (box :class "gaps_toggle_X11"
+            :orientation "horizontal"
+            :space-evenly false
+            (revealer :transition "slideright"
+                :reveal show_gaps_toggle
+                :duration "550ms"
+                (box :orientation "horizontal"
+                    (button :class "no_gaps_button"
+                        :onclick "bash $HOME/.config/eww/scripts/no_gaps.sh"
+                        "󰖯"
+                    )
+                    (button :class "gaps_button"
+                        :onclick "bash $HOME/.config/eww/scripts/gaps.sh"
+                        "󱂬"
+                    )
+                )
+            )
+            ""
+        )
+    )
+)
+
+(defwidget gaps_toggle_X11_no_pcm []
+    (eventbox
+        :halign "end"
+        :onhover "eww update show_gaps_toggle=true"
+        :onhoverlost "eww update show_gaps_toggle=false"
+        (box :class "gaps_toggle_X11_no_pcm"
+            :orientation "horizontal"
+            :space-evenly false
+            (revealer :transition "slideright"
+                :reveal show_gaps_toggle
+                :duration "550ms"
+                (box :orientation "horizontal"
+                    (button :class "no_gaps_button"
+                        :onclick "bash $HOME/.config/eww/scripts/no_gaps.sh"
+                        "󰖯"
+                    )
+                    (button :class "gaps_button"
+                        :onclick "bash $HOME/.config/eww/scripts/gaps.sh"
+                        "󱂬"
+                    )
+                )
+            )
+            ""
+        )
+    )
 )
 
 (defpoll time :interval "10s" "date '+%H %M'")
