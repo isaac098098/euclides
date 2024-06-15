@@ -30,7 +30,7 @@ Plug 'nvim-telescope/telescope-media-files.nvim'
 
 Plug 'L3MON4D3/LuaSnip', {'tag': 'v2.*', 'do': 'make install_jsregexp'}
 
-"Plug 'chrisbra/colorizer'
+Plug 'chrisbra/colorizer'
 
 call plug#end()
 

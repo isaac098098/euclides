@@ -209,7 +209,7 @@ for_window [class="gnome-calculator"] floating enable
 # Dock
 
 #exec_always --no-startup-id /home/isaac09809/.config/polybar/launch.sh
-exec --no-startup-id eww open cattpuccin_X11
+exec --no-startup-id eww open cattpuccin_X11_no_pcm
 
 # Wallpaper
 
