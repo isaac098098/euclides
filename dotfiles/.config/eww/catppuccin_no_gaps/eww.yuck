@@ -72,7 +72,7 @@
 		:spacing "0"
 		:hexpand "false"
 		(button
-			:class {focused_xworkspace == "1" ? "focused_xworkspace_1" : active_xworkspaces =~ '"1"' ? "active_xworkspace_1" : ""}
+			:class {focused_xworkspace == "1" ? "focused_xworkspace" : active_xworkspaces =~ '"1"' ? "active_xworkspace" : ""}
 			:onclick "i3-msg workspace 1" 
 			1
 		)(button
@@ -108,7 +108,7 @@
 			:onclick "i3-msg workspace 9" 
 			9
 		)(button
-			:class {focused_xworkspace == "10" ? "focused_xworkspace_10" : active_xworkspaces =~ '"10"' ? "active_xworkspace_10" : ""}
+			:class {focused_xworkspace == "10" ? "focused_xworkspace" : active_xworkspaces =~ '"10"' ? "active_xworkspace" : ""}
 			:onclick "i3-msg workspace 10" 
 			0
 		)

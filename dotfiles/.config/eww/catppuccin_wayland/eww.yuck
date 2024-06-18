@@ -1,0 +1,127 @@
+
+; Hyprland
+
+(defwindow cattpuccin_Wayland
+	:monitor 0
+	:windowtype "dock"
+    :exclusive "true"
+	:geometry (
+		geometry 
+		:anchor "top center"
+		:x "0%"
+		:y "0px"
+		:width "100%"
+		:height "10px"
+	)
+	:reserve (
+		struts 
+		:distance "10px" 
+		:side "top"
+	)
+	:wm-ignore "false"
+	(cattpuccin_widget_Wayland)
+)
+
+(defwidget cattpuccin_widget_Wayland []
+	(box
+		:class "cattpuccin_widget_Wayland"
+		:orientation "horizontal"
+		(left_cattpuccin_Wayland)
+		(center_cattpuccin_Wayland)
+		(right_cattpuccin_Wayland)
+	)
+)
+
+(defwidget left_cattpuccin_Wayland []
+	(box
+		:class "left_cattpuccin_Wayland"
+		:orientation "horizontal"
+		:halign "start"
+		:space-evenly "false"
+		:spacing "10"
+		(poweroff)
+		(volume)
+		(filesystem)
+		(memory)
+	)
+)
+
+(defwidget center_cattpuccin_Wayland []
+	(box
+		:class "center_cattpuccin_Wayland"
+		:orientation "horizontal"
+		:halign "center"
+		(hworkspaces)
+	)
+)
+
+(defwidget right_cattpuccin_Wayland []
+	(box
+		:class "right_cattpuccin_Wayland"
+		:orientation "horizontal"
+		:halign "end"
+		:space-evenly "false"
+		:spacing "10"
+		(spotify)
+		;(music_ctl)
+		;(music)
+		(pcm)
+		(time)
+	)
+)
+
+(defpoll active_hworkspaces :interval "0.05s" :initial "N/A" "hyprctl workspaces -j | jq 'map({key: .id | tostring, value: .windows}) | from_entries'")
+(defpoll focused_hworkspace :interval "0.05s" :initial "N/A" "hyprctl activewindow | grep 'workspace: ' | cut -d' ' -f2")
+
+(defwidget hworkspaces []
+	(box
+		:class "hworkspaces_box"
+		:orientation "horizontal"
+		:halign "center"
+		:spacing "0"
+		:hexpand "false"
+		(button
+			:class {focused_hworkspace == "1" ? "focused_hworkspace_1" : active_hworkspaces =~ '"1"' ? "active_hworkspace_1" : ""}
+			:onclick "hyprctl dispatch workspace 1" 
+			1
+		)(button
+			:class {focused_hworkspace == "2" ? "focused_hworkspace" : active_hworkspaces =~ '"2"' ? "active_hworkspace" : ""}
+			:onclick "hyprctl dispatch workspace 2" 
+			2
+		)(button
+			:class {focused_hworkspace == "3" ? "focused_hworkspace" : active_hworkspaces =~ '"3"' ? "active_hworkspace" : ""}
+			:onclick "hyprctl dispatch workspace 3" 
+			3
+		)(button
+			:class {focused_hworkspace == "4" ? "focused_hworkspace" : active_hworkspaces =~ '"4"' ? "active_hworkspace" : ""}
+			:onclick "hyprctl dispatch workspace 4" 
+			4
+		)(button
+			:class {focused_hworkspace == "5" ? "focused_hworkspace" : active_hworkspaces =~ '"5"' ? "active_hworkspace" : ""}
+			:onclick "hyprctl dispatch workspace 5" 
+			5
+		)(button
+			:class {focused_hworkspace == "6" ? "focused_hworkspace" : active_hworkspaces =~ '"6"' ? "active_hworkspace" : ""}
+			:onclick "hyprctl dispatch workspace 6" 
+			6
+		)(button
+			:class {focused_hworkspace == "7" ? "focused_hworkspace" : active_hworkspaces =~ '"7"' ? "active_hworkspace" : ""}
+			:onclick "hyprctl dispatch workspace 7" 
+			7
+		)(button
+			:class {focused_hworkspace == "8" ? "focused_hworkspace" : active_hworkspaces =~ '"8"' ? "active_hworkspace" : ""}
+			:onclick "hyprctl dispatch workspace 8" 
+			8
+		)(button
+			:class {focused_hworkspace == "9" ? "focused_hworkspace" : active_hworkspaces =~ '"9"' ? "active_hworkspace" : ""}
+			:onclick "hyprctl dispatch workspace 9" 
+			9
+		)(button
+			:class {focused_hworkspace == "10" ? "focused_hworkspace_10" : active_hworkspaces =~ '"10"' ? "active_hworkspace_10" : ""}
+			:onclick "hyprctl dispatch workspace 10" 
+			0
+		)
+	)
+)
+
+
