@@ -455,7 +455,10 @@ set tabline=%!Tabline()
 "nnoremap "+y :call system("wl-copy", @") <CR>
 
 set guicursor=i:hor10
+set guicursor+=n-v-c:blinkon0
 
 " Hex color plugin
 ":let g:colorizer_auto_color = 1
 ":let g:colorizer_auto_filetype = 'css,html'
+
+:tnoremap <Esc> <C-\><C-n>

@@ -462,7 +462,7 @@ s(
 s(
 	{trig = "([^%a])fc", dscr = "Function defined by cases", snippetType="autosnippet", regTrig = true, wordTrig = false},
 	{
-		t({"","\\begin{equation*}","    "}), 
+		t({""," \\begin{equation*}","    "}), 
 		i(1), t({" = \\begin{cases}","        "}),
         i(2), t(" & \\textnormal{"), i(3), t("} "), i(4), t({" \\\\ \\hfil","        "}),
         i(5), t(" & \\textnormal{"), i(6), t("} "), i(7), t({"","    "}),

@@ -1,3 +1,4 @@
+
 * {
   all: unset // Desconfigurar todo para estilizar todo desde cero
 }
@@ -22,23 +23,22 @@ $crust: #11111b;
 // Es la ventana que contiene toda la barra
 
 .catppuccin {
-  margin: 15px 25px 16px 25px;
-  padding: 10px 10px 10px 10px;
-  border-radius: 8px;
+  margin: 0px 0px 0px 0px;
+  padding: 0px 0px 0px 0px;
+  border-radius: 0px;
 }
 
 // Es la caja que contiene a los modulos left, center y right. Cambiando su color de fondo se pueden "desacoplar" los módulos
 
 .catppuccin_widget {
-  background-color: $base;
-  box-shadow: 3px 3px 5px rgba($color: #000000, $alpha: 0.8);
+  background-color: $crust;
+  //box-shadow: 3px 3px 5px rgba($color: #000000, $alpha: 0.8);
   color: $text;
 }
 
 .left_catppuccin {
   background-color: $base;
   color: $text;
-  border-radius: 10px;
 }
 
 .center_catppuccin {
@@ -57,7 +57,7 @@ $crust: #11111b;
   font-weight: bold;
   font-size: 11pt;
   padding: 0px 0px 0px 0px;
-  border-radius: 10px;
+  border-radius: 0px;
 }
 
 .active_xworkspace {
@@ -70,26 +70,6 @@ $crust: #11111b;
   border-radius: 0px;
 }
 
-.active_xworkspace_1 {
-  background-color: $surface1;
-  color: $text;
-  font-family: Iosevka NF;
-  font-weight: bold;
-  font-size: 11pt;
-  padding: 0px 15px 0px 15px;
-  border-radius: 10px 0px 0px 10px;
-}
-
-.active_xworkspace_10 {
-  background-color: $surface1;
-  color: $text;
-  font-family: Iosevka NF;
-  font-weight: bold;
-  font-size: 11pt;
-  padding: 0px 15px 0px 15px;
-  border-radius: 0px 10px 10px 0px;
-}
-
 .focused_xworkspace {
   background-color: $lavender;
   color: $surface1;
@@ -98,26 +78,6 @@ $crust: #11111b;
   font-size: 11pt;
   padding: 0px 15px 0px 15px;
   border-radius: 0px;
-}
-
-.focused_xworkspace_1 {
-  background-color: $lavender;
-  color: $surface1;
-  font-family: Iosevka NF;
-  font-weight: bold;
-  font-size: 11pt;
-  padding: 0px 15px 0px 15px;
-  border-radius: 10px 0px 0px 10px;
-}
-
-.focused_xworkspace_10 {
-  background-color: $lavender;
-  color: $surface1;
-  font-family: Iosevka NF;
-  font-weight: bold;
-  font-size: 11pt;
-  padding: 0px 15px 0px 15px;
-  border-radius: 0px 10px 10px 0px;
 }
 
 // Widgets
@@ -129,7 +89,7 @@ $crust: #11111b;
   font-weight: bold;
   font-size: 12pt;
   padding: 5px 16px 5px 10px;
-  border-radius: 10px;
+  border-radius: 0px;
 }
 
 .volume_box{
@@ -137,7 +97,7 @@ $crust: #11111b;
   font-family: Iosevka NF;
   font-size: 17pt;
   padding: 0px 20px 0px 0px;
-  border-radius: 10px;
+  border-radius: 0px;
 }
 
 .volume_box scale trough highlight { 
@@ -161,7 +121,7 @@ $crust: #11111b;
   font-weight: bold;
   font-size: 17pt;
   padding: 0px 20px 0px 0px;
-  border-radius: 10px;
+  border-radius: 0px;
 }
 
 .filesystem_box scale trough highlight { 
@@ -185,7 +145,7 @@ $crust: #11111b;
   font-weight: bold;
   font-size: 14pt;
   padding: 0px 20px 0px 0px;
-  border-radius: 10px;
+  border-radius: 0px;
 }
 
 .memory_box scale trough highlight { 
@@ -204,13 +164,13 @@ $crust: #11111b;
 }
 
 .spotify_button {
-  background-color: $surface0;
-  color: $green;
+  background-color: $green;
+  color: $surface0;
   font-family: Iosevka NF;
   font-weight: bold;
   font-size: 14pt;
   padding: 0px 19px 0px 10px;
-  border-radius: 10px;
+  border-radius: 0px;
 }
 
 .prev_button {
@@ -219,7 +179,6 @@ $crust: #11111b;
   font-weight: bold;
   font-size: 18pt;
   padding: 0px 0px 0px 0px;
-  border-radius: 10px 0px 0px 10px;
 }
 
 .play_pause_button {
@@ -228,7 +187,6 @@ $crust: #11111b;
   font-weight: bold;
   font-size: 12pt;
   padding: 0px 0px 0px 0px;
-  border-radius: 0px;
 }
 
 .next_button {
@@ -237,7 +195,6 @@ $crust: #11111b;
   font-weight: bold;
   font-size: 18pt;
   padding: 0px 10px 0px 12px;
-  border-radius: 0px 10px 10px 0px;
 }
 
 .music_box {
@@ -246,7 +203,6 @@ $crust: #11111b;
   font-weight: bold;
   font-size: 11pt;
   padding: 0px 10px 0px 10px;
-  border-radius: 10px;
 }
 
 .pcm_button {
@@ -256,16 +212,16 @@ $crust: #11111b;
   font-weight: bold;
   font-size: 14pt;
   padding: 0px 20px 0px 10px;
-  border-radius: 10px;
+  border-radius: 0px;
 }
 
 .gaps_toggle {
-  background-color: $lavender;
+  background-color: $teal;
   color: $surface0;
   font-family: Iosevka NF;
   font-size: 15pt;
   padding: 0px 19px 0px 13px;
-  border-radius: 10px;
+  border-radius: 0px;
 }
 
 .no_gaps_button {
@@ -284,5 +240,5 @@ $crust: #11111b;
   font-weight: bold;
   font-size: 11pt;
   padding: 0px 10px 0px 10px;
-  border-radius: 10px;
+  border-radius: 0px;
 }

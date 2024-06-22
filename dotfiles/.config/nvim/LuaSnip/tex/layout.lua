@@ -207,7 +207,7 @@ s(
 s(
 	{trig = "([^%a])sbn", dscr = "Numbered subsection", snippetType="autosnippet", regTrig = true, wordTrig = false},
 	{
-		t({"","","\\section{"}), 
+		t({"","","\\subsection{"}), 
 		i(1), 
 		t({"}","",""}),
 		i(2)
@@ -217,7 +217,7 @@ s(
 s(
 	{trig = "([^%a])sbm", dscr = "Unnumbered subsection", snippetType="autosnippet", regTrig = true, wordTrig = false},
 	{
-		t({"","","\\section*{"}), 
+		t({"","","\\subsection*{"}), 
 		i(1), 
 		t({"}","",""}),
 		i(2)

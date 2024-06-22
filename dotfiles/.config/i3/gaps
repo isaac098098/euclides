@@ -190,6 +190,7 @@ bindsym $mod+r mode "resize"
 assign [class="org.gnome.Nautilus"] $ws2
 assign [class="firefox"] $ws3
 assign [class="Brave-browser"] $ws3
+assign [class="Zathura"] $ws4
 assign [class="krita"] $ws5
 assign [class="Eog"] $ws5
 assign [class="vlc"] $ws6

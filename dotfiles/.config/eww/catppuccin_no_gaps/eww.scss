@@ -31,7 +31,7 @@ $crust: #11111b;
 // Es la caja que contiene a los modulos left, center y right. Cambiando su color de fondo se pueden "desacoplar" los módulos
 
 .catppuccin_widget {
-  background-color: $base;
+  background-color: $crust;
   //box-shadow: 3px 3px 5px rgba($color: #000000, $alpha: 0.8);
   color: $text;
 }
@@ -164,8 +164,8 @@ $crust: #11111b;
 }
 
 .spotify_button {
-  background-color: $surface0;
-  color: $green;
+  background-color: $green;
+  color: $surface0;
   font-family: Iosevka NF;
   font-weight: bold;
   font-size: 14pt;
@@ -216,7 +216,7 @@ $crust: #11111b;
 }
 
 .gaps_toggle {
-  background-color: $lavender;
+  background-color: $teal;
   color: $surface0;
   font-family: Iosevka NF;
   font-size: 15pt;
