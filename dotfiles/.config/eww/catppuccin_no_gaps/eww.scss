@@ -110,7 +110,7 @@ $crust: #11111b;
 }
 
 .volume_prefix {
-  background-color: $yellow;
+  background-color: $mauve;
   color: $base;
   font-family: Iosevka NF;
   font-size: 17pt;
@@ -128,8 +128,8 @@ $crust: #11111b;
 
 .volume_box scale trough highlight { 
   all: unset;
-  background-color: $yellow;
-  padding: 0px 20px 0px 0px;
+  background-color: $mauve;
+  padding: 0px 0px 0px 0px;
   border-radius: 10px;
 }
 

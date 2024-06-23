@@ -35,17 +35,16 @@
 (defwidget volume []
 	(box
 		:orientation "horizontal"
-		:halign "start"
 		:space-evenly "false"
 		(box :class "volume_prefix"
 			:orientation "horizontal"
-			:halign "start"
-			:space-evenly "false"
 			"󰕾"
 		)
 		(box :class "volume_box"
-			(metric
-				:label ""
+			(scale
+				:min 0
+				:max 100
+				:active true
 				:value volume
 				:onchange "amixer -D pulse sset Master {}%"
 			)
