@@ -32,27 +32,28 @@ $crust: #11111b;
 
 .catppuccin_widget {
   background-color: $crust;
+  //background-color: rgba(17, 17, 27, 0.6);
   //box-shadow: 3px 3px 5px rgba($color: #000000, $alpha: 0.8);
   color: $text;
 }
 
 .left_catppuccin {
-  background-color: $base;
+  background-color: $crust;
   color: $text;
 }
 
 .center_catppuccin {
-  background-color: $base;
+  background-color: $crust;
   color: $text;
 }
 
 .right_catppuccin {
-  background-color: $base;
+  background-color: $crust;
   color: $text;
 }
 
 .xworkspaces_box {
-  background-color: $surface0;
+  background-color: $base;
   font-family: Iosevka NF;
   font-weight: bold;
   font-size: 11pt;
@@ -61,7 +62,7 @@ $crust: #11111b;
 }
 
 .active_xworkspace {
-  background-color: $surface1;
+  background-color: $surface0;
   color: $text;
   font-family: Iosevka NF;
   font-weight: bold;
@@ -93,7 +94,7 @@ $crust: #11111b;
 }
 
 .volume_box{
-  background-color: $surface0;
+  background-color: $base;
   font-family: Iosevka NF;
   font-size: 17pt;
   padding: 0px 20px 0px 0px;
@@ -116,7 +117,7 @@ $crust: #11111b;
 }
 
 .filesystem_box {
-  background-color: $surface0;
+  background-color: $base;
   font-family: Iosevka NF;
   font-weight: bold;
   font-size: 17pt;
@@ -140,7 +141,7 @@ $crust: #11111b;
 }
 
 .memory_box {
-  background-color: $surface0;
+  background-color: $base;
   font-family: Iosevka NF;
   font-weight: bold;
   font-size: 14pt;
@@ -174,7 +175,7 @@ $crust: #11111b;
 }
 
 .prev_button {
-  background-color: $surface0;
+  background-color: $base;
   font-family: Iosevka NF;
   font-weight: bold;
   font-size: 18pt;
@@ -182,7 +183,7 @@ $crust: #11111b;
 }
 
 .play_pause_button {
-  background-color: $surface0;
+  background-color: $base;
   font-family: Iosevka NF;
   font-weight: bold;
   font-size: 12pt;
@@ -190,7 +191,7 @@ $crust: #11111b;
 }
 
 .next_button {
-  background-color: $surface0;
+  background-color: $base;
   font-family: Iosevka NF;
   font-weight: bold;
   font-size: 18pt;
@@ -198,7 +199,7 @@ $crust: #11111b;
 }
 
 .music_box {
-  background-color: $surface0;
+  background-color: $base;
   font-family: Iosevka NF;
   font-weight: bold;
   font-size: 11pt;
@@ -235,7 +236,7 @@ $crust: #11111b;
 }
 
 .date_box {
-  background-color: $surface0;
+  background-color: $base;
   font-family: Iosevka NF;
   font-weight: bold;
   font-size: 11pt;
