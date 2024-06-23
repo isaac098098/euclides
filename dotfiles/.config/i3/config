@@ -242,7 +242,8 @@ client.background		#FFFFFF		#FFFFFF 	#FFFFFF 	#FFFFFF		#FFFFFF
 
 # Borders
 
-default_border pixel 3
+#default_border pixel 3
+default_border pixel 0
 default_floating_border none
 smart_borders on
 
