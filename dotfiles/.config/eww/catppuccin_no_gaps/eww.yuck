@@ -286,7 +286,7 @@
 		)
 		(button
 			:class "date_button"
-			:onclick "if [ ${date_var} -eq '0' ]; then eww update time_var=1; else eww update time_var=0; fi"
+			:onclick "if [ ${date_var} -eq '0' ]; then eww update date_var=1; else eww update date_var=0; fi"
 			{date_var == "0" ? date : date_alt}
 		)
 	)
