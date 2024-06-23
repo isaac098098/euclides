@@ -5,11 +5,17 @@
 
 // Colores
 
+$rosewater: #f5e0dc;
+$flamingo: #f2cdcd;
 $pink: #f5c2e7;
+$mauve: #cba6f7;
 $red: #f38ba8;
 $maroon: #eba0ac;
+$peach: #fab387;
+$yellow: #f9e2af;
 $green: #a6e3a1;
 $teal: #94e2d5;
+$saphire: #74c7ec;
 $blue: #89b4fa;
 $lavender: #b7bdf8;
 $text: #cdd6f4;
@@ -84,12 +90,31 @@ $crust: #11111b;
 // Widgets
 
 .poweroff_button {
-  background-color: $maroon;
-  color: $mantle;
+  background-color: $red;
+  color: $base;
   font-family: Iosevka NF;
   font-weight: bold;
   font-size: 12pt;
-  padding: 5px 16px 5px 10px;
+  padding: 5px 17px 5px 10px;
+  border-radius: 0px;
+}
+
+.wifi_button {
+  background-color: $peach;
+  color: $base;
+  font-family: Iosevka NF;
+  font-weight: bold;
+  font-size: 14pt;
+  padding: 2px 19px 0px 10px;
+  border-radius: 0px;
+}
+
+.volume_prefix {
+  background-color: $yellow;
+  color: $base;
+  font-family: Iosevka NF;
+  font-size: 17pt;
+  padding: 0px 15px 0px 10px;
   border-radius: 0px;
 }
 
@@ -97,13 +122,14 @@ $crust: #11111b;
   background-color: $base;
   font-family: Iosevka NF;
   font-size: 17pt;
-  padding: 0px 20px 0px 0px;
+  padding: 0px 15px 0px 14px;
   border-radius: 0px;
 }
 
 .volume_box scale trough highlight { 
   all: unset;
-  background-color: $maroon;
+  background-color: $yellow;
+  padding: 0px 20px 0px 0px;
   border-radius: 10px;
 }
 
@@ -116,12 +142,22 @@ $crust: #11111b;
   margin: 0px 0px 0px 0px;
 }
 
+.filesystem_prefix {
+  background-color: $green;
+  color: $base;
+  font-family: Iosevka NF;
+  font-weight: bold;
+  font-size: 17pt;
+  padding: 0px 17px 0px 11px;
+  border-radius: 0px;
+}
+
 .filesystem_box {
   background-color: $base;
   font-family: Iosevka NF;
   font-weight: bold;
   font-size: 17pt;
-  padding: 0px 20px 0px 0px;
+  padding: 0px 15px 0px 14px;
   border-radius: 0px;
 }
 
@@ -140,12 +176,22 @@ $crust: #11111b;
   margin: 0px 0px 0px 0px;
 }
 
+.memory_prefix {
+  background-color: $blue;
+  color: $base;
+  font-family: Iosevka NF;
+  font-weight: bold;
+  font-size: 14pt;
+  padding: 0px 21px 0px 11px;
+  border-radius: 0px;
+}
+
 .memory_box {
   background-color: $base;
   font-family: Iosevka NF;
   font-weight: bold;
   font-size: 14pt;
-  padding: 0px 20px 0px 0px;
+  padding: 0px 15px 0px 14px;
   border-radius: 0px;
 }
 
@@ -217,7 +263,7 @@ $crust: #11111b;
 }
 
 .gaps_toggle {
-  background-color: $teal;
+  background-color: $lavender;
   color: $surface0;
   font-family: Iosevka NF;
   font-size: 15pt;
@@ -235,7 +281,17 @@ $crust: #11111b;
   padding: 0px 22px 0px 0px;
 }
 
-.date_box {
+.date_prefix {
+  background-color: $mauve;
+  color: $base;
+  font-family: Iosevka NF;
+  font-weight: bold;
+  font-size: 15pt;
+  padding: 0px 16px 0px 10px;
+  border-radius: 0px;
+}
+
+.date_button {
   background-color: $base;
   font-family: Iosevka NF;
   font-weight: bold;

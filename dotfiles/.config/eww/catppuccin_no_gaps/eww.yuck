@@ -15,43 +15,80 @@
 	)
 )
 
+(defwidget wifi []
+	(box
+		:orientation "horizontal"
+		:halign "start"
+		:space-evenly "false"
+		(button :class "wifi_button"
+			:orientation "horizontal"
+			:halign "start"
+			:space-evenly "false"
+			"󰤨"
+			;:onclick ""
+		)
+	)
+)
+
 (defpoll volume :interval "1s" "/home/isaac09809/.config/eww/scripts/getvol")
 
 (defwidget volume []
 	(box
-		:class "volume_box"
 		:orientation "horizontal"
 		:halign "start"
-		(metric
-			:label "󰕾"
-			:value volume
-			:onchange "amixer -D pulse sset Master {}%"
+		:space-evenly "false"
+		(box :class "volume_prefix"
+			:orientation "horizontal"
+			:halign "start"
+			:space-evenly "false"
+			"󰕾"
+		)
+		(box :class "volume_box"
+			(metric
+				:label ""
+				:value volume
+				:onchange "amixer -D pulse sset Master {}%"
+			)
 		)
 	)
 )
 
 (defwidget filesystem []
 	(box
-		:class "filesystem_box"
 		:orientation "horizontal"
 		:halign "start"
-		(metric
-			:label "󱛟"
-			:value {round((1 - (EWW_DISK["/"].free / EWW_DISK["/"].total)) * 100, 0)}
-			:onchange ""
+		:space-evenly "false"
+		(box :class "filesystem_prefix"
+			:orientation "horizontal"
+			:halign "start"
+			"󱛟"
+		)
+		(box :class "filesystem_box"
+			(metric
+				:label ""
+				:value {round((1 - (EWW_DISK["/"].free / EWW_DISK["/"].total)) * 100, 0)}
+				:onchange ""
+			)
 		)
 	)
 )
 
 (defwidget memory []
 	(box
-		:class "memory_box"
 		:orientation "horizontal"
+		:space-evenly "false"
 		:halign "start"
-		(metric
-			:label ""
-			:value {EWW_RAM.used_mem_perc}
-			:onchange ""
+		(box :class "memory_prefix"
+			:orientation "horizontal"
+			:halign "start"
+			""
+		)
+		(box :class "memory_box"
+			(metric
+				:label ""
+				:value {EWW_RAM.used_mem_perc}
+				:onchange ""
+			)
 		)
 	)
 )
@@ -233,21 +270,25 @@
     )
 )
 
-(defpoll time :interval "10s" "date '+%H %M'")
-(defpoll timealt :interval "10s" "date '+%A %d, %B %Y'")
-(defvar time_var "0")
+(defpoll date :interval "10s" "date '+%H %M'")
+(defpoll date_alt :interval "10s" "date '+%A %d, %B %Y'")
+(defvar date_var "0")
 
-(defwidget time []
+(defwidget date []
 	(box
-		:class "date_box"
 		:orientation "horizontal"
 		:halign "end"
 		:space-evenly "false"
-		"󰥔  "
+		(box :class "date_prefix"
+			:orientation "horizontal"
+			:halign "start"
+			:space-evenly "false"
+			"󰥔"
+		)
 		(button
-			:class "time_button"
-			:onclick "if [ ${time_var} -eq '0' ]; then eww update time_var=1; else eww update time_var=0; fi"
-			{time_var == "0" ? time : timealt}
+			:class "date_button"
+			:onclick "if [ ${date_var} -eq '0' ]; then eww update time_var=1; else eww update time_var=0; fi"
+			{date_var == "0" ? date : date_alt}
 		)
 	)
 )
@@ -255,6 +296,8 @@
 (defwidget metric [label value onchange]
 	(box
 		:orientation "horizontal"
+		:space-evenly "false"
+		:halign "start"
 		(box
 			label
 		)
@@ -288,6 +331,7 @@
 		:space-evenly "false"
 		:spacing "10"
 		(poweroff)
+		(wifi)
 		(volume)
 		(filesystem)
 		(memory)
@@ -315,7 +359,7 @@
 		(music)
 		(gaps_toggle)
 		;(pcm)
-		(time)
+		(date)
 	)
 )
 
