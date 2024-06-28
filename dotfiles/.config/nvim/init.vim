@@ -30,7 +30,9 @@ Plug 'nvim-telescope/telescope-media-files.nvim'
 
 Plug 'L3MON4D3/LuaSnip', {'tag': 'v2.*', 'do': 'make install_jsregexp'}
 
-Plug 'chrisbra/colorizer'
+Plug 'norcalli/nvim-colorizer.lua'
+
+Plug 'folke/zen-mode.nvim'
 
 call plug#end()
 
@@ -44,17 +46,22 @@ if has('termguicolors')
 	set termguicolors
 endif
 
-"colorscheme nord
+" Colorschemes
 
-"set background=dark
+" nord
+
+"colorscheme nord
+"autocmd VimEnter * hi ZenBg ctermbg=NONE guibg=#2E3440
+
+" catppuccin
 
 "catppuccin-latte, catppuccin-frappe, catppuccin-macchiato, catppuccin-mocha
-colorscheme catppuccin-mocha 
 
-":highlight CocFloating guibg=#434C5E
+colorscheme catppuccin-mocha 
 :highlight CocFloating guibg=#181825
 :highlight CocMenuSel guibg=#363a4f
 :highlight CocSearch guifg=#89b4fa
+autocmd VimEnter * hi ZenBg ctermbg=NONE guibg=#1E1E2F
 
 " nvim-tree
 
@@ -292,6 +299,9 @@ let g:vimtex_view_forward_search_on_start = 'false'
 let g:vimtex_quickfix_mode = 0
 let g:vimtex_view_automatic = 0
 
+"zen mode
+let g:vimtex_compiler_silent = 1
+
 " Remove lag due to match search
 let g:loaded_matchparen = 0
 let g:vimtex_motion_matchparen = 0
@@ -445,20 +455,106 @@ endfunction
 
 set tabline=%!Tabline()
 
-" Clipboard"
-
-" Copy all document to clipboard
-"nmap <C-d> ggVG"+y
-
 " Wayland clipboard, requires wl-clipboard
 
 "nnoremap "+y :call system("wl-copy", @") <CR>
 
+"Cursor
+
 set guicursor=i:hor10
 set guicursor+=n-v-c:blinkon0
 
-" Hex color plugin
-":let g:colorizer_auto_color = 1
-":let g:colorizer_auto_filetype = 'css,html'
+"Colorizer
 
-:tnoremap <Esc> <C-\><C-n>
+lua require'colorizer'.setup()
+
+"zen-mode
+
+lua << EOF
+
+local api = vim.api
+
+api.nvim_set_keymap("n", "<leader>zm", ":ZenMode<CR>", {})
+
+require("zen-mode").setup {
+  window = {
+    backdrop = 0, -- shade the backdrop of the Zen window. Set to 1 to keep the same as Normal
+    -- height and width can be:
+    -- * an absolute number of cells when > 1
+    -- * a percentage of the width / height of the editor when <= 1
+    -- * a function that returns the width or the height
+    width = 0.8, -- width of the Zen window
+    height = 0.9, -- height of the Zen window
+    -- by default, no options are changed for the Zen window
+    -- uncomment any of the options below, or add other vim.wo options you want to apply
+    options = {
+      -- signcolumn = "no", -- disable signcolumn
+      number = false, -- disable number column
+      -- relativenumber = false, -- disable relative numbers
+      -- cursorline = false, -- disable cursorline
+      -- cursorcolumn = false, -- disable cursor column
+      -- foldcolumn = "0", -- disable fold column
+      -- list = false, -- disable whitespace characters
+    },
+  },
+  plugins = {
+    -- disable some global vim options (vim.o...)
+    -- comment the lines to not apply the options
+    options = {
+      enabled = true,
+      ruler = false, -- disables the ruler text in the cmd line area
+      showcmd = false, -- disables the command in the last line of the screen
+      -- you may turn on/off statusline in zen mode by setting 'laststatus' 
+      -- statusline will be shown only if 'laststatus' == 3
+      laststatus = 1, -- turn off the statusline in zen mode
+    },
+    twilight = { enabled = true }, -- enable to start Twilight when zen mode opens
+    gitsigns = { enabled = false }, -- disables git signs
+    tmux = { enabled = false }, -- disables the tmux statusline
+    -- this will change the font size on kitty when in zen mode
+    -- to make this work, you need to set the following kitty options:
+    -- - allow_remote_control socket-only
+    -- - listen_on unix:/tmp/kitty
+    kitty = {
+      enabled = false,
+      font = "+4", -- font size increment
+    },
+    -- this will change the font size on alacritty when in zen mode
+    -- requires  Alacritty Version 0.10.0 or higher
+    -- uses `alacritty msg` subcommand to change font size
+    alacritty = {
+      enabled = false,
+      font = "14", -- font size
+    },
+    -- this will change the font size on wezterm when in zen mode
+    -- See alse also the Plugins/Wezterm section in this projects README
+    wezterm = {
+      enabled = false,
+      -- can be either an absolute font size or the number of incremental steps
+      font = "+4", -- (10% increase per step)
+    },
+  },
+  -- callback where you can add custom code when the Zen window opens
+  on_open = function(win)
+  		-- catppuccin-mocha
+
+        vim.cmd("highlight MsgArea guifg=#1e1e2f")
+        vim.cmd("highlight ModeMsg guifg=#1e1e2f")
+
+		-- nord
+
+        --vim.cmd("highlight MsgArea guifg=#2E3440")
+        --vim.cmd("highlight ModeMsg guifg=#2E3440")
+  end,
+  -- callback where you can add custom code when the Zen window closes
+  on_close = function()
+  		-- catppuccin-mocha
+		
+        vim.cmd("highlight MsgArea guifg=#cdd6f4")
+
+  		-- nord
+		
+        --vim.cmd("highlight MsgArea guifg=#ECEFF4")
+  end,
+}
+EOF
