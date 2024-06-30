@@ -236,7 +236,10 @@ EOF
 "inoremap <silent> \| <Cmd>call UltiSnips#Anon('\|$1\|','','i','',1)<cr>
 "inoremap <silent> ' <Cmd>call UltiSnips#Anon("'$1'",'','i','',1)<cr>
 
+" Keybindings
+
 inoremap oi <Esc>
+noremap <CR> :write<CR>
 map j gj
 map k gk
 
@@ -248,28 +251,25 @@ map k gk
 
 "telescope.nvim
 
-"nnoremap <leader>ff <cmd>Telescope find_files<cr>
-"nnoremap <leader>fg <cmd>Telescope live_grep<cr>
-"nnoremap <leader>fb <cmd>Telescope buffers<cr>
-"nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
-" no line wrap
+" Layout
 
 "set wrap
 "set linebreak
 "set tw=160
 "set wrapmargin=0
+set nu
+set numberwidth=1
 
 " Indentation
 
 set breakindent
 set formatoptions=l
 set lbr
-
-" line number and indentation
-
-set nu
-set numberwidth=1
 
 " vimtex
 " Requieres tree-sitter-cli
@@ -285,19 +285,20 @@ set numberwidth=1
 	"endif
 	"redraw!
 "endfunction 
-"
-"map <silent> <C-enter> :call Synctex()<cr>
+
+
 
 "augroup vimtex
 	"au!
 	"au User VimtexEventCompileSuccess call Synctex()
 "augroup END
 
-let g:vimtex_compiler_method = 'latexmk'
-let g:vimtex_view_method = 'zathura'
-let g:vimtex_view_forward_search_on_start = 'false'
-let g:vimtex_quickfix_mode = 0
-let g:vimtex_view_automatic = 0
+" X11
+
+augroup vimtex
+	au!
+	au User VimtexEventCompileSuccess VimtexView 
+augroup END
 
 "zen mode
 let g:vimtex_compiler_silent = 1
@@ -334,12 +335,11 @@ let g:vimtex_compiler_latexmk = {
         \ ],
         \}
 
-" X11
-
-augroup vimtex
-	au!
-	au User VimtexEventCompileSuccess VimtexView 
-augroup END
+let g:vimtex_compiler_method = 'latexmk'
+let g:vimtex_view_method = 'zathura'
+let g:vimtex_view_forward_search_on_start = 'false'
+let g:vimtex_quickfix_mode = 0
+let g:vimtex_view_automatic = 0
 
 " LuaSnip
 
@@ -483,7 +483,7 @@ require("zen-mode").setup {
     -- * an absolute number of cells when > 1
     -- * a percentage of the width / height of the editor when <= 1
     -- * a function that returns the width or the height
-    width = 0.9, -- width of the Zen window
+    width = 0.95, -- width of the Zen window
     height = 0.95, -- height of the Zen window
     -- by default, no options are changed for the Zen window
     -- uncomment any of the options below, or add other vim.wo options you want to apply
@@ -508,7 +508,7 @@ require("zen-mode").setup {
       -- statusline will be shown only if 'laststatus' == 3
       laststatus = 1, -- turn off the statusline in zen mode
     },
-    twilight = { enabled = true }, -- enable to start Twilight when zen mode opens
+    twilight = { enabled = false}, -- enable to start Twilight when zen mode opens
     gitsigns = { enabled = false }, -- disables git signs
     tmux = { enabled = false }, -- disables the tmux statusline
     -- this will change the font size on kitty when in zen mode
