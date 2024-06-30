@@ -215,7 +215,7 @@ bindsym $mod+o exec --no-startup-id eww open --toggle catppuccin
 
 # Wallpaper
 
-exec_always --no-startup-id feh --bg-scale /home/isaac09809/Documents/images/wallpapers/19.png
+exec_always --no-startup-id feh --bg-scale /home/isaac09809/Documents/images/wallpapers/15.png
 
 # Notifications
 
