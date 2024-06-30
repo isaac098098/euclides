@@ -2,7 +2,7 @@
 
 call plug#begin('~/.local/share/nvim/plugged')
 
-"Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 Plug 'lervag/vimtex'
 
@@ -58,7 +58,7 @@ endif
 "catppuccin-latte, catppuccin-frappe, catppuccin-macchiato, catppuccin-mocha
 
 colorscheme catppuccin-mocha 
-:highlight CocFloating guibg=#181825
+:highlight CocFloating guibg=#1e1e2e
 :highlight CocMenuSel guibg=#363a4f
 :highlight CocSearch guifg=#89b4fa
 autocmd VimEnter * hi ZenBg ctermbg=NONE guibg=#1E1E2F
@@ -207,25 +207,36 @@ EOF
 
 " coc-vim
 
-"inoremap <silent><expr> <C-d>
-      "\ coc#pum#visible() ? coc#pum#next(1) :
-      "\ CheckBackspace() ? "\<C-d>" :
-      "\ coc#refresh()
-"inoremap <expr><C-e> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
-"
-"inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
-                              "\: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+" Disable by filetype
 
-"function! CheckBackspace() abort
-  "let col = col('.') - 1
-  "return !col || getline('.')[col - 1]  =~# '\s'
-"endfunction
+let g:coc_filetypes_enable = [ 'c', 'cpp' ]
 
-" ulti-snippets
+function! s:disable_coc_for_type()
+  if index(g:coc_filetypes_enable, &filetype) == -1
+    :silent! CocDisable
+  else
+    :silent! CocEnable
+  endif
+endfunction
 
-"let g:UltiSnipsExpandTrigger="<tab>"
-"let g:UltiSnipsJumpForwardTrigger="ll"
-"let g:UltiSnipsJumpBackwardTrigger="kk"
+augroup CocGroup
+ 	autocmd!
+	autocmd BufNew,BufEnter,BufAdd,BufCreate * call s:disable_coc_for_type()
+augroup end
+
+inoremap <silent><expr> <C-d>
+      \ coc#pum#visible() ? coc#pum#next(1) :
+      \ CheckBackspace() ? "\<C-d>" :
+      \ coc#refresh()
+inoremap <expr><C-e> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
+
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
+function! CheckBackspace() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
 
 "nnoremap <leader>u <Cmd>call UltiSnips#RefreshSnippets()<CR>
 
