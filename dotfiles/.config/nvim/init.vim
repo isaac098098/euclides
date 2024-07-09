@@ -249,10 +249,21 @@ endfunction
 
 " Keybindings
 
-inoremap oi <Esc>
-noremap <CR> :write<CR>
-map j gj
-map k gk
+" Insert
+
+inoremap ,. <Esc>
+
+" Normal
+
+nmap j gj
+nmap k gk
+nmap tt gt
+nmap T gT
+nmap <CR> :write<CR>
+
+" Visual
+
+vmap ,. <Esc>
 
 " vim-snippets
 
