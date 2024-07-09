@@ -36,6 +36,7 @@ s(
         %\usepackage{booktabs} %Estilo de tablas
         \usepackage{titlesec} %Estilo de secciones
         %\usepackage{lipsum} %Texto de prueba
+		%\usepackage{tabularx} %Saltos de línea en tablas
 
         % Matemáticas
 
@@ -203,6 +204,7 @@ s(
         %\usepackage{leftindex} %Índices izquierdos
         %\usepackage{esvect} %Mejores flechas de vectores
         %\usepackage{statmath} %Negritas en modo matemático, /bf(any letter)
+		%\usepackage{tabularx} %Saltos de línea en tablas
 
         % Matemáticas
 
@@ -529,6 +531,7 @@ s(
         %\usepackage{centernot} %Para el símbolo "no divide"
         %\usepackage{leftindex} %Índices izquierdos
         %\usepackage{esvect} %Mejores flechas de vectores
+		%\usepackage{tabularx} %Saltos de línea en tablas
 
         % Matemáticas
 

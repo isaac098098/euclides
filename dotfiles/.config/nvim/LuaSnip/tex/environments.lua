@@ -240,7 +240,7 @@ s(
 ),
 
 s(
-	{trig = "([^%a])rm", dscr = "Remark", snippetType="autosnippet", regTrig = true, wordTrig = false},
+	{trig = "([^%a])rm", dscr = "Remark", regTrig = true, wordTrig = false},
 	{
 		t({"","","\\begin{remark}",""}), 
 		i(1), 
@@ -295,7 +295,15 @@ s(
 
 s(
 	{trig = "([^%a])lh", dscr = "Table horizontal line", snippetType="autosnippet", regTrig = true, wordTrig = false},
-	{f( function(_, snip) return snip.captures[1] end ),t({"","\\hline",""})}
+	{f( function(_, snip) return snip.captures[1] end ),t({"\\\\","\\hline",""})}
+),
+
+s(
+	{trig = "([^%a])ctr", dscr = "Centering", snippetType="autosnippet", regTrig = true, wordTrig = false},
+	{
+        f( function(_, snip) return snip.captures[1] end ),
+        t("\\centering")
+    }
 ),
 
 s(
@@ -312,6 +320,68 @@ s(
         f( function(_, snip) return snip.captures[1] end ),
         t("\\multicolumn{"), i(1), t("}{|Sc|}{"), i(2), t("}")
     }
+),
+
+-- X tables
+
+s(
+	{trig = "([^%a])tbXCL", dscr = "Centered table with caption and label", snippetType="autosnippet", regTrig = true, wordTrig = false},
+	{
+        t({"","","\\begin{table}[h]",""}),
+        t({"\\centering",""}),
+        t({"\\begin{tabularx}[\\textwidth]{|*{"}), i(1), t({"}{X|}}",""}),
+        t({"    \\hline",""}),
+        t("    "), i(4), t(" \\\\"), i(5),
+        t({"","    \\hline",""}),
+        t({"\\end{tabularx}",""}),
+        t("\\caption{"), i(2), t({"}",""}),
+        t("\\label{tab:"), i(3), t({"}",""}),
+        t("\\end{table}"), i(6)
+	}
+),
+
+s(
+	{trig = "([^%a])tbXcL", dscr = "Centered table with no caption and label", snippetType="autosnippet", regTrig = true, wordTrig = false},
+	{
+        t({"","","\\begin{table}[h]",""}),
+        t({"\\centering",""}),
+        t({"\\begin{tabularx}[\\textwidth]{|*{"}), i(1), t({"}{X|}}",""}),
+        t({"    \\hline",""}),
+        t("    "), i(3), t(" \\\\"), i(4),
+        t({"","    \\hline",""}),
+        t({"\\end{tabularx}",""}),
+        t("\\label{tab:"), i(2), t({"}",""}),
+        t("\\end{table}"), i(5)
+	}
+),
+
+s(
+	{trig = "([^%a])tbXCl", dscr = "Centered table with caption and no label", snippetType="autosnippet", regTrig = true, wordTrig = false},
+	{
+        t({"","","\\begin{table}[h]",""}),
+        t({"\\centering",""}),
+        t({"\\begin{tabularx}[\\textwidth]{|*{"}), i(1), t({"}{X|}}",""}),
+        t({"    \\hline",""}),
+        t("    "), i(3), t(" \\\\"), i(4),
+        t({"","    \\hline",""}),
+        t({"\\end{tabularx}",""}),
+        t("\\caption{"), i(2), t({"}",""}),
+        t("\\end{table}"), i(5)
+	}
+),
+
+s(
+	{trig = "([^%a])tbXcl", dscr = "Centered table with no caption and no label", snippetType="autosnippet", regTrig = true, wordTrig = false},
+	{
+        t({"","","\\begin{table}[h]",""}),
+        t({"\\centering",""}),
+        t({"\\begin{tabularx}[\\textwidth]{|*{"}), i(1), t({"}{X|}}",""}),
+        t({"    \\hline",""}),
+        t("    "), i(2), t(" \\\\"), i(3),
+        t({"","    \\hline",""}),
+        t({"\\end{tabularx}",""}),
+        t("\\end{table}"), i(4)
+	}
 ),
 
 -- Native tables

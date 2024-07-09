@@ -5,7 +5,4 @@ set selection-clipboard         clipboard
 set recolor                     "false"
 set recolor-keephue             "false"
 
-#set highlight-color             "rgba(235,203,139,0)"
-#set highlight-active-color      "rgba(129,161,193,0)"
-
 include catppuccin-macchiato

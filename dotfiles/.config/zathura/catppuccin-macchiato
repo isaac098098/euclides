@@ -9,7 +9,7 @@ set completion-group-bg		    rgba(54,58,79,1)
 set completion-group-fg		    rgba(138,173,244,1)
 
 set statusbar-fg		          rgba(202,211,245,1)
-set statusbar-bg		          rgba(54,58,79,1)
+set statusbar-bg		          rgba(36,39,58,1)
 
 set notification-bg		        rgba(54,58,79,1)
 set notification-fg		        rgba(202,211,245,1)

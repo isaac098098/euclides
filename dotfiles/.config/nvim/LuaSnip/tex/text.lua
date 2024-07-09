@@ -278,7 +278,7 @@ s(
 ),
 
 s(
-	{trig = "([^%a])tb", dscr = "Bold text", snippetType = "autosnippet", regTrig = true, wordTrig = false},
+	{trig = "([^%a])tb", dscr = "Bold text", regTrig = true, wordTrig = false},
 	{f( function(_, snip) return snip.captures[1] end ), t("\\textbf{"), i(1), t("}")}
 ),
 
