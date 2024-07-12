@@ -34,7 +34,7 @@
     width = 230
     height = 500
     origin = top-right 
-    offset = 20x72
+    offset = 24x79
 
     # Show how many messages are currently hidden (because of geometry).
     indicate_hidden = yes
@@ -66,7 +66,7 @@
 
     # Defines width in pixels of frame around the notification window.
     # Set to 0 to disable.
-    frame_width = 0
+    frame_width = 2
 
     corner_radius = 8
 

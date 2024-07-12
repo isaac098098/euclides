@@ -1,21 +1,14 @@
-
 * {
   all: unset // Desconfigurar todo para estilizar todo desde cero
 }
 
 // Colores
 
-$rosewater: #f5e0dc;
-$flamingo: #f2cdcd;
 $pink: #f5c2e7;
-$mauve: #cba6f7;
 $red: #f38ba8;
 $maroon: #eba0ac;
-$peach: #fab387;
-$yellow: #f9e2af;
 $green: #a6e3a1;
 $teal: #94e2d5;
-$saphire: #74c7ec;
 $blue: #89b4fa;
 $lavender: #b7bdf8;
 $text: #cdd6f4;
@@ -29,52 +22,72 @@ $crust: #11111b;
 // Es la ventana que contiene toda la barra
 
 .catppuccin {
-  margin: 0px 0px 0px 0px;
-  padding: 0px 0px 0px 0px;
-  border-radius: 0px;
+  margin: 15px 25px 16px 25px;
+  padding: 10px 10px 10px 10px;
+  border-radius: 8px;
 }
 
 // Es la caja que contiene a los modulos left, center y right. Cambiando su color de fondo se pueden "desacoplar" los módulos
 
 .catppuccin_widget {
-  background-color: $crust;
-  //background-color: rgba(17, 17, 27, 0.6);
-  //box-shadow: 3px 3px 5px rgba($color: #000000, $alpha: 0.8);
+  background-color: $base;
+  box-shadow: 3px 3px 5px rgba($color: #000000, $alpha: 0.8);
   color: $text;
 }
 
 .left_catppuccin {
-  background-color: $crust;
+  background-color: $base;
   color: $text;
+  border-radius: 10px;
 }
 
 .center_catppuccin {
-  background-color: $crust;
+  background-color: $base;
   color: $text;
 }
 
 .right_catppuccin {
-  background-color: $crust;
+  background-color: $base;
   color: $text;
 }
 
 .xworkspaces_box {
-  background-color: $base;
+  background-color: $surface0;
   font-family: Iosevka NF;
   font-weight: bold;
   font-size: 11pt;
   padding: 0px 0px 0px 0px;
-  border-radius: 0px;
+  border-radius: 10px;
 }
 
 .active_xworkspace {
-  background-color: $surface0;
+  background-color: $surface1;
   color: $text;
   font-family: Iosevka NF;
   font-weight: bold;
   font-size: 11pt;
   padding: 0px 15px 0px 15px;
   border-radius: 0px;
+}
+
+.active_xworkspace_1 {
+  background-color: $surface1;
+  color: $text;
+  font-family: Iosevka NF;
+  font-weight: bold;
+  font-size: 11pt;
+  padding: 0px 15px 0px 15px;
+  border-radius: 10px 0px 0px 10px;
+}
+
+.active_xworkspace_10 {
+  background-color: $surface1;
+  color: $text;
+  font-family: Iosevka NF;
+  font-weight: bold;
+  font-size: 11pt;
+  padding: 0px 15px 0px 15px;
+  border-radius: 0px 10px 10px 0px;
 }
 
 .focused_xworkspace {
@@ -87,49 +100,49 @@ $crust: #11111b;
   border-radius: 0px;
 }
 
+.focused_xworkspace_1 {
+  background-color: $lavender;
+  color: $surface1;
+  font-family: Iosevka NF;
+  font-weight: bold;
+  font-size: 11pt;
+  padding: 0px 15px 0px 15px;
+  border-radius: 10px 0px 0px 10px;
+}
+
+.focused_xworkspace_10 {
+  background-color: $lavender;
+  color: $surface1;
+  font-family: Iosevka NF;
+  font-weight: bold;
+  font-size: 11pt;
+  padding: 0px 15px 0px 15px;
+  border-radius: 0px 10px 10px 0px;
+}
+
 // Widgets
 
 .poweroff_button {
-  background-color: $red;
-  color: $base;
+  background-color: $maroon;
+  color: $mantle;
   font-family: Iosevka NF;
   font-weight: bold;
   font-size: 12pt;
-  padding: 5px 17px 5px 10px;
-  border-radius: 0px;
-}
-
-.wifi_button {
-  background-color: $peach;
-  color: $base;
-  font-family: Iosevka NF;
-  font-weight: bold;
-  font-size: 14pt;
-  padding: 2px 19px 0px 10px;
-  border-radius: 0px;
-}
-
-.volume_prefix {
-  background-color: $yellow;
-  color: $base;
-  font-family: Iosevka NF;
-  font-size: 17pt;
-  padding: 0px 15px 0px 10px;
-  border-radius: 0px;
+  padding: 5px 16px 5px 10px;
+  border-radius: 10px;
 }
 
 .volume_box{
-  background-color: $base;
+  background-color: $surface0;
   font-family: Iosevka NF;
   font-size: 17pt;
-  padding: 0px 15px 0px 14px;
-  border-radius: 0px;
+  padding: 0px 20px 0px 0px;
+  border-radius: 10px;
 }
 
 .volume_box scale trough highlight { 
   all: unset;
-  background-color: $yellow;
-  padding: 0px 0px 0px 0px;
+  background-color: $maroon;
   border-radius: 10px;
 }
 
@@ -142,23 +155,13 @@ $crust: #11111b;
   margin: 0px 0px 0px 0px;
 }
 
-.filesystem_prefix {
-  background-color: $green;
-  color: $base;
-  font-family: Iosevka NF;
-  font-weight: bold;
-  font-size: 17pt;
-  padding: 0px 17px 0px 11px;
-  border-radius: 0px;
-}
-
 .filesystem_box {
-  background-color: $base;
+  background-color: $surface0;
   font-family: Iosevka NF;
   font-weight: bold;
   font-size: 17pt;
-  padding: 0px 15px 0px 14px;
-  border-radius: 0px;
+  padding: 0px 20px 0px 0px;
+  border-radius: 10px;
 }
 
 .filesystem_box scale trough highlight { 
@@ -176,23 +179,13 @@ $crust: #11111b;
   margin: 0px 0px 0px 0px;
 }
 
-.memory_prefix {
-  background-color: $blue;
-  color: $base;
-  font-family: Iosevka NF;
-  font-weight: bold;
-  font-size: 14pt;
-  padding: 0px 21px 0px 11px;
-  border-radius: 0px;
-}
-
 .memory_box {
-  background-color: $base;
+  background-color: $surface0;
   font-family: Iosevka NF;
   font-weight: bold;
   font-size: 14pt;
-  padding: 0px 15px 0px 14px;
-  border-radius: 0px;
+  padding: 0px 20px 0px 0px;
+  border-radius: 10px;
 }
 
 .memory_box scale trough highlight { 
@@ -211,45 +204,49 @@ $crust: #11111b;
 }
 
 .spotify_button {
-  background-color: $green;
-  color: $surface0;
+  background-color: $surface0;
+  color: $green;
   font-family: Iosevka NF;
   font-weight: bold;
   font-size: 14pt;
   padding: 0px 19px 0px 10px;
-  border-radius: 0px;
+  border-radius: 10px;
 }
 
 .prev_button {
-  background-color: $base;
+  background-color: $surface0;
   font-family: Iosevka NF;
   font-weight: bold;
   font-size: 18pt;
   padding: 0px 0px 0px 0px;
+  border-radius: 10px 0px 0px 10px;
 }
 
 .play_pause_button {
-  background-color: $base;
+  background-color: $surface0;
   font-family: Iosevka NF;
   font-weight: bold;
   font-size: 12pt;
   padding: 0px 0px 0px 0px;
+  border-radius: 0px;
 }
 
 .next_button {
-  background-color: $base;
+  background-color: $surface0;
   font-family: Iosevka NF;
   font-weight: bold;
   font-size: 18pt;
   padding: 0px 10px 0px 12px;
+  border-radius: 0px 10px 10px 0px;
 }
 
 .music_box {
-  background-color: $base;
+  background-color: $surface0;
   font-family: Iosevka NF;
   font-weight: bold;
   font-size: 11pt;
   padding: 0px 10px 0px 10px;
+  border-radius: 10px;
 }
 
 .pcm_button {
@@ -259,7 +256,7 @@ $crust: #11111b;
   font-weight: bold;
   font-size: 14pt;
   padding: 0px 20px 0px 10px;
-  border-radius: 0px;
+  border-radius: 10px;
 }
 
 .gaps_toggle {
@@ -268,7 +265,7 @@ $crust: #11111b;
   font-family: Iosevka NF;
   font-size: 15pt;
   padding: 0px 19px 0px 13px;
-  border-radius: 0px;
+  border-radius: 10px;
 }
 
 .no_gaps_button {
@@ -281,21 +278,11 @@ $crust: #11111b;
   padding: 0px 22px 0px 0px;
 }
 
-.date_prefix {
-  background-color: $mauve;
-  color: $base;
-  font-family: Iosevka NF;
-  font-weight: bold;
-  font-size: 15pt;
-  padding: 0px 16px 0px 10px;
-  border-radius: 0px;
-}
-
-.date_button {
-  background-color: $base;
+.date_box {
+  background-color: $surface0;
   font-family: Iosevka NF;
   font-weight: bold;
   font-size: 11pt;
   padding: 0px 10px 0px 10px;
-  border-radius: 0px;
+  border-radius: 10px;
 }
