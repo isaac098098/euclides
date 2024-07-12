@@ -291,6 +291,28 @@ s(
 	}
 ),
 
+s(
+	{trig = "([^%a])nc", dscr = "Principle", regTrig = true, wordTrig = false},
+	{
+		t({"","","\\begin{principle}",""}), 
+		i(1), 
+		t({"","\\end{principle}"}),
+		i(2)
+	}
+),
+
+s(
+	{trig = "([^%a])Nc", dscr = "Principle with note", snippetType="autosnippet", regTrig = true, wordTrig = false},
+	{
+		t({"","","\\begin{principle}["}),
+		i(1),
+		t({"]",""}), 
+		i(2), 
+		t({"","\\end{principle}"}),
+		i(3)
+	}
+),
+
 -- Tables
 
 s(
@@ -329,7 +351,7 @@ s(
 	{
         t({"","","\\begin{table}[h]",""}),
         t({"\\centering",""}),
-        t({"\\begin{tabularx}[\\textwidth]{|*{"}), i(1), t({"}{X|}}",""}),
+        t({"\\begin{tabularx}{\\textwidth}{|*{"}), i(1), t({"}{X|}}",""}),
         t({"    \\hline",""}),
         t("    "), i(4), t(" \\\\"), i(5),
         t({"","    \\hline",""}),
@@ -345,7 +367,7 @@ s(
 	{
         t({"","","\\begin{table}[h]",""}),
         t({"\\centering",""}),
-        t({"\\begin{tabularx}[\\textwidth]{|*{"}), i(1), t({"}{X|}}",""}),
+        t({"\\begin{tabularx}{\\textwidth}{|*{"}), i(1), t({"}{X|}}",""}),
         t({"    \\hline",""}),
         t("    "), i(3), t(" \\\\"), i(4),
         t({"","    \\hline",""}),
@@ -360,7 +382,7 @@ s(
 	{
         t({"","","\\begin{table}[h]",""}),
         t({"\\centering",""}),
-        t({"\\begin{tabularx}[\\textwidth]{|*{"}), i(1), t({"}{X|}}",""}),
+        t({"\\begin{tabularx}{\\textwidth}{|*{"}), i(1), t({"}{X|}}",""}),
         t({"    \\hline",""}),
         t("    "), i(3), t(" \\\\"), i(4),
         t({"","    \\hline",""}),
@@ -375,7 +397,7 @@ s(
 	{
         t({"","","\\begin{table}[h]",""}),
         t({"\\centering",""}),
-        t({"\\begin{tabularx}[\\textwidth]{|*{"}), i(1), t({"}{X|}}",""}),
+        t({"\\begin{tabularx}{\\textwidth}{|*{"}), i(1), t({"}{X|}}",""}),
         t({"    \\hline",""}),
         t("    "), i(2), t(" \\\\"), i(3),
         t({"","    \\hline",""}),
