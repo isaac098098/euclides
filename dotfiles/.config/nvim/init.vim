@@ -251,7 +251,7 @@ endfunction
 
 " Insert
 
-inoremap ,. <Esc>
+inoremap oi <Esc>
 
 " Normal
 
