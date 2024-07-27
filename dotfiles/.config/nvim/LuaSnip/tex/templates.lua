@@ -7,7 +7,7 @@ s(
         \usepackage[left=1.6cm,right=1.6cm,top=2.5cm,bottom=2.5cm,headheight=1.0cm]{geometry} %Headheight controla la distancia de la regla del encabezado a su texto inferior
         \usepackage[utf8]{inputenc} %Formato de codificación
         \usepackage{amsthm} %Símbolos
-        \usepackage{amsmath} %Símbolos
+        \usepackage[tbtags]{amsmath}
         \usepackage{amssymb} %Símbolos
         \usepackage{enumitem} %Listas
         \usepackage{siunitx} %Unidades del SI
@@ -168,7 +168,7 @@ s(
         \usepackage[utf8]{inputenc} %Formato de codificación
         \usepackage[activeacute,spanish,es-tabla,es-lcroman]{babel} %Acentos, 'Figura' para gráficas y 'Tabla' para tablas
         \usepackage{amsthm} %Teoremas
-        \usepackage{amsmath} %Símbolos
+        \usepackage[tbtags]{amsmath}
         \usepackage{amssymb} %Símbolos
         \usepackage[hyphens]{url} %URL's en referencias
         \usepackage[hidelinks]{hyperref} %URL's
@@ -495,7 +495,7 @@ s(
         \usepackage[left=3.0cm,right=3.0cm,top=3.0cm,bottom=2.5cm,headheight=0.8cm]{geometry} %Headheight controla la distancia de la regla del encabezado a su texto inferior
         \usepackage[utf8]{inputenc} %Formato de codificación
         \usepackage[activeacute,spanish,es-tabla,es-lcroman]{babel} %Acentos, 'Figura' para gráficas y 'Tabla' para tablas
-        \usepackage{amsthm} %Símbolos
+        \usepackage[tbtags]{amsmath}
         \usepackage{amsmath} %Símbolos
         \usepackage{amssymb} %Símbolos
         \usepackage[hyphens]{url} %URL's en referencias
@@ -817,7 +817,7 @@ s(
         \documentclass[letterpaper,twoside,11pt]{article}
         \usepackage[left=1.6cm,right=1.6cm,top=2.5cm,bottom=2.0cm,headheight=1.0cm]{geometry} %Headheight controla la distancia de la regla del encabezado a su texto inferior
         \usepackage[utf8]{inputenc} %Formato de codificación
-        \usepackage{amsmath} %Símbolos
+        \usepackage[tbtags]{amsmath}
         \usepackage{amssymb} %Símbolos
         \usepackage{enumitem} %Listas
         \usepackage{multicol} %Multicolumnas
@@ -960,7 +960,7 @@ s(
     [[
     \documentclass{article}
     \usepackage[utf8]{inputenc}
-    \usepackage{amsmath,amssymb,amsfonts,amsthm}
+    \usepackage[tbtags]{amsmath}
 
     \title{<>}
     \author{<>}

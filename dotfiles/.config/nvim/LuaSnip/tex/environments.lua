@@ -1,3 +1,7 @@
+local ls = require("luasnip")
+local util = require("luasnip.util.util")
+local node_util = require("luasnip.nodes.util")
+
 local in_mathzone = function()
   return vim.fn['vimtex#syntax#in_mathzone']() == 1
 end

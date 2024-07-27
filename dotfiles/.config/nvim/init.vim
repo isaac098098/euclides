@@ -372,7 +372,6 @@ nnoremap <leader>u <Cmd>lua require("luasnip.loaders.from_lua").load({paths = "~
 
 lua << EOF
 
--- Somewhere in your Neovim startup, e.g. init.lua
 require("luasnip").config.set_config({ -- Setting LuaSnip config
 
   -- Enable autotriggered snippets
@@ -380,6 +379,7 @@ require("luasnip").config.set_config({ -- Setting LuaSnip config
   exit_roots = true, --Link children
   enable_autosnippets = true,
   link_children = true,
+  updateevents = "TextChanged,TextChangedI", -- Update snippets as you type
 
   -- Use Tab (or some other key if you prefer) to trigger visual selection
   store_selection_keys = "<Tab>",
@@ -400,8 +400,8 @@ local untrigger = function()
     node_from[2],
     node_to[1],
     node_to[2],
-    { trig }
-    --{" "}
+    --{ trig }
+    {" "}
   )
   -- reset the cursor-position to ahead the trigger
   vim.fn.setpos(".", { 0, node_from[1] + 1, node_from[2] + 1 + string.len(trig) })
@@ -428,8 +428,10 @@ imap <silent><expr> wq luasnip#jumpable(-1) ? '<Plug>luasnip-jump-prev' : '<S-Ta
 smap <silent><expr> wq  luasnip#jumpable(-1) ? '<Plug>luasnip-jump-prev' : '<S-Tab>'
 
 " Cycle forward through choice nodes with Control-f (for example)
-imap <silent><expr> <C-f> luasnip#choice_active() ? '<Plug>luasnip-next-choice' : '<C-f>'
-smap <silent><expr> <C-f> luasnip#choice_active() ? '<Plug>luasnip-next-choice' : '<C-f>'
+imap <silent><expr> <C-j> luasnip#choice_active() ? '<Plug>luasnip-next-choice' : '<C-j>'
+smap <silent><expr> <C-j> luasnip#choice_active() ? '<Plug>luasnip-next-choice' : '<C-j>'
+imap <silent><expr> <C-k> luasnip#choice_active() ? '<Plug>luasnip-prev-choice' : '<C-k>'
+smap <silent><expr> <C-k> luasnip#choice_active() ? '<Plug>luasnip-prev-choice' : '<C-k>'
 
 " Tabs
 

@@ -15,43 +15,79 @@
 	)
 )
 
+(defwidget wifi []
+	(box
+		:orientation "horizontal"
+		:halign "start"
+		:space-evenly "false"
+		(button :class "wifi_button"
+			:orientation "horizontal"
+			:halign "start"
+			:space-evenly "false"
+			"󰤨"
+			;:onclick ""
+		)
+	)
+)
+
 (defpoll volume :interval "1s" "/home/isaac09809/.config/eww/scripts/getvol")
 
 (defwidget volume []
 	(box
-		:class "volume_box"
 		:orientation "horizontal"
-		:halign "start"
-		(metric
-			:label "󰕾"
-			:value volume
-			:onchange "amixer -D pulse sset Master {}%"
+		:space-evenly "false"
+		(box :class "volume_prefix"
+			:orientation "horizontal"
+			"󰕾"
+		)
+		(box :class "volume_box"
+			(scale
+				:min 0
+				:max 100
+				:active true
+				:value volume
+				:onchange "amixer -D pulse sset Master {}%"
+			)
 		)
 	)
 )
 
 (defwidget filesystem []
 	(box
-		:class "filesystem_box"
 		:orientation "horizontal"
 		:halign "start"
-		(metric
-			:label "󱛟"
-			:value {round((1 - (EWW_DISK["/"].free / EWW_DISK["/"].total)) * 100, 0)}
-			:onchange ""
+		:space-evenly "false"
+		(box :class "filesystem_prefix"
+			:orientation "horizontal"
+			:halign "start"
+			"󱛟"
+		)
+		(box :class "filesystem_box"
+			(metric
+				:label ""
+				:value {round((1 - (EWW_DISK["/"].free / EWW_DISK["/"].total)) * 100, 0)}
+				:onchange ""
+			)
 		)
 	)
 )
 
 (defwidget memory []
 	(box
-		:class "memory_box"
 		:orientation "horizontal"
+		:space-evenly "false"
 		:halign "start"
-		(metric
-			:label ""
-			:value {EWW_RAM.used_mem_perc}
-			:onchange ""
+		(box :class "memory_prefix"
+			:orientation "horizontal"
+			:halign "start"
+			""
+		)
+		(box :class "memory_box"
+			(metric
+				:label ""
+				:value {EWW_RAM.used_mem_perc}
+				:onchange ""
+			)
 		)
 	)
 )
@@ -72,7 +108,7 @@
 		:spacing "0"
 		:hexpand "false"
 		(button
-			:class {focused_xworkspace == "1" ? "focused_xworkspace_1" : active_xworkspaces =~ '"1"' ? "active_xworkspace_1" : ""}
+			:class {focused_xworkspace == "1" ? "focused_xworkspace" : active_xworkspaces =~ '"1"' ? "active_xworkspace" : ""}
 			:onclick "i3-msg workspace 1" 
 			1
 		)(button
@@ -108,7 +144,7 @@
 			:onclick "i3-msg workspace 9" 
 			9
 		)(button
-			:class {focused_xworkspace == "10" ? "focused_xworkspace_10" : active_xworkspaces =~ '"10"' ? "active_xworkspace_10" : ""}
+			:class {focused_xworkspace == "10" ? "focused_xworkspace" : active_xworkspaces =~ '"10"' ? "active_xworkspace" : ""}
 			:onclick "i3-msg workspace 10" 
 			0
 		)
@@ -233,21 +269,25 @@
     )
 )
 
-(defpoll time :interval "10s" "date '+%H %M'")
-(defpoll timealt :interval "10s" "date '+%A %d, %B %Y'")
-(defvar time_var "0")
+(defpoll date :interval "10s" "date '+%H %M'")
+(defpoll date_alt :interval "10s" "date '+%A %d, %B %Y'")
+(defvar date_var "0")
 
-(defwidget time []
+(defwidget date []
 	(box
-		:class "date_box"
 		:orientation "horizontal"
 		:halign "end"
 		:space-evenly "false"
-		"󰥔  "
+		(box :class "date_prefix"
+			:orientation "horizontal"
+			:halign "start"
+			:space-evenly "false"
+			"󰥔"
+		)
 		(button
-			:class "time_button"
-			:onclick "if [ ${time_var} -eq '0' ]; then eww update time_var=1; else eww update time_var=0; fi"
-			{time_var == "0" ? time : timealt}
+			:class "date_button"
+			:onclick "if [ ${date_var} -eq '0' ]; then eww update date_var=1; else eww update date_var=0; fi"
+			{date_var == "0" ? date : date_alt}
 		)
 	)
 )
@@ -255,6 +295,8 @@
 (defwidget metric [label value onchange]
 	(box
 		:orientation "horizontal"
+		:space-evenly "false"
+		:halign "start"
 		(box
 			label
 		)
@@ -288,6 +330,7 @@
 		:space-evenly "false"
 		:spacing "10"
 		(poweroff)
+		(wifi)
 		(volume)
 		(filesystem)
 		(memory)
@@ -315,7 +358,7 @@
 		(music)
 		(gaps_toggle)
 		;(pcm)
-		(time)
+		(date)
 	)
 )
 
@@ -327,16 +370,16 @@
     :exclusive "true"
 	:geometry (
 		geometry 
-		:anchor "top center"
+		:anchor "bottom center"
 		:x "0%"
 		:y "0px"
 		:width "100%"
-		:height "10px"
+		:height "15px"
 	)
 	:reserve (
 		struts 
 		:distance "10px" 
-		:side "top"
+		:side "bottom"
 	)
 	:wm-ignore "false"
 	(catppuccin_widget)

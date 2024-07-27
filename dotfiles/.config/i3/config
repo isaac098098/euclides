@@ -192,7 +192,7 @@ assign [class="firefox"] $ws3
 assign [class="Brave-browser"] $ws3
 assign [class="Zathura"] $ws4
 assign [class="krita"] $ws5
-assign [class="Eog"] $ws5
+#assign [class="Eog"] $ws5
 assign [class="vlc"] $ws6
 assign [class="obsidian"] $ws7
 assign [class="kdenlive"] $ws8
@@ -242,17 +242,10 @@ client.background		#FFFFFF		#FFFFFF 	#FFFFFF 	#FFFFFF		#FFFFFF
 
 # Borders
 
+#default_border pixel 3
 default_border pixel 0
 default_floating_border none
-#smart_borders on
-
-#Gaps
-
-gaps top -15
-gaps right 10
-gaps bottom 10
-gaps left 10
-gaps inner 15
+smart_borders on
 
 # Disable X11 suspension due to inactivity
 

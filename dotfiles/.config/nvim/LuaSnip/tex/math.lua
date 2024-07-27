@@ -1,5 +1,77 @@
+local ls = require("luasnip")
+local f = ls.function_node
+local d = ls.dynamic_node
+local r = ls.restore_node
+local fmta = require("luasnip.extras.fmt").fmta
+
 local in_mathzone = function()
   return vim.fn['vimtex#syntax#in_mathzone']() == 1
+end
+
+-- Matrices and cases
+-- Taken from github.com/evesdropper
+local generate_matrix = function(args, snip)
+	local rows = tonumber(snip.captures[2])
+	local cols = tonumber(snip.captures[3])
+	local nodes = {}
+	local ins_indx = 1
+	for j = 1, rows do
+		table.insert(nodes, r(ins_indx, tostring(j) .. "x1", i(1)))
+		ins_indx = ins_indx + 1
+		for k = 2, cols do
+			table.insert(nodes, t(" & "))
+			table.insert(nodes, r(ins_indx, tostring(j) .. "x" .. tostring(k), i(1)))
+			ins_indx = ins_indx + 1
+		end
+		table.insert(nodes, t({ "\\\\", "" }))
+	end
+	nodes[#nodes] = t("\\\\")
+	return sn(nil, nodes)
+end
+
+local generate_generic_matrix = function(args, snip)
+	local rows = tonumber(snip.captures[2])
+	local cols = tonumber(snip.captures[3])
+	local nodes = {}
+	local ins_indx = 1
+	for j = 1, rows do
+		if j == 1 then
+			table.insert(nodes, r(ins_indx,i(1)))
+			table.insert(nodes, t("_11"))
+		else
+			table.insert(nodes, rep(1))
+			table.insert(nodes, t("_" .. tostring(j) .. "1"))
+		end
+		ins_indx = ins_indx + 1
+		for k = 2, cols do
+			table.insert(nodes, t(" & "))
+			table.insert(nodes, rep(1))
+			table.insert(nodes, t("_" .. tostring(j) .. tostring(k)))
+			ins_indx = ins_indx + 1
+		end
+		table.insert(nodes, t({ " \\\\", "" }))
+	end
+	nodes[#nodes] = t(" \\\\")
+	return sn(nil, nodes)
+end
+
+local generate_cases = function(args, snip)
+	local rows = tonumber(snip.captures[1]) or 2 
+	local cols = 2
+	local nodes = {}
+	local ins_indx = 1
+	for j = 1, rows do
+		table.insert(nodes, r(ins_indx, tostring(j) .. "x1", i(1)))
+		ins_indx = ins_indx + 1
+		for k = 2, cols do
+			table.insert(nodes, t(" & "))
+			table.insert(nodes, r(ins_indx, tostring(j) .. "x" .. tostring(k), i(1)))
+			ins_indx = ins_indx + 1
+		end
+		table.insert(nodes, t({ "\\\\", "" }))
+	end
+    table.remove(nodes, #nodes)
+	return sn(nil, nodes)
 end
 
 return {
@@ -2093,5 +2165,46 @@ s(
         t("\\end{vmatrix}")
     },
     {condition = in_mathzone}
+),
+
+s({trig = "([bBpvV])mt(%d+)x(%d+)", name = "Matrices", regTrig = true},
+	fmta([[
+    \begin{<>}
+    <>
+    \end{<>}]],
+	{f(function(_, snip) return snip.captures[1] .. "matrix" end),
+    d(1, generate_matrix),
+    f(function(_, snip) return snip.captures[1] .. "matrix" end)
+    }),
+	{condition = in_mathzone}
+),  
+
+s({trig = "([bBpvV])gg(%d+)x(%d+)", name = "Generic matrices", regTrig = true},
+	fmta([[
+    \begin{<>}
+    <>
+    \end{<>}]],
+	{f(function(_, snip) return snip.captures[1] .. "matrix" end),
+    d(1, generate_generic_matrix),
+    f(function(_, snip) return snip.captures[1] .. "matrix" end)
+    }),
+	{condition = in_mathzone}
+),  
+
+s({ trig = "(%d?)cs", name = "Cases", regTrig = true},
+    fmta([[
+    \begin{cases}
+    <>
+    \end{cases}
+    ]],
+	{d(1, generate_cases) 
+	}),
+    {condition = in_mathzone}
+),
+s({ trig = "ss", name = "Cases"},
+    fmta([[
+    arg: <> rep: <>
+    ]],
+	{i(1),rep(1)})
 ),
 }

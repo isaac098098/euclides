@@ -77,11 +77,11 @@ s(
 	{f( function(_, snip) return snip.captures[1] end ), t("\\label{itm:"), i(1), t("}")}
 ),
 
-s(
-	{trig = "([^%a])nmt", dscr = "Number this", snippetType="autosnippet", regTrig = true, wordTrig = false},
-	{f( function(_, snip) return snip.captures[1] end ), t("\\numberthis")},
-    {condition = in_mathzone}
-),
+--s(
+	--{trig = "([^%a])nmt", dscr = "Number this", snippetType="autosnippet", regTrig = true, wordTrig = false},
+	--{f( function(_, snip) return snip.captures[1] end ), t("\\numberthis")},
+    --{condition = in_mathzone}
+--),
 
 s(
 	{trig = "([^%a])enref", dscr = "Declare ennumerate reference format", snippetType="autosnippet", regTrig = true, wordTrig = false},
@@ -177,21 +177,29 @@ s(
 
 s(
 	{trig = "([^%a])scn", dscr = "Numbered section", snippetType="autosnippet", regTrig = true, wordTrig = false},
-	{
-		t({"","","\\section{"}), 
-		i(1), 
-		t({"}","",""}),
-		i(2)
-	}
+	c(1,{
+		{
+			t({"","","\\section{"}), i(1,"title"), t({"}","",""}),
+			i(2)
+		},
+		{
+			t({"","","\\section*{"}), i(1,"title"), t({"}","",""}),
+			i(2)
+		},
+		{
+			t({"","","\\section*["}), i(1,"toc-entry"), t("]{"), i(2,"title"), t({"}","",""}),
+			i(3)
+		}
+	})
 ),
 
-s(
-	{trig = "([^%a])scm", dscr = "Unnumbered section", snippetType="autosnippet", regTrig = true, wordTrig = false},
-	{
-		t({"","","\\section*{"}), i(1), t({"}","",""}),
-		i(2)
-	}
-),
+--s(
+	--{trig = "([^%a])scm", dscr = "Unnumbered section", snippetType="autosnippet", regTrig = true, wordTrig = false},
+	--{
+		--t({"","","\\section*{"}), i(1), t({"}","",""}),
+		--i(2)
+	--}
+--),
 
 s(
 	{trig = "([^%a])Scm", dscr = "Unnumbered section in TOC", snippetType="autosnippet", regTrig = true, wordTrig = false},
