@@ -3,7 +3,7 @@ local f = ls.function_node
 local d = ls.dynamic_node
 local r = ls.restore_node
 
--- Auxiliary unctions
+-- Auxiliary functions
 
 -- Math zone context
 -- taken from https://ejmastnak.com/
