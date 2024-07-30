@@ -47,6 +47,24 @@ s({trig = "pk", name = "Use package"},
     }
 ),
 
+s({trig = "tl", name = "Title"},
+    {
+        t("\\title{"), i(1,"..."), t("}")
+    }
+),
+
+s({trig = "dat", name = "Date"},
+    {
+        t("\\date{"), i(1,"..."), t("}")
+    }
+),
+
+s({trig = "aut", name = "Author"},
+    {
+        t("\\author{"), i(1,"..."), t("}")
+    }
+),
+
 -- Sectioning
 
 s({trig = "scn", name = "Section"},
