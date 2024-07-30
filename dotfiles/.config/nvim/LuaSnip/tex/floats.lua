@@ -2,11 +2,11 @@ return {
 
 -- Tabular material
 
-s({trig = "tt", name = "Table environment"},
+s({trig = "tab", name = "Table environment"},
     {
-        t("\\begin{table}{"), i(1,"opt"), t("}"),
-		t({"",""}), t("\\begin{tabular}{"), i(2,"cols"),
-		t({"",""}), t("..."),
+        t("\\begin{table}["), i(1,"opt"), t("]"),
+		t({"",""}), t("\\begin{tabular}{"), i(2,"cols"), t("}"),
+		t({"",""}), t("    "), i(3),
 		t({"",""}), t("\\end{tabular}"),
 		t({"",""}), t("\\end{table}")
     }
@@ -15,7 +15,7 @@ s({trig = "tt", name = "Table environment"},
 s({trig = "rr", name = "Array environment"},
     {
         t("\\begin{array}{"), i(1,"cols"), t("}"),
-		t({"",""}), t("..."),
+		t({"",""}), t("    "), i(2),
 		t({"",""}), t("\\end{array}")
     }
 ),
@@ -40,7 +40,7 @@ s({trig = "lt", name = "Align text to left"},
 
 s({trig = "cr", name = "Align text to center"},
     {
-        t("\\cetering")
+        t("\\centering")
     }
 ),
 
@@ -53,7 +53,7 @@ s({trig = "rt", name = "Align text to right"},
 s({trig = "br", name = "Tabular row break"},
     {
         t("\\\\"),
-		t({"",""}), i(1,"...")
+		t({"",""}), i(1)
     }
 ),
 
@@ -83,7 +83,7 @@ s({trig = "bc", name = "Bottom column"},
     }
 ),
 
-s({trig = "bf", name = "Before column options"},
+s({trig = "bl", name = "Before column options"},
     {
         t(">{"), i(1,"decl"), t("}")
     }
@@ -151,7 +151,7 @@ s({trig = "sbf", name = "Subfloat"},
 s({trig = "snt", name = "Sub-numbers for tables"},
     {
         t("\\begin{subtables}"),
-		t({"",""}), t("..."),
+		t({"",""}), t("    "), i(1),
 		t({"",""}), t("\\end{subtables}")
     }
 ),
@@ -159,7 +159,7 @@ s({trig = "snt", name = "Sub-numbers for tables"},
 s({trig = "snf", name = "Sub-numbers for figures"},
     {
         t("\\begin{subfigures}"),
-		t({"",""}), t("..."),
+		t({"",""}), t("    "), i(1),
 		t({"",""}), t("\\end{subfigures}")
     }
 ),

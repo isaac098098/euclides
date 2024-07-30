@@ -43,7 +43,7 @@ s({trig = "cf", name = "Full citation"},
     }
 ),
 
-s({trig = "cn", name = "Cite not cited"},
+s({trig = "ctn", name = "Cite not cited"},
     {
         c(1,
             {
@@ -51,7 +51,7 @@ s({trig = "cn", name = "Cite not cited"},
                     t("\\nocite{"), i(1,"key-list"), t("}")
                 },
                 {
-                    t("\\nocite{*}")
+                    i(1,"\\nocite{*}")
                 }
             }
         )
@@ -162,7 +162,7 @@ s({trig = "yec", name = "Year citation"},
                     t("\\cityear{"), i(1,"key-list"), t("}")
                 },
                 {
-                    t("\\citeyear*{"), i(1,"key-list"), t("}")
+                    t("\\citeyearpar{"), i(1,"key-list"), t("}")
                 }
             }
         )

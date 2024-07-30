@@ -78,17 +78,17 @@ s({trig = "mul", name = "Multicolumns"},
             {
                 {
                     t("\\begin{multicols}{"), i(1,"columns"), t("}"),
-					t({"",""}), t("..."),
+					t({"",""}), i(2),
 					t({"",""}), t("\\end{multicols}")
                 },
                 {
                     t("\\begin{multicols}{"), i(1,"columns"), t("}["), i(2,"preface"),  t("]"),
-					t({"",""}), t("..."),
+					t({"",""}), i(3),
 					t({"",""}), t("\\end{multicols}")
                 },
                 {
                     t("\\begin{multicols}{"), i(1,"columns"), t("}["), i(2,"preface"),  t("]["), i(3,"skip"), t("]"),
-					t({"",""}), t("..."),
+					t({"",""}), i(4),
 					t({"",""}), t("\\end{multicols}")
                 }
             }
@@ -129,7 +129,7 @@ s({trig = "rff", name = "Item reference format"},
 s({trig = "tz", name = "Unnumbered list"},
     {
 		t("\\begin{itemize}"),
-		t({"",""}), t("\\item "), i(1,"..."),
+		t({"",""}), t("\\item "), i(1),
 		t({"",""}), t("\\end{itemize}")
     }
 ),
@@ -137,7 +137,7 @@ s({trig = "tz", name = "Unnumbered list"},
 s({trig = "enn", name = "Enumerated list"},
     {
         t("\\begin{enumerate}[label=\\textnormal{(\\arabic*)}]"),
-		t({"",""}), t("\\item "), i(1,"..."),
+		t({"",""}), t("\\item "), i(1),
 		t({"",""}), t("\\end{enumerate}")
     }
 ),
@@ -145,7 +145,7 @@ s({trig = "enn", name = "Enumerated list"},
 s({trig = "enI", name = "Capital roman enumerated list"},
     {
         t("\\begin{enumerate}[label=\\textnormal{(\\Roman*)}]"),
-		t({"",""}), t("\\item "), i(1,"..."),
+		t({"",""}), t("\\item "), i(1),
 		t({"",""}), t("\\end{enumerate}")
     }
 ),
@@ -153,7 +153,7 @@ s({trig = "enI", name = "Capital roman enumerated list"},
 s({trig = "eni", name = "Lowercase roman enumerated list"},
     {
         t("\\begin{enumerate}[label=\\textnormal{(\\roman*)}]"),
-		t({"",""}), t("\\item "), i(1,"..."),
+		t({"",""}), t("\\item "), i(1),
 		t({"",""}), t("\\end{enumerate}")
     }
 ),
@@ -161,7 +161,7 @@ s({trig = "eni", name = "Lowercase roman enumerated list"},
 s({trig = "enA", name = "Capital latin enumerated list"},
     {
         t("\\begin{enumerate}[label=\\textnormal{(\\Alph*)}]"),
-		t({"",""}), t("\\item "), i(1,"..."),
+		t({"",""}), t("\\item "), i(1),
 		t({"",""}), t("\\end{enumerate}")
     }
 ),
@@ -169,31 +169,31 @@ s({trig = "enA", name = "Capital latin enumerated list"},
 s({trig = "ena", name = "Lowercase latin enumerated list"},
     {
         t("\\begin{enumerate}[label=\\textnormal{(\\alph*)}]"),
-		t({"",""}), t("\\item "), i(1,"..."),
+		t({"",""}), t("\\item "), i(1),
 		t({"",""}), t("\\end{enumerate}")
     }
 ),
 
-s({trig = "itm", name = "New item"},
+s({trig = "tm", name = "New item"},
     {
-        t("\\item "), i(1,"...")
+        t("\\item "), i(1)
     }
 ),
 
 -- Theorem-like environments
 
-s({trig = "tt", name = "New theorem"},
+s({trig = "oo", name = "New theorem"},
     {
 		c(1,
 		    {
 		        {
 					t("\\begin{theorem}"),
-					t({"",""}), v(1,"..."),
+					t({"",""}), d(1,get_visual),
 					t({"",""}), t("\\end{theorem}")
 		        },
 		        {
-					t("\\begin{theorem}["), i(1,"name"), t("]")
-					t({"",""}), v(2,"..."),
+					t("\\begin{theorem}["), i(1,"name"), t("]"),
+					t({"",""}), d(2,get_visual),
 					t({"",""}), t("\\end{theorem}")
 		        }
 		    }
@@ -207,12 +207,12 @@ s({trig = "pf", name = "Proof environment"},
 		    {
 		        {
 					t("\\begin{proof}"),
-					t({"",""}), v(1,"..."),
+					t({"",""}), i(1),
 					t({"",""}), t("\\end{proof}")
 		        },
 		        {
-					t("\\begin{proof}["), i(1,"name"), t("]")
-					t({"",""}), v(2,"..."),
+					t("\\begin{proof}["), i(1,"name"), t("]"),
+					t({"",""}), i(2),
 					t({"",""}), t("\\end{proof}")
 		        }
 		    }
@@ -226,12 +226,12 @@ s({trig = "ps", name = "New proposition"},
 		    {
 		        {
 					t("\\begin{proposition}"),
-					t({"",""}), v(1,"..."),
+					t({"",""}), d(1,get_visual),
 					t({"",""}), t("\\end{proposition}")
 		        },
 		        {
-					t("\\begin{proposition}["), i(1,"name"), t("]")
-					t({"",""}), v(2,"..."),
+					t("\\begin{proposition}["), i(1,"name"), t("]"),
+					t({"",""}), d(2,get_visual),
 					t({"",""}), t("\\end{proposition}")
 		        }
 		    }
@@ -245,12 +245,12 @@ s({trig = "cc", name = "New corollary"},
 		    {
 		        {
 					t("\\begin{corollary}"),
-					t({"",""}), v(1,"..."),
+					t({"",""}), d(1,get_visual),
 					t({"",""}), t("\\end{corollary}")
 		        },
 		        {
-					t("\\begin{corollary}["), i(1,"name"), t("]")
-					t({"",""}), v(2,"..."),
+					t("\\begin{corollary}["), i(1,"name"), t("]"),
+					t({"",""}), d(2,get_visual),
 					t({"",""}), t("\\end{corollary}")
 		        }
 		    }
@@ -264,12 +264,12 @@ s({trig = "ll", name = "New lemma"},
 		    {
 		        {
 					t("\\begin{lemma}"),
-					t({"",""}), v(1,"..."),
+					t({"",""}), d(1,get_visual),
 					t({"",""}), t("\\end{lemma}")
 		        },
 		        {
-					t("\\begin{lemma}["), i(1,"name"), t("]")
-					t({"",""}), v(2,"..."),
+					t("\\begin{lemma}["), i(1,"name"), t("]"),
+					t({"",""}), d(2,get_visual),
 					t({"",""}), t("\\end{lemma}")
 		        }
 		    }
@@ -283,12 +283,12 @@ s({trig = "dd", name = "New definition"},
 		    {
 		        {
 					t("\\begin{definition}"),
-					t({"",""}), v(1,"..."),
+					t({"",""}), d(1,get_visual),
 					t({"",""}), t("\\end{definition}")
 		        },
 		        {
-					t("\\begin{definition}["), i(1,"name"), t("]")
-					t({"",""}), v(2,"..."),
+					t("\\begin{definition}["), i(1,"name"), t("]"),
+					t({"",""}), d(2,get_visual),
 					t({"",""}), t("\\end{definition}")
 		        }
 		    }
@@ -296,18 +296,18 @@ s({trig = "dd", name = "New definition"},
     }
 ),
 
-s({trig = "rr", name = "New remark"},
+s({trig = "re", name = "New remark"},
     {
 		c(1,
 		    {
 		        {
 					t("\\begin{remark}"),
-					t({"",""}), v(1,"..."),
+					t({"",""}), d(1,get_visual),
 					t({"",""}), t("\\end{remark}")
 		        },
 		        {
-					t("\\begin{remark}["), i(1,"name"), t("]")
-					t({"",""}), v(2,"..."),
+					t("\\begin{remark}["), i(1,"name"), t("]"),
+					t({"",""}), d(2,get_visual),
 					t({"",""}), t("\\end{remark}")
 		        }
 		    }
@@ -321,12 +321,12 @@ s({trig = "ex", name = "New exercise"},
 		    {
 		        {
 					t("\\begin{exercise}"),
-					t({"",""}), v(1,"..."),
+					t({"",""}), d(1,get_visual),
 					t({"",""}), t("\\end{exercise}")
 		        },
 		        {
-					t("\\begin{exercise}["), i(1,"name"), t("]")
-					t({"",""}), v(2,"..."),
+					t("\\begin{exercise}["), i(1,"name"), t("]"),
+					t({"",""}), d(2,get_visual),
 					t({"",""}), t("\\end{exercise}")
 		        }
 		    }
@@ -340,12 +340,12 @@ s({trig = "ee", name = "New example"},
 		    {
 		        {
 					t("\\begin{example}"),
-					t({"",""}), v(1,"..."),
+					t({"",""}), d(1,get_visual),
 					t({"",""}), t("\\end{example}")
 		        },
 		        {
-					t("\\begin{example}["), i(1,"name"), t("]")
-					t({"",""}), v(2,"..."),
+					t("\\begin{example}["), i(1,"name"), t("]"),
+					t({"",""}), d(2,get_visual),
 					t({"",""}), t("\\end{example}")
 		        }
 		    }
@@ -359,12 +359,12 @@ s({trig = "pn", name = "New principle"},
 		    {
 		        {
 					t("\\begin{principle}"),
-					t({"",""}), v(1,"..."),
+					t({"",""}), d(1,get_visual),
 					t({"",""}), t("\\end{principle}")
 		        },
 		        {
-					t("\\begin{principle}["), i(1,"name"), t("]")
-					t({"",""}), v(2,"..."),
+					t("\\begin{principle}["), i(1,"name"), t("]"),
+					t({"",""}), d(2,get_visual),
 					t({"",""}), t("\\end{principle}")
 		        }
 		    }

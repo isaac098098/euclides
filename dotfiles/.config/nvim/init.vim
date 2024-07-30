@@ -252,6 +252,7 @@ endfunction
 " Insert
 
 inoremap oi <Esc>
+snoremap oi <Esc>
 
 " Normal
 

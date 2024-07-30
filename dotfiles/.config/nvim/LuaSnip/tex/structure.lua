@@ -22,7 +22,7 @@ s({trig = "doc", name = "Document class"},
 		c(1,
 		    {
 		        {
-        			t("\\documentclass{"), i(1,"document-class")
+        			t("\\documentclass{"), i(1,"document-class"), t("}")
 		        },
 		        {
         			t("\\documentclass["), i(1,"class-options"), t("]{"), i(2,"document-class"), t("}")
@@ -213,7 +213,7 @@ s({trig = "pix", name = "Print index"},
 
 s({trig = "pdf", name = "PDF bookmark"},
     {
-        t("\\texorpdfstring{"), v(1,"tex"), t("}{"), i(2,"string"), t("}")
+        t("\\texorpdfstring{"), v(1,"tex"), t("}{"), i(2,"bookmark"), t("}")
     }
 ),
 
@@ -269,7 +269,7 @@ s({trig = "lbe", name = "Label equation"},
     }
 ),
 
-s({trig = "lgt", name = "Label theorem"},
+s({trig = "lbt", name = "Label theorem"},
     {
         t("\\label{thm:"), i(1,"key"), t("}")
     }

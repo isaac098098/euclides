@@ -33,7 +33,7 @@ s({trig = "scr", name = "Scriptize font size"},
 
 s({trig = "fot", name = "Footnote size"},
     {
-        t("\\small")
+        t("\\footnotesize")
     }
 ),
 
@@ -54,13 +54,13 @@ s({trig = "lar", name = "Large font size"},
         c(1,
             {
                 {
-                    t("\\large")
+                    i(1,"\\large")
                 },
                 {
-                    t("\\Large")
+                    i(1,"\\Large")
                 },
                 {
-                    t("\\LARGE")
+                    i(1,"\\LARGE")
                 }
             }
         )
@@ -72,10 +72,10 @@ s({trig = "hug", name = "Huge font size"},
         c(1,
             {
                 {
-                    t("\\huge")
+                    i(1,"\\huge")
                 },
                 {
-                    t("\\Huge")
+                    i(1,"\\Huge")
                 }
             }
         )
@@ -95,7 +95,7 @@ s({trig = "rm", name = "Roman family"},
                     t("\\begin{rmfamily}"), v(1,"..."), t("\\end{rmfamily}")
                 },
                 {
-					t("\\rmfamily")
+					i(1,"\\rmfamily")
                 }
             }
         )
@@ -113,7 +113,7 @@ s({trig = "sf", name = "Sans serif family"},
                     t("\\begin{sffamily}"), v(1,"..."), t("\\end{sffamily}")
                 },
                 {
-					t("\\sffamily")
+					i(1,"\\sffamily")
                 }
             }
         )
@@ -131,7 +131,7 @@ s({trig = "tt", name = "Typewriter family"},
                     t("\\begin{ttfamily}"), v(1,"..."), t("\\end{ttfamily}")
                 },
                 {
-					t("\\ttfamily")
+					i(1,"\\ttfamily")
                 }
             }
         )
@@ -149,7 +149,7 @@ s({trig = "bf", name = "Bold series"},
                     t("\\begin{bfseries}"), v(1,"..."), t("\\end{bfseries}")
                 },
                 {
-					t("\\bfseries")
+					i(1,"\\bfseries")
                 }
             }
         )
@@ -167,7 +167,7 @@ s({trig = "it", name = "Italic shape"},
                     t("\\begin{itshape}"), v(1,"..."), t("\\end{itshape}")
                 },
                 {
-					t("\\itshape")
+					i(1,"\\itshape")
                 }
             }
         )
@@ -185,7 +185,25 @@ s({trig = "sc", name = "Small caps shape"},
                     t("\\begin{scshape}"), v(1,"..."), t("\\end{scshape}")
                 },
                 {
-					t("\\scshape")
+					i(1,"\\scshape")
+                }
+            }
+        )
+    }
+),
+
+s({trig = "em", name = "Emphasized text"},
+    {
+        c(1,
+            {
+                {
+                    t("\\emph{"), v(1,"text"), t("}")
+                },
+                {
+                    t("\\begin{em}"), v(1,"..."), t("\\end{em}")
+                },
+                {
+					i(1,"\\em")
                 }
             }
         )
@@ -203,7 +221,7 @@ s({trig = "tn", name = "Main font"},
                     t("\\begin{normalfont}"), v(1,"..."), t("\\end{normalfont}")
                 },
                 {
-					t("\\normalfont")
+					i(1,"\\normalfont")
                 }
             }
         )
