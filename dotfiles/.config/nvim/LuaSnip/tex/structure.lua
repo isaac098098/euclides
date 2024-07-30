@@ -65,6 +65,12 @@ s({trig = "aut", name = "Author"},
     }
 ),
 
+s({trig = "td", name = "Today's date"},
+    {
+		t("\\today")
+    }
+),
+
 -- Sectioning
 
 s({trig = "scn", name = "Section"},
