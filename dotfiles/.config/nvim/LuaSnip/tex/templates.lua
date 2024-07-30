@@ -117,14 +117,19 @@ s(
         %pdfkeywords={}
         %}
 
-        % Macros
+		% Trigonometric functions
 
-        \newcommand{\N}{\mathbb{N}}
-        \newcommand{\Z}{\mathbb{Z}}
-        \newcommand{\Q}{\mathbb{Q}}
-        \newcommand{\R}{\mathbb{R}}
-        \newcommand{\C}{\mathbb{C}}
-        \newcommand{\F}{\mathbb{F}}
+		\DeclareMathOperator{\arccot}{arccot}
+		\DeclareMathOperator{\arcsec}{arcsec}
+		\DeclareMathOperator{\arccsc}{arccsc}
+		\DeclareMathOperator{\sech}{sech}
+		\DeclareMathOperator{\csch}{csch}
+		\DeclareMathOperator{\arcsinh}{arcsinh}
+		\DeclareMathOperator{\arccosh}{arccosh}
+		\DeclareMathOperator{\arctanh}{arctanh}
+		\DeclareMathOperator{\arccoth}{arccoth}
+		\DeclareMathOperator{\arcsech}{arcsech}
+		\DeclareMathOperator{\arccsch}{arccsch}
 
         \begin{document}
         \maketitle
@@ -318,29 +323,46 @@ s(
         %\markboth{Prólogo}{Prólogo} %Mostrar correctamente el nombre de la sección en el header
         %\addcontentsline{toc}{section}{Prólogo} %Añadir a la tabla de contenidos
 
-        % Macros
+		% Trigonometric functions
 
-        \newcommand{\N}{\mathbb{N}}
-        \newcommand{\Z}{\mathbb{Z}}
-        \newcommand{\Q}{\mathbb{Q}}
-        \newcommand{\R}{\mathbb{R}}
-        \newcommand{\C}{\mathbb{C}}
-        \newcommand{\F}{\mathbb{F}}
-        \newcommand{\vcc}{\textnormal{\O}}
-        \newcommand{\dif}{\textnormal{d}}
-        \newcommand{\Dif}{\textnormal{ d}}
-        \newcommand{\der}[2]{\frac{\dif#1}{\dif#2}}
-        \newcommand{\nder}[3]{\frac{\dif^{#1}#2}{\dif#3^{#1}}}
-        \newcommand{\prt}[2]{\frac{\partial#1}{\partial#2}}
-        \newcommand{\nprt}[3]{\frac{\partial^{#1}#2}{\partial#3^{#1}}}
-        \newcommand{\derOp}[2]{\frac{\dif}{\dif#2}#1}
-        \newcommand{\nderOp}[3]{\frac{\dif^{#1}}{\dif#3^{#1}}#2}
-        \newcommand{\prtOp}[2]{\frac{\partial}{\partial#2}#1}
-        \newcommand{\nprtOp}[3]{\frac{\partial^{#1}}{\partial#3^{#1}}#2}
+		\DeclareMathOperator{\arccot}{arccot}
+		\DeclareMathOperator{\arcsec}{arcsec}
+		\DeclareMathOperator{\arccsc}{arccsc}
+		\DeclareMathOperator{\sech}{sech}
+		\DeclareMathOperator{\csch}{csch}
+		\DeclareMathOperator{\arcsinh}{arcsinh}
+		\DeclareMathOperator{\arccosh}{arccosh}
+		\DeclareMathOperator{\arctanh}{arctanh}
+		\DeclareMathOperator{\arccoth}{arccoth}
+		\DeclareMathOperator{\arcsech}{arcsech}
+		\DeclareMathOperator{\arccsch}{arccsch}
 
-        % Macros específicos de las notas
+		% Logic
 
-        \newcommand{\tp}{\mathcal{T}}
+		\let\oldforall\forall
+		\renewcommand{\forall}{\:\oldforall\,}
+		\let\oldexists\exists
+		\renewcommand{\exists}{\:\oldexists\:}
+		\let\oldnexists\nexists
+		\renewcommand{\nexists}{\:\oldnexists\:}
+
+		% Sets
+
+		\newcommand{\std}{\, : \,}
+		
+		% Derivatives
+
+		\newcommand{\dx}{\,\text{d}}
+		\newcommand{\dr}{\text{d}}
+		\newcommand{\der}[2]{\frac{\dr#1}{\dr#2}}
+		\newcommand{\Der}[2]{\frac{\dr}{\dr#2}#1}
+		\newcommand{\ndr}[3]{\frac{\dr^{#1}#2}{\dr#3^{#1}}}
+		\newcommand{\Ndr}[3]{\frac{\dr^{#1}}{\dr#3^{#1}}#2}
+		\newcommand{\pdr}[2]{\frac{\partial#1}{\partial#2}}
+		\newcommand{\Pdr}[2]{\frac{\partial}{\partial#2}#1}
+		\newcommand{\npd}[3]{\frac{\partial^{#1}#2}{\partial#3^{#1}}}
+		\newcommand{\Npd}[3]{\frac{\partial^{#1}}{\partial#3^{#1}}#2}
+		\newcommand{\evl}[1]{\mathrel{\bigg|_{#1}}}
 
         %\let\oldcap\cap
         %\renewcommand{\cap}{\mathbin{\scaleobj{1.1}{\oldcap}}}
@@ -646,29 +668,46 @@ s(
         %pdfkeywords={}
         %}
 
-        % Macros
+		% Trigonometric functions
 
-        \newcommand{\N}{\mathbb{N}}
-        \newcommand{\Z}{\mathbb{Z}}
-        \newcommand{\Q}{\mathbb{Q}}
-        \newcommand{\R}{\mathbb{R}}
-        \newcommand{\C}{\mathbb{C}}
-        \newcommand{\F}{\mathbb{F}}
-        \newcommand{\vcc}{\textnormal{\O}}
-        \newcommand{\dif}{\textnormal{d}}
-        \newcommand{\Dif}{\textnormal{ d}}
-        \newcommand{\der}[2]{\frac{\dif#1}{\dif#2}}
-        \newcommand{\nder}[3]{\frac{\dif^{#1}#2}{\dif#3^{#1}}}
-        \newcommand{\prt}[2]{\frac{\partial#1}{\partial#2}}
-        \newcommand{\nprt}[3]{\frac{\partial^{#1}#2}{\partial#3^{#1}}}
-        \newcommand{\derOp}[2]{\frac{\dif}{\dif#2}#1}
-        \newcommand{\nderOp}[3]{\frac{\dif^{#1}}{\dif#3^{#1}}#2}
-        \newcommand{\prtOp}[2]{\frac{\partial}{\partial#2}#1}
-        \newcommand{\nprtOp}[3]{\frac{\partial^{#1}}{\partial#3^{#1}}#2}
+		\DeclareMathOperator{\arccot}{arccot}
+		\DeclareMathOperator{\arcsec}{arcsec}
+		\DeclareMathOperator{\arccsc}{arccsc}
+		\DeclareMathOperator{\sech}{sech}
+		\DeclareMathOperator{\csch}{csch}
+		\DeclareMathOperator{\arcsinh}{arcsinh}
+		\DeclareMathOperator{\arccosh}{arccosh}
+		\DeclareMathOperator{\arctanh}{arctanh}
+		\DeclareMathOperator{\arccoth}{arccoth}
+		\DeclareMathOperator{\arcsech}{arcsech}
+		\DeclareMathOperator{\arccsch}{arccsch}
+		
+		% Logic
 
-        % Macros específicos de las notas
+		\let\oldforall\forall
+		\renewcommand{\forall}{\:\oldforall\,}
+		\let\oldexists\exists
+		\renewcommand{\exists}{\:\oldexists\:}
+		\let\oldnexists\nexists
+		\renewcommand{\nexists}{\:\oldnexists\:}
 
-        \newcommand{\tp}{\mathcal{T}}
+		% Sets
+
+		\newcommand{\std}{\, : \,}
+
+		% Derivatives
+
+		\newcommand{\dx}{\,\text{d}}
+		\newcommand{\dr}{\text{d}}
+		\newcommand{\der}[2]{\frac{\dr#1}{\dr#2}}
+		\newcommand{\Der}[2]{\frac{\dr}{\dr#2}#1}
+		\newcommand{\ndr}[3]{\frac{\dr^{#1}#2}{\dr#3^{#1}}}
+		\newcommand{\Ndr}[3]{\frac{\dr^{#1}}{\dr#3^{#1}}#2}
+		\newcommand{\pdr}[2]{\frac{\partial#1}{\partial#2}}
+		\newcommand{\Pdr}[2]{\frac{\partial}{\partial#2}#1}
+		\newcommand{\npd}[3]{\frac{\partial^{#1}#2}{\partial#3^{#1}}}
+		\newcommand{\Npd}[3]{\frac{\partial^{#1}}{\partial#3^{#1}}#2}
+		\newcommand{\evl}[1]{\mathrel{\bigg|_{#1}}}
 
         %\let\oldcap\cap
         %\renewcommand{\cap}{\mathbin{\scaleobj{1.1}{\oldcap}}}
@@ -906,15 +945,6 @@ s(
         %pdfauthor={},
         %pdfkeywords={}
         %}
-
-        % Macros
-
-        \newcommand{\N}{\mathbb{N}}
-        \newcommand{\Z}{\mathbb{Z}}
-        \newcommand{\Q}{\mathbb{Q}}
-        \newcommand{\R}{\mathbb{R}}
-        \newcommand{\C}{\mathbb{C}}
-        \newcommand{\F}{\mathbb{F}}
 
         \begin{document}
         %\maketitle

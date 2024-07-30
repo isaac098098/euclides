@@ -400,8 +400,8 @@ local untrigger = function()
     node_from[2],
     node_to[1],
     node_to[2],
-    --{ trig }
-    {" "}
+    { trig }
+    --{" "}
   )
   -- reset the cursor-position to ahead the trigger
   vim.fn.setpos(".", { 0, node_from[1] + 1, node_from[2] + 1 + string.len(trig) })
@@ -419,13 +419,13 @@ end, {
 EOF
 
 " Use Tab to expand and jump through snippets
-imap <silent><expr> jk luasnip#expand_or_jumpable() ? '<Plug>luasnip-expand-or-jump' : '<Tab>'
+imap <silent><expr> jk luasnip#expand_or_jumpable() ? '<Plug>luasnip-expand-or-jump' : 'jk'
 "imap <silent><expr> ll luasnip#jumpable(1) ? '<Plug>luasnip-jump-next' : '<Tab>'
-smap <silent><expr> jk luasnip#jumpable(1) ? '<Plug>luasnip-jump-next' : '<Tab>'
+smap <silent><expr> jk luasnip#jumpable(1) ? '<Plug>luasnip-jump-next' : 'jk'
 
 " Use Shift-Tab to jump backwards through snippets
-imap <silent><expr> wq luasnip#jumpable(-1) ? '<Plug>luasnip-jump-prev' : '<S-Tab>'
-smap <silent><expr> wq  luasnip#jumpable(-1) ? '<Plug>luasnip-jump-prev' : '<S-Tab>'
+imap <silent><expr> wq luasnip#jumpable(-1) ? '<Plug>luasnip-jump-prev' : 'wq'
+smap <silent><expr> wq  luasnip#jumpable(-1) ? '<Plug>luasnip-jump-prev' : 'wq'
 
 " Cycle forward through choice nodes with Control-f (for example)
 imap <silent><expr> <C-j> luasnip#choice_active() ? '<Plug>luasnip-next-choice' : '<C-j>'
