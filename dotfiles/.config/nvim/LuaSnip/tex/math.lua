@@ -2555,7 +2555,7 @@ s({trig = "([^%a])sosm", name = "Subscript o-sum", snippetType = "autosnippet", 
     {condition = in_mathzone}
 ),
 
-s({trig = "([^%a])dosm", name = "Definite o-sum", snippetType = "autosnippet", regTrig = true, wordTrig = false},
+s({trig = "([^%a])nosm", name = "Definite o-sum", snippetType = "autosnippet", regTrig = true, wordTrig = false},
     {
 		f(function(_,snip) return snip.captures[1] end),
         t("\\bigoplus_{"), i(1), t("}^{"), i(2), t("}")
@@ -2573,7 +2573,7 @@ s({trig = "([^%a])suc", name = "Subscript product", snippetType = "autosnippet",
     {condition = in_mathzone}
 ),
 
-s({trig = "([^%a])duc", name = "Definite product", snippetType = "autosnippet", regTrig = true, wordTrig = false},
+s({trig = "([^%a])nuc", name = "Definite product", snippetType = "autosnippet", regTrig = true, wordTrig = false},
     {
 		f(function(_,snip) return snip.captures[1] end),
         t("\\prod_{"), i(1), t("}^{"), i(2), t("}")
@@ -2589,7 +2589,7 @@ s({trig = "([^%a])souc", name = "Subscript o-product", snippetType = "autosnippe
     {condition = in_mathzone}
 ),
 
-s({trig = "([^%a])douc", name = "Definite o-product", snippetType = "autosnippet", regTrig = true, wordTrig = false},
+s({trig = "([^%a])nouc", name = "Definite o-product", snippetType = "autosnippet", regTrig = true, wordTrig = false},
     {
 		f(function(_,snip) return snip.captures[1] end),
         t("\\bigotimes{"), i(1), t("}^{"), i(2), t("}")

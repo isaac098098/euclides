@@ -71,6 +71,16 @@ s({trig = "td", name = "Today's date"},
     }
 ),
 
+s({trig = "bd", name = "Begin document"},
+    {
+        t("\\begin{document}"),
+		t({"",""}),
+		t({"",""}), i(1),
+		t({"",""}),
+		t({"",""}), t("\\end{document}")
+    }
+),
+
 -- Sectioning
 
 s({trig = "scn", name = "Section"},
