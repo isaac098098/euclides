@@ -206,6 +206,7 @@ for_window [class="zoom"] floating enable
 for_window [class="Gnome-pomodoro"] floating enable
 for_window [class="Gpick"] floating enable
 for_window [class="gnome-calculator"] floating enable
+for_window [class="Screenkey"] floating enable
 
 # Dock
 

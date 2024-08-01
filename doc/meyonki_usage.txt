@@ -1,0 +1,16 @@
+requieres menyoki and slop
+LAlt-U to finish record
+for consistent record size use slop first and pass to --size argument
+
+menyoki record --root --action-keys LAlt-S,LAlt-U --cancel-keys LControl-D,LControl-F -c 5 --size $(slop) gif --fps 10
+
+2 line snippet
+1920x644+0+0
+
+more lines
+1918x1024+0+0
+
+screenkey
+
+screenkey --window -s small  -f "IosevkaNF Bold" --font-color "#1e1e2e" --bg-color "#89b4fa" --opacity 1 --bak-mode normal
+screenkey --window -s small  -f "JetBrainsMono NF Bold" --font-color "#1e1e2e" --bg-color "#89b4fa" --opacity 1 --bak-mode normal

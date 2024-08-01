@@ -61,7 +61,6 @@ colorscheme catppuccin-mocha
 :highlight CocFloating guibg=#1e1e2e
 :highlight CocMenuSel guibg=#363a4f
 :highlight CocSearch guifg=#89b4fa
-autocmd VimEnter * hi ZenBg ctermbg=NONE guibg=#1E1E2F
 
 " nvim-tree
 
@@ -318,10 +317,10 @@ set lbr
 
 " X11
 
-augroup vimtex
-	au!
-	au User VimtexEventCompileSuccess VimtexView 
-augroup END
+"augroup vimtex
+	"au!
+	"au User VimtexEventCompileSuccess VimtexView 
+"augroup END
 
 "zen mode
 let g:vimtex_compiler_silent = 1
@@ -331,17 +330,19 @@ let g:loaded_matchparen = 0
 let g:vimtex_motion_matchparen = 0
 let g:vimtex_matchparen_enabled = 0
 
-let g:vimtex_compiler_latexmk_engines = {
-        \ '_'                : '-pdf',
-        \ 'pdfdvi'           : '-pdfdvi',
-        \ 'pdfps'            : '-pdfps',
-        \ 'pdflatex'         : '-pdf',
-        "\ '_'           : '-lualatex',
-		"\ '_'          : '-xelatex',
-        "\ 'context (pdftex)' : '-pdf -pdflatex=texexec',
-        \ 'context (luatex)' : '-pdf -pdflatex=context',
-        \ 'context (xetex)'  : '-pdf -pdflatex=''texexec --xtx''',
-        \}
+"let g:vimtex_compiler_latexmk_engines = {
+        "\ '_'                : '-pdf',
+        "\ 'pdfdvi'           : '-pdfdvi',
+        "\ 'pdfps'            : '-pdfps',
+        "\ 'pdflatex'         : '-pdf',
+        ""\ '_'           : '-lualatex',
+		""\ '_'          : '-xelatex',
+        ""\ 'context (pdftex)' : '-pdf -pdflatex=texexec',
+        "\ 'context (luatex)' : '-pdf -pdflatex=context',
+        "\ 'context (xetex)'  : '-pdf -pdflatex=''texexec --xtx''',
+        "\}
+
+"use -shell-escape for standalone document
 
 let g:vimtex_compiler_latexmk = {
         \ 'build_dir' : '',
@@ -350,7 +351,9 @@ let g:vimtex_compiler_latexmk = {
         \ 'executable' : 'latexmk',
         \ 'hooks' : [],
         \ 'options' : [
-			\   '-xelatex',
+			\   '-pdf',
+			"\   '-xelatex',
+			\   '-shell-escape',
 			\   '-verbose',
 			\   '-file-line-error',
 			\   '-synctex=1',
@@ -421,18 +424,27 @@ EOF
 
 " Use Tab to expand and jump through snippets
 imap <silent><expr> jk luasnip#expand_or_jumpable() ? '<Plug>luasnip-expand-or-jump' : 'jk'
-"imap <silent><expr> ll luasnip#jumpable(1) ? '<Plug>luasnip-jump-next' : '<Tab>'
-smap <silent><expr> jk luasnip#jumpable(1) ? '<Plug>luasnip-jump-next' : 'jk'
+smap <silent><expr> jk luasnip#expand_or_jumpable() ? '<Plug>luasnip-expand-or-jump' : 'jk'
 
 " Use Shift-Tab to jump backwards through snippets
 imap <silent><expr> wq luasnip#jumpable(-1) ? '<Plug>luasnip-jump-prev' : 'wq'
 smap <silent><expr> wq  luasnip#jumpable(-1) ? '<Plug>luasnip-jump-prev' : 'wq'
 
-" Cycle forward through choice nodes with Control-f (for example)
+" Cycle forward through choice nodes
 imap <silent><expr> <C-j> luasnip#choice_active() ? '<Plug>luasnip-next-choice' : '<C-j>'
 smap <silent><expr> <C-j> luasnip#choice_active() ? '<Plug>luasnip-next-choice' : '<C-j>'
 imap <silent><expr> <C-k> luasnip#choice_active() ? '<Plug>luasnip-prev-choice' : '<C-k>'
 smap <silent><expr> <C-k> luasnip#choice_active() ? '<Plug>luasnip-prev-choice' : '<C-k>'
+
+" Showcase
+
+"lua << EOF
+
+"local ls = require("luasnip")
+
+"vim.keymap.set({"i","s"}, "jk", function() ls.expand_or_jump() vim.api.nvim_command('write') end, {silent = true})
+
+"EOF
 
 " Tabs
 
@@ -494,6 +506,8 @@ set guicursor+=n-v-c:blinkon0
 lua require'colorizer'.setup()
 
 "zen-mode
+
+autocmd VimEnter * hi ZenBg ctermbg=NONE guibg=#1E1E2F
 
 lua << EOF
 
