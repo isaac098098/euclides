@@ -251,6 +251,9 @@ endfunction
 " Insert
 
 inoremap oi <Esc>
+
+" Select
+
 snoremap oi <Esc>
 
 " Normal
@@ -263,7 +266,7 @@ nmap <CR> :write<CR>
 
 " Visual
 
-vmap ,. <Esc>
+vnoremap oi <Esc>
 
 " vim-snippets
 

@@ -192,7 +192,7 @@ assign [class="firefox"] $ws3
 assign [class="Brave-browser"] $ws3
 assign [class="Zathura"] $ws4
 assign [class="krita"] $ws5
-#assign [class="Eog"] $ws5
+assign [class="Eog"] $ws5
 assign [class="vlc"] $ws6
 assign [class="obsidian"] $ws7
 assign [class="kdenlive"] $ws8
@@ -206,6 +206,7 @@ for_window [class="zoom"] floating enable
 for_window [class="Gnome-pomodoro"] floating enable
 for_window [class="Gpick"] floating enable
 for_window [class="gnome-calculator"] floating enable
+for_window [class="Screenkey"] floating enable
 
 # Dock
 
