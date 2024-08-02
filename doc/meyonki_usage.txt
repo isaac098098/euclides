@@ -10,6 +10,7 @@ menyoki record --root --action-keys LAlt-S,LAlt-U --cancel-keys LControl-D,LCont
 more lines
 1918x1024+0+0
 
+
 screenkey
 
 screenkey --window -s small  -f "IosevkaNF Bold" --font-color "#1e1e2e" --bg-color "#89b4fa" --opacity 1 --bak-mode normal

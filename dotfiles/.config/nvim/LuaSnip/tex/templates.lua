@@ -274,8 +274,6 @@ s(
 	%\rhead{\thepage\hspace{0.6cm}}
 	%\lhead{\hspace{0.6cm} Espacios topológicos}
 
-	\renewcommand{\sectionmark}[1]{\markboth{#1}{}}
-
 	\fancyhead[LO]{\hspace{0.8cm}\small\scshape\nouppercase <>}
 	\fancyhead[RO]{\small\thepage\hspace{0.8cm}}
 	\fancyhead[LE]{\hspace{0.8cm}\small\thepage}
@@ -321,13 +319,6 @@ s(
 	%pdfauthor={},
 	%pdfkeywords={}
 	%}
-
-	% Estructura de una sección sin número (en orden)
-
-	%\phantomsection %hyperref
-	%\section*{Prólogo}
-	%\markboth{Prólogo}{Prólogo} %Mostrar correctamente el nombre de la sección en el header
-	%\addcontentsline{toc}{section}{Prólogo} %Añadir a la tabla de contenidos
 
 	% Operators
 
@@ -624,8 +615,6 @@ s(
 	%\rhead{\thepage\hspace{0.6cm}}
 	%\lhead{\hspace{0.6cm} Espacios topológicos}
 
-	\renewcommand{\sectionmark}[1]{\markboth{#1}{}}
-
 	\fancyhead[LO]{\hspace{0.8cm}\small\scshape\nouppercase <>}
 	\fancyhead[RO]{\small\thepage\hspace{0.8cm}}
 	\fancyhead[LE]{\hspace{0.8cm}\small\thepage}
@@ -658,13 +647,6 @@ s(
 
 	%\addto{\captionsspanish}{\renewcommand{\bibname}{Bibliografía}}
 	\addto{\captionsspanish}{\renewcommand{\refname}{Bibliografía}} %Título
-
-	% Estructura de una sección sin número (en orden)
-
-	%\phantomsection %hyperref
-	%\section*{Prólogo}
-	%\markboth{Prólogo}{Prólogo} %Mostrar correctamente el nombre de la sección en el header
-	%\addcontentsline{toc}{section}{Prólogo} %Añadir a la tabla de contenidos
 
 	% Metadata
 
@@ -936,8 +918,6 @@ s(
 	% Estilo de encabezado y pie de página para el documento completo
 	\pagestyle{fancy}
 	\fancyhf{}
-
-	\renewcommand{\sectionmark}[1]{\markboth{#1}{}}
 
 	\fancyhead[LO]{\hspace{0.8cm}\small\scshape $1}
 	\fancyhead[RO]{\small\thepage\hspace{0.8cm}}
