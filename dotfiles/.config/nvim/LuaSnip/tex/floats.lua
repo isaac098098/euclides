@@ -20,13 +20,20 @@ s({trig = "rr", name = "Array environment"},
     }
 ),
 
+s({trig = "he", name = "Break line height"},
+    {
+        t("\\\\["), i(1), t("]"),
+		t({"",""})
+    }
+),
+
 s({trig = "hyp", name = "Hyphenate text correctly"},
     {
         t("\\hspace{0pt}")
     }
 ),
 
-s({trig = "bck", name = "Redefine \\\\"},
+s({trig = "bck", name = "Redefine \\\\ last column"},
     {
         t("\\arraybackslash")
     }
@@ -47,6 +54,13 @@ s({trig = "cr", name = "Align text to center"},
 s({trig = "rt", name = "Align text to right"},
     {
         t("\\raggedright")
+    }
+),
+
+s({trig = "hn", name = "Horizontal line"},
+    {
+        t("\\hline"),
+		t({"",""})
     }
 ),
 

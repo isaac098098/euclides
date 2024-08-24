@@ -254,7 +254,7 @@ inoremap oi <Esc>
 
 " Select
 
-snoremap oi <Esc>
+smap oi <Esc>
 
 " Normal
 
@@ -311,8 +311,6 @@ set lbr
 	"redraw!
 "endfunction 
 
-
-
 "augroup vimtex
 	"au!
 	"au User VimtexEventCompileSuccess call Synctex()
@@ -326,7 +324,7 @@ set lbr
 "augroup END
 
 "zen mode
-let g:vimtex_compiler_silent = 1
+"let g:vimtex_compiler_silent = 1
 
 " Remove lag due to match search
 let g:loaded_matchparen = 0

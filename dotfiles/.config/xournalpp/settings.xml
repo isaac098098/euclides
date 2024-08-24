@@ -14,16 +14,16 @@
   <property name="zoomStep" value="10"/>
   <property name="zoomStepScroll" value="2"/>
   <property name="displayDpi" value="72"/>
-  <property name="mainWndWidth" value="960"/>
+  <property name="mainWndWidth" value="1920"/>
   <property name="mainWndHeight" value="1049"/>
   <property name="maximized" value="false"/>
-  <property name="showToolbar" value="false"/>
+  <property name="showToolbar" value="true"/>
   <property name="showSidebar" value="false"/>
-  <property name="sidebarWidth" value="50"/>
+  <property name="sidebarWidth" value="144"/>
   <property name="sidebarNumberingStyle" value="1"/>
   <property name="sidebarOnRight" value="false"/>
   <property name="scrollbarOnLeft" value="false"/>
-  <property name="menubarVisible" value="false"/>
+  <property name="menubarVisible" value="true"/>
   <property name="filepathShownInTitlebar" value="false"/>
   <property name="numColumns" value="1"/>
   <property name="numRows" value="1"/>
