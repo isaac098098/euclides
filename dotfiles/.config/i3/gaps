@@ -218,6 +218,10 @@ bindsym $mod+o exec --no-startup-id eww open --toggle catppuccin
 
 exec_always --no-startup-id feh --bg-scale /home/isaac09809/Documents/images/wallpapers/15.png
 
+# Blue light filter
+
+exec --no-startup-id redshift
+
 # Notifications
 
 exec_always --no-startup-id dunst

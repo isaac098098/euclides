@@ -222,6 +222,10 @@ exec_always --no-startup-id feh --bg-scale /home/isaac09809/Documents/images/wal
 
 exec_always --no-startup-id dunst
 
+# Blue light filter
+
+exec --no-startup-id redshift
+
 # Keyboard layouts
 
 bindsym $mod+q exec --no-startup-id setxkbmap -layout latam

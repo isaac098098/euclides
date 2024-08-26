@@ -1922,16 +1922,7 @@ s({trig = "[.]Ph", name = "Uppercase phi", snippetType = "autosnippet", regTrig 
 s({trig = "[.]ph", name = "Lowecase phi", snippetType = "autosnippet", regTrig = true},
     {
 		f(function(_,snip) return snip.captures[1] end),
-        c(1,
-            {
-                {
-                    i(1,"\\phi")
-                },
-                {
-                    i(1,"\\varphi")
-                }
-            }
-        )
+		t("\\phi")
     },
     {condition = in_mathzone}
 ),

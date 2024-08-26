@@ -7,7 +7,7 @@
   <property name="zoomGesturesEnabled" value="true"/>
   <property name="selectedToolbar" value="Catppuccin"/>
   <property name="lastSavePath" value="/home/isaac09809/Documents/xournalpp"/>
-  <property name="lastOpenPath" value="/home/isaac09809/Documents/xournalpp"/>
+  <property name="lastOpenPath" value="/home/isaac09809/Documents/books/manuals/Técnicos"/>
   <property name="lastImagePath" value=""/>
   <property name="edgePanSpeed" value="20"/>
   <property name="edgePanMaxMult" value="5"/>
@@ -18,7 +18,7 @@
   <property name="mainWndHeight" value="1049"/>
   <property name="maximized" value="false"/>
   <property name="showToolbar" value="true"/>
-  <property name="showSidebar" value="false"/>
+  <property name="showSidebar" value="true"/>
   <property name="sidebarWidth" value="144"/>
   <property name="sidebarNumberingStyle" value="1"/>
   <property name="sidebarOnRight" value="false"/>
@@ -237,7 +237,7 @@
       <attribute name="drawingType" type="string" value="default"/>
     </data>
     <data name="pen">
-      <attribute name="color" type="hex" value="cdd6f4"/>
+      <attribute name="color" type="hex" value="8caaee"/>
       <attribute name="drawingType" type="string" value="default"/>
       <attribute name="fill" type="int" value="0"/>
       <attribute name="fillAlpha" type="int" value="128"/>
