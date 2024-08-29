@@ -2565,7 +2565,16 @@ s({trig = "to", name = "Long maps to", snippetType = "autosnippet"},
 s({trig = "sm", name = "Subscript sum", snippetType = "autosnippet"},
     {
 		f(function(_,snip) return snip.captures[1] end),
-        t("\\sum_{"), i(1), t("}")
+		c(1,
+		    {
+		        {
+        			t("\\sum_{"), i(1), t("}")
+		        },
+		        {
+        			i(1,"\\sum")
+		        }
+		    }
+		)
     },
     {condition = in_mathzone}
 ),
@@ -2599,7 +2608,16 @@ s({trig = "nos", name = "Definite o-sum", snippetType = "autosnippet"},
 s({trig = "sp", name = "Subscript product", snippetType = "autosnippet"},
     {
 		f(function(_,snip) return snip.captures[1] end),
-        t("\\prod_{"), i(1), t("}")
+		c(1,
+		    {
+		        {
+        			t("\\prod_{"), i(1), t("}")
+		        },
+		        {
+        			i(1,"\\prod")
+		        }
+		    }
+		)
     },
     {condition = in_mathzone}
 ),

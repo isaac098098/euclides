@@ -223,12 +223,14 @@ augroup CocGroup
 	autocmd BufNew,BufEnter,BufAdd,BufCreate * call s:disable_coc_for_type()
 augroup end
 
-inoremap <silent><expr> <C-d>
+inoremap <silent><expr> <TAB>
       \ coc#pum#visible() ? coc#pum#next(1) :
-      \ CheckBackspace() ? "\<C-d>" :
+      \ CheckBackspace() ? "\<Tab>" :
       \ coc#refresh()
-inoremap <expr><C-e> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
+inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
 
+" Make <CR> to accept selected completion item or notify coc.nvim to format
+" <C-g>u breaks current undo, please make your own choice
 inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
                               \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
@@ -387,7 +389,7 @@ require("luasnip").config.set_config({ -- Setting LuaSnip config
   updateevents = "TextChanged,TextChangedI", -- Update snippets as you type
 
   -- Use Tab (or some other key if you prefer) to trigger visual selection
-  store_selection_keys = "<Tab>",
+  store_selection_keys = "<C-c>",
 })
 
 -- Undo snippet
@@ -423,11 +425,9 @@ end, {
 
 EOF
 
-" Use Tab to expand and jump through snippets
 imap <silent><expr> jk luasnip#expand_or_jumpable() ? '<Plug>luasnip-expand-or-jump' : 'jk'
 smap <silent><expr> jk luasnip#expand_or_jumpable() ? '<Plug>luasnip-expand-or-jump' : 'jk'
 
-" Use Shift-Tab to jump backwards through snippets
 imap <silent><expr> wq luasnip#jumpable(-1) ? '<Plug>luasnip-jump-prev' : 'wq'
 smap <silent><expr> wq  luasnip#jumpable(-1) ? '<Plug>luasnip-jump-prev' : 'wq'
 
@@ -449,7 +449,7 @@ smap <silent><expr> <C-k> luasnip#choice_active() ? '<Plug>luasnip-prev-choice' 
 
 " Tabs
 
-iunmap <tab>
+"iunmap <tab>
 set tabstop=4
 set shiftwidth=4
 "set expandtab
