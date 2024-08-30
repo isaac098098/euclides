@@ -1,15 +1,15 @@
 set default-fg                rgba(202,211,245,1)
-set default-bg 			          rgba(36,39,58,1)
+set default-bg 			          rgba(30,30,46,0.85)
 
-set completion-bg		          rgba(54,58,79,1)
+set completion-bg		          rgba(30,30,46,1)
 set completion-fg		          rgba(202,211,245,1)
-set completion-highlight-bg	  rgba(87,82,104,1)
+set completion-highlight-bg	  rgba(69,71,90,1)
 set completion-highlight-fg	  rgba(202,211,245,1)
-set completion-group-bg		    rgba(54,58,79,1)
-set completion-group-fg		    rgba(138,173,244,1)
+set completion-group-bg		    rgba(17,17,27,1)
+set completion-group-fg		    rgba(180,190,254,1)
 
 set statusbar-fg		          rgba(202,211,245,1)
-set statusbar-bg		          rgba(36,39,58,1)
+set statusbar-bg		          rgba(30,30,46,1)
 
 set notification-bg		        rgba(54,58,79,1)
 set notification-fg		        rgba(202,211,245,1)
@@ -19,11 +19,11 @@ set notification-warning-bg	  rgba(54,58,79,1)
 set notification-warning-fg	  rgba(250,227,176,1)
 
 set inputbar-fg			          rgba(202,211,245,1)
-set inputbar-bg 		          rgba(54,58,79,1)
+set inputbar-bg 		          rgba(30,30,46,1)
 
 set recolor                   "false"
-set recolor-lightcolor		    rgba(36,39,58,1)
-set recolor-darkcolor		      rgba(202,211,245,1)
+set recolor-lightcolor		    rgba(30,30,46,0)
+set recolor-darkcolor		      rgba(186,194,222,1)
 
 set index-fg			            rgba(202,211,245,1)
 set index-bg			            rgba(36,39,58,1)

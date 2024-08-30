@@ -211,20 +211,20 @@ for_window [class="Screenkey"] floating enable
 # Dock
 
 #exec_always --no-startup-id /home/isaac09809/.config/polybar/launch.sh
-exec --no-startup-id eww open catppuccin
+exec --no-startup-id eww open dock
 bindsym $mod+o exec --no-startup-id eww open --toggle catppuccin
 
 # Wallpaper
 
-exec_always --no-startup-id feh --bg-scale /home/isaac09809/Documents/images/wallpapers/15.png
-
-# Notifications
-
-exec_always --no-startup-id dunst
+exec_always --no-startup-id feh --bg-scale /home/isaac09809/Documents/images/wallpapers/2.jpg
 
 # Blue light filter
 
 exec --no-startup-id redshift
+
+# Notifications
+
+exec_always --no-startup-id dunst
 
 # Keyboard layouts
 
@@ -239,18 +239,25 @@ bindsym Print exec --no-startup-id scrot -F "$HOME/Documents/images/screens/%Y%m
 
 # 						Border 		Background	Text 		Indicator 	Child Border
 client.focused 			#FFFFFF		#FFFFFF		#FFFFFF		#b4befe     #b4befe
-client.focused_inactive	#FFFFFF 	#FFFFFF		#FFFFFF 	#313244		#313244
-client.unfocused		#FFFFFF 	#FFFFFF		#FFFFFF 	#313244		#313244
+client.focused_inactive	#FFFFFF 	#FFFFFF		#FFFFFF 	#1e1e2e		#1e1e2e
+client.unfocused		#FFFFFF 	#FFFFFF		#FFFFFF 	#1e1e2e		#1e1e2e
 client.urgent			#FFFFFF 	#FFFFFF 	#FFFFFF 	#FFFFFF		#FFFFFF
 client.placeholder		#FFFFFF 	#FFFFFF 	#FFFFFF 	#FFFFFF		#FFFFFF
 client.background		#FFFFFF		#FFFFFF 	#FFFFFF 	#FFFFFF		#FFFFFF
 
 # Borders
 
-#default_border pixel 3
 default_border pixel 0
 default_floating_border none
-smart_borders on
+#smart_borders on
+
+#Gaps
+
+gaps top -9
+gaps right 5
+gaps bottom 5
+gaps left 5
+gaps inner 10
 
 # Disable X11 suspension due to inactivity
 

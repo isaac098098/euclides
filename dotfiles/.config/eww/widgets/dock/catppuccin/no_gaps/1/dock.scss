@@ -1,0 +1,380 @@
+* {
+  all: unset; // Desconfigurar todo para estilizar todo desde cero
+}
+
+// Colores
+
+$rosewater: #f5e0dc;
+$flamingo:  #f2cdcd;
+$pink:      #f5c2e7;
+$mauve:     #cba6f7;
+$red:       #f38ba8;
+$maroon:    #eba0ac;
+$peach:     #fab387;
+$yellow:    #f9e2af;
+$green:     #a6e3a1;
+$teal:      #94e2d5;
+$saphire:   #74c7ec;
+$blue:      #89b4fa;
+$lavender:  #b7bdf8;
+$text:      #cdd6f4;
+$subtext1:  #bac2de;
+$subtext0:  #a6adc8;
+$surface2:  #585b70;
+$surface1:  #45475a;
+$surface0:  #313244;
+$base:      #1e1e2e;
+$mantle:    #181825;
+$crust:     #11111b;
+
+// Es la ventana que contiene toda la barra
+
+.dock {
+  margin: 0px 0px 0px 0px;
+  padding: 0px 0px 0px 0px;
+  border-radius: 0px;
+}
+
+// Es la caja que contiene a los modulos left, center y right. Cambiando su color de fondo se pueden "desacoplar" los módulos
+
+.dock_widget {
+  background-color: $crust;
+  //background-color: rgba(17, 17, 27, 0.6);
+  //box-shadow: 3px 3px 5px rgba($color: #000000, $alpha: 0.8);
+  color: $text;
+}
+
+.left_dock {
+  background-color: $crust;
+  color: $text;
+}
+
+.center_dock {
+  background-color: $crust;
+  color: $text;
+}
+
+.right_dock {
+  background-color: $crust;
+  color: $text;
+}
+
+// Widgets
+
+.arch_menu {
+  color: $saphire;
+  font-family: Iosevka NF;
+  font-weight: bold;
+  font-size: 16pt;
+  padding: 2px 18px 0px 10px;
+}
+
+.xworkspaces_box {
+  background-color: $mantle;
+  border-radius: 7px;
+  padding: 0px 0px 0px 10px;
+}
+
+.focused_xworkspace_1 {
+  color: $blue;
+  font-family: Iosevka NF;
+  font-weight: bold;
+  font-size: 19pt;
+  padding: 1px 20px 0px 0px;
+  border-radius: 0px;
+}
+
+.focused_xworkspace_2 {
+  color: $blue;
+  font-family: Iosevka NF;
+  font-weight: bold;
+  font-size: 13pt;
+  padding: 1px 16px 0px 0px;
+  border-radius: 0px;
+}
+
+.focused_xworkspace_3 {
+  color: $blue;
+  font-family: Iosevka NF;
+  font-weight: bold;
+  font-size: 15.4pt;
+  padding: 1px 10px 0px 0px;
+  border-radius: 0px;
+}
+
+.focused_xworkspace_4 {
+  color: $blue;
+  font-family: Iosevka NF;
+  font-weight: bold;
+  font-size: 12pt;
+  padding: 2px 10px 0px 0px;
+  border-radius: 0px;
+}
+
+.focused_xworkspace_5 {
+  color: $blue;
+  font-family: Iosevka NF;
+  font-weight: bold;
+  font-size: 16pt;
+  padding: 3px 9px 0px 0px;
+  border-radius: 0px;
+}
+
+.active_xworkspace_1 {
+  color: $subtext1;
+  font-family: Iosevka NF;
+  font-weight: bold;
+  font-size: 19pt;
+  padding: 1px 20px 0px 0px;
+  border-radius: 0px;
+}
+
+.active_xworkspace_2 {
+  color: $subtext1;
+  font-family: Iosevka NF;
+  font-weight: bold;
+  font-size: 13pt;
+  padding: 1px 16px 0px 0px;
+  border-radius: 0px;
+}
+
+.active_xworkspace_3 {
+  color: $subtext1;
+  font-family: Iosevka NF;
+  font-weight: bold;
+  font-size: 15.4pt;
+  padding: 1px 10px 0px 0px;
+  border-radius: 0px;
+}
+
+.active_xworkspace_4 {
+  color: $subtext1;
+  font-family: Iosevka NF;
+  font-weight: bold;
+  font-size: 12pt;
+  padding: 2px 10px 0px 0px;
+  border-radius: 0px;
+}
+
+.active_xworkspace_5 {
+  color: $subtext1;
+  font-family: Iosevka NF;
+  font-weight: bold;
+  font-size: 16pt;
+  padding: 3px 9px 0px 0px;
+  border-radius: 0px;
+}
+
+.empty_xworkspace_1 {
+  color: $surface1;
+  font-family: Iosevka NF;
+  font-weight: bold;
+  font-size: 19pt;
+  padding: 1px 20px 0px 0px;
+  border-radius: 0px;
+}
+
+.empty_xworkspace_2 {
+  color: $surface1;
+  font-family: Iosevka NF;
+  font-weight: bold;
+  font-size: 13pt;
+  padding: 1px 16px 0px 0px;
+  border-radius: 0px;
+}
+
+.empty_xworkspace_3 {
+  color: $surface1;
+  font-family: Iosevka NF;
+  font-weight: bold;
+  font-size: 15.4pt;
+  padding: 1px 10px 0px 0px;
+  border-radius: 0px;
+}
+
+.empty_xworkspace_4 {
+  color: $surface1;
+  font-family: Iosevka NF;
+  font-weight: bold;
+  font-size: 12pt;
+  padding: 2px 10px 0px 0px;
+  border-radius: 0px;
+}
+
+.empty_xworkspace_5 {
+  color: $surface2;
+  font-family: Iosevka NF;
+  font-weight: bold;
+  font-size: 16pt;
+  padding: 3px 9px 0px 0px;
+  border-radius: 0px;
+}
+
+.spotify_button {
+  color: $green;
+  font-family: Iosevka NF;
+  font-weight: bold;
+  font-size: 16pt;
+  padding: 1px 18px 0px 0px;
+}
+
+.filesystem_box {
+  background-color: $crust;
+  padding: 0px 0px 0px 6px;
+}
+
+.filesystem_usage {
+  background-color: $base;
+  color: $green;
+  border-radius: 10px;
+}
+
+.filesystem_perc {
+  font-size: 12pt;
+  margin: 6px;
+  color: $green;
+}
+
+.ram_box {
+  background-color: $crust;
+  padding: 0px 0px 0px 13px;
+}
+
+.ram_usage {
+  background-color: $base;
+  color: $blue;
+}
+
+.ram_perc {
+  font-size: 12pt;
+  margin: 6px;
+  color: $blue;
+}
+
+.wifi_on {
+  background-color: $crust;
+  color: $text;
+  font-family: Iosevka NF;
+  font-weight: bold;
+  font-size: 14pt;
+  padding: 0px 9px 0px 13px;
+  border-radius: 0px;
+}
+
+.wifi_off {
+  background-color: $crust;
+  color: $text;
+  font-family: Iosevka NF;
+  font-weight: bold;
+  font-size: 14pt;
+  padding: 0px 9px 0px 13px;
+  border-radius: 0px;
+}
+
+.volume_button {
+  background-color: $crust;
+  color: $text;
+  font-family: Iosevka NF;
+  font-size: 17pt;
+  padding: 2px 7px 0px 12px;
+  border-radius: 0px;
+}
+
+.volume_slider{
+  padding: 1px 0px 0px 11px;
+}
+
+.volume_slider scale trough {
+  all: unset;
+  background-color: $surface0;
+  min-height: 12px;
+  min-width: 50px;
+  border-radius: 10px;
+}
+
+.volume_slider scale trough highlight { 
+  all: unset;
+  background-color: $lavender;
+  border-radius: 10px;
+}
+
+.gaps_toggle {
+  background-color: $crust;
+  color: $text;
+  font-family: Iosevka NF;
+  font-size: 14pt;
+  padding: 2px 0px 0px 12px;
+  margin: 0px 11px 0px 0px;
+  border-radius: 0px;
+}
+
+.no_gaps_button {
+  font-size: 18pt;
+  padding: 0px 8px 1px 14px;
+}
+
+.gaps_button {
+  font-size: 16pt;
+  padding: 0px 8px 0px 4px;
+}
+
+.date_box {
+  background-color: $mantle;
+  border-radius: 6px;
+  padding: 2px 6px 0px 6px;
+  margin: 6px 0px 5px 0px;
+}
+
+.date_normal {
+  background-color: $mantle;
+  font-family: Iosevka NF;
+  font-weight: bold;
+  font-size: 11pt;
+  padding: 0px 2px 0px 2px;
+  border-radius: 6px;
+}
+
+.date_expanded {
+  background-color: $mantle;
+  font-family: Iosevka NF;
+  font-weight: bold;
+  font-size: 11pt;
+  padding: 0px 2px 0px 2px;
+  border-radius: 0px 6px 6px 0px;
+}
+
+.date_alt_hidden {
+  background-color: $mantle;
+  font-family: Iosevka NF;
+  font-weight: bold;
+  font-size: 11pt;
+  padding: 0px 0px 0px 0px;
+  margin: 0px 0px 0px 1px;
+}
+
+.date_alt_expanded {
+  background-color: $mantle;
+  font-family: Iosevka NF;
+  font-weight: bold;
+  font-size: 11pt;
+  border-radius: 6px 0px 0px 6px;
+  padding: 0px 0px 0px 4px;
+}
+
+.poweroff_button {
+  font-family: Iosevka NF;
+  font-size: 12pt;
+  padding: 0px 14px 4px 9px;
+}
+
+.reboot_button {
+  font-family: Iosevka NF;
+  font-size: 14pt;
+  padding: 0px 11px 3px 6px;
+}
+
+.logout_button {
+  font-family: Iosevka NF;
+  font-size: 13pt;
+  padding: 0px 0px 3px 0px;
+}

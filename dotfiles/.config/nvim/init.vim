@@ -58,7 +58,8 @@ endif
 "catppuccin-latte, catppuccin-frappe, catppuccin-macchiato, catppuccin-mocha
 
 colorscheme catppuccin-mocha 
-:highlight CocFloating guibg=#1e1e2e
+:hi normal guibg=#11111b
+:highlight CocFloating guibg=#181825
 :highlight CocMenuSel guibg=#363a4f
 :highlight CocSearch guifg=#89b4fa
 
@@ -282,6 +283,13 @@ nnoremap <leader>ff <cmd>Telescope find_files<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+
+lua << EOF
+
+vim.api.nvim_set_hl(0, "TelescopeNormal", { bg = "#11111b" })
+vim.api.nvim_set_hl(0, "TelescopePromptNormal", { bg = "#11111b" })
+
+EOF
 
 " Layout
 
@@ -508,7 +516,7 @@ lua require'colorizer'.setup()
 
 "zen-mode
 
-autocmd VimEnter * hi ZenBg ctermbg=NONE guibg=#1E1E2F
+autocmd VimEnter * hi ZenBg ctermbg=NONE guibg=#11111B
 
 lua << EOF
 
@@ -578,8 +586,8 @@ require("zen-mode").setup {
   on_open = function(win)
   		-- catppuccin-mocha
 
-        vim.cmd("highlight MsgArea guifg=#1e1e2f")
-        vim.cmd("highlight ModeMsg guifg=#1e1e2f")
+        vim.cmd("highlight MsgArea guifg=#11111b")
+        vim.cmd("highlight ModeMsg guifg=#11111b")
 
 		-- nord
 
