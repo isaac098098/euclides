@@ -59,6 +59,7 @@ endif
 
 colorscheme catppuccin-mocha 
 :hi normal guibg=#11111b
+:hi visual guibg=#313244
 :highlight CocFloating guibg=#181825
 :highlight CocMenuSel guibg=#363a4f
 :highlight CocSearch guifg=#89b4fa

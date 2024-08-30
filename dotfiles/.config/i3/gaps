@@ -212,7 +212,7 @@ for_window [class="Screenkey"] floating enable
 
 #exec_always --no-startup-id /home/isaac09809/.config/polybar/launch.sh
 exec --no-startup-id eww open dock
-bindsym $mod+o exec --no-startup-id eww open --toggle catppuccin
+bindsym $mod+o exec --no-startup-id eww open --toggle dock
 
 # Wallpaper
 
