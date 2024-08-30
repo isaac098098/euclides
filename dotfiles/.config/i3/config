@@ -247,17 +247,9 @@ client.background		#FFFFFF		#FFFFFF 	#FFFFFF 	#FFFFFF		#FFFFFF
 
 # Borders
 
-default_border pixel 0
+default_border pixel 2
 default_floating_border none
-#smart_borders on
-
-#Gaps
-
-gaps top -9
-gaps right 5
-gaps bottom 5
-gaps left 5
-gaps inner 10
+smart_borders on
 
 # Disable X11 suspension due to inactivity
 

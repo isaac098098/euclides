@@ -253,7 +253,7 @@ default_floating_border none
 
 #Gaps
 
-gaps top -9
+gaps top -4
 gaps right 5
 gaps bottom 5
 gaps left 5

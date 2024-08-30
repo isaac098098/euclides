@@ -1,1 +1,1 @@
-(include "./widgets/dock/catppuccin/gaps/1/dock.yuck")
+(include "./widgets/dock/catppuccin/no_gaps/1/dock.yuck")
