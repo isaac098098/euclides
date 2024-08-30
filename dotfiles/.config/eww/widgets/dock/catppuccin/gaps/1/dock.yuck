@@ -310,6 +310,7 @@
 
 (defwindow dock
 	:monitor 0
+	:stacking "fg"
 	:windowtype "dock"
     :exclusive "true"
 	:geometry (
