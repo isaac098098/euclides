@@ -49,20 +49,29 @@ endif
 " Colorschemes
 
 " nord
-
 "colorscheme nord
-"autocmd VimEnter * hi ZenBg ctermbg=NONE guibg=#2E3440
 
 " catppuccin
-
-"catppuccin-latte, catppuccin-frappe, catppuccin-macchiato, catppuccin-mocha
-
 colorscheme catppuccin-mocha 
-:hi normal guibg=#11111b
-:hi visual guibg=#313244
+
+:hi Normal guibg=#11111b
+:hi Visual guibg=#313244
+
+"coc
 :highlight CocFloating guibg=#181825
 :highlight CocMenuSel guibg=#363a4f
 :highlight CocSearch guifg=#89b4fa
+
+" color of unfocussed window
+:hi NormalNC guibg=#11111b
+augroup winbg
+    autocmd!
+    au WinEnter * setl winhighlight=
+    au WinLeave * setl winhighlight=Normal:NormalNC
+augroup END
+
+" hide tildes
+:hi EndOfBuffer guifg=#11111b
 
 " nvim-tree
 
@@ -70,8 +79,6 @@ nnoremap <leader>tt <cmd>NvimTreeToggle<cr>
 nnoremap <leader>tf <cmd>NvimTreeFindFile<cr>
 
 lua << END
-
--- nvim-tree
 
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
@@ -188,6 +195,11 @@ require'nvim-treesitter.configs'.setup {
   },
 }
 
+return {
+	NvimTreeNormal = { bg = "#1e1e2e" },
+	NvimTreeNormalNC = { bg = "#1e1e2e" },
+}
+
 
 END
 
@@ -288,7 +300,7 @@ nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 lua << EOF
 
 vim.api.nvim_set_hl(0, "TelescopeNormal", { bg = "#11111b" })
-vim.api.nvim_set_hl(0, "TelescopePromptNormal", { bg = "#11111b" })
+vim.api.nvim_set_hl(0, "TelescopeSelection", { bg = "#1e1e2e" })
 
 EOF
 
