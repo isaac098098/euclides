@@ -239,8 +239,8 @@ bindsym Print exec --no-startup-id scrot -F "$HOME/Documents/images/screens/%Y%m
 
 # 						Border 		Background	Text 		Indicator 	Child Border
 client.focused 			#FFFFFF		#FFFFFF		#FFFFFF		#b4befe     #b4befe
-client.focused_inactive	#FFFFFF 	#FFFFFF		#FFFFFF 	#1e1e2e		#1e1e2e
-client.unfocused		#FFFFFF 	#FFFFFF		#FFFFFF 	#1e1e2e		#1e1e2e
+client.focused_inactive	#FFFFFF 	#FFFFFF		#FFFFFF 	#11111b		#11111b
+client.unfocused		#FFFFFF 	#FFFFFF		#FFFFFF 	#11111b		#11111b
 client.urgent			#FFFFFF 	#FFFFFF 	#FFFFFF 	#FFFFFF		#FFFFFF
 client.placeholder		#FFFFFF 	#FFFFFF 	#FFFFFF 	#FFFFFF		#FFFFFF
 client.background		#FFFFFF		#FFFFFF 	#FFFFFF 	#FFFFFF		#FFFFFF
