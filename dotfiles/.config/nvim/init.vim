@@ -347,7 +347,7 @@ set lbr
 "augroup END
 
 "zen mode
-"let g:vimtex_compiler_silent = 1
+let g:vimtex_compiler_silent = 1
 
 " Remove lag due to match search
 let g:loaded_matchparen = 0
