@@ -385,12 +385,11 @@ s({trig = "tag", name = "Equation tag", snippetType = "autosnippet"},
     {condition = in_mathzone}
 ),
 
-s({trig = "teq", name = "Last number equation", snippetType = "autosnippet"},
+s({trig = "teq", name = "Last number equation"},
     {
 		f(function(_,snip) return snip.captures[1] end),
         t("\\theequation")
-    },
-    {condition = in_mathzone}
+    }
 ),
 
 -- Matrix-like environments
@@ -474,7 +473,7 @@ s({trig = "\'", name = "Subscript and superscript", snippetType = "autosnippet",
 s({trig = "st", name = "Stacking", snippetType = "autosnippet"},
     {
 		f(function(_,snip) return snip.captures[1] end),
-        t("\\substack{"), v(1,"..."), t(" \\\\ "), i(2,"..."), t("}")
+        t("\\substack{"), i(1), t(" \\\\ "), i(2), t("}")
     },
     {condition = in_mathzone}
 ),

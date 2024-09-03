@@ -289,13 +289,13 @@ $crust:     #11111b;
   background-color: $surface0;
   min-height: 12px;
   min-width: 50px;
-  border-radius: 10px;
+  border-radius: 6px;
 }
 
 .volume_slider scale trough highlight { 
   all: unset;
   background-color: $lavender;
-  border-radius: 10px;
+  border-radius: 6px;
 }
 
 .gaps_toggle {

@@ -6,5 +6,3 @@ sed -i '1s/no_gaps/gaps/' $HOME/.config/eww/eww.scss
 cp $HOME/.config/dunst/gaps $HOME/.config/dunst/dunstrc
 eww reload
 i3-msg restart
-killall dunst
-dunst
