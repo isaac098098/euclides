@@ -520,8 +520,8 @@ set tabline=%!Tabline()
 
 "Cursor
 
-set guicursor=i:hor10
-set guicursor+=n-v-c:blinkon0
+"set guicursor=i:hor10
+"set guicursor+=n-v-c:blinkon0
 
 "Colorizer
 
