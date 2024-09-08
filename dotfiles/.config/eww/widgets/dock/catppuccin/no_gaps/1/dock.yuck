@@ -12,11 +12,7 @@
         (box :class "powermenu"
             :orientation "horizontal"
             :space-evenly false
-            (button :class "poweroff_button"
-                :onclick "shutdown -h now"
-                "⏻"
-            )
-            (revealer :transition "slideright"
+            (revealer :transition "slideleft"
                 :reveal show_powermenu
                 :duration "550ms"
                 (box :orientation "horizontal"
@@ -29,6 +25,10 @@
                         "󰍃"
                     )
                 )
+            )
+            (button :class "poweroff_button"
+                :onclick "shutdown -h now"
+                "⏻"
             )
         )
     )

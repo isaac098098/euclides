@@ -28,7 +28,7 @@ ColorManagement/UseSystemMonitorProfile=false
 ConvertToImageColorSpaceOnImport=false
 CreateBackupFile=false
 ExportConfiguration-image/jpeg=<!DOCTYPE params>\n<params>\n <param type="internal" name="baseline">true</param>\n <param type="internal" name="exif">true</param>\n <param type="string" name="filters"><![CDATA[]]></param>\n <param type="internal" name="forceSRGB">false</param>\n <param type="internal" name="iptc">true</param>\n <param type="internal" name="optimize">true</param>\n <param type="internal" name="progressive">false</param>\n <param type="internal" name="quality">80</param>\n <param type="internal" name="saveProfile">true</param>\n <param type="internal" name="smoothing">0</param>\n <param type="internal" name="storeAuthor">false</param>\n <param type="internal" name="storeMetaData">false</param>\n <param type="internal" name="subsampling">0</param>\n <param type="color" name="transparencyFillcolor"><![CDATA[<!DOCTYPE color>\n<color>\n <RGB space="sRGB-elle-V2-g10.icc" r="1" g="1" b="1"/>\n</color>\n]]></param>\n <param type="internal" name="xmp">true</param>\n</params>\n
-ExportConfiguration-image/png=<!DOCTYPE params>\n<params>\n <param name="alpha" type="internal">true</param>\n <param name="compression" type="internal">3</param>\n <param name="downsample" type="internal">false</param>\n <param name="forceSRGB" type="internal">true</param>\n <param name="indexed" type="internal">false</param>\n <param name="interlaced" type="internal">false</param>\n <param name="saveAsHDR" type="internal">false</param>\n <param name="saveSRGBProfile" type="internal">false</param>\n <param name="storeAuthor" type="internal">false</param>\n <param name="storeMetaData" type="internal">false</param>\n <param name="transparencyFillcolor" type="color"><![CDATA[<!DOCTYPE color>\n<color>\n <RGB g="1" space="sRGB-elle-V2-g10.icc" r="1" b="1"/>\n</color>\n]]></param>\n</params>\n
+ExportConfiguration-image/png=<!DOCTYPE params>\n<params>\n <param name="alpha" type="internal">true</param>\n <param name="compression" type="internal">3</param>\n <param name="downsample" type="internal">false</param>\n <param name="forceSRGB" type="internal">true</param>\n <param name="indexed" type="internal">false</param>\n <param name="interlaced" type="internal">false</param>\n <param name="saveAsHDR" type="internal">false</param>\n <param name="saveSRGBProfile" type="internal">false</param>\n <param name="storeAuthor" type="internal">false</param>\n <param name="storeMetaData" type="internal">false</param>\n <param name="transparencyFillcolor" type="color"><![CDATA[<!DOCTYPE color>\n<color>\n <RGB r="1" space="sRGB-elle-V2-g10.icc" b="1" g="1"/>\n</color>\n]]></param>\n</params>\n
 FetchNews=true
 GamutMasks.viewMode=0
 KineticScrollingEnabled=true
@@ -45,10 +45,10 @@ Krita/Ocio/OcioConfigPath=
 Krita/Ocio/OcioLockColorVisualRepresentation=false
 Krita/Ocio/OcioLutPath=
 Krita/Ocio/UseOcio=false
-LastBackGroundColor=<!DOCTYPE LastBackGroundColor>\n<LastBackGroundColor>\n <RGB g="1" space="sRGB-elle-V2-srgbtrc.icc" r="1" b="1"/>\n</LastBackGroundColor>\n
-LastForeGroundColor=<!DOCTYPE LastForeGroundColor>\n<LastForeGroundColor>\n <RGB g="0" space="sRGB-elle-V2-srgbtrc.icc" r="0" b="0"/>\n</LastForeGroundColor>\n
-LastPreset=c) Pencil-2
-LastPreset_-1=c) Pencil-2
+LastBackGroundColor=<!DOCTYPE LastBackGroundColor>\n<LastBackGroundColor>\n <RGB r="1" space="sRGB-elle-V2-srgbtrc.icc" b="1" g="1"/>\n</LastBackGroundColor>\n
+LastForeGroundColor=<!DOCTYPE LastForeGroundColor>\n<LastForeGroundColor>\n <RGB r="0" space="sRGB-elle-V2-srgbtrc.icc" b="0" g="0"/>\n</LastForeGroundColor>\n
+LastPreset=k) Blender Basic
+LastPreset_-1=k) Blender Basic
 LineSmoothingDelayDistance=41
 LineSmoothingDistance=174
 LineSmoothingFinishStabilizedCurve=true
@@ -280,8 +280,8 @@ zoomSteps=2
 
 [File Dialogs]
 DontUseNativeFileDialog=true
-OpenDocument=/home/isaac09809/Documents/projects/comissions/practices/templates
-SaveAs=/home/isaac09809/Documents/projects/comissions/practices/images/fundamentals
+OpenDocument=/home/isaac09809/Downloads
+SaveAs=/home/isaac09809/Downloads
 
 [GradientChooser]
 global/itemSize=medium
@@ -624,7 +624,11 @@ pinControls=true
 
 [RecentFiles]
 File1[$e]=$HOME/Documents/projects/comissions/practices/templates/ghosted_planes.kra
+File2[$e]=$HOME/Downloads/00201-1408678616.png
+File3[$e]=$HOME/Downloads/00161-998805521.png
 Name1=ghosted_planes.kra
+Name2=00201-1408678616.png
+Name3=00161-998805521.png
 maxRecentFileItems=100
 
 [SelectedTags]

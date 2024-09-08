@@ -361,20 +361,20 @@ $crust:     #11111b;
   padding: 0px 0px 0px 4px;
 }
 
-.poweroff_button {
-  font-family: Iosevka NF;
-  font-size: 12pt;
-  padding: 0px 14px 4px 9px;
-}
-
 .reboot_button {
   font-family: Iosevka NF;
   font-size: 14pt;
-  padding: 0px 11px 3px 6px;
+  padding: 0px 6px 2px 6px;
 }
 
 .logout_button {
   font-family: Iosevka NF;
   font-size: 13pt;
-  padding: 0px 0px 3px 0px;
+  padding: 0px 5px 3px 10px;
+}
+
+.poweroff_button {
+  font-family: Iosevka NF;
+  font-size: 12pt;
+  padding: 0px 14px 4px 8px;
 }
