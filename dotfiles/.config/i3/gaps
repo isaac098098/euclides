@@ -228,8 +228,7 @@ exec_always --no-startup-id dunst
 
 # Keyboard layouts
 
-bindsym $mod+q exec --no-startup-id setxkbmap -layout latam
-bindsym $mod+w exec --no-startup-id setxkbmap us -variant intl
+bindsym $mod+q exec --no-startup-id setxkbmap us -variant intl
 
 # Screenshots
 
@@ -238,12 +237,12 @@ bindsym Print exec --no-startup-id scrot -F "$HOME/Documents/images/screens/%Y%m
 # Colors
 
 # 						Border 		Background	Text 		Indicator 	Child Border
-client.focused 			#FFFFFF		#FFFFFF		#FFFFFF		#b4befe     #b4befe
-client.focused_inactive	#FFFFFF 	#FFFFFF		#FFFFFF 	#11111b		#11111b
-client.unfocused		#FFFFFF 	#FFFFFF		#FFFFFF 	#11111b		#11111b
-client.urgent			#FFFFFF 	#FFFFFF 	#FFFFFF 	#FFFFFF		#FFFFFF
-client.placeholder		#FFFFFF 	#FFFFFF 	#FFFFFF 	#FFFFFF		#FFFFFF
-client.background		#FFFFFF		#FFFFFF 	#FFFFFF 	#FFFFFF		#FFFFFF
+client.focused 			#b4befe		#b4befe		#b4befe		#b4befe     #b4befe
+client.focused_inactive	#b4befe 	#b4befe		#b4befe 	#11111b		#11111b
+client.unfocused		#1e1e2e 	#1e1e2e		#1e1e2e 	#11111b		#11111b
+client.urgent			#f38ba8 	#f38ba8 	#f38ba8 	#11111b		#11111b
+client.placeholder 		#b4befe		#b4befe		#b4befe		#b4befe     #b4befe
+client.background 		#b4befe		#b4befe		#b4befe		#b4befe     #b4befe
 
 # Borders
 
