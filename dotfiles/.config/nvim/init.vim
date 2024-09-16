@@ -8,7 +8,7 @@ Plug 'lervag/vimtex'
 
 Plug 'nvim-lualine/lualine.nvim'
 
-Plug 'nordtheme/vim'
+"Plug 'nordtheme/vim'
 
 Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
 
@@ -30,7 +30,7 @@ Plug 'nvim-telescope/telescope-media-files.nvim'
 
 Plug 'L3MON4D3/LuaSnip', {'tag': 'v2.*', 'do': 'make install_jsregexp'}
 
-Plug 'norcalli/nvim-colorizer.lua'
+"Plug 'norcalli/nvim-colorizer.lua'
 
 Plug 'folke/zen-mode.nvim'
 
@@ -525,7 +525,7 @@ set tabline=%!Tabline()
 
 "Colorizer
 
-lua require'colorizer'.setup()
+"lua require'colorizer'.setup()
 
 "zen-mode
 

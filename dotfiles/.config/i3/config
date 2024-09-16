@@ -216,7 +216,7 @@ bindsym $mod+o exec --no-startup-id eww open --toggle dock
 
 # Wallpaper
 
-exec_always --no-startup-id feh --bg-scale /home/isaac09809/Documents/images/wallpapers/lavender.png
+exec_always --no-startup-id feh --bg-scale /home/isaac09809/Documents/images/wallpapers/2.jpg
 
 # Blue light filter
 
@@ -249,10 +249,6 @@ client.background 		#b4befe		#b4befe		#b4befe		#b4befe     #b4befe
 default_border pixel 2
 default_floating_border none
 smart_borders on
-
-gaps inner 40 
-gaps outer 10
-smart_gaps on
 
 # Disable X11 suspension due to inactivity
 
