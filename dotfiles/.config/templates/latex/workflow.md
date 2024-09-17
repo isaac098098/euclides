@@ -1,16 +1,15 @@
 # Neovim + vimtex notes workflow
 
-This assumes you have a generic notes folder in a convenient directory in order to access it faster. In my case, this folder is `$HOME/notes`. Use `ln -sf /long/path/to/notes/ /short/path/to/notes` to create a symbolic link, use `ln -l /path/to/folder` to check for any symbolic links and use `rm /path/to/symlink` to remove a symbolic link. *Note* that symbolic link creation acts like folder creation. Do always use absolute paths. I recommend doing this a day before starting classes.
+This assumes you have a generic notes folder in a convenient directory in order to access it faster. In my case, this folder is `$HOME/notes`. Use `ln -sf /long/path/to/notes/ /short/path/to/notes` to create a symbolic link, use `ln -l /path/to/folder` to check for any symbolic links and use `rm /path/to/symlink` to remove a symbolic link. *Note* that symbolic link creation acts like folder creation. Do always use absolute paths. I recommend doing this a day before starting classes. Make sure to copy `preamble.tex` and `bibliography.tex` to the `notes` directory.
 
 ## Create new notes
 1. Create and enter the desired lectures folder. Create a symbolic link if necessary.
-2. Copy `preamble.tex` and `bibliography.tex` to the current directory.
-3. Open the main document and the first lecture. E.g. `nvim -p main.tex lec_01.tex`
-4. In `main.tex`, use the `math-notes` snippet.
-5. Fill the fields.
-6. In `lec_01.tex` use the `lec` or `les` snippets to create a new section for the lecture.
-7. Fill the title field and use the `date` snippet to fill the date field.
-8. Start taking notes.
+2. Open the main document and the first lecture. E.g. `nvim -p main.tex lec_01.tex`
+3. In `main.tex`, use the `math-notes` snippet.
+4. Fill the fields.
+5. In `lec_01.tex` use the `lec` or `les` snippets to create a new section for the lecture.
+6. Fill the title field and use the `date` snippet to fill the date field.
+7. Start taking notes.
 
 ## Open existing notes
 1. Enter the lectures folder.
