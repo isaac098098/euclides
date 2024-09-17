@@ -1,6 +1,6 @@
 # Neovim + vimtex notes workflow
 
-This assumes you have a generic notes folder in a convenient directory in order to access it faster. In my case, this folder is `$HOME/notes`. Use `ln -sf /long/path/to/notes/ /short/path/to/notes` to create a symbolic link, use `ln -l /path/to/folder` to check for any symbolic links and use `rm /path/to/symlink` to remove a symbolic link. *Note* that symbolic link creation acts like folder creation. Do always use absolute paths. I recommend doing this a day before starting classes. Make sure to copy `preamble.tex` and `bibliography.tex` to the `notes` directory.
+This assumes you have a generic notes folder in a convenient directory in order to access it faster. In my case, this folder is `$HOME/notes`. Use `ln -sf /long/path/to/notes/ /short/path/to/notes` to create a symbolic link, use `ln -l /path/to/folder` to check for any symbolic links and use `rm /path/to/symlink` to remove a symbolic link. *Note* that symbolic link creation acts like folder creation. Do always use absolute paths. I recommend doing this a day before starting classes. Make sure to copy `preamble.tex` and `bibliography.tex` to the physical `notes` directory, ussualy the semester directory.
 
 ## Create new notes
 1. Create and enter the desired lectures folder. Create a symbolic link if necessary.
