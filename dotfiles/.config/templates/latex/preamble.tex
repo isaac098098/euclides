@@ -77,6 +77,7 @@
 %\usepackage{lipsum}
 %\usepackage{relsize} %relative text resizing
 \usepackage{scalerel} %relative math text resizing
+\usepackage{xcolor}
 
 %Preamble
 
@@ -142,6 +143,9 @@
 %use numbers to change to number citation format
 %use sort to sort citations in alphabetical order
 
+%\addto{\captionsspanish}{\renewcommand{\bibname}{Bibliografía}} %babel, biblatex, changes bib section title
+\addto{\captionsspanish}{\renewcommand{\refname}{Bibliografía}} %babel, bibtex, changes bib section title
+
 %\makeatletter %deprecated
 %\def\adjustpenalty{\@beginparpenalty\@M \@itempenalty\@M}
 %\makeatother 
@@ -177,10 +181,9 @@
 	\cfoot{\thepage} %footer
 }
 
-%Bibliography and cites
-
-%\addto{\captionsspanish}{\renewcommand{\bibname}{Bibliografía}} %babel, biblatex, changes bib section title
-\addto{\captionsspanish}{\renewcommand{\refname}{Bibliografía}} %babel, bibtex, changes bib section title
+%Boxes
+\setlength\fboxsep{8pt}
+\setlength\fboxrule{0.7pt}
 
 %Metadata, depends on hyperref
 \title{\Huge\scshape\notestitle}
@@ -311,7 +314,7 @@
 {0.5em} %Espacio después del encabezado
 {\thmname{#1}\thmnumber{ #2}\textnormal{\thmnote{ (#3)}}} %Ejemplo [número] [nombre]
 \theoremstyle{example}
-\newtheorem{example}{Ejemplo}[section]
+\newtheorem{example}{Ejemplo}[subsection]
 
 %Lectures
 \newcommand{\seclecture}[2]{
