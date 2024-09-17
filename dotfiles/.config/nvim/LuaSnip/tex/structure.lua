@@ -269,6 +269,24 @@ s({trig = "pdf", name = "PDF bookmark"},
     }
 ),
 
+s({trig = "lec", name = "Lecture section"},
+    {
+        t("\\seclecture{"), v(1,"title"), t("}{"), i(2,"date"), t("}")
+    }
+),
+
+s({trig = "les", name = "Lecture subsection"},
+    {
+        t("\\sublecture{"), v(1,"title"), t("}{"), i(2,"date"), t("}")
+    }
+),
+
+s({trig = "date", name = "Print current date"},
+    {
+		f(function() return os.date("%a %d %b %y") end)
+    }
+),
+
 -- Cross-references
 
 -- Labels

@@ -8,7 +8,7 @@
 \usepackage[utf8]{inputenc} %character codification
 
 %Layout
-\usepackage[left=3.0cm,right=3.0cm,top=3.0cm,bottom=3.3cm,headheight=0.8cm]{geometry} %page size
+\usepackage[left=3.2cm,right=3.2cm,top=3.0cm,bottom=3.3cm,headheight=0.8cm]{geometry} %page size
 %use headheight to control the distance between header and text
 \usepackage{fancyhdr} %footers and headers
 
@@ -24,8 +24,13 @@
 
 %Math packages
 \usepackage{amsthm} %theorem alike environmetns
-\usepackage{amsmath} %math
+\usepackage[tbtags]{amsmath} %math
+%use tbtags to tag equations at the bottom
 \usepackage{amssymb} %more math symbols
+\usepackage{statmath} %math mode bold, use \bf[char]
+\usepackage{esvect} %better vector arrows
+\usepackage{leftindex} %left indexes
+\usepackage{centernot} %centernot symbols
 
 %Formatting
 \usepackage[hyphens]{url} %hyperlinks in bibliography
@@ -59,9 +64,9 @@
 \usepackage{pgfplots} %advanced data plotting
 
 %Tables
-\usepackage{array}
-\usepackage{fancyhdr} %Línea horizontal del encabezado
-%\usepackage{booktabs} %Estilo de tablas
+\usepackage{array} %math arrays
+\usepackage{fancyhdr} %headers
+%\usepackage{booktabs} %book tables
 %\usepackage{cellspace} %vertical table spacing
 %use
 %\setlength\cellspacetoplimit{0pt}
@@ -308,9 +313,64 @@
 \theoremstyle{example}
 \newtheorem{example}{Ejemplo}[subsection]
 
-%notes macros
+%Lectures
+\newcommand{\seclecture}[2]{
+	\section{#1}
+    \marginpar{\footnotesize\textsf{\mbox{#2}}}
+}
+\newcommand{\sublecture}[2]{
+	\subsection{#1}
+    \marginpar{\footnotesize\textsf{\mbox{#2}}}
+}
 
+%Macros
 
+%Operators
+
+\DeclarePairedDelimiter\bra{\langle}{\rvert}
+\DeclarePairedDelimiter\ket{\lvert}{\rangle}
+\DeclarePairedDelimiterX\braket[2]{\langle}{\rangle}{#1\,\delimsize\vert\,\mathopen{}#2}
+
+%Trigonometric functions
+
+\DeclareMathOperator{\arccot}{arccot}
+\DeclareMathOperator{\arcsec}{arcsec}
+\DeclareMathOperator{\arccsc}{arccsc}
+\DeclareMathOperator{\sech}{sech}
+\DeclareMathOperator{\csch}{csch}
+\DeclareMathOperator{\arcsinh}{arcsinh}
+\DeclareMathOperator{\arccosh}{arccosh}
+\DeclareMathOperator{\arctanh}{arctanh}
+\DeclareMathOperator{\arccoth}{arccoth}
+\DeclareMathOperator{\arcsech}{arcsech}
+\DeclareMathOperator{\arccsch}{arccsch}
+
+%Logic
+
+\let\oldforall\forall
+\renewcommand{\forall}{\:\oldforall\,}
+\let\oldexists\exists
+\renewcommand{\exists}{\:\oldexists\:}
+\let\oldnexists\nexists
+\renewcommand{\nexists}{\:\oldnexists\:}
+
+%Sets and inclusion
+
+\newcommand{\std}{\, : \,}
+
+%Derivatives
+
+\newcommand{\dx}{\,\text{d}}
+\newcommand{\dr}{\text{d}}
+\newcommand{\der}[2]{\frac{\dr#1}{\dr#2}}
+\newcommand{\Der}[2]{\frac{\dr}{\dr#2}#1}
+\newcommand{\ndr}[3]{\frac{\dr^{#1}#2}{\dr#3^{#1}}}
+\newcommand{\Ndr}[3]{\frac{\dr^{#1}}{\dr#3^{#1}}#2}
+\newcommand{\pdr}[2]{\frac{\partial#1}{\partial#2}}
+\newcommand{\Pdr}[2]{\frac{\partial}{\partial#2}#1}
+\newcommand{\npd}[3]{\frac{\partial^{#1}#2}{\partial#3^{#1}}}
+\newcommand{\Npd}[3]{\frac{\partial^{#1}}{\partial#3^{#1}}#2}
+\newcommand{\evl}[1]{\mathrel{\bigg|_{#1}}}
 
 \begin{document}
 %\pagenumbering{roman}
