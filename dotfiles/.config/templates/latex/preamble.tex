@@ -73,10 +73,6 @@
 %\setlength\cellspacebottomlimit{0pt}
 %\usepackage{multirow} %multiple row cells
 
-%Boxes
-\setlength\fboxsep{8pt}
-\setlength\fboxrule{0.7pt}
-
 %Other
 %\usepackage{lipsum}
 %\usepackage{relsize} %relative text resizing
@@ -303,7 +299,7 @@
 {0.5em} %Espacio después del encabezado
 {\thmname{#1}\thmnumber{ #2}\textnormal{\thmnote{ (#3)}}} %Ejercicio [número] [nombre]
 \theoremstyle{exercise}
-\newtheorem{exercise}{Ejercicio}[subsection]
+\newtheorem{exercise}{Ejercicio}[section]
 
 \newtheoremstyle{example}
 {\topsep} %Separación superior
@@ -315,7 +311,7 @@
 {0.5em} %Espacio después del encabezado
 {\thmname{#1}\thmnumber{ #2}\textnormal{\thmnote{ (#3)}}} %Ejemplo [número] [nombre]
 \theoremstyle{example}
-\newtheorem{example}{Ejemplo}[subsection]
+\newtheorem{example}{Ejemplo}[section]
 
 %Lectures
 \newcommand{\seclecture}[2]{
