@@ -14,12 +14,12 @@
   <property name="zoomStep" value="10"/>
   <property name="zoomStepScroll" value="2"/>
   <property name="displayDpi" value="72"/>
-  <property name="mainWndWidth" value="1076"/>
-  <property name="mainWndHeight" value="974"/>
+  <property name="mainWndWidth" value="1920"/>
+  <property name="mainWndHeight" value="1042"/>
   <property name="maximized" value="false"/>
   <property name="showToolbar" value="false"/>
   <property name="showSidebar" value="false"/>
-  <property name="sidebarWidth" value="144"/>
+  <property name="sidebarWidth" value="50"/>
   <property name="sidebarNumberingStyle" value="1"/>
   <property name="sidebarOnRight" value="false"/>
   <property name="scrollbarOnLeft" value="false"/>

@@ -2,7 +2,7 @@ set guioptions                  ""
 set font                        "IosevkaNF Bold 12"
 set statusbar-basename          1
 set selection-clipboard         clipboard
-set recolor                     "false"
+set recolor                     "true"
 set recolor-keephue             "false"
 
 include catppuccin-macchiato
