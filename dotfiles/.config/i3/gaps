@@ -198,6 +198,7 @@ assign [class="obsidian"] $ws7
 assign [class="kdenlive"] $ws8
 assign [class="Spotify"] $ws10
 assign [class="Gnome-pomodoro"] $ws10
+assign [class="obs"] $ws10
 
 # Floating windows
 

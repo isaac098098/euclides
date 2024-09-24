@@ -2,13 +2,13 @@ AlsoSaveAsKra=false
 AntialiasSelectionOutline=false
 ArtColorSel.ColorSpace=0
 ArtColorSel.InversedSaturation=false
-ArtColorSel.Light=0.5759475603505582
+ArtColorSel.Light=0.6231171903427805
 ArtColorSel.LightPieces=11
 ArtColorSel.NumRings=7
 ArtColorSel.RingPieces=12
-ArtColorSel.SelColorH=0.28789281489482077
-ArtColorSel.SelColorS=0.5147875794384219
-ArtColorSel.SelColorX=0.5759475603505582
+ArtColorSel.SelColorH=0.049387939301630275
+ArtColorSel.SelColorS=0.32510265865489546
+ArtColorSel.SelColorX=0.6231171903427805
 ArtColorSel.defaultHueSteps=12
 ArtColorSel.defaultSaturationSteps=7
 ArtColorSel.defaultValueScaleSteps=11
@@ -45,8 +45,8 @@ Krita/Ocio/OcioConfigPath=
 Krita/Ocio/OcioLockColorVisualRepresentation=false
 Krita/Ocio/OcioLutPath=
 Krita/Ocio/UseOcio=false
-LastBackGroundColor=<!DOCTYPE LastBackGroundColor>\n<LastBackGroundColor>\n <RGB g="0.192156866192818" r="0.274509817361832" b="0.152941182255745" space="sRGB-elle-V2-srgbtrc.icc"/>\n</LastBackGroundColor>\n
-LastForeGroundColor=<!DOCTYPE LastForeGroundColor>\n<LastForeGroundColor>\n <RGB g="0.619607865810394" r="0.482352942228317" b="0.415686279535294" space="sRGB-elle-V2-srgbtrc.icc"/>\n</LastForeGroundColor>\n
+LastBackGroundColor=<!DOCTYPE LastBackGroundColor>\n<LastBackGroundColor>\n <RGB r="0.274509817361832" b="0.152941182255745" g="0.192156866192818" space="sRGB-elle-V2-srgbtrc.icc"/>\n</LastBackGroundColor>\n
+LastForeGroundColor=<!DOCTYPE LastForeGroundColor>\n<LastForeGroundColor>\n <RGB r="0.74117648601532" b="0.52549022436142" g="0.600000023841858" space="sRGB-elle-V2-srgbtrc.icc"/>\n</LastForeGroundColor>\n
 LastPreset=k) Blender Basic
 LastPreset_-1=k) Blender Basic
 LineSmoothingDelayDistance=41
@@ -56,7 +56,7 @@ LineSmoothingScalableDistance=true
 LineSmoothingSmoothPressure=false
 LineSmoothingStabilizeSensors=true
 LineSmoothingTailAggressiveness=0.15
-LineSmoothingType=0
+LineSmoothingType=3
 LineSmoothingUseDelayDistance=true
 NumberOfLayersForNewImage=2
 OpenGLFilterMode=3
@@ -627,8 +627,6 @@ yPosition=16
 pinControls=true
 
 [RecentFiles]
-File1[$e]=$HOME/Documents/projects/comissions/due/mitsuri/mitsuri.kra
-Name1=mitsuri.kra
 maxRecentFileItems=100
 
 [SelectedTags]

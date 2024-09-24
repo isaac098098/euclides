@@ -1,0 +1,3 @@
+#!/bin/bash
+cp $HOME/euclides/dotfiles/.config/templates/latex/bibliography.tex .
+cp $HOME/euclides/dotfiles/.config/templates/latex/preamble.tex .
