@@ -112,7 +112,7 @@
 %\titleformat{\subsection}{\centering\normalsize\scshape}{\thesubsection.}{0.5em}{}
 \titleformat{\subsection}{\large}{\thesubsection.}{0.5em}{}
 %titleformat{sec}{format}{number format}{number to title spacing}{prenote (between number and title)}
-\renewcommand{\thesection}{\normalfont\arabic{section}} %section number format
+\renewcommand{\thesection}{\arabic{section}} %section number format
 %\renewcommand{\thesection}{\normalfont\Roman{section}} %subsection number format
 %\renewcommand{\thesubsection}{\Roman{section}.\arabic{subsection}} %subsection number format
 \renewcommand{\thesubsection}{\arabic{section}.\arabic{subsection}} %subsection number format
@@ -173,7 +173,7 @@
 	\fancyhead[LO]{\hspace{0.8cm}\small\scshape\nouppercase\notestitle} %left odd
 	\fancyhead[RO]{\small\thepage\hspace{0.8cm}} %right odd
 	\fancyhead[LE]{\hspace{0.8cm}\small\thepage} %left even
-	\fancyhead[RE]{\small\scshape\rightmark\hspace{0.8cm}} %right even
+	\fancyhead[RE]{\small\scshape\nouppercase\rightmark\hspace{0.8cm}} %right even
 }
 
 \fancypagestyle{plain}{
