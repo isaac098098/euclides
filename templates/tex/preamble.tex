@@ -102,20 +102,20 @@
 
 %Section formatting, depends on titlesec
 
-\titlespacing*{\section}{0cm}{0.7cm}{0.7cm}
-\titlespacing*{\subsection}{0em}{0.7cm}{0.7cm}
+%\titlespacing*{\section}{0cm}{0cm}{0cm}
+\titlespacing*{\subsection}{0em}{1.4em}{1.4em} %Espaciado de las subsecciones
 %use * to apply to all instances
 %\titlespacing*{sec}{left spacing}{above spacing}{below spacing}
 
 %\titleformat{\section}{\centering\large\scshape}{\thesection.}{0.5em}{}
-\titleformat{\section}{\Large}{\thesection.}{0.5em}{}
+\titleformat{\section}{\centering\LARGE}{\thesection.}{0.5em}{}
 %\titleformat{\subsection}{\centering\normalsize\scshape}{\thesubsection.}{0.5em}{}
-\titleformat{\subsection}{\large}{\thesubsection.}{0.5em}{}
+\titleformat{\subsection}{\centering\large}{\thesubsection.}{0.5em}{}
 %titleformat{sec}{format}{number format}{number to title spacing}{prenote (between number and title)}
-\renewcommand{\thesection}{\arabic{section}} %section number format
+\renewcommand{\thesection}{\normalfont\arabic{section}} %section number format
 %\renewcommand{\thesection}{\normalfont\Roman{section}} %subsection number format
 %\renewcommand{\thesubsection}{\Roman{section}.\arabic{subsection}} %subsection number format
-\renewcommand{\thesubsection}{\arabic{section}.\arabic{subsection}} %subsection number format
+\renewcommand{\thesubsection}{\arabic{section}.\arabic{subsection}} %Formato de las subsecciones
 
 %toc
 %does not affect section titles in the document body
@@ -173,7 +173,7 @@
 	\fancyhead[LO]{\hspace{0.8cm}\small\scshape\nouppercase\notestitle} %left odd
 	\fancyhead[RO]{\small\thepage\hspace{0.8cm}} %right odd
 	\fancyhead[LE]{\hspace{0.8cm}\small\thepage} %left even
-	\fancyhead[RE]{\small\scshape\nouppercase\rightmark\hspace{0.8cm}} %right even
+	\fancyhead[RE]{\small\scshape\rightmark\hspace{0.8cm}} %right even
 }
 
 \fancypagestyle{plain}{
@@ -375,12 +375,3 @@
 \newcommand{\npd}[3]{\frac{\partial^{#1}#2}{\partial#3^{#1}}}
 \newcommand{\Npd}[3]{\frac{\partial^{#1}}{\partial#3^{#1}}#2}
 \newcommand{\evl}[1]{\mathrel{\bigg|_{#1}}}
-
-\begin{document}
-%\pagenumbering{roman}
-%\maketitle
-%\thispagestyle{plain}
-%\tableofcontents
-%\newpage
-\pagestyle{title-subsection}
-\pagenumbering{arabic}

@@ -8,6 +8,7 @@ vim.keymap.set('n', '<localleader>fh', builtin.help_tags, { desc = 'Telescope he
 
 return {
     defaults = {
+        preview = false,
         prompt_prefix = "   ",
         selection_caret = " ",
         entry_prefix = " ",
@@ -17,8 +18,11 @@ return {
                 prompt_position = "top",
                 preview_width = 0.55,
             },
-            width = 0.87,
-            height = 0.80,
+            width = 0.58,
+            height = 0.50,
+        },
+        pickers = {
+            find_files = { preview = false },
         },
         mappings = {
             n = { ["q"] = require("telescope.actions").close },

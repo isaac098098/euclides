@@ -200,12 +200,12 @@ $crust:     #11111b;
   font-family: Iosevka NF;
   font-weight: bold;
   font-size: 16pt;
-  padding: 1px 18px 0px 0px;
+  padding: 3px 18px 0px 0px;
 }
 
 .filesystem_box {
   background-color: $crust;
-  padding: 0px 0px 0px 6px;
+  padding: 2px 0px 0px 6px;
 }
 
 .filesystem_usage {
@@ -222,7 +222,7 @@ $crust:     #11111b;
 
 .ram_box {
   background-color: $crust;
-  padding: 0px 0px 0px 13px;
+  padding: 2px 0px 0px 13px;
 }
 
 .ram_usage {
@@ -242,7 +242,7 @@ $crust:     #11111b;
   font-family: Iosevka NF;
   font-weight: bold;
   font-size: 14pt;
-  padding: 0px 9px 0px 13px;
+  padding: 1px 9px 0px 11px;
   border-radius: 0px;
 }
 
@@ -261,12 +261,12 @@ $crust:     #11111b;
   color: $text;
   font-family: Iosevka NF;
   font-size: 17pt;
-  padding: 2px 7px 0px 12px;
+  padding: 3px 18px 0px 12px;
   border-radius: 0px;
 }
 
 .volume_slider{
-  padding: 1px 0px 0px 11px;
+  padding: 3px 0px 0px 11px;
 }
 
 .volume_slider scale trough {
@@ -279,7 +279,7 @@ $crust:     #11111b;
 
 .volume_slider scale trough highlight { 
   all: unset;
-  background-color: $lavender;
+  background-color: $avender;
   border-radius: 6px;
 }
 
@@ -291,6 +291,36 @@ $crust:     #11111b;
   padding: 2px 0px 0px 12px;
   margin: 0px 11px 0px 1px;
   border-radius: 0px;
+}
+
+.bt_on {
+  background-color: $blue;
+  color: $base;
+  font-family: Iosevka NF;
+  font-weight: bold;
+  font-size: 13pt;
+  padding: 0px 6px 0px 5px;
+  margin: 8px 0px 6px 1px;
+  border-radius: 8px;
+
+  &:hover {
+    background-color: #a3c8ff;
+  }
+}
+
+.bt_off {
+  background-color: $base;
+  color: $text;
+  font-family: Iosevka NF;
+  font-weight: bold;
+  font-size: 13pt;
+  padding: 0px 7px 0px 5px;
+  margin: 8px 0px 6px 0px;
+  border-radius: 8px;
+
+  &:hover {
+    background-color: $surface0;
+  }
 }
 
 .no_gaps_button {

@@ -70,6 +70,7 @@ return {
     },
     {
         "nvim-telescope/telescope.nvim",
+        branch = '0.1.x',
         dependencies = { {'nvim-treesitter/nvim-treesitter'}, {'nvim-lua/plenary.nvim'} },
         opts = function()
             return require('config.telescope')

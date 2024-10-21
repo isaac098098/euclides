@@ -256,6 +256,24 @@
 	)
 )
 
+(defpoll bt_status :interval "1s" "bluetoothctl show | grep 'Powered:' | awk '{print $2}'")
+
+(defwidget bt []
+	(box
+		:orientation "horizontal"
+		:halign "start"
+		:space-evenly "false"
+		(button :class {bt_status == "yes" ? "bt_on" : "bt_off"}
+			:orientation "horizontal"
+			:halign "start"
+            :cursor "pointer"
+			:space-evenly "false"
+			:onclick "if [ ${bt_status} == 'yes' ]; then echo -e 'power off' | bluetoothctl; elif [ ${bt_status} == 'no' ]; then echo -e 'power on' | bluetoothctl && echo -e 'connect BC:A0:80:2C:AA:18' | bluetoothctl; fi"
+			{bt_status == "yes" ? "󰂯" : "󰂲"}
+		)
+	)
+)
+
 ; Window modules
 
 (defwidget dock_widget []
@@ -300,6 +318,7 @@
 		(ram)
 		(wifi)
 		(volume)
+        (bt)
 		(gaps_toggle)
 		(date)
 		(powermenu)
