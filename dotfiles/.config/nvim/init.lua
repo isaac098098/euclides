@@ -41,3 +41,20 @@ vim.keymap.set('i','oi','<Esc>')
 
 --Plugins
 require("config.lazy")
+
+-- Colorschemes
+
+-- NvimTree
+vim.cmd('highlight NvimTreeEndOfBuffer guifg=#11111b')
+vim.cmd('highlight NvimTreeWinSeparator guibg=#11111b guifg=#11111b')
+vim.cmd('highlight NvimTreeNormal guibg=#11111b')
+vim.cmd('highlight NvimTreeStatusLine guibg=#11111b')
+vim.cmd('highlight NvimTreeStatusLineNC guibg=#11111b')
+vim.cmd('highlight EndOfBuffer guifg=#181825')
+
+-- toggleterm
+vim.api.nvim_set_hl(0, 'NormalFloat', { bg = '#11111b', fg = '#cdd6f4' })
+vim.api.nvim_set_hl(0, 'FloatBorder', { bg = '#11111b', fg = '#cdd6f4' })
+
+-- bufferline
+vim.cmd('highlight BufferLineOffsetSeparator guifg=#11111b guibg=#11111b')

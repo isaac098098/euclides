@@ -35,6 +35,7 @@ require("nvim-tree").setup {
     on_attach = attach,
     hijack_cursor = true,
     sync_root_with_cwd = true,
+    -- open_on_tab  = true,
     update_focused_file = {
         enable = true,
         update_root = false,
