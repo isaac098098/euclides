@@ -210,6 +210,7 @@ for_window [class="Gpick"] floating enable
 for_window [class="gnome-calculator"] floating enable
 for_window [class="Screenkey"] floating enable
 for_window [class="steam"] floating enable
+for_window [class="paleta"] floating enable
 
 # Dock
 
