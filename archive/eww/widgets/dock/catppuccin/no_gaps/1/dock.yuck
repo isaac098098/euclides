@@ -1,0 +1,350 @@
+; Modules
+
+; Widgets
+
+(defvar show_powermenu false)
+
+(defwidget powermenu []
+    (eventbox
+        :valign "end"
+        :onhover "eww update show_powermenu=true"
+        :onhoverlost "eww update show_powermenu=false"
+        (box :class "powermenu"
+            :orientation "horizontal"
+            :space-evenly false
+            (revealer :transition "slideleft"
+                :reveal show_powermenu
+                :duration "550ms"
+                (box :orientation "horizontal"
+                    (button :class "reboot_button"
+                        :onclick "reboot"
+                        ""
+                    )
+                    (button :class "logout_button"
+                        :onclick "i3-msg exit"
+                        "󰍃"
+                    )
+                )
+            )
+            (button :class "poweroff_button"
+                :onclick "shutdown -h now"
+                "⏻"
+            )
+        )
+    )
+)
+
+(defpoll wifi_status :interval "1s" "nmcli radio wifi")
+
+(defwidget wifi []
+	(box
+		:orientation "horizontal"
+		:halign "start"
+		:space-evenly "false"
+		(button :class {wifi_status == "enabled" ? "wifi_on" : "wifi_off"}
+			:orientation "horizontal"
+			:halign "start"
+			:space-evenly "false"
+			:onclick "if [ ${wifi_status} == 'enabled' ]; then nmcli radio wifi off; else if [ ${wifi_status} == 'disabled' ]; then nmcli radio wifi on; fi; fi"
+			{wifi_status == "enabled" ? "󰤨" : "󰤭"}
+		)
+	)
+)
+
+(defpoll volume :interval "0.5s" "$HOME/.config/eww/scripts/getvol")
+(defvar show_volume false)
+
+(defwidget volume []
+	(eventbox
+		:onhover "eww update show_volume=true"
+		:onhoverlost "eww update show_volume=false"
+		(box
+			:orientation "horizontal"
+			:space-evenly false
+			(revealer :transition "slideleft"
+				:duration "550ms"
+				:reveal show_volume
+				(box :class "volume_slider"
+					:otientation "horizontal"
+					(scale :min 0
+						:max 101
+						:orientation "horizontal"
+						:value volume
+						:onchange "amixer -D pulse sset Master {}%"
+					)
+				)
+			)
+			(button :class "volume_button"
+				:onclick "pactl set-sink-mute @DEFAULT_SINK@ toggle"
+				{volume != 0 ? "󰕾" : "󰝟"}
+			)	
+		)
+	)
+)
+
+(defwidget filesystem []
+	(box :class "filesystem_box"
+		:orientation "horizontal"
+		:space-evenly "false"
+		:halign "start"
+		(circular-progress :class "filesystem_usage"
+			:value {round((1 - (EWW_DISK["/"].free / EWW_DISK["/"].total)) * 100, 0)}
+			:start-at 75
+			:thickness 5
+			:clockwise true
+			:active true
+			(button :class "filesystem_perc"
+				""
+			)
+		)
+	)
+)
+
+(defwidget ram []
+	(box :class "ram_box"
+		:orientation "horizontal"
+		:space-evenly "false"
+		:halign "start"
+		(circular-progress :class "ram_usage"
+			:value {EWW_RAM.used_mem_perc}
+			:start-at 75
+			:thickness 5
+			:clockwise true
+			:active true
+			(button :class "ram_perc"
+				:onclick " "
+				""
+			)
+		)
+	)
+)
+
+; Workspaces
+
+(deflisten active_xworkspaces "xprop -spy -root _NET_DESKTOP_NAMES")
+;(defvar active_xworkspaces "3")
+;(deflisten focused_xworkspace "bash $HOME/.config/eww/scripts/get_active_workspace")
+(defpoll focused_xworkspace :interval "0.05s" "i3-msg -t get_workspaces | jq '.[] | select(.focused).num'")
+;(defvar focused_xworkspace "1")
+
+(defwidget xworkspaces []
+	(box
+		:class "xworkspaces_box"
+		:orientation "horizontal"
+		:halign "center"
+		:spacing "0"
+		:hexpand "false"
+		(button
+			:class {focused_xworkspace == "1" ? "focused_xworkspace_1" : active_xworkspaces =~ '"1"' ? "active_xworkspace_1" : "empty_xworkspace_1"}
+			:onclick "i3-msg workspace 1" 
+			""
+		)(button
+			:class {focused_xworkspace == "2" ? "focused_xworkspace_2" : active_xworkspaces =~ '"2"' ? "active_xworkspace_2" : "empty_xworkspace_2"}
+			:onclick "i3-msg workspace 2" 
+			""
+		)(button
+			:class {focused_xworkspace == "3" ? "focused_xworkspace_3" : active_xworkspaces =~ '"3"' ? "active_xworkspace_3" : "empty_xworkspace_3"}
+			:onclick "i3-msg workspace 3" 
+			"󰈹"
+		)(button
+			:class {focused_xworkspace == "4" ? "focused_xworkspace_4" : active_xworkspaces =~ '"4"' ? "active_xworkspace_4" : "empty_xworkspace_4"}
+			:onclick "i3-msg workspace 4" 
+			""
+		)(button
+			:class {focused_xworkspace == "5" ? "focused_xworkspace_5" : active_xworkspaces =~ '"5"' ? "active_xworkspace_5" : "empty_xworkspace_5"}
+			:onclick "i3-msg workspace 5" 
+			"󰋩"
+		)
+		;(button
+			;:class {focused_xworkspace == "6" ? "focused_xworkspace" : active_xworkspaces =~ '"6"' ? "active_xworkspace" : ""}
+			;:onclick "i3-msg workspace 6" 
+			;{focused_xworkspace == "6" ? "" : active_xworkspaces =~ '"6"' ? "" : ""}
+		;)(button
+			;:class {focused_xworkspace == "7" ? "focused_xworkspace" : active_xworkspaces =~ '"7"' ? "active_xworkspace" : ""}
+			;:onclick "i3-msg workspace 7" 
+			;{focused_xworkspace == "7" ? "" : active_xworkspaces =~ '"7"' ? "" : ""}
+		;)(button
+			;:class {focused_xworkspace == "8" ? "focused_xworkspace" : active_xworkspaces =~ '"8"' ? "active_xworkspace" : ""}
+			;:onclick "i3-msg workspace 8" 
+			;{focused_xworkspace == "8" ? "" : active_xworkspaces =~ '"8"' ? "" : ""}
+		;)(button
+			;:class {focused_xworkspace == "9" ? "focused_xworkspace" : active_xworkspaces =~ '"9"' ? "active_xworkspace" : ""}
+			;:onclick "i3-msg workspace 9" 
+			;{focused_xworkspace == "9" ? "" : active_xworkspaces =~ '"9"' ? "" : ""}
+		;)(button
+			;:class {focused_xworkspace == "10" ? "focused_xworkspace" : active_xworkspaces =~ '"10"' ? "active_xworkspace" : ""}
+			;:onclick "i3-msg workspace 10" 
+			;{focused_xworkspace == "10" ? "" : active_xworkspaces =~ '"10"' ? "" : ""}
+		;)
+	)
+)
+
+(defvar show_gaps_toggle false)
+
+(defwidget gaps_toggle []
+    (eventbox
+        :halign "end"
+        :onhover "eww update show_gaps_toggle=true"
+        :onhoverlost "eww update show_gaps_toggle=false"
+        (box :class "gaps_toggle"
+            :orientation "horizontal"
+            :space-evenly false
+            " "
+            (revealer :transition "slideright"
+                :reveal show_gaps_toggle
+                :duration "550ms"
+                (box :orientation "horizontal"
+                    (button :class "no_gaps_button"
+                        :onclick "bash $HOME/.config/eww/scripts/no_gaps.sh"
+                        "󰖯"
+                    )
+                    (button :class "gaps_button"
+                        :onclick "bash $HOME/.config/eww/scripts/gaps.sh"
+                        ""
+                    )
+                )
+            )
+        )
+    )
+)
+
+(defpoll date :interval "10s" "date '+%H %M'")
+(defpoll date_alt :interval "10s" "date '+%A %d, %B'")
+(defvar show_date "false")
+
+(defwidget date []
+	(eventbox
+		:onhover "eww update show_date=true"
+		:onhoverlost "eww update show_date=false"
+		:space-evenly false
+			(box
+				:class "date_box"
+				:space-evenly false
+				(box :class {show_date == false ? "date_alt_hidden" : "date_alt_expanded"}
+					(revealer :transition "slideleft"
+						:duration "550ms"
+						:reveal show_date
+						"${date_alt} "
+					)
+				)
+				(box :class {show_date == false ? "date_normal" : "date_expanded"}
+					date
+				)
+			)
+	)
+)
+
+(defwidget arch_menu []
+	(box :class "arch_menu"
+		:orientation "horizontal"
+		:halign "end"
+		:space-evenly "false"
+		"󰣇"
+	)
+)
+
+(defwidget spotify []
+	(box
+       	:orientation "horizontal"
+       	:halign "start"
+		(button
+			:class "spotify_button"
+			:onclick "bash ~/.config/eww/scripts/sptf-init.sh"
+			:onrightclick "bash ~/.config/eww/scripts/sptf-stop.sh"
+			""
+		)
+	)
+)
+
+(defpoll bt_status :interval "1s" "bluetoothctl show | grep 'Powered:' | awk '{print $2}'")
+
+(defwidget bt []
+	(box
+		:orientation "horizontal"
+		:halign "start"
+		:space-evenly "false"
+		(button :class {bt_status == "yes" ? "bt_on" : "bt_off"}
+			:orientation "horizontal"
+			:halign "start"
+            :cursor "pointer"
+			:space-evenly "false"
+			:onclick "if [ ${bt_status} == 'yes' ]; then echo -e 'power off' | bluetoothctl; elif [ ${bt_status} == 'no' ]; then echo -e 'power on' | bluetoothctl; fi"
+			{bt_status == "yes" ? "󰂯" : "󰂲"}
+		)
+	)
+)
+
+; Window modules
+
+(defwidget dock_widget []
+	(box
+		:class "dock_widget"
+		:orientation "horizontal"
+		(left_dock)
+		(center_dock)
+		(right_dock)
+	)
+)
+
+(defwidget left_dock []
+	(box
+		:class "left_dock"
+		:orientation "horizontal"
+		:halign "start"
+		:space-evenly "false"
+		:spacing "0"
+		(arch_menu)
+		(xworkspaces)
+	)
+)
+
+(defwidget center_dock []
+	(box
+		:class "center_dock"
+		:orientation "horizontal"
+		:halign "center"
+	)
+)
+
+(defwidget right_dock []
+	(box
+		:class "right_dock"
+		:orientation "horizontal"
+		:halign "end"
+		:space-evenly "false"
+		:spacing "0"
+		(spotify)
+		(filesystem)
+		(ram)
+		(wifi)
+		(volume)
+        (bt)
+		(gaps_toggle)
+		(date)
+		(powermenu)
+	)
+)
+
+; Windows
+
+(defwindow dock
+	:monitor 0
+	:stacking "fg"
+	:windowtype "dock"
+    :exclusive "true"
+	:geometry (
+		geometry 
+		:anchor "bottom center"
+		:x "0%"
+		:y "0px"
+		:width "100%"
+		:height "15px"
+	)
+	:reserve (
+		struts 
+		:distance "10px" 
+		:side "bottom"
+	)
+	:wm-ignore "false"
+	(dock_widget)
+)

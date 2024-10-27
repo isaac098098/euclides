@@ -1,0 +1,17 @@
+configuration {
+    font: "Iosevka NF Bold 12";
+    line-margin: 10;
+    display-ssh:    " ";
+    display-run:    " ";
+    display-drun:   " ";
+    display-window: " ";
+    display-combi:  " ";
+    show-icons:     true;
+}
+
+listview {
+	lines: 6;
+	columns: 2;
+}
+
+@theme "catppuccin-mocha"
