@@ -90,6 +90,7 @@ libnotify
 tree
 zenity
 unzip
+htop
 ```
 
 ## Themes
