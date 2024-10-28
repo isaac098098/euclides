@@ -218,7 +218,7 @@ bar {
         focused_workspace       $blue   $blue   $white
         active_workspace        $blue   $blue   $white
         inactive_workspace      $bg1    $bg1    $fg0
-        urgent_workspace        $bg2    $red    $white
+        urgent_workspace        $bg2    $bg2    $white
     }
 }
 
@@ -229,6 +229,23 @@ client.unfocused            $crust              $crust      $fg0        $bg0    
 client.urgent               $red                $red        $white      $bg0        $red
 client.placeholder          $yellow             $yellow     $white      $bg0        $yellow
 client.background           $crust              $crust      $white      $crust      $crust
+
+# Workspaces
+
+assign [class="Thunar"] $ws2
+assign [class="Brave-browser"] $ws3
+assign [class="Zathura"] $ws4
+assign [class="mpv"] $ws6
+assign [class="obsidian"] $ws7
+assign [class="steam"] $ws8
+assign [class="discord"] $ws9
+assign [class="obs"] $ws10
+
+# Steam
+
+for_window [title="Friends List"] floating enable
+for_window [title="Steam Settings"] floating enable
+for_window [workspace=$ws8] layout tabbed
 
 # Borders
 
@@ -258,7 +275,7 @@ exec_always --no-startup-id dunst
 
 # Layout mode
 
-workspace_layout tabbed
+#workspace_layout tabbed
 
 # Hide cursor
 
@@ -268,3 +285,7 @@ bindsym $mod+t exec --no-startup-id killall unclitter
 # Screenshots
 
 bindsym Print exec --no-startup-id scrot -F "$HOME/documents/images/screens/%Y%m%d-%H%M%S.png"
+
+# Nsxiv
+
+exec_always --no-startup-id xrdb load ~/.Xresources

@@ -1,0 +1,14 @@
+font_family 			Iosevka NF Bold
+bold_font        		Iosevka NF Bold
+italic_font      		Iosevka NF Bold Italic
+bold_italic_font 		Iosevka NF Bold italic
+
+font_size 				12
+#cursor_text_color 		#2d353b
+cursor_shape 			block
+placement_strategy		top-left
+mouse_hide_wait			0.1
+cursor_blink_interval 	0
+#background_opacity 	0.93
+window_padding_width 	8
+include /home/isaac09809/.nord-kitty.conf

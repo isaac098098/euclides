@@ -3,7 +3,7 @@
 ## Media
 
 ```
-obs
+obs-studio
 kdenlive
 krita
 mpv
@@ -13,6 +13,7 @@ paleta
 gpick
 scrot
 feh
+vlc
 ```
 
 ## Gaming
@@ -61,6 +62,7 @@ xorg
 xorg-xserver
 xorg-xinit
 xorg-xclipboard
+xclip
 i3-wm
 i3status
 picom
@@ -86,6 +88,8 @@ lua51
 dunst
 libnotify
 tree
+zenity
+unzip
 ```
 
 ## Themes
@@ -95,6 +99,12 @@ papirus-icon-theme
 ```
 
 # Tips and tricks
+
+## Set system clock to local
+
+```
+timedatectl set-local-rtc 1 --adjust-system-clock
+```
 
 ## Bluetooth
 
