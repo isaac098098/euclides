@@ -16,3 +16,5 @@ export PATH="$HOME/.local/bin:$PATH"
 export UNZIP_DISABLE_ZIPBOMB_DETECTION=TRUE
 
 alias nsxiv='nsxiv -b'
+
+export PATH=$PATH:/home/isaac09809/.spicetify

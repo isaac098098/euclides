@@ -279,8 +279,8 @@ exec_always --no-startup-id dunst
 
 # Hide cursor
 
-bindsym $mod+u exec --no-startup-id inclutter -idle 2.0 -root
-bindsym $mod+t exec --no-startup-id killall unclitter
+bindsym $mod+u exec --no-startup-id unclutter -idle 2.0 -root
+bindsym $mod+t exec --no-startup-id killall unclutter
 
 # Screenshots
 

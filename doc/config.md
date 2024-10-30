@@ -14,6 +14,7 @@ gpick
 scrot
 feh
 vlc
+shotwell
 ```
 
 ## Gaming
@@ -33,6 +34,7 @@ obsidian
 xournalpp
 xournalpp-catppuccin
 simple-scan
+pdfarranger
 texlive
 zathura
 zathura-pdf-mupdf
@@ -71,7 +73,10 @@ neofetch
 kitty
 eww
 papirus-folders
-spotify-adblock
+spotify
+spotify-adblock (abba23)
+spicetify-cli
+spicetify-marketplcae-bin
 bluez
 bluez-utils
 pulseaudio-bluetooth
@@ -91,6 +96,7 @@ tree
 zenity
 unzip
 htop
+xfce4-settings
 ```
 
 ## Themes
@@ -100,6 +106,10 @@ papirus-icon-theme
 ```
 
 # Tips and tricks
+
+## Open terminal from file manager
+
+`ln -s /usr/bin/kitty /usr/bin/xdg-terminal-exec`
 
 ## Set system clock to local
 
