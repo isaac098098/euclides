@@ -15,6 +15,7 @@ scrot
 feh
 vlc
 shotwell
+yt-dlp
 ```
 
 ## Gaming
@@ -126,6 +127,13 @@ timedatectl set-local-rtc 1 --adjust-system-clock
 
 [Policy]
 AutoEnable=false
+```
+
+### Unblock bluetooth
+
+```
+rfkill
+rfkill unblock bluetooth
 ```
 
 ### Bluetooth headset

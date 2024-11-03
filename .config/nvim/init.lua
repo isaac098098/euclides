@@ -26,8 +26,8 @@ vim.g.localleader = '\\'
 -- Normal mode
 vim.keymap.set('n','j','gj')
 vim.keymap.set('n','k','gk')
--- vim.keymap.set('n','t','gt')
--- vim.keymap.set('n','T','gT')
+vim.keymap.set('n','t','gt')
+vim.keymap.set('n','T','gT')
 -- vim.cmd('nnoremap <CR> :write<CR>')
 
 -- Visual mode
