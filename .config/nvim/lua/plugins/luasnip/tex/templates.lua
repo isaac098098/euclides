@@ -154,7 +154,7 @@ s(
     \newcommand{\notesprof}{<>}
     \newcommand{\notesauthor}{<>}
 
-    \input{pream.tex}
+    \input{../pream.tex}
     \begin{document}
     \pagenumbering{roman}
     \maketitle
@@ -164,7 +164,7 @@ s(
     \pagestyle{title-subsection}
     \pagenumbering{arabic}
 
-    \input{<>}
+    \input{lec_01.tex}
 
     \input{eof.tex}
     \end{document}
@@ -173,7 +173,6 @@ s(
         i(1,"Title"),
         i(2,"Profesor/course"),
         i(3,"Author"),
-        i(4,"File")
     }
     )
 ),

@@ -98,6 +98,7 @@ zenity
 unzip
 htop
 xfce4-settings
+rofi
 ```
 
 ## Themes
