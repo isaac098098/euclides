@@ -64,6 +64,7 @@ do
     if [[  "$1" == "$(printf "%-30s %24s\n" "$i. $title" "$date")" ]]
     then
         killall rofi
+        sed -i "s/^% \\\\\input{lec_$i.tex}/\\\\\input{lec_$i.tex}/g" $HOME/notes/current-notes/main.tex
         kitty nvim $HOME/notes/current-notes/lec_$(printf '%02d' $i).tex
     fi
 done

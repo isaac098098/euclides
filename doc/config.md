@@ -15,7 +15,7 @@ scrot
 feh
 vlc
 shotwell
-yt-dlp
+yt-dlp-git
 ```
 
 ## Gaming
