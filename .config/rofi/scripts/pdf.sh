@@ -6,7 +6,8 @@ last=$(echo "$lecs" | sort -nr | head -n1)
 # open last lecture note pdf
 
 case "$1" in 
-    "last")
+    "Last")
+        # compile last lecture
         killall rofi
         for (( i=1; i<=$last-1; i++ ))
         do
@@ -17,41 +18,55 @@ case "$1" in
         pdflatex -output-directory="$HOME/notes/current-notes/" "$HOME/notes/current-notes/main.tex" > /dev/null
         zathura $HOME/notes/current-notes/main.pdf
     ;;
-    "all")
+        # compile whole document
+    "All")
         killall rofi
         sed -i "s/% //g" $HOME/notes/current-notes/main.tex
         latexmk -output-directory="$HOME/notes/current-notes/" "$HOME/notes/current-notes/main.tex" > /dev/null
         pdflatex -output-directory="$HOME/notes/current-notes/" "$HOME/notes/current-notes/main.tex" > /dev/null
+
+        # comment title pages and toc again
+        sed -i '7,13 s/^/% /' $HOME/notes/current-notes/main.tex
         zathura $HOME/notes/current-notes/main.pdf
     ;;
+    *)
+        # compile and open lecture interval or specific lectures
+        if [[ "$1" =~ ^([0-9]+(-[0-9]+)?)(,[0-9]+(-[0-9]+)?)*$ ]]
+        then
+            killall rofi
+            sed -i "s/^\\\\\input{lec/% \\\\\input{lec/g" "$HOME/notes/current-notes/main.tex"
+            IFS=',' read -r -a ints <<< "$1"
+            for s in "${ints[@]}"
+            do
+                if [[ $s == *-* ]]
+                then
+                    start=${s%-*}
+                end=${s#*-}
+                for i in $(seq "$start" "$end")
+                do
+                    if  [ "1" -le "$((i))" ] && [ "$((i))" -le "$((last))" ]
+                    then
+                        sed -i "s/^% \\\\\input{lec_$(printf '%02d' $i).tex}/\\\\\input{lec_$(printf '%02d' $i).tex}/g" $HOME/notes/current-notes/main.tex
+                    fi
+                done
+            else
+                if [ "1" -le "$((s))" ] && [ "$((s))" -le "$((last))" ]
+                then
+                    sed -i "s/^% \\\\\input{lec_$(printf '%02d' $s).tex}/\\\\\input{lec_$(printf '%02d' $s).tex}/g" $HOME/notes/current-notes/main.tex
+                fi
+                fi
+            done
+            latexmk -output-directory="$HOME/notes/current-notes/" "$HOME/notes/current-notes/main.tex" > /dev/null
+            pdflatex -output-directory="$HOME/notes/current-notes/" "$HOME/notes/current-notes/main.tex" > /dev/null
+            zathura $HOME/notes/current-notes/main.pdf
+        fi
+        ;;
 esac
-
-# open lecture note pdf by number
-
-for i in $lecs
-do
-    title=$(sed -n 's/.*lecture{\([^}]*\)}.*/\1/p' $HOME/notes/current-notes/lec_"$i".tex)
-    if [ "$1" == "$i. $title" ]
-    then
-        killall rofi
-        sed -i "s/^% \\\\\input{lec_$(printf '%02d' $i).tex}/\\\\\input{lec_$(printf '%02d' $i).tex}/g" "$HOME/notes/current-notes/main.tex"
-        for (( j=1; j <= $last ; j++ ))
-        do
-            if [ $((j)) != $((i)) ]
-            then
-                sed -i "s/^\\\\\input{lec_$(printf '%02d' $j).tex}/% \\\\\input{lec_$(printf '%02d' $j).tex}/g" "$HOME/notes/current-notes/main.tex"
-            fi
-        done
-        latexmk -output-directory="$HOME/notes/current-notes/" "$HOME/notes/current-notes/main.tex" > /dev/null
-        pdflatex -output-directory="$HOME/notes/current-notes/" "$HOME/notes/current-notes/main.tex" > /dev/null
-        zathura $HOME/notes/current-notes/main.pdf
-    fi
-done
 
 # rofi menu
 
-echo "last"
-echo "all"
+echo "Last"
+echo "All"
 for i in $lecs
 do
     title=$(sed -n 's/.*lecture{\([^}]*\)}.*/\1/p' $HOME/notes/current-notes/lec_"$i".tex)

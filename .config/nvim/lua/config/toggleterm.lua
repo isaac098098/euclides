@@ -68,10 +68,6 @@ require("toggleterm").setup{
             guifg = "#17181A",
             guibg = "#17181A",
         },
-        MsgArea = {
-            guifg = "#1d1f21",
-            guibg = "#1d1f21",
-        },
     },
     start_in_insert = true,
     insert_mappings = false,

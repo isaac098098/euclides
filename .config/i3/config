@@ -289,3 +289,7 @@ bindsym Print exec --no-startup-id scrot -F "$HOME/documents/images/screens/%Y%m
 # Nsxiv
 
 exec_always --no-startup-id xrdb load ~/.Xresources
+
+# sxhkd
+
+exec_always --no-startup-id sxhkd
