@@ -22,11 +22,13 @@ case "$1" in
     "All")
         killall rofi
         sed -i "s/% //g" $HOME/notes/current-notes/main.tex
+        sed -i 's/^% \\/\\/g' $HOME/notes/eof.tex
         latexmk -output-directory="$HOME/notes/current-notes/" "$HOME/notes/current-notes/main.tex" > /dev/null
         pdflatex -output-directory="$HOME/notes/current-notes/" "$HOME/notes/current-notes/main.tex" > /dev/null
 
-        # comment title pages and toc again
+        # comment title pages, toc and bibliography again
         sed -i '7,13 s/^/% /' $HOME/notes/current-notes/main.tex
+        sed -i 's/^\\/% \\/g' $HOME/notes/eof.tex
         zathura $HOME/notes/current-notes/main.pdf
     ;;
     *)
@@ -41,7 +43,7 @@ case "$1" in
                 if [[ $s == *-* ]]
                 then
                     start=${s%-*}
-                end=${s#*-}
+                    end=${s#*-}
                 for i in $(seq "$start" "$end")
                 do
                     if  [ "1" -le "$((i))" ] && [ "$((i))" -le "$((last))" ]
@@ -63,12 +65,37 @@ case "$1" in
         ;;
 esac
 
+# compile and open single lecture
+
+for i in $lecs
+do
+    title=$(sed -n 's/^%%% //p' $HOME/notes/current-notes/lec_"$i".tex)
+    date=$(sed -n 's/.*lecture{.*}{\(.*\)}/\1/p' $HOME/notes/current-notes/lec_"$i".tex)
+    if [[  "$1" == "$(printf "%-30s %24s\n" "$i. $title" "$date")" ]]
+    then
+        killall rofi
+        sed -i "s/^% \\\\\input{lec_$(printf '%02d' $i).tex}/\\\\\input{lec_$(printf '%02d' $i).tex}/g" $HOME/notes/current-notes/main.tex
+        for (( j=1 ; j <= $last ; j++))
+        do
+            if [[ $((i)) -ne $j ]]
+            then
+                sed -i "s/^\\\\\input{lec_$(printf '%02d' $j).tex}/% \\\\\input{lec_$(printf '%02d' $j).tex}/g" $HOME/notes/current-notes/main.tex
+            fi
+        done
+        latexmk -output-directory="$HOME/notes/current-notes/" "$HOME/notes/current-notes/main.tex" > /dev/null
+        pdflatex -output-directory="$HOME/notes/current-notes/" "$HOME/notes/current-notes/main.tex" > /dev/null
+        zathura $HOME/notes/current-notes/main.pdf
+    fi
+done
+
 # rofi menu
 
 echo "Last"
 echo "All"
 for i in $lecs
 do
-    title=$(sed -n 's/.*lecture{\([^}]*\)}.*/\1/p' $HOME/notes/current-notes/lec_"$i".tex)
-    echo "$i. $title"
+    title=$(sed -n 's/^%%% //p' $HOME/notes/current-notes/lec_"$i".tex)
+    date=$(sed -n 's/.*lecture{.*}{\(.*\)}/\1/p' $HOME/notes/current-notes/lec_"$i".tex)
+    printf "%-30s %24s\n" "$i. $title" "$date"
+
 done

@@ -8,4 +8,4 @@ alt + p
     rofi -show pdf -modes "pdf:$HOME/.config/rofi/scripts/pdf.sh"
 
 alt + o
-    rofi -show open -modes "open:$HOME/.config/rofi/scripts/open.sh"
+    rofi -markup-rows -show open -modes "open:$HOME/.config/rofi/scripts/open.sh"

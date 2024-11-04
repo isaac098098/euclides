@@ -6,7 +6,9 @@ Crear una carpeta en la que se almacenarán las notas de cada curso, también en
 
 Se deben crear las carpetas para cada curso antes de usar los siguientes atajos de teclado. Éstas deberán contener el archivo `main.tex`, que se puede crear seleccionando el curso con `alt-s` y abriendo el archivo principal de las notas con `alt+n`. En la carpeta padre, es decir en la carpeta `notes`, deberán estar `pream.tex` y `eof.tex`, que se pueden copiar usando el binario `pream`.
 
-Todos los archivos de las clases tendrán el formato `lec_[num].tex`. Todos estos archivos también deberán contener un encabezado de la forma `*lecture{title}{date}` para extraer el tema visto en clase y mostarlo en el menú de rofi.
+Todos los archivos de las clases tendrán el formato `lec_[num].tex`. Todos estos archivos también deberán contener un encabezado *y solo uno* de la forma `*lecture{title}{date}` para extraer el tema visto en clase y mostarlo en el menú de rofi, además de ```%%% title``` al inicio del archivo por si se quiere editar el título que aparece en el menú de rofi, por ejemplo si el título tiene símbolos matemáticos o caracteres especiales, los snippets `lec` y `les` insertarán esta línea automáticamente.
+
+Se puede cambiar `*lecture{title}{date}` a `*lecture{\texorpdfstring{title}{bookmark}}{date}` sin alterar el resultado en el menú de rofi, pues sólo se lee el segundo grupo de `{}`.
 
 ## Atajos
 

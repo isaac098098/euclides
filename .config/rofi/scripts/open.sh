@@ -16,6 +16,10 @@ case "$1" in
         sed -i "/\input{lec_${last}.tex}/a \\\\\input{lec_${new}.tex}" "$HOME/notes/current-notes/main.tex"
         kitty nvim $HOME/notes/current-notes/lec_${new}.tex
     ;;
+    "Bibliography")
+        killall rofi
+        kitty nvim $HOME/notes/current-notes/bibliography.bib
+    ;;
     *)
         # open lecture note interval or specific lectures
         if [[ "$1" =~ ^([0-9]+(-[0-9]+)?)(,[0-9]+(-[0-9]+)?)*$ ]]
@@ -51,12 +55,27 @@ case "$1" in
     ;;
 esac
 
+# open single lecture file
+
+for i in $lecs
+do
+    title=$(sed -n 's/^%%% //p' $HOME/notes/current-notes/lec_"$i".tex)
+    date=$(sed -n 's/.*lecture{.*}{\(.*\)}/\1/p' $HOME/notes/current-notes/lec_"$i".tex)
+    if [[  "$1" == "$(printf "%-30s %24s\n" "$i. $title" "$date")" ]]
+    then
+        killall rofi
+        kitty nvim $HOME/notes/current-notes/lec_$(printf '%02d' $i).tex
+    fi
+done
+
 # rofi menu
 
 echo "Last"
 echo "New"
 for i in $lecs
 do
-    title=$(sed -n 's/.*lecture{\([^}]*\)}.*/\1/p' $HOME/notes/current-notes/lec_"$i".tex)
-    echo -e "$i. $title"
+    title=$(sed -n 's/^%%% //p' $HOME/notes/current-notes/lec_"$i".tex)
+    date=$(sed -n 's/.*lecture{.*}{\(.*\)}/\1/p' $HOME/notes/current-notes/lec_"$i".tex)
+    printf "%-30s %24s\n" "$i. $title" "$date"
 done
+echo "Bibliography"
