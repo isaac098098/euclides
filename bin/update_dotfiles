@@ -1,5 +1,6 @@
 #!/bin/bash
 
+cp -r ~/.config/alacritty ~/euclides/.config
 cp -r ~/.config/dunst ~/euclides/.config
 cp -r ~/.config/gtk-3.0/settings.ini ~/euclides/.config
 cp -r ~/.config/i3 ~/euclides/.config
