@@ -14,6 +14,8 @@ Todos los archivos de las clases tendrán el formato `lec_[num].tex` y deberán 
 
 Se puede cambiar `*lecture{title}{date}` a `*lecture{\texorpdfstring{title}{bookmark}}{date}` sin alterar el resultado en el menú, pues sólo se lee el segundo grupo de `{}`.
 
+Todos los diagramas e imágenes deberán ir en una carpeta llamanda `diagrams`. Ninguna imágen puede llamarse `jq` o `wq`. Es importante que el cursor esté encima de la ventana donde se están editando las notas a la hora de agreagar un nuevo diagrama. En `inkscape`, aumentar el tamaño aparente de la fuente, generalmente `48` en `Text -> Text and Font`, se puede abrir con `shift+ctrl+t`. También elegir un tamaño de documento adecuado, generalmente `170x105 mm`.
+
 ## Bibliografía
 
 Para agregar una entrada a la bibliografía simmplemente abre el archivo `bibliography.bib` con la opción `Bibliografía` usando `alt-o`. Si no hay suficiente información para llenar los campos más importantes de forma precisa, se puede usar el snippet `foo` para anotar la referencia en el pie de página.
@@ -21,6 +23,11 @@ Para agregar una entrada a la bibliografía simmplemente abre el archivo `biblio
 ## Atajos
 
 - Seleccionar curso: `alt+s`.
-- Abrir `main.tex` en neovim `alt+n`.
-- Compilar y abrir notas de una clase o varias en zathura `alt+p`.
-- Abrir notas de una clase en neovim `alt+o`.
+- Abrir `main.tex` en neovim: `alt+n`.
+- Compilar y abrir notas de una clase o varias en zathura: `alt+p`.
+- Abrir notas de una clase en neovim: `alt+o`.
+- Crear nuevo diagrama: `ctrl+shift+a`.
+- Editar diagrama existente: `ctrl+shift+e`.
+- Guardar y cerrar al acabar de editar diagrama: `ctrl+shift+q`.
+- Abrir ventana flotante de neovim para insertar código de Tex: `ctrl+shift+p`.
+- Copiar documento completo de neovim al portapapeles y cerrar sin guardar: `ctrl+p`.

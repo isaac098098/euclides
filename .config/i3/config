@@ -293,3 +293,7 @@ exec_always --no-startup-id xrdb load ~/.Xresources
 # sxhkd
 
 exec_always --no-startup-id sxhkd
+
+# $HOME/euclides/bin/edtex.tex
+
+for_window [class="kitty"] floating enable

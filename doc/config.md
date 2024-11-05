@@ -72,6 +72,7 @@ picom
 nvidia
 neofetch
 kitty
+alacritty
 eww
 papirus-folders
 spotify
@@ -99,6 +100,7 @@ unzip
 htop
 xfce4-settings
 rofi
+jq
 ```
 
 ## Themes
@@ -267,6 +269,10 @@ opacity-rule = [
     "class_g = 'i3-frame'"
 ]
 ```
+
+### Inkscape dafault document
+
+Move `default.svg` to `$HOME/.config/inkscape/templates`.
 
 # Todo
 

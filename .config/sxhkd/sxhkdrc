@@ -9,3 +9,15 @@ alt + p
 
 alt + o
     rofi -markup-rows -show open -modes "open:$HOME/.config/rofi/scripts/open.sh"
+
+ctrl + shift + a
+    rofi -show "add inkscape" -modes "add inkscape:$HOME/euclides/bin/rofi_inkscape_add.sh"
+
+ctrl + shift + e
+    rofi -show "edit inkscape" -modes "edit inkscape:$HOME/euclides/bin/rofi_inkscape_edit.sh"
+
+ctrl + shift + q
+    bash $HOME/euclides/bin/inkscape_save.sh
+
+ctrl + shift + p
+    bash $HOME/euclides/bin/edtex.sh
