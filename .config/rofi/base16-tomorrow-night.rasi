@@ -12,7 +12,7 @@ element-text, element-icon , mode-switcher {
 }
 
 window {
-	width: 24%;
+	width: 35%;
 	height: 35%;
     border-color: @bg0;
     background-color: @bg0;

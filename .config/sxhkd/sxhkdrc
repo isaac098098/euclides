@@ -2,7 +2,10 @@ alt + s
     rofi -show select -modes "select:$HOME/.config/rofi/scripts/select.sh"
 
 alt + n
-    kitty nvim $HOME/notes/current-notes/main.tex
+    alacritty -e nvim $HOME/notes/current-notes/main.tex
+
+ctrl + shift + n
+    zathura $HOME/notes/current-notes/main.pdf
 
 alt + p
     rofi -show pdf -modes "pdf:$HOME/.config/rofi/scripts/pdf.sh"

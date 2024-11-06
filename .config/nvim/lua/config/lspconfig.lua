@@ -18,9 +18,10 @@ M.on_attach = function(_, bufnr)
         print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
     end, opts)
     map("n", "<leader>D", vim.lsp.buf.type_definition, opts)
-    map("n", "<leader>ra", require("nvchad.lsp.renamer"), opts)
     map({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts)
     map("n", "gr", vim.lsp.buf.references, opts)
 end
+
+require("lspconfig").texlab.setup{}
 
 return M
