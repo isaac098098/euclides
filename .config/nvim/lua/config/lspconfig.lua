@@ -22,6 +22,6 @@ M.on_attach = function(_, bufnr)
     map("n", "gr", vim.lsp.buf.references, opts)
 end
 
-require("lspconfig").texlab.setup{}
+-- require("lspconfig").texlab.setup{}
 
 return M

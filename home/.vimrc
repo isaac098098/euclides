@@ -7,11 +7,17 @@ set linebreak
 
 nnoremap j gj
 nnoremap k gk
-vnoremap <A-i> <Esc>
-snoremap <A-i> <Esc>
-inoremap <A-i> <Esc>
+vnoremap <C-i> <Esc>
+snoremap <C-i> <Esc>
+inoremap <C-i> <Esc>
 inoremap <C-e> <C-o>$
 
 let g:loaded_matchparen=1
 
 highlight NonText ctermfg=0
+
+autocmd VimEnter * if
+  \ argc() == 0 &&
+  \ bufname("%") == "" |
+  \   exe "normal! `0" |
+  \ endif

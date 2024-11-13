@@ -39,6 +39,7 @@ pdfarranger
 texlive
 zathura
 zathura-pdf-mupdf
+zathura-djvu
 neovim
 unclutter
 ```
@@ -101,6 +102,7 @@ htop
 xfce4-settings
 rofi
 jq
+pv
 ```
 
 ## Themes

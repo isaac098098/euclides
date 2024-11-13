@@ -1,8 +1,10 @@
-set guioptions                  ""
+# set guioptions                  ""
 set font                        "JetBrains Mono NL SemiBold 9"
 set recolor                     "true"
 set recolor-keephue             "true"
 set selection-clipboard         clipboard
+set window-title-basename       "true"
+set statusbar-basename          "true"
 
 # base16 tomorrow night
 
