@@ -299,3 +299,8 @@ exec_always --no-startup-id sxhkd
 for_window [class="kitty"] floating enable
 for_window [class="simple-scan"] floating enable
 for_window [class="Gnome-pomodoro"] floating enable
+for_window [class="qBittorrent"] floating enable
+
+# Toggle bar
+
+bindsym $mod+Shift+n bar mode toggle

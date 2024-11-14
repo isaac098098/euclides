@@ -16,5 +16,7 @@ export PATH="$HOME/.local/bin:$PATH"
 export UNZIP_DISABLE_ZIPBOMB_DETECTION=TRUE
 
 alias nsxiv='nsxiv -b'
+alias tty-clock='tty-clock -c -s -C 4 -S -n'
+#alias pipes.sh='pipes.sh -r 0'
 
 export PATH=$PATH:/home/isaac09809/.spicetify

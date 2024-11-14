@@ -9,7 +9,7 @@ then
     xdotool key ctrl+s
     xdotool key ctrl+q
     sleep 0.5
-    # i3-msg workspace $(cat $HOME/notes/ws)
+    i3-msg workspace $(cat $HOME/notes/ws)
     rm $HOME/notes/name
     rm $HOME/notes/ws
 else

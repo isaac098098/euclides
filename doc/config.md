@@ -16,6 +16,7 @@ feh
 vlc
 shotwell
 yt-dlp-git
+imagemagick
 ```
 
 ## Gaming
@@ -41,6 +42,7 @@ zathura
 zathura-pdf-mupdf
 zathura-djvu
 neovim
+gvim
 unclutter
 ```
 
@@ -57,6 +59,7 @@ eccv2022-rife
 brave
 archive.org-downloader
 dmenu
+torbrowser-launcher
 ```
 
 ## System
