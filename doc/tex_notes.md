@@ -14,7 +14,7 @@ Todos los archivos de las clases tendrán el formato `lec_[num].tex` y deberán 
 
 Se puede cambiar `*lecture{title}{date}` a `*lecture{\texorpdfstring{title}{bookmark}}{date}` sin alterar el resultado en el menú, pues sólo se lee el segundo grupo de `{}`.
 
-Todos los diagramas e imágenes deberán ir en una carpeta llamanda `diagrams`. Ninguna imágen puede llamarse `jq` o `wq`. Es importante que el cursor esté encima de la ventana donde se están editando las notas a la hora de agreagar un nuevo diagrama. En `inkscape`, aumentar el tamaño aparente de la fuente, generalmente `48` en `Text -> Text and Font`, se puede abrir con `shift+ctrl+t`. También elegir un tamaño de documento adecuado, generalmente `170x105 mm`.
+Todos los diagramas e imágenes deberán ir en una carpeta llamanda `diagrams`. Ninguna imágen puede llamarse `jq` o `wq`. Es importante que el cursor esté encima de la ventana donde se están editando las notas a la hora de agreagar un nuevo diagrama. En `inkscape`, aumentar el tamaño aparente de la fuente, generalmente `9` en `Text -> Text and Font`, se puede abrir con `shift+ctrl+t`. También elegir un tamaño de documento adecuado, generalmente `70x100 mm` (con `0.7\columnwidth`).
 
 ## Bibliografía
 

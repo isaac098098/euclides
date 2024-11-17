@@ -86,8 +86,8 @@ require("zen-mode").setup{
   -- callback where you can add custom code when the Zen window closes
   on_close = function()
       -- vim.opt.number = false
-      vim.cmd('highlight MsgArea guifg=#CDD6F5')
-      vim.cmd('highlight ModeMsg guifg=#CDD6F5')
-      vim.cmd('highlight VimTeXInfo guifg=#89b4fa')
+      vim.cmd('highlight MsgArea guifg=#c5c8c6')
+      vim.cmd('highlight ModeMsg guifg=#c5c8c6')
+      vim.cmd('highlight VimTeXInfo guifg=#81a2be')
   end,
 }

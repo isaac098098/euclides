@@ -17,6 +17,8 @@ vlc
 shotwell
 yt-dlp-git
 imagemagick
+audacity
+spotdl
 ```
 
 ## Gaming
@@ -43,6 +45,7 @@ zathura-pdf-mupdf
 zathura-djvu
 neovim
 gvim
+vi
 unclutter
 ```
 
@@ -278,6 +281,15 @@ opacity-rule = [
 ### Inkscape dafault document
 
 Move `default.svg` to `$HOME/.config/inkscape/templates`.
+
+### Open neovim in alacritty from file manager
+
+```
+/usr/share/applications/nvim.desktop
+
+Exec=alacritty -e nvim %F
+Terminal=false
+```
 
 # Todo
 
