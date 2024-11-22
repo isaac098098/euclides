@@ -224,7 +224,7 @@ bar {
 
 #                           title_border        bg          fg          indicator   child_border
 client.focused              $blue               $blue       $fg0        $blue       $blue 
-client.focused_inactive     $bg1                $bg1        $fg0        $bg0        $crust
+client.focused_inactive     $blue               $blue       $fg0        $bg0        $crust
 client.unfocused            $crust              $crust      $fg0        $bg0        $crust
 client.urgent               $red                $red        $white      $bg0        $red
 client.placeholder          $yellow             $yellow     $white      $bg0        $yellow
@@ -239,7 +239,7 @@ assign [class="mpv"] $ws6
 assign [class="obsidian"] $ws7
 assign [class="steam"] $ws8
 assign [class="discord"] $ws9
-assign [class="obs"] $ws10
+#assign [class="obs"] $ws10
 
 # Steam
 
@@ -300,6 +300,7 @@ for_window [class="kitty"] floating enable
 for_window [class="simple-scan"] floating enable
 for_window [class="Gnome-pomodoro"] floating enable
 for_window [class="qBittorrent"] floating enable
+for_window [class="steamwebhelper"] floating enable
 
 # Toggle bar
 

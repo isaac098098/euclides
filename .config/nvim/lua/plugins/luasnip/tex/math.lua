@@ -463,12 +463,12 @@ s({trig = "¨", name = "Superscript", snippetType = "autosnippet", wordTrig = fa
     {condition = in_mathzone}
 ),
 
-s({trig = "\'", name = "Subscript and superscript", snippetType = "autosnippet", wordTrig = false},
-    {
-		t("_{"), i(1), t("}^{"), i(2), t("}")
-    },
-    {condition = in_mathzone}
-),
+-- s({trig = "\'", name = "Subscript and superscript", snippetType = "autosnippet", wordTrig = false},
+--     {
+-- 		t("_{"), i(1), t("}^{"), i(2), t("}")
+--     },
+--     {condition = in_mathzone}
+-- ),
 
 s({trig = "st", name = "Stacking", snippetType = "autosnippet"},
     {
@@ -1592,6 +1592,34 @@ s({trig = "unb", name = "Underbrace", snippetType = "autosnippet"},
 ),
 
 -- Delimiters
+
+s(
+    {trig = "(", descr = "Parentheses", snippetType = "autosnippet", wordTrig = false},
+    {
+        t("("), d(1,get_visual), t(")")
+    }
+),
+
+s(
+    {trig = "[", descr = "Square brackets", snippetType = "autosnippet", wordTrig = false},
+    {
+        t("["), d(1,get_visual), t("]")
+    }
+),
+
+s(
+    {trig = "{", descr = "Curly brackets", snippetType = "autosnippet", wordTrig = false},
+    {
+        t("{"), d(1,get_visual), t("}")
+    }
+),
+
+s(
+    {trig = "\"", descr = "Double quotes", snippetType = "autosnippet", wordTrig = false},
+    {
+        t("\""), d(1,get_visual), t("\"")
+    }
+),
 
 s({trig = "dp", name = "Parenthesis", snippetType = "autosnippet"},
     {

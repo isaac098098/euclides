@@ -12,7 +12,8 @@ vim.opt.breakindent = true
 vim.opt.linebreak = true
 
 -- Line numbering
-vim.opt.number = false
+-- vim.opt.number = true
+-- vim.opt.relativenumber = true
 -- vim.opt.numberwidth = 1
 
 -- Highlighting

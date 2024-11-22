@@ -43,9 +43,10 @@ vim.g.vimtex_compiler_latexmk = {
 }
 
 vim.api.nvim_create_autocmd('FileType', {
-  pattern = 'tex',
-  callback = function()
-    vim.api.nvim_set_keymap('n', '<Leader>tt', ':VimtexTocToggle<CR>', { noremap = true, silent = true })
-  end
+    pattern = 'tex',
+    callback = function()
+        vim.api.nvim_set_keymap('n', '<Leader>tt', ':VimtexTocToggle<CR>', { noremap = true, silent = true })
+        vim.opt.number = false
+    end
 })
 

@@ -19,6 +19,7 @@ yt-dlp-git
 imagemagick
 audacity
 spotdl
+minidlna
 ```
 
 ## Gaming
@@ -289,6 +290,26 @@ Move `default.svg` to `$HOME/.config/inkscape/templates`.
 
 Exec=alacritty -e nvim %F
 Terminal=false
+```
+
+## Try fix `exfat` volume
+```
+fsck.exfat /dev/[dev]
+```
+
+## Set `minidlna` service
+```
+/etc/minidlna.conf
+
+user=root
+media_dir=V,/absolute/path/to/media
+```
+```
+systemctl edit minidlna.service
+
+[Service]
+ProtectHome=read-only
+User=root
 ```
 
 # Todo
