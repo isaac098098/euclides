@@ -20,3 +20,11 @@ alias tty-clock='tty-clock -c -s -C 4 -S -n'
 #alias pipes.sh='pipes.sh -r 0'
 
 export PATH=$PATH:/home/isaac09809/.spicetify
+
+# gdtk
+
+export DGD=$HOME/gdtkinst
+export DGD_REPO=$HOME/gdtk
+export PATH=$PATH:$DGD/bin
+export DGD_LUA_PATH=$DGD/lib/?.lua
+export DGD_LUA_CPATH=$DGD/lib/?.so

@@ -86,7 +86,7 @@ papirus-folders
 spotify
 spotify-adblock (abba23)
 spicetify-cli
-spicetify-marketplcae-bin
+spicetify-marketplace-bin
 bluez
 bluez-utils
 pulseaudio-bluetooth
@@ -105,11 +105,15 @@ libnotify
 tree
 zenity
 unzip
+unrar
+p7zip
 htop
 xfce4-settings
 rofi
 jq
 pv
+thunar
+thunar-archive-plugin
 ```
 
 ## Themes

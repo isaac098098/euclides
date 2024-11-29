@@ -77,7 +77,7 @@ do
         sed -i "s/^% \\\\\input{lec_$(printf '%02d' $i).tex}/\\\\\input{lec_$(printf '%02d' $i).tex}/g" $HOME/notes/current-notes/main.tex
         for (( j=1 ; j <= $((10#$last)) ; j++))
         do
-            if [[ $((i)) -ne $j ]]
+            if [[ "$((10#$i))" -ne "$j" ]]
             then
                 sed -i "s/^\\\\\input{lec_$(printf '%02d' $j).tex}/% \\\\\input{lec_$(printf '%02d' $j).tex}/g" $HOME/notes/current-notes/main.tex
             fi

@@ -10,17 +10,17 @@ set clipboard=unnamed
 
 nnoremap j gj
 nnoremap k gk
-"vnoremap <A-u> <Esc>
-"snoremap <A-u> <Esc>
-"inoremap <A-u> <Esc>
+vnoremap <S-u> <Esc>
+snoremap <S-u> <Esc>
+inoremap <S-u> <Esc>
 inoremap <C-e> <C-o>$
 
 let g:loaded_matchparen=1
 
 highlight NonText ctermfg=0
 
-autocmd VimEnter * if
-  \ argc() == 0 &&
-  \ bufname("%") == "" |
-  \   exe "normal! `0" |
-  \ endif
+"autocmd VimEnter * if
+  "\ argc() == 0 &&
+  "\ bufname("%") == "" |
+  "\   exe "normal! `0" |
+  "\ endif

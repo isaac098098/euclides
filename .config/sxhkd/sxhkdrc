@@ -4,13 +4,13 @@ ctrl + shift + s
 alt + n
     alacritty -e nvim $HOME/notes/current-notes/main.tex
 
-ctrl + shift + i
+ctrl + shift + u
     zathura $HOME/notes/current-notes/main.pdf
 
-alt + p
+ctrl + shift + p
     rofi -show pdf -modes "pdf:$HOME/.config/rofi/scripts/pdf.sh"
 
-alt + o
+ctrl + shift + o
     rofi -markup-rows -show open -modes "open:$HOME/.config/rofi/scripts/open.sh"
 
 ctrl + shift + a

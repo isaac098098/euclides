@@ -263,7 +263,7 @@ bindsym $mod+q exec --no-startup-id setxkbmap us -variant intl
 
 # Wallpaper
 
-exec_always --no-startup-id feh --bg-scale $HOME/documents/images/wallpapers/bg0.png
+exec_always --no-startup-id feh --bg-scale --randomize $HOME/documents/images/wallpapers/
 
 # Picom
 
@@ -297,11 +297,17 @@ exec_always --no-startup-id sxhkd
 # $HOME/euclides/bin/edtex.sh
 
 for_window [class="kitty"] floating enable
-for_window [class="simple-scan"] floating enable
-for_window [class="Gnome-pomodoro"] floating enable
-for_window [class="qBittorrent"] floating enable
-for_window [class="steamwebhelper"] floating enable
 
 # Toggle bar
 
 bindsym $mod+Shift+n bar mode toggle
+
+# Floating windows
+
+for_window [class="simple-scan"] floating enable
+for_window [class="Gnome-pomodoro"] floating enable
+for_window [class="qBittorrent"] floating enable
+for_window [class="steamwebhelper"] floating enable
+for_window [title="Preferences"] floating enable
+for_window [class="PureRef"] floating enable
+for_window [class="Gpick"] floating enable
