@@ -4,7 +4,7 @@
 vim.cmd('filetype plugin on')
 vim.cmd('filetype indent on')
 
--- Tabs andd indentation
+-- Tabs and indentation
 vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
@@ -12,9 +12,9 @@ vim.opt.breakindent = true
 vim.opt.linebreak = true
 
 -- Line numbering
--- vim.opt.number = true
--- vim.opt.relativenumber = true
--- vim.opt.numberwidth = 1
+vim.opt.number = true
+vim.opt.relativenumber = true
+vim.opt.numberwidth = 1
 
 -- Highlighting
 vim.cmd('let loaded_matchparen=1')
@@ -32,13 +32,13 @@ vim.keymap.set('n','T','gT')
 vim.cmd('nnoremap <CR> :write<CR>')
 
 -- Visual mode
-vim.keymap.set('v','<A-i>','<Esc>')
+vim.keymap.set('v','<C-i>','<Esc>')
 
 -- Select mode
-vim.keymap.set('s','<A-i>','<Esc>')
+vim.keymap.set('s','<C-i>','<Esc>')
 
 -- Insert mode
-vim.keymap.set('i','<A-i>','<Esc>')
+vim.keymap.set('i','<C-i>','<Esc>')
 vim.keymap.set('i','<C-e>','<C-o>$')
 vim.keymap.set('i','<C-p>','<Esc>:%y+<CR>:q!<CR>')
 
@@ -53,6 +53,7 @@ vim.cmd('highlight NvimTreeNormal guibg=#1a1b1d')
 vim.cmd('highlight NvimTreeStatusLine guibg=#1a1b1d')
 vim.cmd('highlight NvimTreeStatusLineNC guibg=#1a1b1d')
 vim.cmd('highlight EndOfBuffer guifg=#1d1f21')
+vim.cmd('highlight LineNr guifg=#969896')
 
 --toggleterm
 vim.api.nvim_set_hl(0, 'NormalFloat', { bg = '#1a1b1d', fg = '#ffffff' })

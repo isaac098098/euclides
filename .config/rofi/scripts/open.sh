@@ -83,8 +83,8 @@ esac
 
 for i in $lecs
 do
-    title=$(sed -n 's/^%%% //p' $HOME/notes/current-notes/lec_"$i".tex)
-    date=$(sed -n 's/.*lecture{.*}{\(.*\)}/\1/p' $HOME/notes/current-notes/lec_"$i".tex)
+    title=$(sed -n '0,/^%%% /s/^%%% //p' $HOME/notes/current-notes/lec_"$i".tex)
+    date=$(sed -n '1,/.*lecture{.*}{\(.*\)}/s/.*lecture{.*}{\(.*\)}/\1/p' $HOME/notes/current-notes/lec_"$i".tex)
     if [[  "$1" == "$(printf "%-30s %51s\n" "$i. $title" "$date")" ]]
     then
         killall rofi
@@ -107,8 +107,9 @@ echo "Last"
 echo "New"
 for i in $lecs
 do
-    title=$(sed -n 's/^%%% //p' $HOME/notes/current-notes/lec_"$i".tex)
-    date=$(sed -n 's/.*lecture{.*}{\(.*\)}/\1/p' $HOME/notes/current-notes/lec_"$i".tex)
-    printf "%-30s %51s\n" "$i. $title" "$date"
+    cur=$(printf '%02d' $((10#$last-10#$i+1)))
+    title=$(sed -n '0,/^%%% /s/^%%% //p' $HOME/notes/current-notes/lec_"$cur".tex)
+    date=$(sed -n '1,/.*lecture{.*}{\(.*\)}/s/.*lecture{.*}{\(.*\)}/\1/p' $HOME/notes/current-notes/lec_"$cur".tex)
+    printf "%-30s %51s\n" "$cur. $title" "$date"
 done
 echo "Bibliography"

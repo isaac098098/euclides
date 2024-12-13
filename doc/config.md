@@ -20,6 +20,7 @@ imagemagick
 audacity
 spotdl
 minidlna
+gst-plugins-good
 ```
 
 ## Gaming
@@ -294,6 +295,14 @@ Move `default.svg` to `$HOME/.config/inkscape/templates`.
 
 Exec=alacritty -e nvim %F
 Terminal=false
+```
+
+### Open nsxiv from file manager
+
+```
+/usr/share/applications/nsxiv.desktop
+
+Exec=nsxiv -b %F
 ```
 
 ## Try fix `exfat` volume

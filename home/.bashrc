@@ -10,6 +10,7 @@ alias grep='grep --color=auto'
 PS1='[\u@\h \W]\$ '
 
 alias neofetch="neofetch | sed 's/ with Radeon Graphics//' | sed 's/ Lite Hash Rate'//"
+alias nsxiv="nsxiv -b"
 
 export PATH="/usr/local/texlive/2024/bin/x86_64-linux:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
@@ -17,14 +18,7 @@ export UNZIP_DISABLE_ZIPBOMB_DETECTION=TRUE
 
 alias nsxiv='nsxiv -b'
 alias tty-clock='tty-clock -c -s -C 4 -S -n'
-#alias pipes.sh='pipes.sh -r 0'
+alias pipes.sh='pipes.sh -r 0'
+alias en-croissant='WEBKIT_DISABLE_DMABUF_RENDERER=1 en-croissant'
 
 export PATH=$PATH:/home/isaac09809/.spicetify
-
-# gdtk
-
-export DGD=$HOME/gdtkinst
-export DGD_REPO=$HOME/gdtk
-export PATH=$PATH:$DGD/bin
-export DGD_LUA_PATH=$DGD/lib/?.lua
-export DGD_LUA_CPATH=$DGD/lib/?.so

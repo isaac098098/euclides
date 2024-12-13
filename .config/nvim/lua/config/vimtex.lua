@@ -47,6 +47,6 @@ vim.api.nvim_create_autocmd('FileType', {
     callback = function()
         vim.api.nvim_set_keymap('n', '<Leader>tt', ':VimtexTocToggle<CR>', { noremap = true, silent = true })
         vim.opt.number = false
+        vim.opt.relativenumber = false
     end
 })
-

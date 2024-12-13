@@ -4,7 +4,7 @@ import = [
 ]
 
 # [window]
-# opacity = 0.5
+# opacity = 0.7
 
 [font]
 size = 9.4
@@ -19,8 +19,9 @@ style = "Bold Italic"
 
 [font.italic]
 family = "JetBrainsMonoNL NFM"
-style = "Bold Italic"
+style = "Italic"
+# style = "Bold Italic"
 
 [font.normal]
 family = "JetBrainsMonoNL NFM"
-style = "Bold"
+# style = "Bold"

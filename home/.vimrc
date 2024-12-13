@@ -1,4 +1,5 @@
 syntax off
+filetype plugin on
 set tabstop=4
 set shiftwidth=4
 set expandtab
@@ -6,21 +7,18 @@ set breakindent
 set linebreak
 set autoindent
 set smartindent
-set clipboard=unnamed
+set number
+set relativenumber
+set numberwidth=1
 
 nnoremap j gj
 nnoremap k gk
-vnoremap <S-u> <Esc>
-snoremap <S-u> <Esc>
-inoremap <S-u> <Esc>
+vnoremap <C-j> <Esc>
+snoremap <C-j> <Esc>
+inoremap <C-j> <Esc>
 inoremap <C-e> <C-o>$
 
 let g:loaded_matchparen=1
 
-highlight NonText ctermfg=0
-
-"autocmd VimEnter * if
-  "\ argc() == 0 &&
-  "\ bufname("%") == "" |
-  "\   exe "normal! `0" |
-  "\ endif
+hi NonText ctermfg=0
+hi LineNr ctermfg=8
