@@ -20,7 +20,6 @@ style = "Bold Italic"
 [font.italic]
 family = "JetBrainsMonoNL NFM"
 style = "Italic"
-# style = "Bold Italic"
 
 [font.normal]
 family = "JetBrainsMonoNL NFM"

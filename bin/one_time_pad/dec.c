@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <time.h>
 
 const char alpha[] = {
     'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z',
@@ -14,7 +13,7 @@ const int alpha_size = *(&alpha + 1) - alpha;
 int main(int argc, char** argv) {
     if(argc != 3) {
         printf("Usage: ./enc [text file to decrypt] [key] \n");
-        printf("Warning! The encrypted file and the key file will be deleted when running this program.\n");
+        printf("Warning! The encrypted file and the key file will be deleted.\n");
         return 0;
     }
     else {
@@ -30,10 +29,9 @@ int main(int argc, char** argv) {
         }
 
         int c, size=0;
-        while((c = fgetc(enc)) != EOF) {
+        while((c = fgetc(enc)) != EOF)
             if (c != '\n')
                 size++;
-        }
 
         fclose(enc);
         FILE *encr = fopen(argv[1], "r");
@@ -41,10 +39,9 @@ int main(int argc, char** argv) {
         int cn=0, enc_int[size], key_int[size];
         while((c = fgetc(encr)) != EOF) {
             if (c != '\n') {
-                for (int i = 0; i < alpha_size; i++) {
+                for (int i = 0; i < alpha_size; i++)
                     if(alpha[i] == c)
                        enc_int[cn] = i;
-                }
                 cn++;
             }
         }
@@ -52,10 +49,9 @@ int main(int argc, char** argv) {
         cn=0;
         while((c = fgetc(key)) != EOF) {
             if (c != '\n') {
-                for (int i = 0; i < alpha_size; i++) {
+                for (int i = 0; i < alpha_size; i++)
                     if(alpha[i] == c)
                        key_int[cn] = i;
-                }
                 cn++;
             }
         }

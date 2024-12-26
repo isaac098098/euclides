@@ -17,6 +17,7 @@ case "$1" in
         # latexmk -output-directory="$HOME/notes/current-notes/" "$HOME/notes/current-notes/main.tex" > /dev/null
         pdflatex -output-directory="$HOME/notes/current-notes/" "$HOME/notes/current-notes/main.tex" > /dev/null
         zathura $HOME/notes/current-notes/main.pdf
+        exit 0
     ;;
         # compile whole document
     "All")
@@ -30,6 +31,7 @@ case "$1" in
         sed -i '7,13 s/^/% /' $HOME/notes/current-notes/main.tex
         sed -i 's/^\\/% \\/g' $HOME/notes/eof.tex
         zathura $HOME/notes/current-notes/main.pdf
+        exit 0
     ;;
     *)
         # compile and open lecture interval or specific lectures
@@ -49,18 +51,18 @@ case "$1" in
                     if  [ "1" -le "$((i))" ] && [ "$((i))" -le "$((10#$last))" ]
                     then
                         sed -i "s/^% \\\\\input{lec_$(printf '%02d' $i).tex}/\\\\\input{lec_$(printf '%02d' $i).tex}/g" $HOME/notes/current-notes/main.tex
-                    fi
-                done
+                    fi done
             else
                 if [ "1" -le "$((s))" ] && [ "$((s))" -le "$((10#$last))" ]
                 then
                     sed -i "s/^% \\\\\input{lec_$(printf '%02d' $s).tex}/\\\\\input{lec_$(printf '%02d' $s).tex}/g" $HOME/notes/current-notes/main.tex
                 fi
-                fi
+            fi
             done
             # latexmk -output-directory="$HOME/notes/current-notes/" "$HOME/notes/current-notes/main.tex" > /dev/null
             pdflatex -output-directory="$HOME/notes/current-notes/" "$HOME/notes/current-notes/main.tex" > /dev/null
             zathura $HOME/notes/current-notes/main.pdf
+            exit 0
         fi
         ;;
 esac
@@ -85,7 +87,7 @@ do
         # latexmk -output-directory="$HOME/notes/current-notes/" "$HOME/notes/current-notes/main.tex" > /dev/null
         pdflatex -output-directory="$HOME/notes/current-notes/" "$HOME/notes/current-notes/main.tex" > /dev/null
         zathura $HOME/notes/current-notes/main.pdf
-        break
+        exit 0
     fi
 done
 

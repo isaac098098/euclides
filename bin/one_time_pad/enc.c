@@ -35,10 +35,9 @@ int main(int argc, char** argv) {
                 int k = rand() % alpha_size;
                 fputc(alpha[k], key);
 
-                for (int i = 0; i < alpha_size; i++) {
+                for (int i = 0; i < alpha_size; i++)
                     if(alpha[i] == c)
                         fputc(alpha[(i+k) % alpha_size], encr);
-                }
             }
         }
 

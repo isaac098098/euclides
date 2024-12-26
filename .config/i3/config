@@ -317,3 +317,5 @@ for_window [class="steamwebhelper"] floating enable
 for_window [title="Preferences"] floating enable
 for_window [class="PureRef"] floating enable
 for_window [class="Gpick"] floating enable
+for_window [class="Minecraft Launcher"] floating enable
+for_window [class="amberol"] floating enable
