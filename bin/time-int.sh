@@ -16,8 +16,7 @@ then
         echo "invalid time format: $1"
         exit 1
     fi
-
-    if [[ $2 =~ ^([0-9]+):([0-9]+)$ ]]; then
+if [[ $2 =~ ^([0-9]+):([0-9]+)$ ]]; then
         fH=0
         fM=$((10#${BASH_REMATCH[1]}))
         fS=$((10#${BASH_REMATCH[2]}))

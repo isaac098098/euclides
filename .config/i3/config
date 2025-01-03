@@ -77,7 +77,7 @@ bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
 # bindsym $mod+d exec --no-startup-id dmenu_run -nb '$bg1' -sb '$blue' -nf '$fg0' -fn 'JetBrains Mono NL SemiBold-9'
-bindsym $mod+d exec --no-startup-id dmenu_run -nb '$bg1' -sb '$blue' -nf '$fg0' -fn 'JetBrains Mono NL-9'
+bindsym $mod+d exec --no-startup-id dmenu_run -nb '$bg1' -sb '$blue' -nf '$fg0' -fn 'Iosevka NF SemiBold-10'
 # A more modern dmenu replacement is rofi:
 # bindcode $mod+40 exec "rofi -modi drun,run -show drun"
 # There also is i3-dmenu-desktop which only displays applications shipping a
@@ -211,15 +211,15 @@ bar {
     status_command i3status
     #tray_output none
     #font pango:JetBrains Mono NL SemiBold 8
-    font pango:JetBrains Mono NL 8
+    font pango:Iosevka NF SemiBold 9
     colors {
         #                       border  bg      fg
         background              $crust
         statusline              $fg0
         focused_statusline      $fg0
         focused_separator       $bg1
-        focused_workspace       $fg     $blue   $white
-        active_workspace        $fg     $blue   $white
+        focused_workspace       $blue   $blue   $crust
+        active_workspace        $blue   $blue   $white
         inactive_workspace      $bg1    $bg1    $fg0
         urgent_workspace        $bg2    $bg2    $white
     }
@@ -235,20 +235,21 @@ client.background           $crust              $crust      $white      $crust  
 
 # Workspaces
 
-assign [class="Thunar"] $ws2
-assign [class="Brave-browser"] $ws3
-assign [class="Zathura"] $ws4
-#assign [class="mpv"] $ws6
-assign [class="obsidian"] $ws7
-assign [class="kdenlive"] $ws7
-assign [class="steam"] $ws8
-assign [class="discord"] $ws9
-#assign [class="obs"] $ws10
+# assign [class="Thunar"] $ws2
+# assign [class="Brave-browser"] $ws3
+# assign [class="Zathura"] $ws4
+# #assign [class="mpv"] $ws6
+# assign [class="obsidian"] $ws7
+# assign [class="kdenlive"] $ws7
+# assign [class="steam"] $ws8
+# assign [class="discord"] $ws9
+# assign [class="obs"] $ws10
 
 # Steam
 
 for_window [title="Friends List"] floating enable
 for_window [title="Steam Settings"] floating enable
+for_window [workspace=$ws10] floating enable
 for_window [workspace=$ws8] layout tabbed
 for_window [workspace=$ws7] layout tabbed
 

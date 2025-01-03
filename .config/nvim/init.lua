@@ -12,9 +12,9 @@ vim.opt.breakindent = true
 vim.opt.linebreak = true
 
 -- Line numbering
-vim.opt.number = true
-vim.opt.relativenumber = true
-vim.opt.numberwidth = 1
+vim.opt.number = false
+vim.opt.relativenumber = false
+-- vim.opt.numberwidth = 1
 
 -- Highlighting
 vim.cmd('let loaded_matchparen=1')
@@ -40,7 +40,7 @@ vim.keymap.set('s','<C-j>','<Esc>')
 -- Insert mode
 vim.keymap.set('i','<C-j>','<Esc>')
 vim.keymap.set('i','<C-e>','<C-o>$')
-vim.keymap.set('i','<C-p>','<Esc>:%y+<CR>:q!<CR>')
+vim.keymap.set('i','<C-p>','<Esc>0v$h"+y:q!<CR>')
 
 --Plugins
 require("config.lazy")

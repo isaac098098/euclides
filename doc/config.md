@@ -21,6 +21,7 @@ audacity
 spotdl
 minidlna
 gst-plugins-good
+gourou
 ```
 
 ## Gaming
@@ -325,9 +326,7 @@ ProtectHome=read-only
 User=root
 ```
 
-# Todo
+## Resize `i3` window
 
-- [ ] Buscar otro editor de texto mejor que gedit tipo bloc de notas. O usar solo vim o neovim.
-- [ ] Buscar una calculadora mejor que gnome-calculator.
-- [ ] Hacer documento guía para usar comandos como tesseract, menyoki, magick, ffmpeg, yt-dlp, etc.
-- [ ] Documentos de workflows.
+`i3-msg '[class="Brave-browser"] resize set 1924 1084'`
+
