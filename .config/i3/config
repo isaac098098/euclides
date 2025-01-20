@@ -77,7 +77,8 @@ bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
 # bindsym $mod+d exec --no-startup-id dmenu_run -nb '$bg1' -sb '$blue' -nf '$fg0' -fn 'JetBrains Mono NL SemiBold-9'
-bindsym $mod+d exec --no-startup-id dmenu_run -nb '$bg1' -sb '$blue' -nf '$fg0' -fn 'Iosevka NF SemiBold-10'
+#bindsym $mod+d exec --no-startup-id dmenu_run -nb '$bg1' -sb '$blue' -nf '$fg0' -fn 'Iosevka NF SemiBold-10'
+bindsym $mod+d exec --no-startup-id dmenu_run -nb '$bg1' -sb '$blue' -nf '$fg0' -fn 'Mx437 IBM VGA 8x16-11'
 # A more modern dmenu replacement is rofi:
 # bindcode $mod+40 exec "rofi -modi drun,run -show drun"
 # There also is i3-dmenu-desktop which only displays applications shipping a
@@ -211,7 +212,7 @@ bar {
     status_command i3status
     #tray_output none
     #font pango:JetBrains Mono NL SemiBold 8
-    font pango:Iosevka NF SemiBold 9
+    font pango:Mx437 IBM VGA 8x16 9.4
     colors {
         #                       border  bg      fg
         background              $crust
@@ -240,7 +241,7 @@ client.background           $crust              $crust      $white      $crust  
 # assign [class="Zathura"] $ws4
 # #assign [class="mpv"] $ws6
 # assign [class="obsidian"] $ws7
-# assign [class="kdenlive"] $ws7
+assign [class="kdenlive"] $ws7
 # assign [class="steam"] $ws8
 # assign [class="discord"] $ws9
 # assign [class="obs"] $ws10
@@ -320,3 +321,6 @@ for_window [class="PureRef"] floating enable
 for_window [class="Gpick"] floating enable
 for_window [class="Minecraft Launcher"] floating enable
 for_window [class="amberol"] floating enable
+for_window [class="floating-term"] floating enable && 
+for_window [class="floating-term"] resize set 500 100
+

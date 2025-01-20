@@ -22,6 +22,7 @@ spotdl
 minidlna
 gst-plugins-good
 gourou
+gvfs (virtual filesystem)
 ```
 
 ## Gaming
@@ -330,3 +331,6 @@ User=root
 
 `i3-msg '[class="Brave-browser"] resize set 1924 1084'`
 
+## Remove unused packages
+
+`pacman -Qtdq | pacman -Rns -`

@@ -22,8 +22,5 @@ ctrl + shift + e
 ctrl + shift + q
     bash $HOME/euclides/bin/inkscape_save.sh
 
-ctrl + shift + y
-    bash $HOME/euclides/bin/edtex.sh
-
 ctrl + shift + b
     rofi -show books -modes "books:$HOME/.config/rofi/scripts/search_books.sh"

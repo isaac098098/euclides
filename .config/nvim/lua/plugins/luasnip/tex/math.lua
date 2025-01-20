@@ -1291,7 +1291,7 @@ s({trig = "fd", name = "Function definition"},
     }
 ),
 
-s({trig = "sni", name = "sin", snippetType = "autosnippet"},
+s({trig = "sin", name = "sin", snippetType = "autosnippet"},
     {
 		f(function(_,snip) return snip.captures[1] end),
         t("\\sin")
@@ -1299,7 +1299,7 @@ s({trig = "sni", name = "sin", snippetType = "autosnippet"},
     {condition = in_mathzone}
 ),
 
-s({trig = "co", name = "cos", snippetType = "autosnippet"},
+s({trig = "cos", name = "cos", snippetType = "autosnippet"},
     {
 		f(function(_,snip) return snip.captures[1] end),
         t("\\cos")
@@ -1737,7 +1737,7 @@ s({trig = "thp", name = "Thin space", snippetType = "autosnippet"},
     {condition = in_mathzone}
 ),
 
-s({trig = "mdn", name = "Medium space", snippetType = "autosnippet"},
+s({trig = "mes", name = "Medium space", snippetType = "autosnippet"},
     {
 		f(function(_,snip) return snip.captures[1] end),
         t("\\:")

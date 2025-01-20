@@ -86,5 +86,7 @@ return {
             return require('config.bufferline')
         end
     },
-
+    {
+        'arcticicestudio/nord-vim'
+    },
 }

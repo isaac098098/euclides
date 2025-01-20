@@ -40,13 +40,13 @@ vim.keymap.set('s','<C-j>','<Esc>')
 -- Insert mode
 vim.keymap.set('i','<C-j>','<Esc>')
 vim.keymap.set('i','<C-e>','<C-o>$')
-vim.keymap.set('i','<C-p>','<Esc>0v$h"+y:q!<CR>')
 
 --Plugins
 require("config.lazy")
 
 -- Colorschemes
 vim.cmd('colorscheme base16-tomorrow-night')
+-- vim.cmd('colorscheme nord')
 vim.cmd('highlight NvimTreeEndOfBuffer guifg=#1d1f21')
 vim.cmd('highlight NvimTreeWinSeparator guibg=#1a1b1d guifg=#1a1b1d')
 vim.cmd('highlight NvimTreeNormal guibg=#1a1b1d')
