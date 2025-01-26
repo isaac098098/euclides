@@ -14,7 +14,10 @@ case "$1" in
             sed -i "s/^\\\\\input{lec_$(printf '%02d' $i).tex}/% \\\\\input{lec_$(printf '%02d' $i).tex}/g" $HOME/notes/current-notes/main.tex
         done
         sed -i "s/^% \\\\\input{lec_${last}.tex}/\\\\\input{lec_${last}.tex}/g" "$HOME/notes/current-notes/main.tex"
-        # latexmk -output-directory="$HOME/notes/current-notes/" "$HOME/notes/current-notes/main.tex" > /dev/null
+        pdflatex -output-directory="$HOME/notes/current-notes/" "$HOME/notes/current-notes/main.tex" > /dev/null
+        bibtex "$HOME/notes/current-notes/bibliography.bib" > /dev/null
+        makeindex "$HOME/notes/current-notes/main.idx"
+        pdflatex -output-directory="$HOME/notes/current-notes/" "$HOME/notes/current-notes/main.tex" > /dev/null
         pdflatex -output-directory="$HOME/notes/current-notes/" "$HOME/notes/current-notes/main.tex" > /dev/null
         zathura $HOME/notes/current-notes/main.pdf
         exit 0
@@ -24,7 +27,10 @@ case "$1" in
         killall rofi
         sed -i "s/% //g" $HOME/notes/current-notes/main.tex
         sed -i 's/^% \\/\\/g' $HOME/notes/eof.tex
-        # latexmk -output-directory="$HOME/notes/current-notes/" "$HOME/notes/current-notes/main.tex" > /dev/null
+        pdflatex -output-directory="$HOME/notes/current-notes/" "$HOME/notes/current-notes/main.tex" > /dev/null
+        bibtex "$HOME/notes/current-notes/bibliography.bib" > /dev/null
+        makeindex "$HOME/notes/current-notes/main.idx"
+        pdflatex -output-directory="$HOME/notes/current-notes/" "$HOME/notes/current-notes/main.tex" > /dev/null
         pdflatex -output-directory="$HOME/notes/current-notes/" "$HOME/notes/current-notes/main.tex" > /dev/null
 
         # comment title pages, toc and bibliography again
@@ -59,7 +65,10 @@ case "$1" in
                 fi
             fi
             done
-            # latexmk -output-directory="$HOME/notes/current-notes/" "$HOME/notes/current-notes/main.tex" > /dev/null
+            pdflatex -output-directory="$HOME/notes/current-notes/" "$HOME/notes/current-notes/main.tex" > /dev/null
+            bibtex "$HOME/notes/current-notes/bibliography.bib" > /dev/null
+            makeindex "$HOME/notes/current-notes/main.idx"
+            pdflatex -output-directory="$HOME/notes/current-notes/" "$HOME/notes/current-notes/main.tex" > /dev/null
             pdflatex -output-directory="$HOME/notes/current-notes/" "$HOME/notes/current-notes/main.tex" > /dev/null
             zathura $HOME/notes/current-notes/main.pdf
             exit 0
@@ -84,7 +93,10 @@ do
                 sed -i "s/^\\\\\input{lec_$(printf '%02d' $j).tex}/% \\\\\input{lec_$(printf '%02d' $j).tex}/g" $HOME/notes/current-notes/main.tex
             fi
         done
-        # latexmk -output-directory="$HOME/notes/current-notes/" "$HOME/notes/current-notes/main.tex" > /dev/null
+        pdflatex -output-directory="$HOME/notes/current-notes/" "$HOME/notes/current-notes/main.tex" > /dev/null
+        bibtex "$HOME/notes/current-notes/bibliography.bib" > /dev/null
+        makeindex "$HOME/notes/current-notes/main.idx"
+        pdflatex -output-directory="$HOME/notes/current-notes/" "$HOME/notes/current-notes/main.tex" > /dev/null
         pdflatex -output-directory="$HOME/notes/current-notes/" "$HOME/notes/current-notes/main.tex" > /dev/null
         zathura $HOME/notes/current-notes/main.pdf
         exit 0

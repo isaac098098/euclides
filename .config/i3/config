@@ -312,6 +312,7 @@ bindsym $mod+Shift+n bar mode toggle
 
 # Floating windows
 
+# for_window [title="/*"] floating enable
 for_window [class="simple-scan"] floating enable
 for_window [class="Gnome-pomodoro"] floating enable
 for_window [class="qBittorrent"] floating enable

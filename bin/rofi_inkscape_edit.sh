@@ -26,6 +26,7 @@ then
         xwininfo -root -tree | grep -E 'org.inkscape.Inkscape' | tail -n 1 | awk '{print $1}' | xargs xdotool windowactivate
         # xdotool key 5
         # xdotool key ctrl+4
+        exit
     fi
 fi
 
