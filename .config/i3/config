@@ -32,7 +32,8 @@ set $mod Mod1
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
 # font pango:JetBrains Mono NL SemiBold 0
-font pango:JetBrains Mono NL 0
+# font pango:Iosevka NF 8
+font pango:Mx437 IBM VGA 8x16 0
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -228,7 +229,7 @@ bar {
 
 #                           title_border        bg          fg          indicator   child_border
 client.focused              $blue               $blue       $fg0        $blue       $blue 
-client.focused_inactive     $blue               $blue       $fg0        $bg0        $crust
+client.focused_inactive     $blue               $blue       $crust      $bg0        $crust
 client.unfocused            $crust              $crust      $fg0        $bg0        $crust
 client.urgent               $red                $red        $white      $bg0        $red
 client.placeholder          $yellow             $yellow     $white      $bg0        $yellow
@@ -275,7 +276,7 @@ exec_always --no-startup-id feh --bg-scale --randomize $HOME/documents/images/wa
 
 # Picom
 
-exec_always --no-startup-id picom --config $HOME/.config/picom/picom.conf
+exec_always --no-startup-id picom -b --config $HOME/.config/picom/picom.conf
 
 # Notifications
 
