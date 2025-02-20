@@ -51,6 +51,7 @@ neovim
 gvim
 vi
 unclutter
+scribus
 ```
 
 ## AI
@@ -64,7 +65,7 @@ eccv2022-rife
 
 ```
 brave
-archive.org-downloader
+archive.org-downloader (https://github.com/MiniGlome/Archive.org-Downloader)
 dmenu
 torbrowser-launcher
 ```

@@ -2,6 +2,8 @@ local ls = require("luasnip")
 local f = ls.function_node
 local d = ls.dynamic_node
 local r = ls.restore_node
+local t = ls.text_node
+local s = ls.snippet
 
 -- Auxiliary functions
 
@@ -462,13 +464,6 @@ s({trig = "¨", name = "Superscript", snippetType = "autosnippet", wordTrig = fa
     },
     {condition = in_mathzone}
 ),
-
--- s({trig = "\'", name = "Subscript and superscript", snippetType = "autosnippet", wordTrig = false},
---     {
--- 		t("_{"), i(1), t("}^{"), i(2), t("}")
---     },
---     {condition = in_mathzone}
--- ),
 
 s({trig = "st", name = "Stacking", snippetType = "autosnippet"},
     {
@@ -1315,7 +1310,7 @@ s({trig = "tan", name = "tan", snippetType = "autosnippet"},
     {condition = in_mathzone}
 ),
 
-s({trig = "ot", name = "cot", snippetType = "autosnippet"},
+s({trig = "cot", name = "cot", snippetType = "autosnippet"},
     {
 		f(function(_,snip) return snip.captures[1] end),
         t("\\cot")
@@ -1323,7 +1318,7 @@ s({trig = "ot", name = "cot", snippetType = "autosnippet"},
     {condition = in_mathzone}
 ),
 
-s({trig = "sc", name = "sec", snippetType = "autosnippet"},
+s({trig = "sec", name = "sec", snippetType = "autosnippet"},
     {
 		f(function(_,snip) return snip.captures[1] end),
         t("\\sec")
@@ -1419,7 +1414,7 @@ s({trig = "coth", name = "coth", snippetType = "autosnippet"},
     {condition = in_mathzone}
 ),
 
-s({trig = "sh", name = "sech", snippetType = "autosnippet"},
+s({trig = "sch", name = "sech", snippetType = "autosnippet"},
     {
 		f(function(_,snip) return snip.captures[1] end),
         t("\\sech")
@@ -1593,34 +1588,6 @@ s({trig = "unb", name = "Underbrace", snippetType = "autosnippet"},
 
 -- Delimiters
 
-s(
-    {trig = "(", descr = "Parentheses", snippetType = "autosnippet", wordTrig = false},
-    {
-        t("("), d(1,get_visual), t(")")
-    }
-),
-
-s(
-    {trig = "[", descr = "Square brackets", snippetType = "autosnippet", wordTrig = false},
-    {
-        t("["), d(1,get_visual), t("]")
-    }
-),
-
-s(
-    {trig = "{", descr = "Curly brackets", snippetType = "autosnippet", wordTrig = false},
-    {
-        t("{"), d(1,get_visual), t("}")
-    }
-),
-
-s(
-    {trig = "\"", descr = "Double quotes", snippetType = "autosnippet", wordTrig = false},
-    {
-        t("\""), d(1,get_visual), t("\"")
-    }
-),
-
 s({trig = "dp", name = "Parenthesis", snippetType = "autosnippet"},
     {
 		f(function(_,snip) return snip.captures[1] end),
@@ -1737,7 +1704,7 @@ s({trig = "thp", name = "Thin space", snippetType = "autosnippet"},
     {condition = in_mathzone}
 ),
 
-s({trig = "mes", name = "Medium space", snippetType = "autosnippet"},
+s({trig = "mdn", name = "Medium space", snippetType = "autosnippet"},
     {
 		f(function(_,snip) return snip.captures[1] end),
         t("\\:")
@@ -2294,10 +2261,10 @@ s({trig = "til", name = "Tilde", snippetType = "autosnippet"},
         c(1,
             {
                 {
-                    t("\\tilde{"), v(1), t("}")
+                    t("\\tilde{"), i(1), t("}")
                 },
                 {
-                    t("\\widetilde{"), v(1), t("}")
+                    t("\\widetilde{"), i(1), t("}")
                 }
             }
         )
@@ -2936,5 +2903,27 @@ s({trig = "itms", name = "Multiple integral subscript", snippetType = "autosnipp
     },
     {condition = in_mathzone}
 ),
+
+-- s({trig = "ct1", snippetType = "autosnippet"},
+--         fmt(
+--             [[
+--                 \plusbinomial{<>}{<>}
+--             ]],
+--             { i(1), i(2) },
+--             { delimiters = "<>" },
+--             {condition = in_mathzone}
+--         )
+-- ),
+--
+-- s({trig = "ct2", snippetType = "autosnippet"},
+--         fmt(
+--             [[
+--                 \z{<>}
+--             ]],
+--             { i(1) },
+--             { delimiters = "<>" },
+--             {condition = in_mathzone}
+--         )
+-- ),
 
 }
