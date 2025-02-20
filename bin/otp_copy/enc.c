@@ -51,7 +51,7 @@ int main(int argc, char** argv) {
                 c_pos++;
                 for (int i = 0; i < alpha_size; i++)
                     if(alpha[i] == c) {
-                        fputc(alpha[ (i+key[(c_pos-1) % 7]) % alpha_size ], encr);
+                        fputc(alpha[ (i+key[(c_pos-1) % n]) % alpha_size ], encr);
                         break;
                     }
             }
