@@ -118,6 +118,7 @@ jq
 pv
 thunar
 thunar-archive-plugin
+vibrant-cli
 ```
 
 ## Themes
@@ -335,3 +336,7 @@ User=root
 ## Remove unused packages
 
 `pacman -Qtdq | pacman -Rns -`
+
+## Workaround to fix screen tearing
+
+`pacman -Rns xf86-video-intel`

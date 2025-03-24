@@ -33,7 +33,7 @@ set $mod Mod1
 # is used in the bar {} block below.
 # font pango:JetBrains Mono NL SemiBold 0
 # font pango:Iosevka NF 8
-font pango:Mx437 IBM VGA 8x16 0
+font pango:Mx437 IBM VGA 8x16 10
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -75,6 +75,7 @@ bindsym $mod+Return exec alacritty
 
 # kill focused window
 bindsym $mod+Shift+q kill
+bindsym $mod+Shift+w focus parent,kill
 
 # start dmenu (a program launcher)
 # bindsym $mod+d exec --no-startup-id dmenu_run -nb '$bg1' -sb '$blue' -nf '$fg0' -fn 'JetBrains Mono NL SemiBold-9'
@@ -228,7 +229,7 @@ bar {
 }
 
 #                           title_border        bg          fg          indicator   child_border
-client.focused              $blue               $blue       $fg0        $blue       $blue 
+client.focused              $blue               $blue       $crust      $blue       $blue 
 client.focused_inactive     $blue               $blue       $crust      $bg0        $crust
 client.unfocused            $crust              $crust      $fg0        $bg0        $crust
 client.urgent               $red                $red        $white      $bg0        $red
@@ -251,9 +252,10 @@ assign [class="kdenlive"] $ws7
 
 for_window [title="Friends List"] floating enable
 for_window [title="Steam Settings"] floating enable
-for_window [workspace=$ws10] floating enable
-for_window [workspace=$ws8] layout tabbed
+for_window [workspace=$ws4] layout tabbed
 for_window [workspace=$ws7] layout tabbed
+for_window [workspace=$ws8] layout tabbed
+for_window [workspace=$ws10] floating enable
 
 # Borders
 
@@ -311,6 +313,10 @@ for_window [class="kitty"] floating enable
 
 bindsym $mod+Shift+n bar mode toggle
 
+# Screen lock
+
+bindsym $mod+x exec --no-startup-id lock
+
 # Floating windows
 
 # for_window [title="/*"] floating enable
@@ -325,3 +331,4 @@ for_window [class="Minecraft Launcher"] floating enable
 for_window [class="amberol"] floating enable
 for_window [class="floating-term"] floating enable && 
 for_window [class="floating-term"] resize set 500 100
+#for_window [class="mpv"] floating enable
