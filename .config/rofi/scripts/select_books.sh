@@ -15,7 +15,7 @@ then
             dir="$HOME/documents/comm/resources/books/"
         ;;
         "Tesis")
-            dir="$HOME/documents/academic/esfm/tesis/bib/"
+            dir="$HOME/documents/academic/esfm/tesis/tesis_bib/"
         ;;
         "Analysis")
             dir="$HOME/documents/academic/cinvestav/semestre_1/aux_bib/analysis/"
