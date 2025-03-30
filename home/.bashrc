@@ -20,6 +20,7 @@ alias nsxiv='nsxiv -b'
 alias tty-clock='tty-clock -c -s -C 4 -S -n'
 alias pipes.sh='pipes.sh -r 0'
 alias en-croissant='WEBKIT_DISABLE_DMABUF_RENDERER=1 en-croissant'
-alias pomotroid='pomotroid --no-sandbox'
+alias pomotroid='pomotroid --no-gpu-sandbox'
+alias spotdl='spotdl --output "{artist}/{album}/{track-number} - {title}.{output-ext}"'
 
 export PATH=$PATH:/home/isaac09809/.spicetify

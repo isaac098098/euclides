@@ -340,3 +340,11 @@ User=root
 ## Workaround to fix screen tearing
 
 `pacman -Rns xf86-video-intel`
+
+## Reescale image without smoothing
+
+Use `-flip` or `-flop` to mirror horizontally or vertically.
+
+```
+magick [input] -scale 1920x1080 -flop [output]
+```

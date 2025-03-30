@@ -213,8 +213,8 @@ bindsym $mod+r mode "resize"
 bar {
     status_command i3status
     # tray_output none
-    font pango:JetBrains Mono NL 8
-    # font pango:Mx437 IBM VGA 8x16 9.4
+    # font pango:JetBrains Mono NL 8
+    font pango:Mx437 IBM VGA 8x16 9
     colors {
         #                       border  bg      fg
         background              $crust
@@ -262,6 +262,7 @@ for_window [workspace=$ws10] floating enable
 default_floating_border none
 default_border pixel 2
 smart_borders on
+# gaps inner 20
 
 # Focus windows
 
@@ -332,3 +333,4 @@ for_window [class="amberol"] floating enable
 for_window [class="floating-term"] floating enable && 
 for_window [class="floating-term"] resize set 500 100
 #for_window [class="mpv"] floating enable
+#for_window [class="Minecraft Launcher"] floating enable

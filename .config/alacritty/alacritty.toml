@@ -9,21 +9,25 @@ import = [
 # padding.y = 12
 
 [font]
-size = 9.7
+size = 12
 # size = 11.6
 
 [font.normal]
-family = "JetBrainsMono NL NFM"
+# family = "JetBrainsMono NL NFM"
+family = "Mx437 IBM VGA 8x16"
 style = "SemiBold"
 
 [font.bold]
-family = "JetBrainsMono NL NFM"
+# family = "JetBrainsMono NL NFM"
+family = "Mx437 IBM VGA 8x16"
 style = "Bold"
 
 [font.bold_italic]
-family = "JetBrainsMono NL NFM"
+# family = "JetBrainsMono NL NFM"
+family = "Mx437 IBM VGA 8x16"
 style = "Bold Italic"
 
 [font.italic]
-family = "JetBrainsMono NL NFM"
+# family = "JetBrainsMono NL NFM"
+family = "Mx437 IBM VGA 8x16"
 style = "Italic"
