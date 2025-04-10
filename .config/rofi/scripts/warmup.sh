@@ -4,7 +4,7 @@ tem=($(ls [templates directory]))
 
 if [[ "$1" ]]
 then
-    krita [templates directory]/${tem[$RANDOM % ${#tem[@]}]} &
+    krita [templates directory]/"$1" &
     killall rofi
     exit 0
 fi

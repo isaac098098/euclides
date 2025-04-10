@@ -318,9 +318,8 @@ bindsym $mod+Shift+n bar mode toggle
 
 bindsym $mod+x exec --no-startup-id lock
 
-# Floating windows
+# Window rules
 
-# for_window [title="/*"] floating enable
 for_window [class="simple-scan"] floating enable
 for_window [class="Gnome-pomodoro"] floating enable
 for_window [class="qBittorrent"] floating enable
@@ -334,3 +333,4 @@ for_window [class="floating-term"] floating enable &&
 for_window [class="floating-term"] resize set 500 100
 #for_window [class="mpv"] floating enable
 #for_window [class="Minecraft Launcher"] floating enable
+# for_window [title="/*"] floating enable
