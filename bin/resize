@@ -1,0 +1,11 @@
+#!/bin/bash
+
+id=$(xwininfo | grep "Window id:" | awk '{print $4}')
+
+if [ $id ]
+then
+    i3-msg "[id=$id] resize set 1920 1080"
+    i3-msg "[id=$id] move absolute position center"
+    i3-msg "[id=$id] border pixel 0"
+    exit 0
+fi
