@@ -131,7 +131,9 @@ papirus-icon-theme
 
 ## Open terminal from file manager
 
-`ln -s /usr/bin/kitty /usr/bin/xdg-terminal-exec`
+```
+ln -s /usr/bin/kitty /usr/bin/xdg-terminal-exec
+```
 
 ## Set system clock to local
 
@@ -175,7 +177,9 @@ bluetoothctl
 
 ## Test notifications
 
-Requires `libnotify`. `nofity-send [title] [content]`.
+Requires `libnotify`
+
+```nofity-send [title] [content]```
 
 ## Fonts
 
@@ -254,17 +258,17 @@ Use `xrdb ~/.Xresources` to reload `.Xresources`.
 
 Requires packages `menyoki` and `slop`. Use LAlt-U to finish record, for consistent record size use `slop` first and pass to `--size` argument.
 
-`menyoki record --root --action-keys LAlt-S,LAlt-U --cancel-keys LControl-D,LControl-F -c 5 --size $(slop) gif --fps 10`
+```menyoki record --root --action-keys LAlt-S,LAlt-U --cancel-keys LControl-D,LControl-F -c 5 --size $(slop) gif --fps 10```
 
 ### Screenkey
 
-`screenkey --window -s small  -f "JetBrainsMono NF Bold" --font-color "#1e1e2e" --bg-color "#89b4fa" --opacity 1 --bak-mode normal`
+```screenkey --window -s small  -f "JetBrainsMono NF Bold" --font-color "#1e1e2e" --bg-color "#89b4fa" --opacity 1 --bak-mode normal```
 
 ## System
 
 ### Change file/directory owner
 
-`chown [user] [filepath]`
+```chown [user] [filepath]```
 
 ## Printer
 
@@ -272,7 +276,7 @@ Run `rm -r /usr/lib/cups/driver/`. Discover printer with `avahi`, then run `lpin
 
 ## Picom
 
-Disable opacity for hidden windows. Useful so that multiple stacked windows do not add opacity to a fixed background opacity.
+Disable opacity for hidden windows. Useful so stacked windows do not add their opacity.
 
 ```
 opacity-rule = [
@@ -331,15 +335,15 @@ User=root
 
 ## Resize `i3` window
 
-`i3-msg '[class="Brave-browser"] resize set 1924 1084'`
+`i3-msg '[class="class"] resize set [width] [height]'`
 
 ## Remove unused packages
 
-`pacman -Qtdq | pacman -Rns -`
+```pacman -Qtdq | pacman -Rns -```
 
-## Workaround to fix screen tearing
+## Workaround to fix screen tearing with Intel Drivers
 
-`pacman -Rns xf86-video-intel`
+```pacman -Rns xf86-video-intel```
 
 ## Reescale image without smoothing
 

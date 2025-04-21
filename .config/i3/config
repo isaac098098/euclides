@@ -296,7 +296,9 @@ bindsym $mod+t exec --no-startup-id killall unclutter
 
 # Screenshots
 
-bindsym Print exec --no-startup-id scrot -F "$HOME/documents/images/screens/%Y%m%d-%H%M%S.png"
+# bindsym Print exec --no-startup-id scrot -F "$HOME/documents/images/screens/%Y%m%d-%H%M%S.png"
+# bindsym Print exec --no-startup-id flameshot gui
+bindsym Print exec --no-startup-id bash -c 'maim -s "$HOME/documents/images/screens/$(date +%Y-%m-%d-%H%M%S).png"'
 
 # Nsxiv
 
@@ -320,6 +322,7 @@ bindsym $mod+x exec --no-startup-id lock
 
 # Window rules
 
+for_window [floating] border pixel 0
 for_window [class="simple-scan"] floating enable
 for_window [class="Gnome-pomodoro"] floating enable
 for_window [class="qBittorrent"] floating enable

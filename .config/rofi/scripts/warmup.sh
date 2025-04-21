@@ -1,6 +1,6 @@
 #!/bin/bash
 
-tem=($(ls [templates directory]))
+tem=($(ls [templates directory] | grep -v '~'))
 
 if [[ "$1" ]]
 then
