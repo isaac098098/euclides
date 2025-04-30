@@ -1,35 +1,38 @@
-ctrl + shift + s
-    rofi -show select -modes "select:$HOME/.config/rofi/scripts/select.sh"
+ctrl + shift + b
+    rofi -show books -modes "books:$HOME/.config/rofi/scripts/search_books.sh"
 
 ctrl + shift + d
     rofi -show select_books -modes "select:$HOME/.config/rofi/scripts/select_books.sh"
 
-ctrl + shift + h
-    rofi -show warmup -modes "select:$HOME/.config/rofi/scripts/warmup.sh"
+ctrl + shift + o
+    rofi -markup-rows -show edit_notes -modes "edit:$HOME/.config/rofi/scripts/edit_notes.sh"
 
-alt + n
-    alacritty -e nvim $HOME/notes/current-notes/main.tex
+ctrl + shift + s
+    rofi -show select -modes "select:$HOME/.config/rofi/scripts/select_course.sh"
+
+ctrl + shift + p
+    rofi -show compile_notes -modes "compile:$HOME/.config/rofi/scripts/compile_notes.sh"
+
+ctrl + shift + i
+    rofi -show select_zettelkasten -modes "select:$HOME/.config/rofi/scripts/select_zettelkasten.sh"
+
+ctrl + shift + n
+    rofi -show create_card -modes "create:$HOME/.config/rofi/scripts/create_card.sh"
+
+ctrl + shift + e
+    rofi -show edit_card -modes "edit:$HOME/.config/rofi/scripts/edit_card.sh"
+
+ctrl + shift + q
+    rofi -show delete_card -modes "delete:$HOME/.config/rofi/scripts/delete_card.sh"
+
+ctrl + shift + y
+    zathura $HOME/zettelkasten/current/main.pdf
 
 ctrl + shift + u
     zathura $HOME/notes/current-notes/main.pdf
 
-ctrl + shift + p
-    rofi -show pdf -modes "pdf:$HOME/.config/rofi/scripts/pdf.sh"
-
-ctrl + shift + o
-    rofi -markup-rows -show open -modes "open:$HOME/.config/rofi/scripts/open.sh"
-
-ctrl + shift + a
-    rofi -show "add inkscape" -modes "add inkscape:$HOME/euclides/bin/rofi_inkscape_add.sh"
-
-ctrl + shift + e
-    rofi -show "edit inkscape" -modes "edit inkscape:$HOME/euclides/bin/rofi_inkscape_edit.sh"
-
-ctrl + shift + q
-    bash $HOME/euclides/bin/inkscape_save.sh
-
-ctrl + shift + b
-    rofi -show books -modes "books:$HOME/.config/rofi/scripts/search_books.sh"
+ctrl + shift + h
+    rofi -show warmup -modes "select:$HOME/.config/rofi/scripts/warmup.sh"
 
 alt + y
     alacritty --working-directory $HOME/todo/

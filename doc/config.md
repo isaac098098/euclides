@@ -68,6 +68,8 @@ brave
 archive.org-downloader (https://github.com/MiniGlome/Archive.org-Downloader)
 dmenu
 torbrowser-launcher
+qutebrowser
+python-adblock
 ```
 
 ## System
@@ -347,8 +349,8 @@ User=root
 
 ## Reescale image without smoothing
 
-Use `-flip` or `-flop` to mirror horizontally or vertically.
+Use `-flip` or `-flop` to mirror horizontally or vertically. Use `-filter point` to copy pixels without interpolation. Nord background color: `#2E3440`.
 
 ```
-magick [input] -scale 1920x1080 -flop [output]
+magick [input] -filter point -resize 1920x1080 -gravity center -background "[color]" -extent 1920x1080 -flop [output]
 ```

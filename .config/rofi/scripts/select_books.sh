@@ -12,10 +12,10 @@ then
             dir="$HOME/documents/academic/cinvestav/semestre_1/variable_compleja/var_bib/"
         ;;
         "Drawing")
-            dir="$HOME/documents/comm/resources/books/"
+            dir="$HOME/documents/books/manuals/drawing"
         ;;
         "Tesis")
-            dir="$HOME/documents/academic/esfm/tesis/tesis_bib/"
+            dir="$HOME/documents/academic/tesis_esfm/tesis_bib"
         ;;
         "Analysis")
             dir="$HOME/documents/academic/cinvestav/semestre_1/aux_bib/analysis/"

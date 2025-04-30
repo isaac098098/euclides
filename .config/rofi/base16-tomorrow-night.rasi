@@ -78,10 +78,13 @@ button selected {
 }
 
 message {
+    text-color: @fg0;
     background-color: @bg0;
 }
 
 textbox {
     text-color: @blue;
+    vertical-align: 0.5;
+    horizontal-align: 0.5;
     background-color: @bg0;
 }

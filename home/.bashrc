@@ -15,6 +15,7 @@ alias nsxiv="nsxiv -b"
 export PATH="/usr/local/texlive/2024/bin/x86_64-linux:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 export UNZIP_DISABLE_ZIPBOMB_DETECTION=TRUE
+export GTK_THEME=Adwaita-dark
 
 alias nsxiv='nsxiv -b'
 alias tty-clock='tty-clock -c -s -C 4 -S -n'

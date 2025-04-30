@@ -323,6 +323,7 @@ bindsym $mod+x exec --no-startup-id lock
 # Window rules
 
 for_window [floating] border pixel 0
+for_window [tiling] border pixel 2
 for_window [class="simple-scan"] floating enable
 for_window [class="Gnome-pomodoro"] floating enable
 for_window [class="qBittorrent"] floating enable
