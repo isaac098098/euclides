@@ -34,19 +34,81 @@ then
         then
             if [[ $found2 == 1 ]]
             then
-                sed -i -E "s|(\\zheader\{[^}]*\})\{[^}]+\}|\1{$card2}|" "$dir/cards/$card1.tex"
-                sed -i -E "s|(\\zheadernotags\{[^}]*\})\{[^}]+\}|\1{$card1}|" "$dir/cards/$card1.tex"
-                sed -i -E "s|(\\zheader\{[^}]*\})\{[^}]+\}|\1{$card1}|" "$dir/cards/$card2.tex"
-                sed -i -E "s|(\\zheadernotags\{[^}]*\})\{[^}]+\}|\1{$card1}|" "$dir/cards/$card2.tex"
-                mv "$dir/cards/$card1.tex" "$dir/cards/tmp"
-                mv "$dir/cards/$card2.tex" "$dir/cards/$card1.tex"
-                mv "$dir/cards/tmp" "$dir/cards/$card2.tex"
-                for i in $cards
-                do
-                    sed -i "s/\\\\hyperref\[card:$card1\]{\\\\textsf{$card1}}/\\\\hyperref[card:tmp]{\\\\textsf{tmp}}/" "$dir/cards/$i"
-                    sed -i "s/\\\\hyperref\[card:$card2\]{\\\\textsf{$card2}}/\\\\hyperref[card:$card1]{\\\\textsf{$card1}}/" "$dir/cards/$i"
-                    sed -i "s/\\\\hyperref\[card:tmp\]{\\\\textsf{tmp}}/\\\\hyperref[card:$card2]{\\\\textsf{$card2}}/" "$dir/cards/$i"
-                done
+                if [[ "$card1" =~ ^[0-9]+$ ]]
+                then
+                    root1=${BASH_REMATCH[0]}
+                    if [[ "$card2" =~ ^[0-9]+$ ]]
+                    then
+                        root2=${BASH_REMATCH[0]}
+                        for i in $cards
+                        do
+                            if [[ "$i" =~ ^$root1(.*) ]]
+                            then
+                                mv "$dir/cards/$i" "$dir/cards/tmp_$i"
+                                # echo "$i -> tmp_$i"
+                            fi
+                        done
+
+                        for i in $cards
+                        do
+                            if [[ "$i" =~ ^$root2(.*) ]]
+                            then
+                                new_name="$root1${BASH_REMATCH[1]}"
+                                sed -i -E "s|(\\zheader\{[^}]*\})\{[^}]+\}|\1{${new_name%.tex}}|" "$dir/cards/$i"
+                                sed -i -E "s|(\\zheadernotags\{[^}]*\})\{[^}]+\}|\1{${new_name%.tex}}|" "$dir/cards/$i"
+                                mv "$dir/cards/$i" "$dir/cards/$new_name"
+                                # echo "$i -> $new_name"
+                            fi
+                        done
+
+                        tmp_cards=$(ls "$dir/cards" | grep tmp)
+                        for i in $tmp_card
+                        do
+                            if [[ "$i" =~ ^tmp_$root1(.*) ]]
+                            then
+                                new_name="$root2${BASH_REMATCH[1]}"
+                                sed -i -E "s|(\\zheader\{[^}]*\})\{[^}]+\}|\1{${new_name%.tex}}|" "$dir/cards/$i"
+                                sed -i -E "s|(\\zheadernotags\{[^}]*\})\{[^}]+\}|\1{${new_name%.tex}}|" "$dir/cards/$i"
+                                mv "$dir/cards/$i" "$dir/cards/$new_name"
+                                # echo "$i -> $new_name"
+                            fi
+                        done
+
+                        new_cards=$(ls "$dir/cards" | grep .tex)
+                        for i in $new_cards
+                        do
+                            sed -E -i "s|(\\\\hyperref\\[card:)$root1([^]]*\\])|\1tmp_$root1\2|" "$dir/cards/$i"
+                            sed -E -i "s|(\\\\textsf\\{)$root1([^]]*\\})|\1tmp_$root1\2|" "$dir/cards/$i"
+                        done
+
+                        for i in $new_cards
+                        do
+                            sed -E -i "s|(\\\\hyperref\\[card:)$root2([^]]*\\])|\1$root1\2|" "$dir/cards/$i"
+                            sed -E -i "s|(\\\\textsf\\{)$root2([^]]*\\})|\1$root1\2|" "$dir/cards/$i"
+                        done
+                        
+                        for i in $new_cards
+                        do
+                            sed -E -i "s|(\\\\hyperref\\[card:)tmp_$root1([^]]*\\])|\1$root2\2|" "$dir/cards/$i"
+                            sed -E -i "s|(\\\\textsf\\{)tmp_$root1([^]]*\\})|\1$root2\2|" "$dir/cards/$i"
+                        done
+                    exit 0
+                    fi
+                else
+                    sed -i -E "s|(\\zheader\{[^}]*\})\{[^}]+\}|\1{$card2}|" "$dir/cards/$card1.tex"
+                    sed -i -E "s|(\\zheadernotags\{[^}]*\})\{[^}]+\}|\1{$card1}|" "$dir/cards/$card1.tex"
+                    sed -i -E "s|(\\zheader\{[^}]*\})\{[^}]+\}|\1{$card1}|" "$dir/cards/$card2.tex"
+                    sed -i -E "s|(\\zheadernotags\{[^}]*\})\{[^}]+\}|\1{$card1}|" "$dir/cards/$card2.tex"
+                    mv "$dir/cards/$card1.tex" "$dir/cards/tmp"
+                    mv "$dir/cards/$card2.tex" "$dir/cards/$card1.tex"
+                    mv "$dir/cards/tmp" "$dir/cards/$card2.tex"
+                    for i in $cards
+                    do
+                        sed -i "s/\\\\hyperref\[card:$card1\]{\\\\textsf{$card1}}/\\\\hyperref[card:tmp]{\\\\textsf{tmp}}/" "$dir/cards/$i"
+                        sed -i "s/\\\\hyperref\[card:$card2\]{\\\\textsf{$card2}}/\\\\hyperref[card:$card1]{\\\\textsf{$card1}}/" "$dir/cards/$i"
+                        sed -i "s/\\\\hyperref\[card:tmp\]{\\\\textsf{tmp}}/\\\\hyperref[card:$card2]{\\\\textsf{$card2}}/" "$dir/cards/$i"
+                    done
+                fi
             else
                 rofi -config "$HOME/.config/rofi/config.rasi" -e "card $card2 not found!"
             fi
