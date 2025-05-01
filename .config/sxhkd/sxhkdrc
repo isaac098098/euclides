@@ -16,7 +16,7 @@ ctrl + shift + p
 ctrl + shift + i
     rofi -show select_zettelkasten -modes "select:$HOME/.config/rofi/scripts/select_zettelkasten.sh"
 
-ctrl + shift + n
+ctrl + shift + m
     rofi -show create_card -modes "create:$HOME/.config/rofi/scripts/create_card.sh"
 
 ctrl + shift + e

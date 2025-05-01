@@ -15,6 +15,7 @@ cp ~/.config/rofi/scripts/select_course.sh ~/euclides/.config/rofi/scripts
 cp ~/.config/rofi/scripts/select_books.sh ~/euclides/.config/rofi/scripts
 cp ~/.config/rofi/scripts/edit_card.sh ~/euclides/.config/rofi/scripts
 cp ~/.config/rofi/scripts/delete_card.sh ~/euclides/.config/rofi/scripts
+cp ~/.config/rofi/scripts/swap_cards.sh ~/euclides/.config/rofi/scripts
 cp ~/.config/rofi/scripts/create_card.sh ~/euclides/.config/rofi/scripts
 cp -r ~/.config/sxhkd ~/euclides/.config
 cp -r ~/.config/zathura ~/euclides/.config
