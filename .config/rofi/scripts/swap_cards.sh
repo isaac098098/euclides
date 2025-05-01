@@ -61,8 +61,8 @@ then
                             fi
                         done
 
-                        tmp_cards=$(ls "$dir/cards" | grep tmp)
-                        for i in $tmp_card
+                        tmp_cards=$(ls "$dir/cards" | grep .tex | grep tmp)
+                        for i in $tmp_cards
                         do
                             if [[ "$i" =~ ^tmp_$root1(.*) ]]
                             then
