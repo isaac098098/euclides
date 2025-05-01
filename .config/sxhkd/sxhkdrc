@@ -25,6 +25,9 @@ ctrl + shift + e
 ctrl + shift + q
     rofi -show delete_card -modes "delete:$HOME/.config/rofi/scripts/delete_card.sh"
 
+ctrl + shift + w
+    rofi -show swap_cards -modes "swap_cards:$HOME/.config/rofi/scripts/swap_cards.sh"
+
 ctrl + shift + y
     zathura $HOME/zettelkasten/current/main.pdf
 
