@@ -28,6 +28,9 @@ ctrl + shift + q
 ctrl + shift + w
     rofi -show swap_cards -modes "swap_cards:$HOME/.config/rofi/scripts/swap_cards.sh"
 
+ctrl + shift + x
+    rofi -show insert_card -modes "insert_card:$HOME/.config/rofi/scripts/insert_card.sh"
+
 ctrl + shift + y
     zathura $HOME/zettelkasten/current/main.pdf
 
