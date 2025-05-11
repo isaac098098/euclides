@@ -7,15 +7,16 @@ require('lualine').setup {
             statusline = {},
             winbar = {},
             'NvimTree',
+            'packer'
         },
         ignore_focus = {},
         always_divide_middle = false,
         globalstatus = false,
-        refresh = {
-            statusline = 1000,
-            tabline = 1000,
-            winbar = 1000,
-        }
+        -- refresh = {
+            -- statusline = 100,
+            -- tabline = 100,
+            -- winbar = 100,
+        -- }
     },
     sections = {
         lualine_a = {'mode'},

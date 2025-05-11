@@ -7,7 +7,7 @@ if [[ "$1" ]]
 then
     killall rofi > /dev/null 2>&1
     card=$(echo "$1" | awk '{print $1}')
-    alacritty -e nvim "$dir/cards/$card.tex" &
+    NVIM_LISTEN_ADDRESS=/tmp/nvimsocket_cards alacritty -e nvim --server /tmp/nvimsocket_cards --remote-tab "$dir/cards/$card.tex" &
     exit 0
 else
     sorted=$(echo "$cards" | sed 's/\.tex$//' | awk '
@@ -54,7 +54,7 @@ else
         tags=$(grep "^%% tags:" "$dir/cards/$i.tex" | sed -E 's/^.*tags:[[:space:]]*//')
         if [[ "$tags" ]]
         then
-            printf "%-8s %s %30s\n" "$i" "$title" "$tags"
+            printf "%-8s %s | %s\n" "$i" "$title" "$tags"
         else
             printf "%-8s %s\n" "$i" "$title"
         fi
