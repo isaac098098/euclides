@@ -31,6 +31,7 @@ gvfs (virtual filesystem)
 steam
 minecraft-launcher
 mgba
+melonds (AUR)
 wine
 discord
 ```
@@ -354,3 +355,7 @@ Use `-flip` or `-flop` to mirror horizontally or vertically. Use `-filter point`
 ```
 magick [input] -filter point -resize 1920x1080 -gravity center -background "[color]" -extent 1920x1080 -flop [output]
 ```
+
+# Undo
+
+`ln -s /usr/lib/libxml2.so /usr/lib/libxml2.so.2`

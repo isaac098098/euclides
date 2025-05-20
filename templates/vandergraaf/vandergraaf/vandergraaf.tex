@@ -1,0 +1,22 @@
+\documentclass[letterpaper]{article}
+\usepackage[utf8]{inputenc}
+% \usepackage[left=3.6cm,top=4.65cm,right=3.6cm,bottom=4.65cm]{geometry}
+\usepackage[left=2.4cm,top=3.1cm,right=4.8cm,bottom=6.2cm]{geometry}
+\usepackage{tikz}
+
+\begin{document}
+
+\pagestyle{empty}
+\noindent
+\begin{tikzpicture}
+  \filldraw[fill=white, draw=gray!80, line width=0.3pt] (0,0) rectangle (14.4,18.6);
+  \pgfmathsetmacro{\n}{35}
+  \pgfmathsetmacro{\nm}{\n-1}
+  \pgfmathsetmacro{\dy}{18.6/\n}
+
+  \foreach \i in {1,...,\nm} {
+    \draw[line width=0.3pt, draw=gray!80] (0,{\i*\dy}) -- (14.4,{\i*\dy});
+  }
+\end{tikzpicture}
+
+\end{document}
