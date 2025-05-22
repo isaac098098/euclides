@@ -122,6 +122,14 @@ pv
 thunar
 thunar-archive-plugin
 vibrant-cli
+pipewire
+pipewire-audio
+pipewire-pulse
+wireplumber
+pipewire-alsa
+pipewire-jack
+gst-plugin-pipewire
+
 ```
 
 ## Themes
@@ -162,7 +170,7 @@ rfkill
 rfkill unblock bluetooth
 ```
 
-### Bluetooth headset
+### Bluetooth headset (`pulseaudio`)
 
 Install the `pulseaudio-bluetooth` package and run `pulseaudio -k`. If not activated, do `systemctl --user enable pulseaudio.service`, make sure to not use `sudo`.
 
