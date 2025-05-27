@@ -231,6 +231,7 @@ JL
 - No archivar en otros repositorios que no sean `euclides`.
 - Todas las plantillas van en el repositorio `euclides`.
 - Cada `update_dotfiles.sh` es independiente.
+- Cuando quieras cambiar de tema en `pavilionx360` o en `T495`, primero archiva los ficheros pertinentes en `euclides/archive` (si quieres guardarlos) y después haz los cambios.
 
 ## Todo
 
