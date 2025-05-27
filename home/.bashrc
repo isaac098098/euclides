@@ -22,6 +22,8 @@ alias tty-clock='tty-clock -c -s -C 4 -S -n'
 alias pipes.sh='pipes.sh -r 0'
 alias en-croissant='WEBKIT_DISABLE_DMABUF_RENDERER=1 en-croissant'
 alias pomotroid='pomotroid --no-gpu-sandbox'
-alias spotdl='spotdl --output "{artist}/{album}/{track-number} - {title}.{output-ext}"'
+alias spotdl-al='$HOME/.local/bin/venv/bin/spotdl --output "$HOME/Music/{artist}/{album}/{track-number} - {title}.{output-ext}"'
+alias spotdl-pl='$HOME/.local/bin/venv/bin/spotdl --output "$HOME/Music/{list-name}/{title}.{output-ext}"'
+alias spotdl-so='$HOME/.local/bin/venv/bin/spotdl --output "$HOME/Music/{title}.{output-ext}"'
 
 export PATH=$PATH:/home/isaac09809/.spicetify

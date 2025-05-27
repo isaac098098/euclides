@@ -10,9 +10,6 @@ mpv
 4kvideodownloader
 ffmpeg-thumbnailer
 paleta
-gpick
-scrot
-feh
 vlc
 shotwell
 yt-dlp-git
@@ -45,6 +42,8 @@ xournalpp-catppuccin
 simple-scan
 pdfarranger
 texlive
+texlive-langspanish
+texlive
 zathura
 zathura-pdf-mupdf
 zathura-djvu
@@ -76,14 +75,6 @@ python-adblock
 ## System
 
 ```
-xorg
-xorg-xserver
-xorg-xinit
-xorg-xclipboard
-xclip
-i3-wm
-i3status
-picom
 nvidia
 neofetch
 kitty
@@ -129,7 +120,49 @@ wireplumber
 pipewire-alsa
 pipewire-jack
 gst-plugin-pipewire
+alacritty
+rsync
 
+```
+
+### `i3`
+
+```
+xorg
+xorg-xserver
+xorg-xinit
+xorg-xclipboard
+xclip
+i3-wm
+i3status
+picom
+gpick
+feh
+scrot
+flameshot
+```
+
+### `hyprland`
+
+```
+hyprland
+hyprlock
+hyprpaper
+cliphist
+hyprpicker
+grim
+meson
+ninja
+cmake
+cpio
+```
+
+To install `hyprgrass` first install `glm meson ninja`. Then
+
+```
+hyprpm update
+hyprpm add https://github.com/horriblename/hyprgrass
+hyprpm enable hyprgrass
 ```
 
 ## Themes
@@ -362,6 +395,52 @@ Use `-flip` or `-flop` to mirror horizontally or vertically. Use `-filter point`
 
 ```
 magick [input] -filter point -resize 1920x1080 -gravity center -background "[color]" -extent 1920x1080 -flop [output]
+```
+
+## Set Wacom pressure curve
+
+See https://linuxwacom.github.io/bezier.html.
+```
+xsetwacom --set 19 PressureCurve 30 0 100 100
+```
+
+## Sync to external drive without changing permissions, owners and groups
+
+```
+sudo rsync -rlD --delete --itemize-changes [SOURCE] [DESTINATION]
+```
+
+## Sync to linux machine
+
+```
+sudo rsync -a --delete --itemize-changes [SOURCE] [DESTINATION]
+```
+
+## Print directory size
+
+```
+du -sb [DIR] | awk '{print $1}' | numfmt --to=iec --format="%.4f"
+
+```
+
+## Print directory tree. Use `-L` for depth level. Use `--dirsfirst` to print directories first. Use `-a` to print all files.
+
+```
+tree -a -L 1 --dirsfirst [DIR1] [DIR2] ... [DIRN]
+```
+
+## Symlink. Do not append `/` in simbolic link.
+
+```
+ln -sf [ORIGINAL_DIR] [SYMLINK]
+```
+
+## Fix blurry `brave` on `wayland`
+
+Go to `brave://flags` -> `Prefered Ozone platform` -> `Wayland`
+
+```
+ln -sf [ORIGINAL_DIR] [SYMLINK]
 ```
 
 # Undo

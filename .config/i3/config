@@ -274,8 +274,8 @@ bindsym $mod+q exec --no-startup-id setxkbmap us -variant intl
 
 # Wallpaper
 
-exec_always --no-startup-id feh --bg-scale --randomize $HOME/documents/images/wallpapers/other
-# exec_always --no-startup-id feh --bg-scale $HOME/documents/images/wallpapers/tux_tomorrow_night.png
+exec_always --no-startup-id feh --bg-scale --randomize $HOME/pictures/wallpapers/other
+# exec_always --no-startup-id feh --bg-scale $HOME/documents/pictures/tux_tomorrow_night.png
 
 # Picom
 

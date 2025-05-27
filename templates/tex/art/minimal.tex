@@ -1,0 +1,46 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{lipsum}
+
+\title{Minimal \LaTeX example}
+\author{José Luis Juanico}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+\begin{abstract}
+    \noindent In this paper we develop the general theory of $L-$functions of one variable. \lipsum[1][1-3]
+\end{abstract}
+
+\section{Preliminaries}
+
+Euler discovered that
+\begin{equation}
+    \sum_{n=1}^{\infty} \frac{1}{n^2} = \frac{\pi^2}{6}.
+\end{equation}
+
+Later, Riemann generalized this to the so-called Riemann zeta function, defined by
+\begin{equation}
+    \zeta(s) = \sum_{n=1}^{\infty} \frac{1}{n^s} = \frac{1}{1^s}+\frac{1}{2^s}+\frac{1}{3^s}+\cdots, \forall s \in \mathbb{C}, \Re(s) > 1.
+\end{equation}
+
+The Riemann zeta function $\zeta(s)$ is a function of a complex variable $s=\sigma+i t$, where $\sigma$ and $t$ are real numbers. (Then notation $s,\sigma$ and $t$ is used traditionally in the study of the zeta function, following Riemann). When $\Re(s)=\sigma>1$, the function can be written as a converging summation or as an integral:
+\begin{equation}
+    \zeta(s) = \sum_{n=1}^{\infty} \frac{1}{n^s} = \frac{1}{\Gamma(s)} \int_{0}^{\infty} \frac{x^{s-1}}{\mathrm{e}^x-1} \mathrm{d} x,
+\end{equation}
+where
+\begin{equation}
+    \Gamma(s) = \int_{0}^{\infty} x^{s-1} \mathrm{e}^{-x} \mathrm{d} x
+\end{equation}
+is the \emph{gamma function}. The Riemann zeta function is defined for other complex values via \textit{analytic continuation} of the function defined for $\sigma>1$.
+
+Si $G$ y $H$ son grupos cíclicos, entonces $G \equiv H \iff |G| = |H|$. En efecto, pues si $G = \langle g \rangle$ y $H = \langle h \rangle$, la función $\varphi: G \longrightarrow H$ definida como $\varphi(g^i) := h^i$ es un homomorfismo.
+
+Si $G$ es un grupo cíclico, entonces los subgrupos y los cocientes de $G$ también son cíclicos. Pues si $G = \langle g \rangle$, como $H \vartriangleleft G$, existe $n \ge 1$ tal que $g^n \in H$, sea $m$ el menor enterno positivo con esta propiedad. Es fácil verificar que $H = \langle g^m \rangle$.
+
+Sea $G$ un grupo finito, entonces $G$ es cíclico si y sólo si para todo divisor $k$ de $|G|$ existe un  único subgrupo cíclico $G_k$ de $G$ con $|G_k| = k$.
+
+\end{document}

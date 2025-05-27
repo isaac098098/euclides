@@ -78,7 +78,7 @@ s({trig = "foo", name = "Footnote"},
 
 s({trig = "mrg", name = "Marginal note"},
     {
-        t("\\marginpar{"), v(1,"text"), t("}")
+        t("\\marginnote{"), v(1,"text"), t("}")
     }
 ),
 

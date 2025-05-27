@@ -1,10 +1,10 @@
 #!/bin/bash
 
-tem=($(ls [templates directory] | grep -v '~'))
+tem=($(ls /home/isaac09809/documents/comm/practices/templates/ | grep -v '~'))
 
 if [[ "$1" ]]
 then
-    krita [templates directory]/"$1" &
+    krita /home/isaac09809/documents/comm/practices/templates/"$1" &
     killall rofi
     exit 0
 fi

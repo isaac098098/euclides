@@ -39,3 +39,6 @@ ctrl + shift + u
 
 ctrl + shift + h
     rofi -show warmup -modes "select:$HOME/.config/rofi/scripts/warmup.sh"
+
+alt+y
+    alacritty --working-directory $HOME/todo
