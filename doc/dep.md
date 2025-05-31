@@ -1,6 +1,8 @@
 # Dependencies
 
 - `dep.md`: master `euclides` 
+- `config.md`: master `euclides` 
+- `doc.md`: master `euclides` 
 - `books`: master `euclides` 
 - `mac`: master `T495` 
 - `notes`: master `T495` 
@@ -12,18 +14,16 @@
 - `code`: master `pavilionx360` 
 - `backup`: master `JL` 
 - `code`: master `euclides` 
-- `config.md`: master `euclides` 
-- `doc.md`: master `euclides` 
 - `archive`: master `euclides` 
 - `programs`: master `euclides` 
 - `notes_skeleton`: master `euclides` 
 - `zettelkasten_skeleton`: master `euclides` 
 - `templates`: master `euclides` 
+- `T495/backup`: master `T495` 
+- `backup`: master `JL` 
 - `.config/nvim`: master `euclides` 
 - `.config/rofi/scripts`: master `T495` 
 - `.config/hypr`: master `T495` 
-- `T495/backup`: master `T495` 
-- `backup`: master `JL` 
 
 # Contents
 
@@ -116,6 +116,8 @@ $HOME
 │   ├── alacritty
 │   ├── dunst
 │   ├── gtk-3.0
+│   ├── hypr
+│   ├── waybar
 │   ├── nvim
 │   ├── rofi
 │   ├── zathura
@@ -236,6 +238,6 @@ JL
 
 ## Todo
 
-- [ ] Revisar `pavilionx360/bin`, `pavilionx360/doc` y `pavilionx360/templates`.
-- [ ] `.update_dotfiles` para `T495`, donde estarán `zettelkasten_backup` y `notes_backup` en `T496/backup`.
-- [ ] Actualizar `.config/rofi/scripts` en `pavilionx360` y en `T495`.
+- [X] Revisar `pavilionx360/bin`, `pavilionx360/doc` y `pavilionx360/templates`.
+- [X] `.update_dotfiles` para `T495`, donde estarán `zettelkasten_backup` y `notes_backup` en `T496/backup`.
+- [X] Actualizar `.config/rofi/scripts` en `pavilionx360` y en `T495`.

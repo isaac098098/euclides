@@ -487,6 +487,34 @@ gsettings set org.gnome.desktop.interface gkt-theme "[THEME]"
 gsettings set org.gnome.desktop.interface font-name "[FONT] [SIZE]"
 ```
 
+## `SSH` auth for cloned `git`
+
+```
+ssh-keygen -t ed25519 -C "email@example.com"
+```
+
+Copy the public key
+
+```
+cat ~/.ssh/id_ed25519.pub
+```
+
+Go to **GitHub** > **Settings** > **SSH and GPG keys** > **New SSH key** and save the key.
+
+Test `ssh` connection
+
+```
+ssh -T git@github.com
+```
+
+Change repo `URL`
+
+```
+git remote set-url origin git@github.com:[USERNAME]/[REPO NAME].git
+```
+
+Now `git pull` should not ask for credentials.
+
 # Undo
 
 `ln -s /usr/lib/libxml2.so /usr/lib/libxml2.so.2`
