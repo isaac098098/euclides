@@ -275,7 +275,7 @@ bindsym $mod+q exec --no-startup-id setxkbmap us -variant intl
 # Wallpaper
 
 exec_always --no-startup-id feh --bg-scale --randomize $HOME/pictures/wallpapers/other
-# exec_always --no-startup-id feh --bg-scale $HOME/documents/pictures/tux_tomorrow_night.png
+# exec_always --no-startup-id feh --bg-scale $HOME/pictures/tux_tomorrow_night.png
 
 # Picom
 
@@ -296,9 +296,9 @@ bindsym $mod+t exec --no-startup-id killall unclutter
 
 # Screenshots
 
-bindsym Print exec --no-startup-id scrot -F "$HOME/documents/images/screens/%Y%m%d-%H%M%S.png"
+bindsym Print exec --no-startup-id scrot -F "$HOME/pictures/screens/%Y%m%d-%H%M%S.png"
 # bindsym Print exec --no-startup-id flameshot gui
-bindsym Shift+Print exec --no-startup-id bash -c 'maim -s "$HOME/documents/images/screens/$(date +%Y-%m-%d-%H%M%S).png"'
+bindsym Shift+Print exec --no-startup-id bash -c 'maim -s "$HOME/pictures/screens/$(date +%Y-%m-%d-%H%M%S).png"'
 
 # Nsxiv
 

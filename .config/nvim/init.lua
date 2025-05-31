@@ -64,3 +64,5 @@ vim.api.nvim_set_hl(0, 'FloatBorder', { bg = '#1d1f21', fg = '#ffffff' })
 
 -- bufferline
 vim.cmd('highlight BufferLineOffsetSeparator guifg=#1A1B1D guibg=#1A1B1D')
+
+vim.opt.fillchars:append('eob: ')

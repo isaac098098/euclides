@@ -122,6 +122,8 @@ pipewire-jack
 gst-plugin-pipewire
 alacritty
 rsync
+lxappearance
+less
 
 ```
 
@@ -407,13 +409,13 @@ xsetwacom --set 19 PressureCurve 30 0 100 100
 ## Sync to external drive without changing permissions, owners and groups
 
 ```
-sudo rsync -rlD --delete --itemize-changes [SOURCE] [DESTINATION]
+rsync -rlD --delete --itemize-changes --progress [SOURCE] [DESTINATION]
 ```
 
 ## Sync to linux machine
 
 ```
-sudo rsync -a --delete --itemize-changes [SOURCE] [DESTINATION]
+rsync -a --delete --itemize-changes --progress [SOURCE] [DESTINATION]
 ```
 
 ## Print directory size
@@ -441,6 +443,48 @@ Go to `brave://flags` -> `Prefered Ozone platform` -> `Wayland`
 
 ```
 ln -sf [ORIGINAL_DIR] [SYMLINK]
+```
+
+## Change `nautilus` font size
+
+Change `org.gnome.desktop.interface.font-name` with `gsettings` or `dconf-editor`.
+
+## Scale factor for `brave` or `chrome`
+
+```
+$HOME/.config/chrome-flags.conf
+
+--force-device-scale-factor=n
+```
+
+```
+$HOME/.config/brave-flags.conf
+
+--force-device-scale-factor=n
+```
+
+## Add minimize and maximize buttons
+
+```
+gsettings set org.gnome.desktop.wm.preferences button-layout ":minimize,maximize,close"
+
+```
+
+## Install `papirus catppuccin` icon theme
+
+```
+pacman -S papirus-icon-theme
+paru -S papirus-folders-catppucin-git
+papirus-folders -C cat-[FLAVOR]-[ACCENT] -t Papirus
+```
+
+Then go to `lxappearance` -> `Icon Theme` -> `Papirus`. Also run `gsettings set org.gnome.desktop.interface icon-theme "Papirus"`
+
+## Set `gtk` theme and font
+
+```
+gsettings set org.gnome.desktop.interface gkt-theme "[THEME]"
+gsettings set org.gnome.desktop.interface font-name "[FONT] [SIZE]"
 ```
 
 # Undo

@@ -130,6 +130,7 @@ $HOME
 ├── Pictures -> $HOME/pictures
 ├── documents
 │   ├── academic
+│   ├── backup
 │   ├── books
 ├── downloads
 ├── pavilionx360
