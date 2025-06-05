@@ -17,7 +17,7 @@ export PATH="$HOME/.local/bin:$PATH"
 export UNZIP_DISABLE_ZIPBOMB_DETECTION=TRUE
 export GTK_THEME=Adwaita-dark
 
-alias nsxiv='nsxiv -b'
+alias nsxiv='nsxiv -a -b -s f'
 alias tty-clock='tty-clock -c -s -C 4 -S -n'
 alias pipes.sh='pipes.sh -r 0'
 alias en-croissant='WEBKIT_DISABLE_DMABUF_RENDERER=1 en-croissant'

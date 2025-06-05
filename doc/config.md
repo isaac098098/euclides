@@ -409,13 +409,13 @@ xsetwacom --set 19 PressureCurve 30 0 100 100
 ## Sync to external drive without changing permissions, owners and groups
 
 ```
-rsync -rlD --delete --itemize-changes --progress [SOURCE] [DESTINATION]
+rsync -rlD --delete --itemize-changes --size-only --progress [SOURCE] [DESTINATION]
 ```
 
 ## Sync to linux machine
 
 ```
-rsync -a --delete --itemize-changes --progress [SOURCE] [DESTINATION]
+rsync -a --delete --itemize-changes --size-only --progress [SOURCE] [DESTINATION]
 ```
 
 ## Print directory size
@@ -514,6 +514,33 @@ git remote set-url origin git@github.com:[USERNAME]/[REPO NAME].git
 ```
 
 Now `git pull` should not ask for credentials.
+
+## Change `dns`
+
+Identify bad `dns`
+
+```
+dig archlinux.org
+dig archlinux.org @1.1.1.1
+dig archlinux.org @8.8.8.8
+```
+
+Replace `dns`
+
+```
+/etc/resolv.conf
+
+nameserver 1.1.1.1
+nameserver 8.8.8.8
+
+```
+
+Write-protect `/etc/resolv.conf`
+
+
+```
+sudo chattr +i /etc/resolv.conf
+```
 
 # Undo
 
