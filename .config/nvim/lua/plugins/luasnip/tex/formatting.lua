@@ -19,6 +19,12 @@ return {
 
 -- Text and pages
 
+s({trig = "cm", name = "Quotation marks"},
+    {
+        t("``"), i(1), t("''")
+    }
+),
+
 s({trig = "url", name = "URLs"},
     {
         t("\\url{"), v(1,"url"), t("}")

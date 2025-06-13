@@ -6,10 +6,10 @@ if [[ "$1" ]]
 then
     case $1 in
         "Algebraic Topology")
-            dir="$HOME/documents/academic/cinvestav/semestre_1/topologia/top_bib/"
+            dir="$HOME/documents/academic/cinvestav/semestre_1/topologia/"
         ;;
         "Complex Variables")
-            dir="$HOME/documents/academic/cinvestav/semestre_1/variable_compleja/var_bib/"
+            dir="$HOME/documents/academic/cinvestav/semestre_1/variable_compleja/"
         ;;
         "Drawing")
             dir="$HOME/documents/books/manuals/drawing"

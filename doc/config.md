@@ -409,13 +409,19 @@ xsetwacom --set 19 PressureCurve 30 0 100 100
 ## Sync to external drive without changing permissions, owners and groups
 
 ```
-rsync -rlD --delete --itemize-changes --size-only --progress [SOURCE] [DESTINATION]
+rsync -rlDh --delete --itemize-changes --size-only --progress [SOURCE] [DESTINATION]
+```
+
+## Only copy files showing progress
+
+```
+rsync -rh --itemize-changes --progress [SOURCE] [DESTINATION]
 ```
 
 ## Sync to linux machine
 
 ```
-rsync -a --delete --itemize-changes --size-only --progress [SOURCE] [DESTINATION]
+rsync -ah --delete --itemize-changes --size-only --progress [SOURCE] [DESTINATION]
 ```
 
 ## Print directory size

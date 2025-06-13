@@ -1,6 +1,6 @@
 #!/bin/bash
 
-dir="/home/isaac09809/documents/academic/esfm/tesis/tesis_bib"
+dir="/home/isaac09809/documents/academic/cinvestav/semestre_1/variable_compleja/"
 
 if [[ -n "$1" ]]; then
     killall rofi
