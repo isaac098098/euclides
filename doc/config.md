@@ -124,6 +124,7 @@ alacritty
 rsync
 lxappearance
 less
+pamixer
 
 ```
 
@@ -551,3 +552,5 @@ sudo chattr +i /etc/resolv.conf
 # Undo
 
 `ln -s /usr/lib/libxml2.so /usr/lib/libxml2.so.2`
+
+`sudo ln -sf /usr/lib/libx265.so.215 /usr/lib/libx265.so.212`
