@@ -226,7 +226,7 @@ bluetoothctl
 
 Requires `libnotify`
 
-```nofity-send [title] [content]```
+```notify-send [title] [content]```
 
 ## Fonts
 
@@ -548,6 +548,35 @@ Write-protect `/etc/resolv.conf`
 ```
 sudo chattr +i /etc/resolv.conf
 ```
+
+## Use fingerprint auth with `hyprlock`
+
+Enroll without an authentication agent
+
+```
+sudo fprintd-enroll [user to unlock hyprland]
+```
+
+Add `pam_fprintd.so` as sufficient to the top of the `auth` section of `/etc/pam.d/hyprlock`
+
+```
+auth    sufficient  pam_fprintd.so
+```
+
+Modify `hyprlock.conf`
+
+```
+auth {
+    pam.module = hyprlock
+    fingerprint.enabled = true
+}
+```
+
+To delete fingerprint use, for example `sudo fprintd-delete root`. To list user fingerprints use `sudo fprintd-list [user]`.
+
+## `archive.org`
+
+`hogadom554@exitbit.com`
 
 # Undo
 
