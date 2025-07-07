@@ -47,6 +47,7 @@ texlive
 zathura
 zathura-pdf-mupdf
 zathura-djvu
+zathura-cb
 neovim
 gvim
 vi
@@ -125,6 +126,10 @@ rsync
 lxappearance
 less
 pamixer
+meson
+ninja
+cmake
+cpio
 
 ```
 
@@ -145,19 +150,18 @@ scrot
 flameshot
 ```
 
-### `hyprland`
+### `wayland`
 
 ```
 hyprland
 hyprlock
 hyprpaper
-cliphist
 hyprpicker
+cliphist
 grim
-meson
-ninja
-cmake
-cpio
+slurp
+wofi
+waybar
 ```
 
 To install `hyprgrass` first install `glm meson ninja`. Then
@@ -576,7 +580,62 @@ To delete fingerprint use, for example `sudo fprintd-delete root`. To list user 
 
 ## `archive.org`
 
-`hogadom554@exitbit.com`
+```
+hogadom554@exitbit.com
+
+python3 archive-org-downloader.py -e myemail@tempmail.com -p Passw0rd -r 0 -u https://archive.org/details/IntermediatePython
+```
+
+## Convert `djvu` to `pdf`, requires `djvulibre`
+
+```
+ddjvu -format=pdf -quality=85 input.djvu ouput.pdf
+
+```
+
+## Normalize page size of a `pdf` file
+
+```
+pdfjam --paper [letter, a4paper, etc.] --outfile output.pdf input.pdf
+
+```
+
+Custom papersize in `pt`
+
+```
+pdfjam --papersize '{[width]pt, [height]pt}' --outfile output.pdf input.pdf
+
+```
+
+Get rid of white borders
+
+```
+pdfjam --papersize '{[width]pt, [height]pt}' --scale 1.03 --outfile output.pdf input.pdf
+
+```
+
+Merge two files
+
+```
+pdfjam file1.pdf file2.pdf -o output.pdf
+
+```
+
+## Litemática
+
+### Replace blocks keybind `right click + [keybind]`
+
+```
+schematicEditReplaceAll
+
+```
+
+### Remove blocks keybind `right click + [keybind]`
+
+```
+schematicEditBreakPlaceAll
+
+```
 
 # Undo
 

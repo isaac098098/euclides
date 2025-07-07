@@ -318,7 +318,7 @@ bindsym $mod+Shift+n bar mode toggle
 
 # Screen lock
 
-bindsym $mod+x exec --no-startup-id lock
+bindsym $mod+x exec --no-startup-id lock.sh
 
 # Window rules
 

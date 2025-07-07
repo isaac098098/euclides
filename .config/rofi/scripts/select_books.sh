@@ -23,6 +23,9 @@ then
         "Algebra")
             dir="$HOME/documents/academic/cinvestav/semestre_2/algebra/"
         ;;
+        "Reading")
+            dir="$HOME/documents/reading/"
+        ;;
         "General Mathematics")
             dir="$HOME/documents/books/sciences/math"
         ;;
@@ -42,6 +45,7 @@ else
     echo "Analysis"
     echo "Algebra"
     echo "General Mathematics"
+    echo "Reading"
     echo "All"
     
     exit 0

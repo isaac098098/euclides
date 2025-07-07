@@ -6,6 +6,7 @@ cp -r ~/.config/awesome ~/euclides/.config/
 cp -r ~/.config/dunst ~/euclides/.config/
 cp -r ~/.config/gtk-3.0/ ~/euclides/.config/
 cp -r ~/.config/gtk-4.0/ ~/euclides/.config/
+cp -r ~/.config/hypr ~/euclides/.config/
 cp -r ~/.config/i3 ~/euclides/.config/
 cp -r ~/.config/i3status ~/euclides/.config/
 cp -r ~/.config/nvim ~/euclides/.config/
