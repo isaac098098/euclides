@@ -157,6 +157,7 @@ hyprland
 hyprlock
 hyprpaper
 hyprpicker
+xdg-desktop-portal-hyprland-git
 cliphist
 grim
 slurp
