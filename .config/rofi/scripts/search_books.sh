@@ -1,6 +1,6 @@
 #!/bin/bash
 
-dir="/home/isaac09809/documents/books/manuals/drawing"
+dir="/home/isaac09809/documents/academic/im/semestre_1/fundamentos_de_combinatoria/bib/"
 
 if [[ -n "$1" ]]; then
     killall rofi
