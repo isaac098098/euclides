@@ -41,13 +41,14 @@ xournalpp
 xournalpp-catppuccin
 simple-scan
 pdfarranger
-texlive
 texlive-langspanish
 texlive
 zathura
 zathura-pdf-mupdf
 zathura-djvu
 zathura-cb
+biber
+xdotool
 neovim
 gvim
 vi
@@ -73,9 +74,33 @@ qutebrowser
 python-adblock
 ```
 
+## `dwm`
+
+```
+ttf-dejavu
+libx11
+libxft
+libxinerama
+xorg-xinit
+xorg-server
+xorg-xset
+xorg-xkbutils
+xorg-xclipboard
+xorg-xsetroot
+xorg-xwininfo
+xorg-xprop
+xclip
+```
+
+### Patches
+
+- https://dwm.suckless.org/patches/notitle/
+- https://dwm.suckless.org/patches/smartborders/
+
 ## System
 
 ```
+man
 nvidia
 neofetch
 kitty
@@ -121,6 +146,7 @@ wireplumber
 pipewire-alsa
 pipewire-jack
 gst-plugin-pipewire
+brightnessctl
 alacritty
 rsync
 lxappearance
@@ -143,6 +169,7 @@ xorg-xclipboard
 xclip
 i3-wm
 i3status
+i3lock-color (AUR)
 picom
 gpick
 feh
@@ -615,6 +642,12 @@ pdfjam --papersize '{[width]pt, [height]pt}' --scale 1.03 --outfile output.pdf i
 
 ```
 
+Extract page interval
+
+```
+pdfjam input.pdf '[first]-[last]' -o output.pdf
+
+
 Merge two files
 
 ```
@@ -636,6 +669,12 @@ schematicEditReplaceAll
 ```
 schematicEditBreakPlaceAll
 
+```
+
+## Trust host after reinstalling OS
+
+```
+ssh-keygen -R [IP]
 ```
 
 # Undo

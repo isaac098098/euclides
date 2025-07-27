@@ -8,32 +8,56 @@ last=$(echo "$lecs" | sort -nr | head -n1)
 case "$1" in 
     "Last")
         # compile last lecture
-        killall rofi
+        killall rofi 2>/dev/null
+
         for (( i=1; i<=$((10#$last-1)); i++ ))
         do
-            sed -i "s/^\\\\\input{lecs/lec_$(printf '%02d' $i).tex}/% \\\\\input{lecs/lec_$(printf '%02d' $i).tex}/g" $HOME/notes/current-notes/main.tex
+            sed -i "s|^\\\\input{lecs/lec_$(printf '%02d' "$i").tex}|% \\\\input{lecs/lec_$(printf '%02d' "$i").tex}|g" "$HOME/notes/current-notes/main.tex"
         done
-        sed -i "s/^% \\\\\input{lecs/lec_${last}.tex}/\\\\\input{lecs/lec_${last}.tex}/g" "$HOME/notes/current-notes/main.tex"
+
+        sed -i "s|^% \\\\input{lecs/lec_${last}.tex}|\\\\input{lecs/lec_${last}.tex}|g" "$HOME/notes/current-notes/main.tex"
         pdflatex -output-directory="$HOME/notes/current-notes/" "$HOME/notes/current-notes/main.tex" > /dev/null
-        zathura $HOME/notes/current-notes/main.pdf
+        zathura $HOME/notes/current-notes/main.pdf 2>/dev/null &
+
+        exit 0
     ;;
-        # compile whole document
     "All")
-        killall rofi
+        # compile whole document
+        killall rofi 2>/dev/null
+
         sed -i "s/% //g" $HOME/notes/current-notes/main.tex
-        sed -i 's/^% \\/\\/g' $HOME/notes/eof.tex
+
+        if [ -f "$HOME/notes/current-notes/eof.tex" ]
+        then
+            sed -i 's/^% \\/\\/g' $HOME/notes/current-notes/eof.tex
+        else
+            sed -i 's/^% \\/\\/g' $HOME/notes/eof.tex
+        fi
+
+        pdflatex -output-directory="$HOME/notes/current-notes/" "$HOME/notes/current-notes/main.tex" > /dev/null
+        cd "$HOME/notes/current-notes/" && bibtex "main" >/dev/null
+        pdflatex -output-directory="$HOME/notes/current-notes/" "$HOME/notes/current-notes/main.tex" > /dev/null
         pdflatex -output-directory="$HOME/notes/current-notes/" "$HOME/notes/current-notes/main.tex" > /dev/null
 
         # comment title pages, toc and bibliography again
         sed -i '7,13 s/^/% /' $HOME/notes/current-notes/main.tex
-        sed -i 's/^\\/% \\/g' $HOME/notes/eof.tex
-        zathura $HOME/notes/current-notes/main.pdf
+
+        if [ -f "$HOME/notes/current-notes/eof.tex" ]
+        then
+            sed -i 's/^\\/% \\/g' $HOME/notes/current-notes/eof.tex
+        else
+            sed -i 's/^\\/% \\/g' $HOME/notes/eof.tex
+        fi
+
+        zathura $HOME/notes/current-notes/main.pdf 2>/dev/null &
+
+        exit 0
     ;;
     *)
         # compile and open lecture interval or specific lectures
         if [[ "$1" =~ ^([0-9]+(-[0-9]+)?)(,[0-9]+(-[0-9]+)?)*$ ]]
         then
-            killall rofi
+            killall rofi 2>/dev/null
             sed -i "s/^\\\\\input{lecs/lec/% \\\\\input{lecs/lec/g" "$HOME/notes/current-notes/main.tex"
             IFS=',' read -r -a ints <<< "$1"
             for s in "${ints[@]}"
@@ -56,8 +80,11 @@ case "$1" in
                 fi
                 fi
             done
+
             pdflatex -output-directory="$HOME/notes/current-notes/" "$HOME/notes/current-notes/main.tex" > /dev/null
-            zathura $HOME/notes/current-notes/main.pdf
+            zathura $HOME/notes/current-notes/main.pdf 2>/dev/null &
+
+            exit 0
         fi
         ;;
 esac
@@ -68,9 +95,9 @@ for i in $lecs
 do
     title=$(sed -n '0,/^%%% /s/^%%% //p' $HOME/notes/current-notes/lecs/lec_"$i".tex)
     date=$(sed -n '1,/.*lecture{.*}{\(.*\)}/s/.*lecture{.*}{\(.*\)}/\1/p' $HOME/notes/current-notes/lecs/lec_"$i".tex)
-    if [[  "$1" == "$(printf "%-30s %44s\n" "$i. $title" "$date")" ]]
+    if [[  "$1" == "$(printf "%-30s %51s\n" "$i. $title" "$date")" ]]
     then
-        killall rofi
+        killall rofi 2>/devl/null
         sed -i "s/^% \\\\\input{lecs/lec_$(printf '%02d' $i).tex}/\\\\\input{lecs/lec_$(printf '%02d' $i).tex}/g" $HOME/notes/current-notes/main.tex
         for (( j=1 ; j <= $((10#$last)) ; j++))
         do
@@ -80,8 +107,8 @@ do
             fi
         done
         pdflatex -output-directory="$HOME/notes/current-notes/" "$HOME/notes/current-notes/main.tex" > /dev/null
-        zathura $HOME/notes/current-notes/main.pdf
-        break
+        zathura $HOME/notes/current-notes/main.pdf 2>/dev/null &
+        exit 0
     fi
 done
 
@@ -94,5 +121,5 @@ do
     cur=$(printf '%02d' $((10#$last-10#$i+1)))
     title=$(sed -n '0,/^%%% /s/^%%% //p' $HOME/notes/current-notes/lecs/lec_"$cur".tex)
     date=$(sed -n '1,/.*lecture{.*}{\(.*\)}/s/.*lecture{.*}{\(.*\)}/\1/p' $HOME/notes/current-notes/lecs/lec_"$cur".tex)
-    printf "%-30s %44s\n" "$cur. $title" "$date"
+    printf "%-30s %51s\n" "$cur. $title" "$date"
 done

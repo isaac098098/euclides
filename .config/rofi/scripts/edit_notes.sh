@@ -8,32 +8,35 @@ new=$(printf '%02d' $((10#$last + 1)))
 
 case "$1" in 
     "Last")
-        killall rofi
-        sed -i "s/^% \\\\\input{lecs/lec_$(printf '%02d' $((10#$last))).tex}/\\\\\input{lecs/lec_$(printf '%02d' $((10#$last))).tex}/g" $HOME/notes/current-notes/main.tex
+        killall rofi 2>/dev/null
+        sed -i "s|^% \\\\\input{lecs/lec_$(printf '%02d' $((10#$last))).tex}|\\\\\input{lecs/lec_$(printf '%02d' $((10#$last))).tex}|g" $HOME/notes/current-notes/main.tex
         for (( j=1 ; j <= $((10#$last-1)) ; j++ ))
         do
-            sed -i "s/^\\\\\input{lecs/lec_$(printf '%02d' $j).tex}/% \\\\\input{lecs/lec_$(printf '%02d' $j).tex}/g" $HOME/notes/current-notes/main.tex
+            sed -i "s|^\\\\\input{lecs/lec_$(printf '%02d' $j).tex}|% \\\\\input{lecs/lec_$(printf '%02d' $j).tex}|g" $HOME/notes/current-notes/main.tex
         done
-        alacritty -e nvim $HOME/notes/current-notes/lecs/lec_"$last".tex
+        NVIM_LISTEN_ADDRESS=/tmp/nvimsocket_notes alacritty -e nvim --server /tmp/nvimsocket_notes --remote-tab "$HOME/notes/current-notes/lecs/lec_"$last".tex" &
+        exit 0
     ;;
     "New")
-        killall rofi
-        sed -i "/\input{lecs/lec_${last}.tex}/a \\\\\input{lecs/lec_${new}.tex}" $HOME/notes/current-notes/main.tex
+        killall rofi 2>/dev/null
+        sed -i "\|\\input{lecs/lec_${last}.tex}|a \\\\\input{lecs\/lec_${new}.tex}" $HOME/notes/current-notes/main.tex
         for (( j=1 ; j <= $((10#$last)) ; j++ ))
         do
-            sed -i "s/^\\\\\input{lecs/lec_$(printf '%02d' $j).tex}/% \\\\\input{lecs/lec_$(printf '%02d' $j).tex}/g" $HOME/notes/current-notes/main.tex
+            sed -i "s|^\\\\\input{lecs/lec_$(printf '%02d' $j).tex}|% \\\\\input{lecs/lec_$(printf '%02d' $j).tex}|g" $HOME/notes/current-notes/main.tex
         done
-        alacritty -e nvim $HOME/notes/current-notes/lecs/lec_${new}.tex
+        NVIM_LISTEN_ADDRESS=/tmp/nvimsocket_notes alacritty -e nvim --server /tmp/nvimsocket_notes --remote-tab "$HOME/notes/current-notes/lecs/lec_"$new".tex" &
+        exit 0
     ;;
     "Bibliography")
-        killall rofi
-        alacritty -e nvim $HOME/notes/current-notes/bibl.bib
+        killall rofi 2>/dev/null
+        NVIM_LISTEN_ADDRESS=/tmp/nvimsocket_notes alacritty -e nvim --server /tmp/nvimsocket_notes --remote-tab "$HOME/notes/current-notes/bibl.bib" &
+        exit 0
     ;;
     *)
         # open lecture note interval or specific lectures
         if [[ "$1" =~ ^([0-9]+(-[0-9]+)?)(,[0-9]+(-[0-9]+)?)*$ ]]
         then
-            killall rofi
+            killall rofi 2>/dev/null
             tabs=()
             idx=()
             IFS=',' read -r -a ints <<< "$1"
@@ -72,7 +75,8 @@ case "$1" in
 
             if (( ${#tabs[@]} ))
             then
-                alacritty -e nvim -p "${tabs[@]}"
+                NVIM_LISTEN_ADDRESS=/tmp/nvimsocket_notes alacritty -e nvim -p --server /tmp/nvimsocket_notes --remote-tab "${tabs[@]}" &
+                exit 0
             fi
             
         fi
@@ -85,9 +89,9 @@ for i in $lecs
 do
     title=$(sed -n '0,/^%%% /s/^%%% //p' $HOME/notes/current-notes/lecs/lec_"$i".tex)
     date=$(sed -n '1,/.*lecture{.*}{\(.*\)}/s/.*lecture{.*}{\(.*\)}/\1/p' $HOME/notes/current-notes/lecs/lec_"$i".tex)
-    if [[  "$1" == "$(printf "%-30s %44s\n" "$i. $title" "$date")" ]]
+    if [[  "$1" == "$(printf "%-30s %51s\n" "$i. $title" "$date")" ]]
     then
-        killall rofi
+        killall rofi 2>/dev/null
         sed -i "s/^% \\\\\input{lecs/lec_$i.tex}/\\\\\input{lecs/lec_$i.tex}/g" $HOME/notes/current-notes/main.tex
         for (( j=1 ; j <= "$((10#$last))" ; j++ ))
         do
@@ -96,8 +100,8 @@ do
                 sed -i "s/^\\\\\input{lecs/lec_$(printf '%02d' $j).tex}/% \\\\\input{lecs/lec_$(printf '%02d' $j).tex}/g" $HOME/notes/current-notes/main.tex
             fi
         done
-        alacritty -e nvim "$HOME/notes/current-notes/lecs/lec_$i.tex"
-        break
+        NVIM_LISTEN_ADDRESS=/tmp/nvimsocket_notes alacritty -e nvim --server /tmp/nvimsocket_notes --remote-tab "$HOME/notes/current-notes/lecs/lec_$i.tex" &
+        exit 0
     fi
 done
 
@@ -110,6 +114,6 @@ do
     cur=$(printf '%02d' $((10#$last-10#$i+1)))
     title=$(sed -n '0,/^%%% /s/^%%% //p' $HOME/notes/current-notes/lecs/lec_"$cur".tex)
     date=$(sed -n '1,/.*lecture{.*}{\(.*\)}/s/.*lecture{.*}{\(.*\)}/\1/p' $HOME/notes/current-notes/lecs/lec_"$cur".tex)
-    printf "%-30s %44s\n" "$cur. $title" "$date"
+    printf "%-30s %51s\n" "$cur. $title" "$date"
 done
 echo "Bibliography"

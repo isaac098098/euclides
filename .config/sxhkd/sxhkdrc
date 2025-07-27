@@ -1,38 +1,17 @@
 ctrl + shift + b
-    rofi -show books -modes "books:$HOME/.config/rofi/scripts/search_books.sh"
+    rofi -show search_book -modes "search_book:$HOME/.config/rofi/scripts/search_book.sh"
 
 ctrl + shift + d
-    rofi -show select_books -modes "select:$HOME/.config/rofi/scripts/select_books.sh"
+    rofi -show select_books -modes "select_books:$HOME/.config/rofi/scripts/select_books.sh"
 
 ctrl + shift + o
-    rofi -markup-rows -show edit_notes -modes "edit:$HOME/.config/rofi/scripts/edit_notes.sh"
+    rofi -markup-rows -show edit_notes -modes "edit_notes:$HOME/.config/rofi/scripts/edit_notes.sh"
 
 ctrl + shift + s
-    rofi -show select -modes "select:$HOME/.config/rofi/scripts/select_course.sh"
+    rofi -show select_notes -modes "select_notes:$HOME/.config/rofi/scripts/select_notes.sh"
 
 ctrl + shift + p
-    rofi -show compile_notes -modes "compile:$HOME/.config/rofi/scripts/compile_notes.sh"
-
-ctrl + shift + i
-    rofi -show select_zettelkasten -modes "select:$HOME/.config/rofi/scripts/select_zettelkasten.sh"
-
-ctrl + shift + m
-    rofi -show create_card -modes "create:$HOME/.config/rofi/scripts/create_card.sh"
-
-ctrl + shift + e
-    rofi -show edit_card -modes "edit:$HOME/.config/rofi/scripts/edit_card.sh"
-
-ctrl + shift + q
-    rofi -show delete_card -modes "delete:$HOME/.config/rofi/scripts/delete_card.sh"
-
-ctrl + shift + w
-    rofi -show swap_cards -modes "swap_cards:$HOME/.config/rofi/scripts/swap_cards.sh"
-
-ctrl + shift + x
-    rofi -show insert_card -modes "insert_card:$HOME/.config/rofi/scripts/insert_card.sh"
-
-ctrl + shift + y
-    zathura $HOME/zettelkasten/current/main.pdf
+    rofi -show compile_notes -modes "compile_notes:$HOME/.config/rofi/scripts/compile_notes.sh"
 
 ctrl + shift + u
     zathura $HOME/notes/current-notes/main.pdf

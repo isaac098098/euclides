@@ -84,7 +84,13 @@ s({trig = "foo", name = "Footnote"},
 
 s({trig = "mrg", name = "Marginal note"},
     {
-        t("\\marginnote{"), v(1,"text"), t("}")
+        t("\\marginpar{"), v(1,"text"), t("}")
+    }
+),
+
+s({trig = "mpp", name = "Marginal footnotesize note"},
+    {
+        t("\\marginpar{\\raggedright\\footnotesize{"), v(1,"text"), t("}}")
     }
 ),
 

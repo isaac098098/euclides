@@ -39,7 +39,7 @@ swapon /dev/swap_partition
 ## Base packages
 
 ```
-pacstrap -K /mnt base base-devel linux linux-firmware networkmanager wpa_supplicant grub
+pacstrap -K /mnt base base-devel linux linux-firmware networkmanager wpa_supplicant grub efibootmgr
 ```
 
 ## Generate `fstab`
