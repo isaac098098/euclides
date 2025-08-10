@@ -15,6 +15,7 @@ cp -r ~/.config/rofi/ ~/euclides/.config/
 cp -r ~/.config/sxhkd ~/euclides/.config/
 cp -r ~/.config/zathura ~/euclides/.config/
 cp -r ~/.config/inkscape/templates/default.svg ~/euclides/.config/inkscape/templates
+cp -r ~/.local/share/zathura ~/euclides/home/.local/share/
 
 cp -r ~/.Xresources ~/euclides/home
 cp -r ~/.bash_profile ~/euclides/home

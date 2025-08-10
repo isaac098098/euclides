@@ -20,6 +20,9 @@ then
         "Reading")
             dir="$HOME/documents/reading/"
         ;;
+        "Graphics")
+            dir="$HOME/documents/reading/graphics/"
+        ;;
         "All")
             dir="$HOME/documents/books/"
         ;;
@@ -34,6 +37,7 @@ else
     echo "Manga"
     echo "Color"
     echo "Reading"
+    echo "Graphics"
     echo "All"
     
     exit 0

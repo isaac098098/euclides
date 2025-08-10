@@ -8,9 +8,9 @@ set breakindent
 set linebreak
 set autoindent
 set smartindent
-"set number
+set number
 "set relativenumber
-"set numberwidth=1
+set numberwidth=1
 
 nnoremap j gj
 nnoremap k gk

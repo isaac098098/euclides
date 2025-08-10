@@ -5,7 +5,8 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-PS1='[\u@\h \W]\$ '
+# PS1='[\u@\h \W]\$ '
+PS1='\[\e[38;2;129;162;190m\]\W \[\e[0m\]'
 
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
@@ -19,9 +20,10 @@ alias spotdl-al='$HOME/.local/bin/venv/bin/spotdl --output "$HOME/Music/{artist}
 alias spotdl-pl='$HOME/.local/bin/venv/bin/spotdl --output "$HOME/Music/{list-name}/{title}.{output-ext}"'
 alias spotdl-so='$HOME/.local/bin/venv/bin/spotdl --output "$HOME/Music/{title}.{output-ext}"'
 
-export PATH="/usr/local/texlive/2024/bin/x86_64-linux:$PATH"
-export PATH="$HOME/.local/bin:$PATH"
 export UNZIP_DISABLE_ZIPBOMB_DETECTION=TRUE
 export GTK_THEME=Adwaita-dark
 
+export PATH="/usr/local/texlive/2024/bin/x86_64-linux:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
 export PATH=$PATH:/home/isaac09809/.spicetify
+export PATH="$HOME/.pyenv/bin:$PATH"

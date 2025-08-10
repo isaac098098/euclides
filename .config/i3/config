@@ -260,7 +260,7 @@ for_window [workspace=$ws10] floating enable
 # Borders
 
 default_floating_border none
-default_border pixel 2
+default_border pixel 3
 smart_borders on
 # gaps inner 20
 
@@ -308,10 +308,6 @@ exec_always --no-startup-id xrdb load ~/.Xresources
 
 exec_always --no-startup-id sxhkd
 
-# $HOME/euclides/bin/edtex.sh
-
-for_window [class="kitty"] floating enable
-
 # Toggle bar
 
 bindsym $mod+Shift+n bar mode toggle
@@ -323,10 +319,9 @@ bindsym $mod+x exec --no-startup-id lock.sh
 # Window rules
 
 for_window [floating] border pixel 0
-for_window [tiling] border pixel 2
+# for_window [tiling] border pixel 2
 for_window [class="simple-scan"] floating enable
 for_window [class="Gnome-pomodoro"] floating enable
-for_window [class="qBittorrent"] floating enable
 for_window [class="steamwebhelper"] floating enable
 for_window [title="Preferences"] floating enable
 for_window [class="PureRef"] floating enable
@@ -339,4 +334,3 @@ for_window [class="sai2.exe"] floating enable
 # for_window [class="mpv"] floating enable
 # for_window [class="Nsxiv"] floating enable
 #for_window [class="Minecraft Launcher"] floating enable
-# for_window [title="/*"] floating enable
