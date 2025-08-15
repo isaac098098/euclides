@@ -6,22 +6,22 @@ if [[ "$1" ]]
 then
     case "$1" in
         "Fundamentals")
-            dir="$HOME/notes/current-notes/bib/fundamentals"
+            dir="$HOME/notes/drawing/bib/fundamentals"
         ;;
         "Figure")
-            dir="$HOME/notes/current-notes/bib/figure"
+            dir="$HOME/notes/drawing/bib/figure"
         ;;
-        "Manga")
-            dir="$HOME/notes/current-notes/bib/manga"
-        ;;
-        "Color")
-            dir="$HOME/notes/current-notes/bib/color"
+        "Value")
+            dir="$HOME/notes/drawing/bib/value"
         ;;
         "Reading")
             dir="$HOME/documents/reading/"
         ;;
         "Graphics")
-            dir="$HOME/documents/reading/graphics/"
+            dir="$HOME/documents/reading/cs/graphics/"
+        ;;
+        "Computers")
+            dir="$HOME/documents/reading/cs/"
         ;;
         "All")
             dir="$HOME/documents/books/"
@@ -34,10 +34,10 @@ then
 else
     echo "Fundamentals"
     echo "Figure"
-    echo "Manga"
-    echo "Color"
+    echo "Value"
     echo "Reading"
     echo "Graphics"
+    echo "Computers"
     echo "All"
     
     exit 0

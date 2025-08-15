@@ -9,7 +9,7 @@ set linebreak
 set autoindent
 set smartindent
 set number
-"set relativenumber
+set relativenumber
 set numberwidth=1
 
 nnoremap j gj

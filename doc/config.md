@@ -8,7 +8,7 @@ kdenlive
 krita
 mpv
 4kvideodownloader
-ffmpeg-thumbnailer
+ffmpegthumbnailer
 paleta
 vlc
 shotwell
@@ -646,7 +646,7 @@ Extract page interval
 
 ```
 pdfjam input.pdf '[first]-[last]' -o output.pdf
-
+```
 
 Merge two files
 
@@ -676,6 +676,23 @@ schematicEditBreakPlaceAll
 ```
 ssh-keygen -R [IP]
 ```
+
+## `krita` shortcuts
+
+- Freehand selection tool: `q`
+- Deselect: `shift + a`
+- Undo: `d`
+- Redo: `w`
+- Add vector layer: `v`
+- Add paint layer: `n`
+- Eraser mode: `e`
+- Reference images tool: `shift + r`
+- Show reference images: `r`
+- Zoom out: `a`
+- Zoom in: `j`
+- Freehand selection tool: `q`
+- Freehand brush tool: `b`
+- Fit canvas: `2`
 
 # Undo
 

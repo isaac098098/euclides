@@ -21,7 +21,7 @@ alias spotdl-pl='$HOME/.local/bin/venv/bin/spotdl --output "$HOME/Music/{list-na
 alias spotdl-so='$HOME/.local/bin/venv/bin/spotdl --output "$HOME/Music/{title}.{output-ext}"'
 
 export UNZIP_DISABLE_ZIPBOMB_DETECTION=TRUE
-export GTK_THEME=Adwaita-dark
+# export GTK_THEME=Adwaita-dark
 
 export PATH="/usr/local/texlive/2024/bin/x86_64-linux:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
