@@ -51,19 +51,14 @@ require("nvim-tree").setup {
         root_folder_label = false,
         highlight_git = true,
         group_empty = true,
-        indent_markers = { enable = false},
+        indent_markers = { enable = false },
         icons = {
-            glyphs = {
-                default = "󰈚",
-                folder = {
-                    default = "",
-                    empty = "",
-                    empty_open = "",
-                    open = "",
-                    symlink = "",
-                },
-                git = { unmerged = "" },
-            },
+            show = {
+                file = false,
+                folder = false,
+                folder_arrow = false,
+                git = false
+            }
         },
     },
     filters = {
