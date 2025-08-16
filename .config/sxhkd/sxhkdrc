@@ -1,26 +1,44 @@
 ctrl + shift + b
-    rofi -show search_book -config "$HOME/.config/rofi/short.rasi" -modes "search_book:$HOME/.config/rofi/scripts/bash/search_book.sh"
+    rofi -show search_book -config $HOME/.config/rofi/short.rasi -modes "search_book:$HOME/.config/rofi/scripts/bash/search/search_book.sh"
 
 ctrl + shift + d
-    rofi -show select_books -config "$HOME/.config/rofi/short.rasi" -modes "select_books:$HOME/.config/rofi/scripts/bash/select_books.sh"
+    rofi -show select_books -config $HOME/.config/rofi/short.rasi -modes "select_books:$HOME/.config/rofi/scripts/bash/search/select_books.sh"
 
 ctrl + shift + e
-    rofi -show edit_card -config "$HOME/.config/rofi/long.rasi" -modes "edit_card:$HOME/.config/rofi/scripts/bash/edit_card.sh"
+    rofi -show edit_card -config $HOME/.config/rofi/long.rasi -modes "edit_card:$HOME/.config/rofi/scripts/bash/zettelkasten/edit_card.sh"
+
+ctrl + shift + h
+    rofi -show warmup -config "$HOME/.config/rofi/short.rasi" -modes "warmup:$HOME/.config/rofi/scripts/bash/ohter/warmup.sh"
+
+ctrl + shift + i
+    rofi -show select_zettelkasten -config $HOME/.config/rofi/short.rasi -modes "select_zettelkasten:$HOME/.config/rofi/scripts/bash/zettelkasten/select_zettelkasten.sh"
+
+ctrl + shift + m
+    rofi -show create_card -config $HOME/.config/rofi/long.rasi -modes "create_card:$HOME/.config/rofi/scripts/bash/zettelkasten/create_card.sh"
 
 ctrl + shift + o
-    rofi -markup-rows -show edit_notes -config "$HOME/.config/rofi/long.rasi" -modes "edit_notes:$HOME/.config/rofi/scripts/bash/edit_notes.sh"
-
-ctrl + shift + s
-    rofi -show select_notes -config "$HOME/.config/rofi/short.rasi" -modes "select_notes:$HOME/.config/rofi/scripts/bash/select_notes.sh"
+    rofi -markup-rows -show edit_notes -config $HOME/.config/rofi/long.rasi -modes "edit_notes:$HOME/.config/rofi/scripts/bash/notes/edit_notes.sh"
 
 ctrl + shift + p
-    rofi -show compile_notes -config "$HOME/.config/rofi/long.rasi" -modes "compile_notes:$HOME/.config/rofi/scripts/bash/compile_notes.sh"
+    rofi -show compile_notes -config $HOME/.config/rofi/long.rasi -modes "compile_notes:$HOME/.config/rofi/scripts/bash/notes/compile_notes.sh"
+
+ctrl + shift + q
+    rofi -show delete_card -config $HOME/.config/rofi/long.rasi -modes "delete_card:$HOME/.config/rofi/scripts/bash/zettelkasten/delete_card.sh"
+
+ctrl + shift + s
+    rofi -show select_notes -config $HOME/.config/rofi/short.rasi -modes "select_notes:$HOME/.config/rofi/scripts/bash/notes/select_notes.sh"
 
 ctrl + shift + u
     zathura $HOME/notes/current-notes/main.pdf
 
-ctrl + shift + h
-    rofi -show warmup -modes "select:$HOME/.config/rofi/scripts/bash/warmup.sh"
+ctrl + shift + w
+    rofi -show swap_cards -config $HOME/.config/rofi/long.rasi -modes "swap_cards:$HOME/.config/rofi/scripts/bash/zettelkasten/swap_cards.sh"
 
-alt+y
+ctrl + shift + x
+    rofi -show insert_card -config $HOME/.config/rofi/long.rasi -modes "insert_card:$HOME/.config/rofi/scripts/bash/zettelkasten/insert_card.sh"
+
+ctrl + shift + y
+    zathura $HOME/zettelkasten/current/main.pdf
+
+alt + y
     alacritty --working-directory $HOME/todo

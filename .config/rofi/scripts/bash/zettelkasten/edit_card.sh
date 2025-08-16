@@ -10,4 +10,4 @@ then
     exit 0
 fi
 
-$HOME/.config/rofi/scripts/c/sort_cards "$dir/cards"
+$HOME/.config/rofi/scripts/c/zettelkasten/sort_cards "$dir/cards"
