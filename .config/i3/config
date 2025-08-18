@@ -271,6 +271,7 @@ focus_follows_mouse no
 
 # Keybinds
 
+exec_always --no-startup-id xset r rate 200 40
 bindsym $mod+q exec --no-startup-id setxkbmap us -variant intl
 
 # Wallpaper

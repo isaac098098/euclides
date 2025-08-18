@@ -694,6 +694,18 @@ ssh-keygen -R [IP]
 - Freehand brush tool: `b`
 - Fit canvas: `2`
 
+## Persitent `ip` device assignment
+
+```
+nmcli conadd type ethernet ifname [eth-dev] con-name [name] ip4 [ip4/br] autoconnect yes
+```
+
+Activate connection `[name]`
+
+```
+nmcli con up [name]
+```
+
 # Undo
 
 `ln -s /usr/lib/libxml2.so /usr/lib/libxml2.so.2`

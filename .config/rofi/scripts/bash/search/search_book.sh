@@ -1,6 +1,6 @@
 #!/bin/bash
 
-dir="/home/isaac09809/documents/reading/cs/graphics/"
+dir="/home/isaac09809/documents/reading/cs/"
 
 if [[ -n "$1" ]]; then
     killall rofi 2>/dev/null
