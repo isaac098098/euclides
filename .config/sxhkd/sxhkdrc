@@ -41,4 +41,4 @@ ctrl + shift + y
     zathura $HOME/zettelkasten/current/main.pdf
 
 alt + y
-    alacritty --working-directory $HOME/todo
+    open_todo.sh

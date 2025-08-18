@@ -33,6 +33,9 @@ return {
     },
     {
         'RRethy/base16-nvim',
+        config = function()
+            require('config.base16')
+        end
     },
     {
         "L3MON4D3/LuaSnip",

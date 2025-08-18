@@ -9,7 +9,7 @@ cp -r ~/.config/gtk-4.0/ ~/euclides/.config/
 cp -r ~/.config/hypr ~/euclides/.config/
 cp -r ~/.config/i3 ~/euclides/.config/
 cp -r ~/.config/i3status ~/euclides/.config/
-cp -r ~/.config/nvim ~/euclides/.config/
+rsync -aH --delete --itemize-changes  --exclude 'lazy-lock.json' ~/.config/nvim/ ~/euclides/.config/nvim/
 cp -r ~/.config/picom ~/euclides/.config/
 rsync -aH --delete --itemize-changes ~/.config/rofi/ ~/euclides/.config/rofi/
 cp -r ~/.config/sxhkd ~/euclides/.config/
