@@ -74,22 +74,6 @@ return {
         end
     },
     {
-        'akinsho/toggleterm.nvim',
-        version = "*",
-        config = true,
-        opts = function()
-            return require('config.toggleterm')
-        end
-    },
-    {
-        'akinsho/bufferline.nvim',
-        version = "*",
-        dependencies = 'nvim-tree/nvim-web-devicons',
-        config = function()
-            return require('config.bufferline')
-        end
-    },
-    {
         'arcticicestudio/nord-vim'
     },
 }

@@ -706,6 +706,14 @@ Activate connection `[name]`
 nmcli con up [name]
 ```
 
+## `7z` + `aes-256` + `lzma2` compression with encrypted file and headers
+
+```
+7z a -t7z -mx=7 -mhe=on -p dir_compressed.7z dir/
+```
+
+Change `mx` from `0` to `9` to change the compression level, being `0` fast and `9` slow.
+
 # Undo
 
 `ln -s /usr/lib/libxml2.so /usr/lib/libxml2.so.2`

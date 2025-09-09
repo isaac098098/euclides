@@ -11,7 +11,7 @@ cp -r ~/.config/i3 ~/euclides/.config/
 cp -r ~/.config/i3status ~/euclides/.config/
 rsync -aH --delete --itemize-changes  --exclude 'lazy-lock.json' ~/.config/nvim/ ~/euclides/.config/nvim/
 cp -r ~/.config/picom ~/euclides/.config/
-rsync -aH --delete --itemize-changes ~/.config/rofi/ ~/euclides/.config/rofi/
+rsync -aH --delete --itemize-changes --exclude 'search_book.sh' ~/.config/rofi/ ~/euclides/.config/rofi/
 cp -r ~/.config/sxhkd ~/euclides/.config/
 cp -r ~/.config/zathura ~/euclides/.config/
 cp -r ~/.local/share/zathura ~/euclides/home/.local/share/

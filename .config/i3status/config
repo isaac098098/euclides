@@ -7,7 +7,7 @@
 # If the above line is not correctly displayed, fix your editor first!
 
 general {
-    colors = true
+    colors = false
 	color_good = '#81a2be'
 	color_degraded = '#f0c674'
 	color_bad = '#cc6666'
@@ -16,7 +16,7 @@ general {
 
 #order += "ipv6"
 order += "wireless _first_"
-#order += "ethernet _first_"
+order += "ethernet _first_"
 #order += "battery all"
 order += "disk /"
 order += "volume master"
@@ -25,7 +25,7 @@ order += "memory"
 order += "tztime local"
 
 wireless _first_ {
-        format_up = "%essid %ip"
+        format_up = "W: %essid %ip"
         format_down = "W: down"
 }
 

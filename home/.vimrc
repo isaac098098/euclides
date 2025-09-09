@@ -34,7 +34,7 @@ hi NonText ctermfg=0
 set cursorline
 set cursorlineopt=number
 hi LineNr ctermfg=8
-hi CursorLineNr ctermfg=15 cterm=none
+hi CursorLineNr ctermfg=15 cterm=bold
  
 hi Visual ctermfg=8 ctermbg=15
 hi ErrorMsg ctermfg=15 ctermbg=none
