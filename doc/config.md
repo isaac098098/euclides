@@ -156,7 +156,7 @@ meson
 ninja
 cmake
 cpio
-
+android-file-transfer
 ```
 
 ### `i3`
