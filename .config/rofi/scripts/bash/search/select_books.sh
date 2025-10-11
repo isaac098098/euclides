@@ -14,14 +14,11 @@ then
         "Value")
             dir="$HOME/notes/drawing/bib/value/"
         ;;
-        "Calculus")
-            dir="$HOME/documents/academic/im/guias/bib/calculo/"
+        "Manga")
+            dir="$HOME/notes/drawing/bib/manga/"
         ;;
-        "Linear Algebra")
-            dir="$HOME/documents/academic/im/guias/bib/algebra_lineal"
-        ;;
-        "Guides")
-            dir="$HOME/documents/academic/im/guias/guias/"
+        "Vim")
+            dir="$HOME/documents/projects/csnip/bib/"
         ;;
         "Reading")
             dir="$HOME/documents/reading/"
@@ -44,9 +41,8 @@ else
     echo "Fundamentals"
     echo "Figure"
     echo "Value"
-    echo "Calculus"
-    echo "Linear Algebra"
-    echo "Guides"
+    echo "Manga"
+    echo "Vim"
     echo "Reading"
     echo "Graphics"
     echo "Computers"

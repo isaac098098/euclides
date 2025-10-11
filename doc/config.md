@@ -714,6 +714,12 @@ nmcli con up [name]
 
 Change `mx` from `0` to `9` to change the compression level, being `0` fast and `9` slow.
 
+## Synchronize clock with internet
+
+```
+sudo timedatectl set-ntp true
+```
+
 # Undo
 
 `ln -s /usr/lib/libxml2.so /usr/lib/libxml2.so.2`
