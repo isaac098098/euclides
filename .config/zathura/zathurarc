@@ -1,5 +1,5 @@
-set guioptions                ""
-set font                        "JetBrains Mono NL SemiBold 9"
+set guioptions                  ""
+set font                        "Iosevka NF Bold 11.6"
 set recolor                     "false"
 set recolor-keephue             "true"
 set selection-clipboard         clipboard

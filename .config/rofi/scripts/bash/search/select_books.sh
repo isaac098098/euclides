@@ -18,7 +18,7 @@ then
             dir="$HOME/notes/drawing/bib/manga/"
         ;;
         "Vim")
-            dir="$HOME/documents/projects/csnip/bib/"
+            dir="$HOME/documents/projects/visnp/bib/"
         ;;
         "Reading")
             dir="$HOME/documents/reading/"

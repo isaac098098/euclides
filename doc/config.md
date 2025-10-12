@@ -20,6 +20,7 @@ minidlna
 gst-plugins-good
 gourou
 gvfs (virtual filesystem)
+qbittorrent
 ```
 
 ## Gaming
@@ -157,6 +158,8 @@ ninja
 cmake
 cpio
 android-file-transfer
+pavucontrol
+openrgb-git (aur)
 ```
 
 ### `i3`
