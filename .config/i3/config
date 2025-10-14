@@ -237,18 +237,6 @@ client.urgent               $red                $red        $white      $bg0    
 client.placeholder          $yellow             $yellow     $white      $bg0        $yellow
 client.background           $crust              $crust      $white      $crust      $crust
 
-# Workspaces
-
-# assign [class="Thunar"] $ws2
-# assign [class="Brave-browser"] $ws3
-# assign [class="Zathura"] $ws4
-# #assign [class="mpv"] $ws6
-# assign [class="obsidian"] $ws7
-assign [class="kdenlive"] $ws7
-# assign [class="steam"] $ws8
-# assign [class="discord"] $ws9
-# assign [class="obs"] $ws10
-
 # Steam
 
 for_window [title="Friends List"] floating enable
@@ -256,7 +244,6 @@ for_window [title="Steam Settings"] floating enable
 for_window [workspace=$ws5] layout tabbed
 for_window [workspace=$ws7] layout tabbed
 for_window [workspace=$ws8] layout tabbed
-for_window [workspace=$ws10] floating enable
 
 # Borders
 
@@ -324,6 +311,16 @@ bindsym $mod+Shift+n bar mode toggle
 # Screen lock
 
 bindsym $mod+x exec --no-startup-id lock.sh
+
+# Scratchpad
+
+bindsym Ctrl+$mod s move scratchpad
+bindsym Ctrl+s [all] scratchpad show
+ 
+# Twitch
+
+for_window [workspace=$ws10] floating enable
+for_window [workspace=$ws10 class="Krita" window_type="normal"] floating disable
 
 # Window rules
 

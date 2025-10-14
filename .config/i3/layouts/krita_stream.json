@@ -1,0 +1,146 @@
+{
+    "border": "pixel",
+    "current_border_width": 2,
+    "floating": "user_off",
+    "geometry": {
+       "height": 1058,
+       "width": 1920,
+       "x": 0,
+       "y": 20
+    },
+    "marks": [],
+    "name": "Krita",
+    "percent": 1,
+    "swallows": [
+       {
+        "class": "^krita$",
+        "instance": "^krita$",
+        "machine": "^euclides$",
+        "window_role": "^MainWindow\\#1$"
+       }
+    ],
+    "type": "con"
+}
+
+{
+    // floating_con with 1 children
+    "border": "pixel",
+    "floating": "auto_off",
+    "layout": "splith",
+    "marks": [],
+    "percent": null,
+    "rect": {
+       "height": 430,
+       "width": 260,
+       "x": 1660,
+       "y": 0
+    },
+    "type": "floating_con",
+    "nodes": [
+        {
+            "border": "pixel",
+            "current_border_width": 0,
+            "floating": "auto_on",
+            "geometry": {
+               "height": 430,
+               "width": 260,
+               "x": 1660,
+               "y": 0
+            },
+            "marks": [],
+            "name": "Layers — Krita",
+            "percent": 1,
+            "swallows": [
+               {
+                "class": "^krita$",
+                "instance": "^krita$",
+                "machine": "^euclides$",
+                "title": "^Layers\\ \\—\\ Krita$"
+               }
+            ],
+            "type": "con"
+        }
+    ]
+}
+
+{
+    // floating_con with 1 children
+    "border": "pixel",
+    "floating": "auto_off",
+    "layout": "splith",
+    "marks": [],
+    "percent": null,
+    "rect": {
+       "height": 699,
+       "width": 877,
+       "x": 11,
+       "y": 65
+    },
+    "type": "floating_con",
+    "nodes": [
+        {
+            "border": "pixel",
+            "current_border_width": 0,
+            "floating": "user_on",
+            "geometry": {
+               "height": 729,
+               "width": 1086,
+               "x": 74,
+               "y": 56
+            },
+            "marks": [],
+            "name": "OBS",
+            "percent": 1,
+            "swallows": [
+               {
+                "class": "^obs$",
+                "instance": "^obs$",
+                "machine": "^euclides$"
+               }
+            ],
+            "type": "con"
+        }
+    ]
+}
+
+{
+    // floating_con with 1 children
+    "border": "pixel",
+    "floating": "auto_off",
+    "layout": "splith",
+    "marks": [],
+    "percent": null,
+    "rect": {
+       "height": 651,
+       "width": 260,
+       "x": 1660,
+       "y": 429
+    },
+    "type": "floating_con",
+    "nodes": [
+        {
+            "border": "pixel",
+            "current_border_width": 0,
+            "floating": "user_on",
+            "geometry": {
+               "height": 632,
+               "width": 400,
+               "x": 0,
+               "y": 50
+            },
+            "marks": [],
+            "name": "anyferrr - Chat - Twitch - Brave",
+            "percent": 1,
+            "swallows": [
+               {
+                "class": "^Brave\\-browser$",
+                "instance": "^brave\\-browser$",
+                "machine": "^euclides$",
+                "window_role": "^pop\\-up$"
+               }
+            ],
+            "type": "con"
+        }
+    ]
+}
+
