@@ -9,6 +9,7 @@ krita
 mpv
 4kvideodownloader
 ffmpegthumbnailer
+tumbler
 paleta
 vlc
 shotwell
@@ -29,9 +30,11 @@ qbittorrent
 steam
 minecraft-launcher
 mgba
-melonds (AUR)
+melonds (aur)
 wine
 discord
+obs-studio-browser (aur)
+obs-composite-blur (aur)
 ```
 
 ## Productivity
@@ -172,7 +175,8 @@ xorg-xclipboard
 xclip
 i3-wm
 i3status
-i3lock-color (AUR)
+i3lock-color (aur)
+perl-anyevent-i3 (i3-save-tree)
 picom
 gpick
 feh
@@ -682,7 +686,6 @@ ssh-keygen -R [IP]
 
 ## `krita` shortcuts
 
-- Freehand selection tool: `q`
 - Deselect: `shift + a`
 - Undo: `d`
 - Redo: `w`
@@ -721,6 +724,31 @@ Change `mx` from `0` to `9` to change the compression level, being `0` fast and 
 
 ```
 sudo timedatectl set-ntp true
+```
+
+## `sudo` not accepting password
+
+```
+faillock --reset
+```
+
+## Krita minimal view
+
+- Disable all `Settings -> Dockers`
+- Disable `View -> Show Status Bar`
+- Enable `Settings -> Configure Krita -> Display -> Miscellaneous -> Hide Canvas Scrollbars`
+- Disable `Settings -> Toolbars Shown -> Brushes and Stuff`
+- Change `Settings -> General -> Window -> Multiple Document Mode -> Subwindows`
+- Disable `Settings -> General -> Window -> Show on-canvas popup messages`
+- Add `Tools -> Script -> Ten Scripts -> Ctrl + Shift + 1 -> ~/euclides/code/python/krita_toggle.py`
+
+## Disable `bluetooth` power management
+
+```
+sudo vim /etc/modprobe.d/bluetooth_disable_pm.conf
+
+options btusb enable_autosuspend=0
+options bluetooth disable_ertm=1
 ```
 
 # Undo

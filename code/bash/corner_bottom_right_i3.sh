@@ -1,0 +1,18 @@
+#!/bin/bash
+
+info=$(xwininfo)
+id=$(echo "$info" | grep "Window id:" | awk '{print $4}')
+width=$(echo "$info" | grep "Width:" | awk '{print $2}')
+height=$(echo "$info" | grep "Height:" | awk '{print $2}')
+
+if [ $id ]
+then
+    if [[ $((10#1920-$width)) -ge 0 ]]
+    then
+        # i3-msg "[id=$id] border pixel 0"
+        i3-msg "[id=$id] move position $((10#1920-$width))px $((10#1080-$height))px"
+        exit 0
+    fi
+else 
+    exit 1
+fi
