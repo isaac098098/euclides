@@ -163,6 +163,10 @@ cpio
 android-file-transfer
 pavucontrol
 openrgb-git (aur)
+calc
+hyperfine
+man-pages
+opengl-man-pages
 ```
 
 ### `i3`
@@ -315,18 +319,18 @@ gtk-cursor-theme-name=phinger-cursors-light
 local colors = require("catppuccin.palettes").get_palette()
 
 local TelescopeColor = {
-    TelescopeMatching = { fg = colors.flamingo },
-    TelescopeSelection = { fg = colors.text, bg = colors.surface0, bold = true },
-    TelescopePromptPrefix = { bg = colors.surface0 },
-    TelescopePromptNormal = { bg = colors.surface0 },
-    TelescopeResultsNormal = { bg = colors.mantle },
-    TelescopePreviewNormal = { bg = colors.mantle },
-    TelescopePromptBorder = { bg = colors.surface0, fg = colors.surface0 },
-    TelescopeResultsBorder = { bg = colors.mantle, fg = colors.mantle },
-    TelescopePreviewBorder = { bg = colors.mantle, fg = colors.mantle },
-    TelescopePromptTitle = { bg = colors.pink, fg = colors.mantle },
-    TelescopeResultsTitle = { fg = colors.mantle },
-    TelescopePreviewTitle = { bg = colors.green, fg = colors.mantle },
+    TelescopeMatching       = { fg = colors.flamingo },
+    TelescopeSelection      = { fg = colors.text, bg = colors.surface0, bold = true },
+    TelescopePromptPrefix   = { bg = colors.surface0 },
+    TelescopePromptNormal   = { bg = colors.surface0 },
+    TelescopeResultsNormal  = { bg = colors.mantle },
+    TelescopePreviewNormal  = { bg = colors.mantle },
+    TelescopePromptBorder   = { bg = colors.surface0, fg = colors.surface0 },
+    TelescopeResultsBorder  = { bg = colors.mantle, fg = colors.mantle },
+    TelescopePreviewBorder  = { bg = colors.mantle, fg = colors.mantle },
+    TelescopePromptTitle    = { bg = colors.pink, fg = colors.mantle },
+    TelescopeResultsTitle   = { fg = colors.mantle },
+    TelescopePreviewTitle   = { bg = colors.green, fg = colors.mantle },
 }
 
 for hl, col in pairs(TelescopeColor) do
@@ -621,14 +625,7 @@ hogadom554@exitbit.com
 python3 archive-org-downloader.py -e myemail@tempmail.com -p Passw0rd -r 0 -u https://archive.org/details/IntermediatePython
 ```
 
-## Convert `djvu` to `pdf`, requires `djvulibre`
-
-```
-ddjvu -format=pdf -quality=85 input.djvu ouput.pdf
-
-```
-
-## Normalize page size of a `pdf` file
+## `pdf` files
 
 ```
 pdfjam --paper [letter, a4paper, etc.] --outfile output.pdf input.pdf
@@ -662,7 +659,14 @@ pdfjam file1.pdf file2.pdf -o output.pdf
 
 ```
 
-## Litemática
+Convert `djvu` to `pdf`, requires `djvulibre`
+
+```
+ddjvu -format=pdf -quality=85 input.djvu ouput.pdf
+
+```
+
+## Litematica
 
 ### Replace blocks keybind `right click + [keybind]`
 
@@ -703,7 +707,9 @@ ssh-keygen -R [IP]
 ## Persitent `ip` device assignment
 
 ```
-nmcli conadd type ethernet ifname [eth-dev] con-name [name] ip4 [ip4/br] autoconnect yes
+nmcli con add type ethernet ifname [eth-dev] con-name [name] ip4 [ip4/br] autoconnect yes
+nmcli con mod euclides ipv4.method manual
+nmcli con mod [name] ipv4adresses [ip]
 ```
 
 Activate connection `[name]`

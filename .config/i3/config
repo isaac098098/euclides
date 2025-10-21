@@ -320,7 +320,7 @@ bindsym Ctrl+s [all] scratchpad show
 # Twitch
 
 for_window [workspace=$ws10] floating enable
-for_window [workspace=$ws10 class="Krita" window_type="normal"] floating disable
+for_window [workspace=$ws10 class="krita" window_type="normal"] floating disable
 
 # Window rules
 
