@@ -20,6 +20,24 @@ then
         "Vim")
             dir="$HOME/documents/projects/visnp/bib/"
         ;;
+        "Combinatorics")
+            dir="$HOME/documents/academic/im/semestre_1/combinatorics/"
+        ;;
+        "Graph Theory")
+            dir="$HOME/documents/academic/im/semestre_1/graph_theory/"
+        ;;
+        "Algebraic Topology")
+            dir="$HOME/documents/academic/im/semestre_1/algebraic_topology/bib/"
+        ;;
+        "Abstract Algebra")
+            dir="$HOME/documents/academic/im/semestre_1/abstract_algebra/bib/"
+        ;;
+        "Category Theory")
+            dir="$HOME/documents/academic/im/semestre_1/category_theory/bib/"
+        ;;
+        "Mathematics")
+            dir="$HOME/documents/books/sciences/math/"
+        ;;
         "Reading")
             dir="$HOME/documents/reading/"
         ;;
@@ -43,6 +61,12 @@ else
     echo "Value"
     echo "Manga"
     echo "Vim"
+    echo "Combinatorics"
+    echo "Graph Theory"
+    echo "Algebraic Topology"
+    echo "Abstract Algebra"
+    echo "Category Theory"
+    echo "Mathematics"
     echo "Reading"
     echo "Graphics"
     echo "Computers"
