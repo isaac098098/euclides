@@ -25,6 +25,20 @@ void fill_root(struct node *n) {
     n->children[0] = NULL;
 }
 
+int alpha_cmp(const char *a, const char *b) {
+    size_t len_a = strlen(a);
+    size_t len_b = strlen(b);
+
+    if(len_a != len_b)
+        return (int)(len_a - len_b);
+
+    for(size_t i = 0; i < len_a; i++)
+        if(a[i] != b[i])
+            return (int)(a[i] - b[i]);
+
+    return 0;
+}
+
 int print_node_info(const struct node *n) {
     if(n == NULL) return -1;
 
@@ -51,7 +65,7 @@ int print_node_info(const struct node *n) {
 }
 
 struct node* find_node(struct node *parent, char *name) {
-    for(int i = 0; i < parent->child_num; i++) {
+    for(size_t i = 0; i < parent->child_num; i++) {
         struct node* child = parent->children[i];
         char* label = child->label;
 
@@ -64,20 +78,6 @@ struct node* find_node(struct node *parent, char *name) {
     }
 
     return NULL;
-}
-
-int alpha_cmp(const char *a, const char *b) {
-    size_t len_a = strlen(a);
-    size_t len_b = strlen(b);
-
-    if(len_a != len_b)
-        return (int)(len_a - len_b);
-
-    for(size_t i = 0; i < len_a; i++)
-        if(a[i] != b[i])
-            return (int)(a[i] - b[i]);
-
-    return 0;
 }
 
 int parse_node_label(const char *label) {
@@ -99,8 +99,147 @@ int parse_node_label(const char *label) {
     return 0;
 }
 
+const char* prev_card(const char *label) {
+    if(parse_node_label(label) < 0)
+        return NULL;
+
+    size_t label_len = strlen(label);
+    char* result;
+    
+    if(isdigit(label[label_len - 1])) {
+        size_t i = label_len - 1;
+        while(i >= 0 && isdigit(label[i])) i--;
+        
+        char *prefix = strndup(label, i + 1);
+        char *suffix = strdup(label + i + 1);
+        // printf("prefix: %s\n", prefix);
+        // printf("suffix: %s\n", suffix);
+
+        long prev = strtol(suffix, NULL, 10) - 1;
+
+        if(prev < 1) {
+            fprintf(stderr, "1 is the minimum element for the number hierarchy\n");
+            return NULL;
+        }
+
+        size_t suffix_len = snprintf(NULL, 0, "%ld", prev);
+        size_t result_len = strlen(prefix) + suffix_len + 1;
+        result = malloc(result_len);
+        snprintf(result, result_len, "%s%ld", prefix, prev);
+
+        free(prefix);
+    }
+    else {
+        size_t i = label_len - 1;
+        while(i >= 0 && isalpha(label[i])) i--;
+        
+        char *prefix = strndup(label, i + 1);
+        char *suffix = strdup(label + i + 1);
+        // printf("prefix: %s\n", prefix);
+        // printf("suffix: %s\n", suffix);
+
+        if(strcmp(suffix, "a") == 0) {
+            fprintf(stderr, "a is the minimum element for the character hierarchy\n");
+            return NULL;
+        }
+
+        long suffix_len = strlen(suffix);
+        char* prev = malloc(suffix_len + 1);
+
+        strcpy(prev, suffix);
+
+        int borrow = 1;
+        for(long i = suffix_len - 1; i >= 0 && borrow; i--) {
+            if(prev[i] == 'a') {
+                prev[i] = 'z';
+            }
+            else {
+                prev[i]--;
+                borrow = 0;
+            }
+        }
+
+        if(borrow)
+            memmove(prev, prev + 1, suffix_len);
+
+        size_t result_len = strlen(prefix) + strlen(prev) + 1;
+        result = malloc(result_len);
+        snprintf(result, result_len, "%s%s", prefix, prev);
+
+        free(prefix);
+    }
+
+    return result;
+}
+
+const char* next_card(const char *label) {
+    if(parse_node_label(label) < 0)
+        return NULL;
+
+    size_t label_len = strlen(label);
+    char* result;
+    
+    if(isdigit(label[label_len - 1])) {
+        size_t i = label_len - 1;
+        while(i >= 0 && isdigit(label[i])) i--;
+        
+        char *prefix = strndup(label, i + 1);
+        char *suffix = strdup(label + i + 1);
+        // printf("prefix: %s\n", prefix);
+        // printf("suffix: %s\n", suffix);
+
+        long prev = strtol(suffix, NULL, 10) + 1;
+
+        size_t suffix_len = snprintf(NULL, 0, "%ld", prev);
+        size_t result_len = strlen(prefix) + suffix_len + 1;
+        result = malloc(result_len);
+        snprintf(result, result_len, "%s%ld", prefix, prev);
+
+        free(prefix);
+    }
+    else {
+        size_t i = label_len - 1;
+        while(i >= 0 && isalpha(label[i])) i--;
+        
+        char *prefix = strndup(label, i + 1);
+        char *suffix = strdup(label + i + 1);
+        // printf("prefix: %s\n", prefix);
+        // printf("suffix: %s\n", suffix);
+
+        long suffix_len = strlen(suffix);
+        char* prev = malloc(suffix_len + 2);
+
+        strcpy(prev, suffix);
+
+        int carry = 1;
+        for(long i = suffix_len - 1; i >= 0 && carry; i--) {
+            if(prev[i] == 'z') {
+                prev[i] = 'a';
+            }
+            else {
+                prev[i]++;
+                carry = 0;
+            }
+        }
+
+        if(carry) {
+            memmove(prev + 1, prev, suffix_len + 1);
+            prev[0] = 'a';
+        }
+
+        size_t result_len = strlen(prefix) + strlen(prev) + 1;
+        result = malloc(result_len);
+        snprintf(result, result_len, "%s%s", prefix, prev);
+
+        free(prefix);
+    }
+
+    return result;
+}
+
 const char* get_card_suffix(struct node *n) {
-    if(n == NULL || n->label == NULL) return NULL;
+    if(n == NULL || n->label == NULL)
+        return NULL;
 
     const char *label = n->label;
 
@@ -116,6 +255,33 @@ const char* get_card_suffix(struct node *n) {
         while(i >= 0 && isalpha(label[i])) i--;
 
     return label + i + 1;
+}
+
+int rename_subtree(struct node *parent, const char *new_label) {
+    if (parent == NULL || new_label == NULL)
+        return -1;
+
+    char *old_label = parent->label;
+
+    parent->label = strdup(new_label);
+
+    for(size_t i = 0; i < parent->child_num; i++) {
+        struct node *child = parent->children[i];
+
+        char *suffix = child->label + strlen(old_label);
+
+        size_t len = strlen(new_label) + strlen(suffix) + 1;
+        char *child_new_label = malloc(len);
+        snprintf(child_new_label, len, "%s%s", new_label, suffix);
+
+        rename_subtree(child, child_new_label);
+
+        free(child_new_label);
+    }
+
+    free(old_label);
+
+    return 0;
 }
 
 void print_subtree_as_list(struct node *n) {
@@ -398,8 +564,15 @@ int main(int argc, char *argv[]) {
         // print_subtree_pretty(&root, "", -1);
         // print_subtree_as_list(&root);
 
-        struct node *find = find_node(&root, "2a2");
-        print_subtree_pretty(find, "", -1);
+        // struct node *find = find_node(&root, "2a2");
+        // print_subtree_pretty(find, "", -1);
+        // rename_subtree(find, "2c2");
+        // print_subtree_pretty(find, "", -1);
+
+        char *test_card = "2za";
+        printf("previous: %s\n", prev_card(test_card));
+        printf("card: %s\n", test_card);
+        printf("next: %s\n", next_card(test_card));
     }
     else {
         printf("usage: %s [directory]\n", argv[0]);
