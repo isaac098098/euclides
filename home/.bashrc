@@ -19,6 +19,7 @@ alias pomotroid='pomotroid --no-gpu-sandbox'
 alias spotdl-al='$HOME/.local/bin/venv/bin/spotdl --output "$HOME/Music/{artist}/{album}/{track-number} - {title}.{output-ext}"'
 alias spotdl-pl='$HOME/.local/bin/venv/bin/spotdl --output "$HOME/Music/{list-name}/{title}.{output-ext}"'
 alias spotdl-so='$HOME/.local/bin/venv/bin/spotdl --output "$HOME/Music/{title}.{output-ext}"'
+alias glow='glow -t'
 
 export UNZIP_DISABLE_ZIPBOMB_DETECTION=TRUE
 # export GTK_THEME=Adwaita-dark
