@@ -3,27 +3,20 @@
 #include <ctype.h>
 #include <string.h>
 #include <dirent.h>
-#include <stdbool.h>
-#include <time.h>
 
 #define EXT ".tex"
 
-struct node {
-    char *label;
-    struct node *parent;
-    size_t child_num;
-    size_t child_cty;
-    struct node **children;
-};
+static const char *tex_1 = "\\hyperref[card:";
+static const char *tex_2 = "]{\\textsf{";
+static const char *tex_3 = "}}";
+static const size_t tex_1_len = 16;
+static const size_t tex_2_len = 11;
+static const size_t tex_3_len = 2;
+static const size_t tex_code_len = tex_1_len
+                                   + tex_2_len
+                                   + tex_3_len;
 
-void fill_root(struct node *n) {
-    n->label = strdup("root");
-    n->parent = NULL;
-    n->child_num = 0;
-    n->child_cty = 1;
-    n->children = malloc(sizeof(struct node*));
-    n->children[0] = NULL;
-}
+/* string comparison and parsing functions */
 
 int alpha_cmp(const char *a, const char *b) {
     size_t len_a = strlen(a);
@@ -38,6 +31,320 @@ int alpha_cmp(const char *a, const char *b) {
 
     return 0;
 }
+
+int parse_node_label(const char *label) {
+    if(label == NULL)
+        return -1;
+    if(!isdigit(label[0])) {
+        fprintf(stderr, "invalid label %s\n", label);
+        fprintf(stderr, "card label must start with a digit\n");
+        return -1;
+    }
+    for(size_t i = 0; i < strlen(label); i++) {
+        if(((!isdigit(label[i]) && !isalpha(label[i]))) || isupper(label[i])) {
+            printf("invalid character %c in label %s\n", label[i], label);
+            fprintf(stderr, "card label must containt characters a-z and 0-9 only\n");
+            return -1;
+        }
+    }
+
+    return 0;
+}
+
+const char* sanitize_dir_path(const char* dir_path) {
+    if(dir_path == NULL)
+        return NULL;
+
+    char *sanitized;
+
+    if(dir_path[strlen(dir_path) - 1] != '/') {
+        size_t dir_path_len = strlen(dir_path) + 2;
+
+        sanitized = malloc(dir_path_len);
+        snprintf(sanitized, dir_path_len, "%s/", dir_path);
+
+        return sanitized;
+    }
+
+    return dir_path;
+}
+
+char* construct_file_path(const char* dir_path,
+                                const char *file)
+{
+    if(dir_path == NULL || file == NULL)
+        return NULL;
+
+    size_t dir_path_len = strlen(dir_path);
+    size_t file_len = strlen(file);
+    size_t file_path_len = dir_path_len + file_len + 1;
+
+    char *file_path = malloc(file_path_len);
+    snprintf(file_path, file_path_len, "%s%s", dir_path, file);
+
+    return file_path;
+}
+
+char* construct_hyperref_pattern(const char *card) {
+    if(card == NULL)
+        return NULL;
+
+    size_t pattern_len = 2 * strlen(card) + tex_code_len + 1;
+    char *pattern = malloc(pattern_len);
+
+    if(pattern == NULL) {
+        fprintf(stderr, "out of memory!\n");
+        return NULL;
+    }
+
+    snprintf(pattern, pattern_len, "%s%s%s%s%s",
+                                   tex_1,
+                                   card,
+                                   tex_2,
+                                   card,
+                                   tex_3);
+    
+    return pattern;
+}
+
+/* file search and replace functions */
+
+const int* compute_prefix_function(const char* pattern,
+                                   const size_t pattern_len)
+{
+    if(pattern_len == 0) return NULL;
+
+    int *pi = malloc(pattern_len * sizeof(int));
+    if (!pi) return NULL;
+
+    pi[0] = 0;
+    int k = 0;
+
+    for(int q = 1; q < pattern_len; q++) {
+        while(k > 0 && pattern[k] != pattern[q])
+            k = pi[k - 1];
+        if(pattern[k] == pattern[q])
+            k++;
+        pi[q] = k;
+    }
+
+    return pi;
+}
+
+const char* buffer_replace(char* buffer,
+        size_t buffer_size,
+        const char *pttr,
+        const size_t pttr_size,
+        const int* pi,
+        const char *rplc,
+        size_t rplc_size,
+        size_t *new_buffer_size)
+{
+    if(buffer == NULL)
+        return NULL;
+
+    size_t new_size;
+    char *new_buffer;
+
+    /* knuth-morris-pratt */
+
+    size_t q = 0;
+    size_t match_num = 0;
+    size_t *matches_pos = malloc(sizeof(size_t));
+
+    for(size_t i = 0; i < buffer_size; i++) {
+        while(q > 0 && pttr[q] != buffer[i])
+            q  = pi[q - 1];
+        if(pttr[q] == buffer[i])
+            q++;
+        if(q == pttr_size) {
+            printf("pattern found with shift %ld\n", (long)(i + 1 - pttr_size));
+            match_num++;
+            matches_pos = realloc(matches_pos, match_num * sizeof(size_t));
+            matches_pos[match_num - 1] = i + 1 - pttr_size;
+            q = pi[q - 1];
+        }
+    }
+
+    if(match_num == 0)
+        return NULL;
+
+    new_size = buffer_size + match_num * (rplc_size - pttr_size);
+    new_buffer = malloc(new_size + 1);
+
+    size_t write_pos = 0, read_pos = 0;
+
+    for(int i = 0; i < match_num ; i++) {
+        size_t prefix_len = matches_pos[i] - read_pos;
+
+        memcpy(new_buffer + write_pos, buffer + read_pos, prefix_len);
+        write_pos += prefix_len;
+        read_pos += prefix_len;
+
+        memcpy(new_buffer + write_pos, rplc, rplc_size);
+        write_pos += rplc_size;
+        read_pos += pttr_size;
+    }
+
+    free(matches_pos);
+
+    if (read_pos < buffer_size) {
+        size_t remaining = buffer_size - read_pos;
+        memcpy(new_buffer + write_pos, buffer + read_pos, remaining);
+        write_pos += remaining;
+    }
+
+    new_buffer[new_size] = '\0';
+    *new_buffer_size = new_size;
+
+    return new_buffer;
+}
+
+int replace(const char* file_path,
+            const char* pattern,
+            size_t pattern_size,
+            const int *pi,
+            const char* replacement,
+            size_t replacement_size)
+{
+    size_t new_buffer_size;
+    const char* new_file;
+    FILE *file;
+
+    printf("processing %s...\n", file_path);
+
+    file = fopen(file_path, "r");
+
+    if(!file) {
+        fprintf(stderr, "no such file\n");
+        return -1;
+    }
+
+    fseek(file, 0, SEEK_END);
+    size_t size = ftell(file);
+    rewind(file);
+
+    if(size == 0) {
+        printf("file %s is empty, skipping...\n", file_path);
+        fclose(file);
+        return -1;
+    }
+
+    char *buffer = malloc(size + 1);
+    fread(buffer, sizeof(char), size, file);
+    buffer[size] = '\0';
+    fclose(file);
+
+    new_file = buffer_replace(buffer,
+                              size,
+                              pattern,
+                              pattern_size,
+                              pi,
+                              replacement,
+                              replacement_size,
+                              &new_buffer_size);
+
+    if(new_file == NULL) {
+        printf("pattern not found\n");
+    }
+    else {
+        size_t tmp_path_size;
+        char *tmp_path;
+        FILE *tmp_file;
+
+        tmp_path_size = strlen(file_path) + strlen(".tmp") + 1;
+        tmp_path = malloc(tmp_path_size);
+        snprintf(tmp_path, tmp_path_size, "%s.tmp", file_path);
+        tmp_path[tmp_path_size] = '\0';
+
+        tmp_file = fopen(tmp_path, "w");
+
+        if(tmp_file == NULL) {
+            fprintf(stderr, "could not open %s\n", tmp_path);
+            return -1;
+        }
+
+        fwrite(new_file, sizeof(char), new_buffer_size, tmp_file);
+
+        if(new_file[new_buffer_size - 1] != '\n')
+            fputc('\n', tmp_file);
+
+        fclose(tmp_file);
+
+        rename(tmp_path, file_path);
+
+        free(tmp_path);
+    }
+
+    free(buffer);
+
+    return 0;
+}
+
+int replace_pattern_in_dir(const char *cards_dir,
+                           char* pattern,
+                           size_t pattern_len,
+                           char *replacement,
+                           size_t replacement_len)
+{
+    if(cards_dir == NULL || pattern == NULL || replacement == NULL)
+        return -1;
+
+    size_t dir_path_len = strlen(cards_dir);
+    DIR *dir;
+    struct dirent *dp;
+
+    dir = opendir(cards_dir);
+    if(!dir) {
+        fprintf(stderr, "no such directory \"%s\"\n", cards_dir);
+        return -1;
+    }
+
+    const int *pi = compute_prefix_function(pattern, pattern_len);
+
+    while((dp = readdir(dir)) != NULL) {
+        char *name = strdup(dp->d_name);
+        size_t len = strlen(name);
+
+        if(strcmp(name, ".") != 0 && strcmp(name, "..") != 0) {
+            if(len > 4 && strcmp(name + len - 4, EXT) == 0) {
+                /* construct file path */
+
+                char *file_path;
+                size_t file_path_len = dir_path_len + len + 1;
+                file_path = malloc(file_path_len);
+
+                snprintf(file_path, file_path_len, "%s%s", cards_dir, name);
+
+                /* replace coindicences */
+
+                replace(file_path,
+                           pattern,
+                           pattern_len,
+                           pi,
+                           replacement,
+                           replacement_len);
+
+                free(file_path);
+            }
+        }
+
+        free(name);
+    }
+
+    return 0;
+}
+
+
+/* tree structure and functions */
+
+struct node {
+    char *label;
+    struct node *parent;
+    size_t child_num;
+    size_t child_cty;
+    struct node **children;
+};
 
 int print_node_info(const struct node *n) {
     if(n == NULL) return -1;
@@ -64,7 +371,7 @@ int print_node_info(const struct node *n) {
     return 1;
 }
 
-struct node* find_node(struct node *parent, char *name) {
+struct node* find_node(struct node *parent, const char *name) {
     for(size_t i = 0; i < parent->child_num; i++) {
         struct node* child = parent->children[i];
         char* label = child->label;
@@ -78,25 +385,6 @@ struct node* find_node(struct node *parent, char *name) {
     }
 
     return NULL;
-}
-
-int parse_node_label(const char *label) {
-    if(label == NULL)
-        return -1;
-    if(!isdigit(label[0])) {
-        fprintf(stderr, "invalid label %s\n", label);
-        fprintf(stderr, "card label must start with a digit\n");
-        return -1;
-    }
-    for(size_t i = 0; i < strlen(label); i++) {
-        if(((!isdigit(label[i]) && !isalpha(label[i]))) || isupper(label[i])) {
-            printf("invalid character %c in label %s\n", label[i], label);
-            fprintf(stderr, "card label must containt characters a-z and 0-9 only\n");
-            return -1;
-        }
-    }
-
-    return 0;
 }
 
 const char* prev_card(const char *label) {
@@ -172,7 +460,7 @@ const char* prev_card(const char *label) {
     return result;
 }
 
-const char* next_card(const char *label) {
+char* next_card(const char *label) {
     if(parse_node_label(label) < 0)
         return NULL;
 
@@ -257,13 +545,27 @@ const char* get_card_suffix(struct node *n) {
     return label + i + 1;
 }
 
-int rename_subtree(struct node *parent, const char *new_label) {
+int rename_subtree(struct node *parent,
+                   char *new_label,
+                   const char *cards_dir)
+{
     if (parent == NULL || new_label == NULL)
         return -1;
 
     char *old_label = parent->label;
 
-    parent->label = strdup(new_label);
+    printf("renaming %s->%s\n", old_label, new_label);
+
+    char *pattern = construct_hyperref_pattern(old_label);
+    size_t pattern_len = strlen(pattern);
+    char *replacement = construct_hyperref_pattern(new_label);
+    size_t replacement_len = strlen(replacement);
+
+    replace_pattern_in_dir(cards_dir,
+                           pattern,
+                           pattern_len,
+                           replacement,
+                           replacement_len);
 
     for(size_t i = 0; i < parent->child_num; i++) {
         struct node *child = parent->children[i];
@@ -274,7 +576,7 @@ int rename_subtree(struct node *parent, const char *new_label) {
         char *child_new_label = malloc(len);
         snprintf(child_new_label, len, "%s%s", new_label, suffix);
 
-        rename_subtree(child, child_new_label);
+        rename_subtree(child, child_new_label, cards_dir);
 
         free(child_new_label);
     }
@@ -462,7 +764,7 @@ struct node* insert_child_in_order(struct node *parent, const char *suffix) {
 int search_or_create_card_ancestors(struct node *n, const char *card) {
     if(parse_node_label(card) < 0) return -1;
 
-    bool found;
+    int found;
     size_t i=0, start;
     char *label = strdup("");
     struct node *prev = n;
@@ -536,50 +838,53 @@ int search_or_create_card_ancestors(struct node *n, const char *card) {
     return 0;
 }
 
-int main(int argc, char *argv[]) {
+void fill_root(struct node *n) {
+    n->label = strdup("root");
+    n->parent = NULL;
+    n->child_num = 0;
+    n->child_cty = 1;
+    n->children = malloc(sizeof(struct node*));
+    n->children[0] = NULL;
+}
+
+int fill_tree(struct node *root, const char *path) {
     DIR *dir;
     struct dirent *dp;
-    struct node root;
 
-    fill_root(&root);
+    if(root == NULL || path == NULL)
+        return -1;
 
-    if(argc == 2) {
-        dir = opendir(argv[1]);
+    root->label = strdup("root");
+    root->parent = NULL;
+    root->child_num = 0;
+    root->child_cty = 1;
+    root->children = malloc(sizeof(struct node*));
+    root->children[0] = NULL;
 
-        while((dp = readdir(dir)) != NULL) {
-            if(strcmp(dp->d_name, ".") != 0 && strcmp(dp->d_name, "..") != 0) {
-                size_t len = strlen(dp->d_name);
-                if(len > 4 && strcmp(dp->d_name + len - 4, EXT) == 0) {
-                    char *name = strndup(dp->d_name, len - 4);
-                    if(name)
-                        if(search_or_create_card_ancestors(&root, name) < 0)
-                            return -1;
-                    free(name);
+    dir = opendir(path);
+
+    while((dp = readdir(dir)) != NULL) {
+        char *name = strdup(dp->d_name);
+        
+        if(strcmp(name, ".") != 0 && strcmp(name, "..") != 0) {
+            size_t len = strlen(name);
+
+            if(len > 4 && strcmp(name + len - 4, EXT) == 0) {
+                char *name_no_ext = strndup(name, len - 4);
+
+                if(search_or_create_card_ancestors(root, name_no_ext) < 0) {
+                    fprintf(stderr, "could no create tree of cards\n");
+                    return -1;
                 }
+
+                free(name_no_ext);
             }
         }
 
-        closedir(dir);
-
-        // print_subtree_pretty(&root, "", -1);
-        // print_subtree_as_list(&root);
-
-        // struct node *find = find_node(&root, "2a2");
-        // print_subtree_pretty(find, "", -1);
-        // rename_subtree(find, "2c2");
-        // print_subtree_pretty(find, "", -1);
-
-        char *test_card = "2za";
-        printf("previous: %s\n", prev_card(test_card));
-        printf("card: %s\n", test_card);
-        printf("next: %s\n", next_card(test_card));
-    }
-    else {
-        printf("usage: %s [directory]\n", argv[0]);
-        return 0;
+        free(name);
     }
 
-    printf("time used: %.9f\n", (double)clock() / CLOCKS_PER_SEC);
+    closedir(dir);
 
     return 0;
 }

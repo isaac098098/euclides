@@ -27,4 +27,4 @@ then
     exit 0
 fi
 
-$HOME/.config/rofi/scripts/c/zettelkasten/sort_cards "$dir/cards"
+$HOME/.config/rofi/scripts/c/zettelkasten/deprecated/sort_cards "$dir/cards"
