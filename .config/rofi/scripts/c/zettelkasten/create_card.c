@@ -70,7 +70,7 @@ int main(int argc, char *argv[]) {
     if(argc == 3) {
         dir = opendir(argv[1]);
         if(!dir) {
-            fprintf(stderr, "Directory %s does not exists\n", argv[1]);
+            fprintf(stderr, "directory %s does not exists\n", argv[1]);
             return -1;
         }
 
@@ -198,7 +198,7 @@ int main(int argc, char *argv[]) {
                 len_last = snprintf(NULL, 0, "%s%ld", argv[2], last + 1);
                 next= malloc(len_last + 1);
                 if (!next) {
-                    fprintf(stderr, "Out of memory\n");
+                    fprintf(stderr, "out of memory\n");
                     return -1;
                 }
                 snprintf(next, len_last + 1, "%s%ld", argv[2], last + 1);
@@ -207,7 +207,7 @@ int main(int argc, char *argv[]) {
                 len_last = snprintf(NULL, 0, "%s%s", argv[2], alpha_next(last_chars));
                 next= malloc(len_last + 1);
                 if (!next) {
-                    fprintf(stderr, "Out of memory\n");
+                    fprintf(stderr, "out of memory\n");
                     return -1;
                 }
                 snprintf(next, len_last + 1, "%s%s", argv[2], alpha_next(last_chars));
@@ -217,6 +217,9 @@ int main(int argc, char *argv[]) {
             free(next);
             free(card_list);
         }
+    }
+    else {
+        printf("usage: ./create_card [CARDS_DIR] [CARD_NAME]\n");
     }
 
     return 0;

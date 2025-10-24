@@ -1,14 +1,14 @@
 #!/bin/bash
 
 cp -r ~/.mpv/config ~/euclides/home/.mpv/
-cp -r ~/.config/alacritty ~/euclides/.config/
-cp -r ~/.config/awesome ~/euclides/.config/
 cp -r ~/.config/dunst ~/euclides/.config/
 cp ~/.config/gtk-3.0/settings.ini ~/euclides/.config/gtk-3.0/
 cp -r ~/.config/gtk-4.0/ ~/euclides/.config/
-cp -r ~/.config/hypr ~/euclides/.config/
 cp -r ~/.config/i3 ~/euclides/.config/
 cp -r ~/.config/i3status ~/euclides/.config/
+rsync -aH --delete --itemize-changes  --exclude 'lazy-lock.json' ~/.config/nvim/ ~/euclides/.config/nvim/
+cp -r ~/.config/mpd/mpd.conf ~/euclides/.config/mpd/
+cp -r ~/.config/ncmpcpp/config ~/euclides/.config/ncmpcpp/
 rsync -aH --delete --itemize-changes  --exclude 'lazy-lock.json' ~/.config/nvim/ ~/euclides/.config/nvim/
 cp -r ~/.config/picom ~/euclides/.config/
 rsync -aH --delete --itemize-changes --exclude 'search_book.sh' ~/.config/rofi/ ~/euclides/.config/rofi/

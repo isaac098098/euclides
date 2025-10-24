@@ -314,8 +314,8 @@ bindsym $mod+x exec --no-startup-id lock_i3.sh
 
 # Scratchpad
 
-bindsym Ctrl+$mod s move scratchpad
-bindsym Ctrl+s [all] scratchpad show
+bindsym Ctrl+$mod y move scratchpad
+bindsym Ctrl+y [all] scratchpad show
  
 # Twitch
 

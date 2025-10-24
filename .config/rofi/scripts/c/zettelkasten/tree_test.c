@@ -118,7 +118,7 @@ const char* prev_card(const char *label) {
         long prev = strtol(suffix, NULL, 10) - 1;
 
         if(prev < 1) {
-            fprintf(stderr, "1 is the minimum element for the number hierarchy\n");
+            fprintf(stderr, "1 is the minimum element for the number hierarchys\n");
             return NULL;
         }
 
@@ -139,7 +139,7 @@ const char* prev_card(const char *label) {
         // printf("suffix: %s\n", suffix);
 
         if(strcmp(suffix, "a") == 0) {
-            fprintf(stderr, "a is the minimum element for the character hierarchy\n");
+            fprintf(stderr, "a is the minimum element for the character hierarchys\n");
             return NULL;
         }
 

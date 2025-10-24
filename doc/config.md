@@ -22,6 +22,10 @@ gst-plugins-good
 gourou
 gvfs (virtual filesystem)
 qbittorrent
+ncmpcpp
+mpd
+mpc
+timidity
 ```
 
 ## Gaming
