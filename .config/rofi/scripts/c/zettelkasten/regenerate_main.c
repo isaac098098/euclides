@@ -40,7 +40,7 @@ int main(int argc, char **argv) {
 
         /* find beginning of tex document */
 
-        size_t doc_pos;
+        ssize_t doc_pos;
 
         if((doc_pos = get_first_coincidence(buffer,
                                       buffer_size, 
@@ -55,6 +55,8 @@ int main(int argc, char **argv) {
 
         fill_tree(&root, cards_dir);
 
+        // print_subtree_pretty(&root, "", -1);
+
         size_t *cards_size = malloc(sizeof(size_t));
         size_t *cards_num = malloc(sizeof(size_t));
         cards_size[0] = 0;
@@ -62,7 +64,7 @@ int main(int argc, char **argv) {
 
         card_names_size_and_num(&root, cards_size, cards_num);
 
-        size_t new_buffer_size = doc_pos
+        size_t new_buffer_size = (size_t)doc_pos
                                  + bdocument_len
                                  + toc_len
                                  + cards_num[0] * (include_1_len
@@ -75,11 +77,11 @@ int main(int argc, char **argv) {
 
         /* build new main file */
 
-        memcpy(new_buffer, buffer, doc_pos + bdocument_len);
-        memcpy(new_buffer + doc_pos + bdocument_len, toc, toc_len);
+        memcpy(new_buffer, buffer, (size_t)doc_pos + bdocument_len);
+        memcpy(new_buffer + (size_t)doc_pos + bdocument_len, toc, toc_len);
 
         size_t *write_pos = malloc(sizeof(size_t));
-        write_pos[0] = doc_pos + bdocument_len + toc_len;
+        write_pos[0] = (size_t)doc_pos + bdocument_len + toc_len;
         write_index_entries(new_buffer, write_pos, &root);
 
         memcpy(new_buffer + write_pos[0], edocument, edocument_len);
@@ -90,7 +92,7 @@ int main(int argc, char **argv) {
         size_t tmp_path_len = strlen(main_file) + strlen(".tmp") + 1;
         char *tmp_path = malloc(tmp_path_len);
         snprintf(tmp_path, tmp_path_len, "%s.tmp", main_file);
-
+        
         FILE *tmp_file = fopen(tmp_path, "w");
         if(!tmp_file) {
             fprintf(stderr, "could not create temporary main file\n");
@@ -101,6 +103,8 @@ int main(int argc, char **argv) {
 
         if(new_buffer[new_buffer_size - 1] != '\n')
             fputc('\n', tmp_file);
+
+        free(new_buffer);
 
         fclose(tmp_file);
 

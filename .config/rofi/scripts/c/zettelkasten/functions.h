@@ -32,6 +32,11 @@ const size_t include_1_len = 13;
 const char *include_2 = "}\n";
 const size_t include_2_len = 2;
 
+/* zheader pattern */
+
+const char *zheader = "\\zheader";
+const size_t zheader_len = 8;
+
 /* tree structure */
 
 struct node {
@@ -157,7 +162,7 @@ const int* compute_prefix_function(const char* pattern,
     return pi;
 }
 
-size_t get_first_coincidence(char *buffer,
+ssize_t get_first_coincidence(char *buffer,
                              size_t buffer_size,
                              const char *pattern,
                              size_t pattern_len)
@@ -177,7 +182,7 @@ size_t get_first_coincidence(char *buffer,
             q++;
         if(q == pattern_len) {
             printf("pattern found with shift %ld\n", i + 1 - pattern_len);
-            return i + 1 - pattern_len;
+            return (ssize_t)(i + 1 - pattern_len);
         }
     }
 
@@ -682,10 +687,324 @@ int card_names_size_and_num(struct node *parent,
     return 0;
 }
 
-void print_subtree_as_list(struct node *n) {
+int print_subtree_as_list(struct node *n) {
+    if(n == NULL)
+        return -1;
+
     printf("%s\n", n->label);
     for(int i=0; i < n->child_num; i++)
         print_subtree_as_list(n->children[i]);
+    
+    return 0;
+}
+
+
+int get_zheader(const char *file_path,
+                char **title,
+                char **tags)
+{
+    if(file_path == NULL)
+        return -1;
+
+    FILE *file = fopen(file_path, "r");
+
+    if(!file) {
+        fprintf(stderr, "could not open %s\n", file_path);
+        return -1;
+    }
+
+    /* knuth-morris-pratt */
+
+    char c;
+    size_t q = 0;
+    const int *pi = compute_prefix_function(zheader, zheader_len);
+
+    while((c = fgetc(file)) != EOF) {
+        while(q > 0 && zheader[q] != c)
+            q  = pi[q - 1];
+        if(zheader[q] == c)
+            q++;
+        if(q == zheader_len) {
+
+            /* get title */
+
+            size_t pos = 0;
+            size_t brackets = 0;
+
+            if((c = fgetc(file)) == '{') {
+                brackets = 1;
+
+                while((c = fgetc(file)) != EOF) {
+                    if(brackets == 0)
+                        break;
+                    if(c == '{')
+                        brackets += 1;
+                    if(c == '}')
+                        brackets -= 1;
+                    pos++;
+                }
+            }
+            else {
+                fprintf(stderr, "no title argument found\n");
+                fclose(file);
+                return -1;
+            }
+
+            if(brackets != 0) {
+                fprintf(stderr, "inconsistent square brackets\n");
+                fclose(file);
+                return -1;
+            }
+
+            if(pos > 0) {
+                fseek(file, - (pos + 1), SEEK_CUR);
+                *title = malloc(pos + 1);
+                fgets(*title, pos, file);
+            }
+
+            /* get tags */
+
+            brackets = 0;
+            pos = 0;
+
+            fgetc(file);
+
+            if((c = fgetc(file)) == '{') {
+                brackets = 1;
+
+                while((c = fgetc(file)) != EOF) {
+                    if(brackets == 0)
+                        break;
+                    if(c == '{')
+                        brackets += 1;
+                    if(c == '}')
+                        brackets -= 1;
+                    pos++;
+                }
+            }
+            else {
+                fprintf(stderr, "no title argument found\n");
+                fclose(file);
+                return -1;
+            }
+
+            if(brackets != 0) {
+                fprintf(stderr, "inconsistent brackets\n");
+                fclose(file);
+                return -1;
+            }
+
+            if(pos > 0) {
+                fseek(file, - (pos + 1), SEEK_CUR);
+                *tags = malloc(pos + 1);
+                fgets(*tags, pos, file);
+
+                fclose(file);
+
+                return 0;
+            }
+        }
+    }
+
+    fclose(file);
+
+    return -1;
+}
+
+int get_zheader_alt(const char *file_path,
+                    char **title,
+                    char **tags)
+{
+    if(file_path == NULL)
+        return -1;
+
+    FILE *file = fopen(file_path, "r");
+
+    if(!file) {
+        fprintf(stderr, "could not open %s\n", file_path);
+        return -1;
+    }
+
+    /* knuth-morris-pratt */
+
+    char c;
+    size_t q = 0;
+    const int *pi = compute_prefix_function(zheader, zheader_len);
+
+    while((c = fgetc(file)) != EOF) {
+        while(q > 0 && zheader[q] != c)
+            q  = pi[q - 1];
+        if(zheader[q] == c)
+            q++;
+        if(q == zheader_len) {
+
+            /* get alternative title */
+
+            size_t pos = 0;
+            size_t sq_brackets = 0;
+
+            if((c = fgetc(file)) == '[') {
+                sq_brackets = 1;
+
+                while((c = fgetc(file)) != EOF) {
+                    if(sq_brackets == 0)
+                        break;
+                    if(c == '[')
+                        sq_brackets += 1;
+                    if(c == ']')
+                        sq_brackets -= 1;
+                    pos++;
+                }
+            }
+            else {
+                fprintf(stderr, "no alt title argument found\n");
+                fclose(file);
+                return -1;
+            }
+
+            if(sq_brackets != 0) {
+                fprintf(stderr, "inconsistent square brackets\n");
+                fclose(file);
+                return -1;
+            }
+
+            if(pos > 0) {
+                fseek(file, - (pos + 1), SEEK_CUR);
+                *title = malloc(pos + 1);
+                fgets(*title, pos, file);
+            }
+
+            /* skip document title */
+
+            size_t brackets = 0;
+            pos = 0;
+
+            fgetc(file);
+
+            if((c = fgetc(file)) == '{') {
+                brackets = 1;
+
+                while((c = fgetc(file)) != EOF) {
+                    if(brackets == 0)
+                        break;
+                    if(c == '{')
+                        brackets += 1;
+                    if(c == '}')
+                        brackets -= 1;
+                    pos++;
+                }
+            }
+            else {
+                fprintf(stderr, "no title argument found\n");
+                fclose(file);
+                return -1;
+            }
+
+            if(brackets != 0) {
+                fprintf(stderr, "inconsistent brackets\n");
+                fclose(file);
+                return -1;
+            }
+
+            if(pos > 0)
+                fseek(file, -1, SEEK_CUR);
+            else{
+                fclose(file);
+                return -1;
+            }
+
+            /* get tags */
+
+            brackets = 0;
+            pos = 0;
+
+            if((c = fgetc(file)) == '{') {
+                brackets = 1;
+
+                while((c = fgetc(file)) != EOF) {
+                    if(brackets == 0)
+                        break;
+                    if(c == '{')
+                        brackets += 1;
+                    if(c == '}')
+                        brackets -= 1;
+                    pos++;
+                }
+            }
+            else {
+                fprintf(stderr, "no tags argument found\n");
+                fclose(file);
+                return -1;
+            }
+
+            if(brackets != 0) {
+                fprintf(stderr, "inconsistent brackets\n");
+                fclose(file);
+                return -1;
+            }
+
+            if(pos > 0) {
+                fseek(file, - (pos + 1), SEEK_CUR);
+                *tags = malloc(pos + 1);
+                fgets(*tags, pos, file);
+
+                fclose(file);
+
+                return 0;
+            }
+        }
+    }
+
+    fclose(file);
+
+    return -1;
+}
+
+int print_cards_and_meta(struct node *parent,
+                         const char *cards_dir)
+{
+    if(parent == NULL || cards_dir == NULL)
+        return -1;
+
+    char *card = strdup(parent->label);
+
+    if(strcmp(card, "root") != 0) {
+
+        /* construct card path */
+
+        size_t card_len = strlen(card);
+        char *dir = sanitize_dir_path(cards_dir);
+        size_t dir_len = strlen(dir);
+
+        size_t file_path_len = dir_len + card_len + EXT_LEN + 1;
+        char *file_path = malloc(file_path_len);
+        snprintf(file_path, file_path_len, "%s%s.tex", dir, card);
+
+        char *title = NULL;
+        char *tags = NULL;
+
+        if(get_zheader(file_path, &title, &tags) < 0) {
+            get_zheader_alt(file_path, &title, &tags);
+        }
+
+        if(title == NULL) {
+            if(tags == NULL)
+                printf("%s\n", card);
+            else
+                printf("%s | %s\n", card, tags);
+        }
+        else {
+            if(tags == NULL)
+                printf("%s\t%s\n", card, title);
+            else
+                printf("%s\t%s | %s\n", card, title, tags);
+        }
+    }
+
+    for(size_t i = 0; i < parent->child_num; i++)
+        print_cards_and_meta(parent->children[i], cards_dir);
+
+    return 0;
 }
 
 void print_subtree_pretty(struct node *n, const char *prefix, int is_last) {
