@@ -4,17 +4,43 @@
 #include <string.h>
 #include <dirent.h>
 
-#define EXT ".tex"
+#define EXT     ".tex"
+#define EXT_LEN 4
 
-static const char *tex_1 = "\\hyperref[card:";
-static const char *tex_2 = "]{\\textsf{";
-static const char *tex_3 = "}}";
-static const size_t tex_1_len = 16;
-static const size_t tex_2_len = 11;
-static const size_t tex_3_len = 2;
-static const size_t tex_code_len = tex_1_len
-                                   + tex_2_len
-                                   + tex_3_len;
+/* refs patterns */
+
+const char *tex_1 = "\\hyperref[card:";
+const size_t tex_1_len = 15;
+const char *tex_2 = "]{\\textsf{";
+const size_t tex_2_len = 10;
+const char *tex_3 = "}}";
+const size_t tex_3_len = 2;
+const size_t tex_code_len = tex_1_len
+                           + tex_2_len
+                           + tex_3_len;
+
+/* main file patterns */
+
+const char *bdocument = "\\begin{document}\n\n";
+const size_t bdocument_len = 18;
+const char *toc = "\\tableofcontents\\label{toc}\n\n";
+const size_t toc_len = 29;
+const char *edocument = "\n\\end{document}";
+const size_t edocument_len = 15;
+const char *include_1 = "\\input{cards/";
+const size_t include_1_len = 13;
+const char *include_2 = "}\n";
+const size_t include_2_len = 2;
+
+/* tree structure */
+
+struct node {
+    char *label;
+    struct node *parent;
+    size_t child_num;
+    size_t child_cty;
+    struct node **children;
+};
 
 /* string comparison and parsing functions */
 
@@ -51,7 +77,7 @@ int parse_node_label(const char *label) {
     return 0;
 }
 
-const char* sanitize_dir_path(const char* dir_path) {
+char* sanitize_dir_path(const char* dir_path) {
     if(dir_path == NULL)
         return NULL;
 
@@ -66,7 +92,7 @@ const char* sanitize_dir_path(const char* dir_path) {
         return sanitized;
     }
 
-    return dir_path;
+    return strdup(dir_path);
 }
 
 char* construct_file_path(const char* dir_path,
@@ -129,6 +155,33 @@ const int* compute_prefix_function(const char* pattern,
     }
 
     return pi;
+}
+
+size_t get_first_coincidence(char *buffer,
+                             size_t buffer_size,
+                             const char *pattern,
+                             size_t pattern_len)
+{
+    if(buffer == NULL || pattern == NULL)
+        return -1;
+
+    /* knuth-morris-pratt */
+
+    size_t q = 0;
+    const int *pi = compute_prefix_function(pattern, pattern_len);
+
+    for(size_t i = 0; i < buffer_size; i++) {
+        while(q > 0 && pattern[q] != buffer[i])
+            q  = pi[q - 1];
+        if(pattern[q] == buffer[i])
+            q++;
+        if(q == pattern_len) {
+            printf("pattern found with shift %ld\n", i + 1 - pattern_len);
+            return i + 1 - pattern_len;
+        }
+    }
+
+    return -1;
 }
 
 const char* buffer_replace(char* buffer,
@@ -335,16 +388,43 @@ int replace_pattern_in_dir(const char *cards_dir,
     return 0;
 }
 
+int write_index_entries(char *buffer,
+                        size_t *write_pos,
+                        struct node *parent)
+{
+    if(buffer == NULL || parent == NULL)
+        return -1;
+
+    if(parent->parent != NULL) {
+        char *card = parent->label;
+        size_t card_len = strlen(card);
+
+        size_t include_len = include_1_len
+                             + card_len
+                             + EXT_LEN
+                             + include_2_len
+                             + 1;
+
+        char *include = malloc(include_len);
+
+        snprintf(include, include_len, "%s%s%s%s",
+                include_1,
+                card,
+                EXT,
+                include_2);
+
+        memcpy(buffer + write_pos[0], include, include_len - 1);
+        *write_pos += strlen(include);
+    }
+    
+    for(size_t i = 0; i < parent->child_num; i++)
+        write_index_entries(buffer, write_pos, parent->children[i]);
+
+    return 0;
+}
+
 
 /* tree structure and functions */
-
-struct node {
-    char *label;
-    struct node *parent;
-    size_t child_num;
-    size_t child_cty;
-    struct node **children;
-};
 
 int print_node_info(const struct node *n) {
     if(n == NULL) return -1;
@@ -582,6 +662,22 @@ int rename_subtree(struct node *parent,
     }
 
     free(old_label);
+
+    return 0;
+}
+
+int card_names_size_and_num(struct node *parent,
+                            size_t *cards_char_size,
+                            size_t *cards_num)
+{
+    if(parent == NULL || cards_char_size == NULL || cards_num == NULL)
+        return -1;
+
+    for(size_t i = 0; i < parent->child_num; i++) {
+        *cards_char_size += strlen(parent->children[i]->label);
+        *cards_num = *cards_num + 1;
+        card_names_size_and_num(parent->children[i], cards_char_size, cards_num);
+    }
 
     return 0;
 }
@@ -836,15 +932,6 @@ int search_or_create_card_ancestors(struct node *n, const char *card) {
     free(label);
 
     return 0;
-}
-
-void fill_root(struct node *n) {
-    n->label = strdup("root");
-    n->parent = NULL;
-    n->child_num = 0;
-    n->child_cty = 1;
-    n->children = malloc(sizeof(struct node*));
-    n->children[0] = NULL;
 }
 
 int fill_tree(struct node *root, const char *path) {
