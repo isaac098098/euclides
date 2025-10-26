@@ -9,7 +9,7 @@ int main(int argc, char **argv) {
     if(argc == 4) {
         DIR *dir;
 
-        // const char* main_dir = strdup(argv[1]);
+        const char* main_dir = strdup(argv[1]);
         const char* cards_dir = strdup(argv[2]);
         const char* card = strdup(argv[3]);
         size_t card_len = strlen(card);
@@ -75,6 +75,10 @@ int main(int argc, char **argv) {
             // return -1;
         // }
 
+        /* delete from main */
+
+        delete_card_from_main(main_dir, card_no_ext);
+
         /* construct hyperref pattern */
 
         char *pattern = construct_hyperref_pattern(card_no_ext);
@@ -113,7 +117,10 @@ int main(int argc, char **argv) {
 
                         /* rename and update refs recursively */
 
-                        rename_subtree(parent_card->children[j], prev, cards_dir);
+                        rename_subtree(parent_card->children[j],
+                                       main_dir,
+                                       prev,
+                                       cards_dir);
                     }
 
                     prev = next;

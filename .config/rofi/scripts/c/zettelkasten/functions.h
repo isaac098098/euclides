@@ -31,6 +31,8 @@ const char *include_1 = "\\input{cards/";
 const size_t include_1_len = 13;
 const char *include_2 = "}\n";
 const size_t include_2_len = 2;
+const size_t include_code_len = include_1_len
+                                + include_2_len;
 
 /* zheader pattern */
 
@@ -116,6 +118,22 @@ char* construct_file_path(const char* dir_path,
     return file_path;
 }
 
+char* construct_file_path_ext(const char* dir_path,
+                              const char *card_no_ext)
+{
+    if(dir_path == NULL || card_no_ext == NULL)
+        return NULL;
+
+    size_t dir_path_len = strlen(dir_path);
+    size_t card_no_ext_len = strlen(card_no_ext);
+    size_t file_path_len = dir_path_len + card_no_ext_len + EXT_LEN + 1;
+
+    char *file_path = malloc(file_path_len);
+    snprintf(file_path, file_path_len, "%s%s%s", dir_path, card_no_ext, EXT);
+
+    return file_path;
+}
+
 char* construct_hyperref_pattern(const char *card) {
     if(card == NULL)
         return NULL;
@@ -134,6 +152,27 @@ char* construct_hyperref_pattern(const char *card) {
                                    tex_2,
                                    card,
                                    tex_3);
+    
+    return pattern;
+}
+
+char* construct_input_pattern(const char *card) {
+    if(card == NULL)
+        return NULL;
+
+    size_t pattern_len = strlen(card) + include_code_len + EXT_LEN + 1;
+    char *pattern = malloc(pattern_len);
+
+    if(pattern == NULL) {
+        fprintf(stderr, "out of memory!\n");
+        return NULL;
+    }
+
+    snprintf(pattern, pattern_len, "%s%s%s%s",
+                                   include_1,
+                                   card,
+                                   EXT,
+                                   include_2);
     
     return pattern;
 }
@@ -428,6 +467,456 @@ int write_index_entries(char *buffer,
     return 0;
 }
 
+/* main file manipulation */
+
+int delete_card_from_main(const char *main_file,
+                          const char *card_no_ext)
+{
+    if(main_file == NULL || card_no_ext == NULL)
+        return -1;
+
+    /* construct pattern */
+
+    size_t card_no_ext_len = strlen(card_no_ext);
+
+    size_t card_pattern_len = include_1_len
+                            + card_no_ext_len
+                            + EXT_LEN
+                            + include_2_len
+                            + 1;
+
+    char *card_pattern = malloc(card_pattern_len);
+    snprintf(card_pattern, card_pattern_len, "%s%s%s%s",
+            include_1,
+            card_no_ext,
+            EXT,
+            include_2);
+    
+    /* copy file to buffer */
+
+    FILE *file = fopen(main_file, "r");
+    if(!file) {
+        fprintf(stderr, "could not open file %s\n", main_file);
+        return -1;
+    }
+
+    char c;
+    size_t buffer_size = 0;
+    while((c = fgetc(file)) != EOF)
+        buffer_size++;
+
+    if(buffer_size == 0) {
+        fprintf(stderr, "file %s is empty\n", main_file);
+        fprintf(stderr, "consider to regenerate index\n");
+        return -1;
+    }
+
+    char *buffer = malloc(buffer_size);
+    rewind(file);
+    fread(buffer, sizeof(char), buffer_size, file);
+    fclose(file);
+
+    /* find card */
+
+    ssize_t pos;
+
+    if((pos = get_first_coincidence(buffer,
+                                    buffer_size,
+                                    card_pattern,
+                                    card_pattern_len - 1)) < 0)
+    {
+        fprintf(stderr, "card %s not found in main file\n", card_no_ext);
+        fprintf(stderr, "consider to regenerate index\n");
+        return -1;
+    }
+
+    size_t npos = (size_t)pos;
+
+    size_t card_real = strlen(card_pattern);
+
+    size_t new_buffer_size = buffer_size - card_real;
+    char *new_buffer = malloc(new_buffer_size);
+
+    /* construct new file */
+
+    if(new_buffer != NULL) {
+        memcpy(new_buffer, buffer, npos);
+        memcpy(new_buffer + npos,
+               buffer + npos + card_real,
+               buffer_size - (card_real + npos));
+
+        /* overwrite main file */
+
+        size_t tmp_file_path_len = strlen(main_file) + strlen(".tmp") + 1;
+        char *tmp_file_path = malloc(tmp_file_path_len);
+        snprintf(tmp_file_path, tmp_file_path_len, "%s.tmp", main_file);
+
+        FILE *tmp_file = fopen(tmp_file_path, "w");
+        if(!tmp_file) {
+            fprintf(stderr, "could not create temporary file\n");
+            return -1;
+        }
+
+        fwrite(new_buffer, sizeof(char), new_buffer_size, tmp_file);
+        fclose(tmp_file);
+
+        rename(tmp_file_path, main_file);
+
+        return 0;
+    }
+    else
+        return -1;
+
+    return -1;
+
+}
+
+int insert_after_in_main(const char *main_file,
+                         const char *target_card,
+                         const char *prev_card)
+{
+    if(main_file == NULL || target_card == NULL || prev_card == NULL)
+        return -1;
+
+    size_t target_card_len = strlen(target_card);
+    size_t prev_card_len = strlen(prev_card);
+
+    /* construct target card pattern */
+
+    size_t card_pattern_len = include_1_len
+                              + target_card_len
+                              + EXT_LEN
+                              + include_2_len
+                              + 1;
+    char *card_pattern = malloc(card_pattern_len);
+    snprintf(card_pattern, card_pattern_len, "%s%s%s%s",
+                                             include_1,
+                                             target_card,
+                                             EXT,
+                                             include_2);
+
+    /* construct new card pattern */
+
+    size_t new_card_len = include_1_len
+                          + prev_card_len
+                          + EXT_LEN
+                          + include_2_len
+                          + 1;
+
+    char *new_card = malloc(new_card_len);
+    snprintf(new_card, new_card_len, "%s%s%s%s",
+                                     include_1,
+                                     prev_card,
+                                     EXT,
+                                     include_2);
+
+    FILE *file = fopen(main_file, "r");
+    if(!file) {
+        fprintf(stderr, "could not open file %s\n", main_file);
+        return -1;
+    }
+
+    char c;
+    size_t buffer_size = 0;
+    while((c = fgetc(file)) != EOF)
+        buffer_size++;
+
+    if(buffer_size == 0) {
+        fprintf(stderr, "file %s is empty\n", main_file);
+        fprintf(stderr, "consider regenerating the index\n");
+        return -1;
+    }
+
+    char *buffer = malloc(buffer_size + 1);
+    rewind(file);
+    fread(buffer, sizeof(char), buffer_size, file);
+
+    fclose(file);
+
+    ssize_t pos;
+
+    if((pos = get_first_coincidence(buffer,
+                    buffer_size,
+                    card_pattern,
+                    card_pattern_len - 1)) < 0)
+    {
+        fprintf(stderr, "card %s not found in main file\n", target_card);
+        fprintf(stderr, "consider regenerating the index\n");
+        return -1;
+    }
+
+    size_t npos = (size_t)pos;
+
+    // size_t card_real = strlen(card_pattern);
+    size_t new_card_real = strlen(new_card);
+
+    size_t new_buffer_size = buffer_size + new_card_real;
+    char *new_buffer = malloc(new_buffer_size);
+
+    if(new_buffer != NULL) {
+        memcpy(new_buffer, buffer, npos);
+        memcpy(new_buffer + npos, new_card, new_card_real);
+        memcpy(new_buffer + npos + new_card_real, buffer + npos, buffer_size - npos);
+
+        // printf("%s\n", new_buffer);
+        // return 0;
+
+        /* overwrite main file */
+
+        size_t tmp_file_path_len = strlen(main_file) + strlen(".tmp") + 1;
+        char *tmp_file_path = malloc(tmp_file_path_len);
+        snprintf(tmp_file_path, tmp_file_path_len, "%s.tmp", main_file);
+
+        FILE *tmp_file = fopen(tmp_file_path, "w");
+        if(!tmp_file) {
+            fprintf(stderr, "could not create temporary file\n");
+            return -1;
+        }
+
+        fwrite(new_buffer, sizeof(char), new_buffer_size, tmp_file);
+        fclose(tmp_file);
+
+        rename(tmp_file_path, main_file);
+
+        return 0;
+    }
+    else
+        return -1;
+
+}
+
+int insert_before_in_main(const char *main_file,
+                         const char *target_card,
+                         const char *next_card)
+{
+    if(main_file == NULL || target_card == NULL || next_card == NULL)
+        return -1;
+
+    size_t target_card_len = strlen(target_card);
+    size_t next_card_len = strlen(next_card);
+
+    /* construct target card pattern */
+
+    size_t card_pattern_len = include_1_len
+                              + target_card_len
+                              + EXT_LEN
+                              + include_2_len
+                              + 1;
+    char *card_pattern = malloc(card_pattern_len);
+    snprintf(card_pattern, card_pattern_len, "%s%s%s%s",
+                                             include_1,
+                                             target_card,
+                                             EXT,
+                                             include_2);
+
+    /* construct new card pattern */
+
+    size_t new_card_len = include_1_len
+                          + next_card_len
+                          + EXT_LEN
+                          + include_2_len
+                          + 1;
+
+    char *new_card = malloc(new_card_len);
+    snprintf(new_card, new_card_len, "%s%s%s%s",
+                                     include_1,
+                                     next_card,
+                                     EXT,
+                                     include_2);
+
+    FILE *file = fopen(main_file, "r");
+    if(!file) {
+        fprintf(stderr, "could not open file %s\n", main_file);
+        return -1;
+    }
+
+    char c;
+    size_t buffer_size = 0;
+    while((c = fgetc(file)) != EOF)
+        buffer_size++;
+
+    if(buffer_size == 0) {
+        fprintf(stderr, "file %s is empty\n", main_file);
+        fprintf(stderr, "consider regenerating the index\n");
+        return -1;
+    }
+
+    char *buffer = malloc(buffer_size + 1);
+    rewind(file);
+    fread(buffer, sizeof(char), buffer_size, file);
+
+    fclose(file);
+
+    ssize_t pos;
+
+    if((pos = get_first_coincidence(buffer,
+                    buffer_size,
+                    card_pattern,
+                    card_pattern_len - 1)) < 0)
+    {
+        fprintf(stderr, "card %s not found in main file\n", target_card);
+        fprintf(stderr, "consider regenerating the index\n");
+        return -1;
+    }
+
+    size_t npos = (size_t)pos;
+
+    size_t card_real = strlen(card_pattern);
+    size_t new_card_real = strlen(new_card);
+
+    size_t new_buffer_size = buffer_size + new_card_real;
+    char *new_buffer = malloc(new_buffer_size);
+
+    if(new_buffer != NULL) {
+        memcpy(new_buffer, buffer, pos + card_real);
+        memcpy(new_buffer + npos + card_real, new_card, new_card_real);
+        memcpy(new_buffer + npos + card_real + new_card_real,
+                buffer + pos + card_real,
+                buffer_size - (npos + card_real));
+
+        // printf("%s\n", new_buffer);
+        // return 0;
+
+        /* overwrite main file */
+
+        size_t tmp_file_path_len = strlen(main_file) + strlen(".tmp") + 1;
+        char *tmp_file_path = malloc(tmp_file_path_len);
+        snprintf(tmp_file_path, tmp_file_path_len, "%s.tmp", main_file);
+
+        FILE *tmp_file = fopen(tmp_file_path, "w");
+        if(!tmp_file) {
+            fprintf(stderr, "could not create temporary file\n");
+            return -1;
+        }
+
+        fwrite(new_buffer, sizeof(char), new_buffer_size, tmp_file);
+        fclose(tmp_file);
+
+        rename(tmp_file_path, main_file);
+
+        return 0;
+    }
+    else
+        return -1;
+
+}
+
+int rename_in_main(const char *main_file,
+                   const char *target_card,
+                   const char *new_card)
+{
+    if(main_file == NULL || target_card == NULL || new_card == NULL)
+        return -1;
+
+    size_t target_card_len = strlen(target_card);
+    size_t new_card_len = strlen(new_card);
+
+    /* construct target card pattern */
+
+    size_t card_pattern_len = include_1_len
+                              + target_card_len
+                              + EXT_LEN
+                              + include_2_len
+                              + 1;
+    char *card_pattern = malloc(card_pattern_len);
+    snprintf(card_pattern, card_pattern_len, "%s%s%s%s",
+                                             include_1,
+                                             target_card,
+                                             EXT,
+                                             include_2);
+
+    /* construct replacement card pattern */
+
+    size_t replacement_len = include_1_len
+                             + new_card_len
+                             + EXT_LEN
+                             + include_2_len
+                             + 1;
+
+    char *replacement = malloc(replacement_len);
+    snprintf(replacement, replacement_len, "%s%s%s%s",
+                                           include_1,
+                                           new_card,
+                                           EXT,
+                                           include_2);
+
+    FILE *file = fopen(main_file, "r");
+    if(!file) {
+        fprintf(stderr, "could not open file %s\n", main_file);
+        return -1;
+    }
+
+    char c;
+    size_t buffer_size = 0;
+    while((c = fgetc(file)) != EOF)
+        buffer_size++;
+
+    if(buffer_size == 0) {
+        fprintf(stderr, "file %s is empty\n", main_file);
+        fprintf(stderr, "consider regenerating the index\n");
+        return -1;
+    }
+
+    char *buffer = malloc(buffer_size);
+    rewind(file);
+    fread(buffer, sizeof(char), buffer_size, file);
+
+    fclose(file);
+
+    ssize_t pos;
+
+    if((pos = get_first_coincidence(buffer,
+                    buffer_size,
+                    card_pattern,
+                    card_pattern_len - 1)) < 0)
+    {
+        fprintf(stderr, "card %s not found in main file\n", target_card);
+        fprintf(stderr, "consider regenerating the index\n");
+        return -1;
+    }
+
+    size_t npos = (size_t)pos;
+
+    size_t real_card_len = strlen(card_pattern);
+    size_t real_repl_len = strlen(replacement);
+
+    size_t new_buffer_size = buffer_size + real_repl_len - real_card_len;
+    char *new_buffer = malloc(new_buffer_size);
+
+    if(new_buffer != NULL) {
+        memcpy(new_buffer, buffer, npos);
+        memcpy(new_buffer + npos, replacement, real_repl_len);
+        memcpy(new_buffer + npos + real_repl_len,
+                buffer + npos + real_card_len,
+                buffer_size - npos - real_card_len);
+
+        /* overwrite main file */
+
+        size_t tmp_file_path_len = strlen(main_file) + strlen(".tmp") + 1;
+        char *tmp_file_path = malloc(tmp_file_path_len);
+        snprintf(tmp_file_path, tmp_file_path_len, "%s.tmp", main_file);
+
+        FILE *tmp_file = fopen(tmp_file_path, "w");
+        if(!tmp_file) {
+            fprintf(stderr, "could not create temporary file\n");
+            return -1;
+        }
+
+        fwrite(new_buffer, sizeof(char), new_buffer_size, tmp_file);
+        fclose(tmp_file);
+
+        rename(tmp_file_path, main_file);
+        
+        return 0;
+    }
+    else
+        return -1;
+
+    return -1;
+}
+
+// int create_first_card(const char* cards
+
 
 /* tree structure and functions */
 
@@ -631,7 +1120,8 @@ const char* get_card_suffix(struct node *n) {
 }
 
 int rename_subtree(struct node *parent,
-                   char *new_label,
+                   const char *main_file,
+                   const char *new_label,
                    const char *cards_dir)
 {
     if (parent == NULL || new_label == NULL)
@@ -646,11 +1136,33 @@ int rename_subtree(struct node *parent,
     char *replacement = construct_hyperref_pattern(new_label);
     size_t replacement_len = strlen(replacement);
 
+    /* replace refs in every card */
+
     replace_pattern_in_dir(cards_dir,
                            pattern,
                            pattern_len,
                            replacement,
                            replacement_len);
+
+    /* replace zheader card numbers */
+
+    /* rename entries in main file */
+
+    rename_in_main(main_file,
+                   old_label,
+                   new_label);
+
+    /* rename actual cards */
+
+    char *old_card_path = construct_file_path_ext(cards_dir, old_label);
+    char *new_card_path = construct_file_path_ext(cards_dir, new_label);
+
+    printf("%s\n", old_card_path);
+    printf("%s\n", new_card_path);
+
+    rename(old_card_path, new_card_path);
+
+    /* propagate */
 
     for(size_t i = 0; i < parent->child_num; i++) {
         struct node *child = parent->children[i];
@@ -661,7 +1173,10 @@ int rename_subtree(struct node *parent,
         char *child_new_label = malloc(len);
         snprintf(child_new_label, len, "%s%s", new_label, suffix);
 
-        rename_subtree(child, child_new_label, cards_dir);
+        rename_subtree(child,
+                       main_file,
+                       child_new_label,
+                       cards_dir);
 
         free(child_new_label);
     }
@@ -1293,108 +1808,4 @@ int fill_tree(struct node *root, const char *path) {
     closedir(dir);
 
     return 0;
-}
-
-/* main file manipulation */
-
-int delete_card_from_main(const char *main_file,
-                          const char *card_no_ext)
-{
-    if(main_file == NULL || card_no_ext == NULL)
-        return -1;
-
-    /* construct pattern */
-
-    size_t card_no_ext_len = strlen(card_no_ext);
-
-    size_t card_pattern_len = include_1_len
-                            + card_no_ext_len
-                            + EXT_LEN
-                            + include_2_len
-                            + 1;
-
-    char *card_pattern = malloc(card_pattern_len);
-    snprintf(card_pattern, card_pattern_len, "%s%s%s%s",
-            include_1,
-            card_no_ext,
-            EXT,
-            include_2);
-    
-    /* copy file to buffer */
-
-    FILE *file = fopen(main_file, "r");
-    if(!file) {
-        fprintf(stderr, "could not open file %s\n", main_file);
-        return -1;
-    }
-
-    char c;
-    size_t buffer_size = 0;
-    while((c = fgetc(file)) != EOF)
-        buffer_size++;
-
-    if(buffer_size == 0) {
-        fprintf(stderr, "file %s is empty\n", main_file);
-        fprintf(stderr, "consider to regenerate index\n");
-        return -1;
-    }
-
-    char *buffer = malloc(buffer_size);
-    rewind(file);
-    fread(buffer, sizeof(char), buffer_size, file);
-    fclose(file);
-
-    /* find card */
-
-    ssize_t pos;
-
-    if((pos = get_first_coincidence(buffer,
-                    buffer_size,
-                    card_pattern,
-                    card_pattern_len - 1)) < 0)
-    {
-        fprintf(stderr, "card %s not found in main file\n", card_no_ext);
-        fprintf(stderr, "consider to regenerate index\n");
-        return -1;
-    }
-
-    size_t npos = (size_t)pos;
-
-    size_t card_real = strlen(card_pattern);
-
-    size_t new_buffer_size = buffer_size - card_real;
-    char *new_buffer = malloc(new_buffer_size);
-
-    /* construct new file */
-
-    if(new_buffer != NULL) {
-        memcpy(new_buffer, buffer, npos);
-        memcpy(new_buffer + npos,
-               buffer + npos + card_real,
-               buffer_size - (card_real + npos));
-
-        /* overwrite main file */
-
-        size_t tmp_file_path_len = strlen(main_file) + strlen(".tmp") + 1;
-        char *tmp_file_path = malloc(tmp_file_path_len);
-        snprintf(tmp_file_path, tmp_file_path_len, "%s.tmp", main_file);
-
-        FILE *tmp_file = fopen(tmp_file_path, "w");
-        if(!tmp_file) {
-            fprintf(stderr, "could not create temporary file\n");
-            return -1;
-        }
-
-        fwrite(new_buffer, sizeof(char), new_buffer_size, tmp_file);
-        fclose(tmp_file);
-
-        rename(tmp_file_path, main_file);
-
-        return 0;
-    }
-    else
-        return -1;
-
-    return -1;
-
 }
