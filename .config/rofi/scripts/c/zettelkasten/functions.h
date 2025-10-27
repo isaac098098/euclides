@@ -3,6 +3,7 @@
 #include <ctype.h>
 #include <string.h>
 #include <dirent.h>
+#include <errno.h>
 
 #define EXT     ".tex"
 #define EXT_LEN 4
@@ -18,6 +19,8 @@ const size_t tex_3_len = 2;
 const size_t tex_code_len = tex_1_len
                            + tex_2_len
                            + tex_3_len;
+const char *deleted_replacement = "\\textt{deleted card}";
+const size_t deleted_replacement_len = 21;
 
 /* main file patterns */
 
@@ -33,6 +36,8 @@ const char *include_2 = "}\n";
 const size_t include_2_len = 2;
 const size_t include_code_len = include_1_len
                                 + include_2_len;
+const char *first_card = "\\input{cards/1.tex}\n";
+size_t first_card_len = 20;
 
 /* zheader pattern */
 
@@ -177,6 +182,34 @@ char* construct_input_pattern(const char *card) {
     return pattern;
 }
 
+char *construct_first_child_label(const char *parent_label) {
+    if(parent_label == NULL)
+        return NULL;
+
+    size_t parent_label_len = strlen(parent_label);
+
+    if(parent_label_len == 0) {
+        fprintf(stderr, "parent label is empty\n");
+        return NULL;
+    }
+
+    size_t new_label_len = parent_label_len + 1 + 1;
+    char *new_label = malloc(new_label_len);
+
+    char last_char = parent_label[parent_label_len - 1];
+
+    if(isdigit(last_char)) 
+        snprintf(new_label, new_label_len, "%sa", parent_label);
+    else if(isalpha(last_char))
+        snprintf(new_label, new_label_len, "%s1", parent_label);
+    else {
+        fprintf(stderr, "invalid card label\n");
+        return NULL;
+    }
+
+    return new_label;
+}
+
 /* file search and replace functions */
 
 const int* compute_prefix_function(const char* pattern,
@@ -220,7 +253,7 @@ ssize_t get_first_coincidence(char *buffer,
         if(pattern[q] == buffer[i])
             q++;
         if(q == pattern_len) {
-            printf("pattern found with shift %ld\n", i + 1 - pattern_len);
+            // printf("pattern found with shift %ld\n", i + 1 - pattern_len);
             return (ssize_t)(i + 1 - pattern_len);
         }
     }
@@ -255,7 +288,7 @@ const char* buffer_replace(char* buffer,
         if(pttr[q] == buffer[i])
             q++;
         if(q == pttr_size) {
-            printf("pattern found with shift %ld\n", (long)(i + 1 - pttr_size));
+            // printf("pattern found with shift %ld\n", (long)(i + 1 - pttr_size));
             match_num++;
             matches_pos = realloc(matches_pos, match_num * sizeof(size_t));
             matches_pos[match_num - 1] = i + 1 - pttr_size;
@@ -308,7 +341,7 @@ int replace(const char* file_path,
     const char* new_file;
     FILE *file;
 
-    printf("processing %s...\n", file_path);
+    // printf("processing %s...\n", file_path);
 
     file = fopen(file_path, "r");
 
@@ -322,7 +355,7 @@ int replace(const char* file_path,
     rewind(file);
 
     if(size == 0) {
-        printf("file %s is empty, skipping...\n", file_path);
+        // printf("file %s is empty, skipping...\n", file_path);
         fclose(file);
         return -1;
     }
@@ -342,7 +375,8 @@ int replace(const char* file_path,
                               &new_buffer_size);
 
     if(new_file == NULL) {
-        printf("pattern not found\n");
+        // printf("pattern not found\n");
+        return -1;
     }
     else {
         size_t tmp_path_size;
@@ -352,7 +386,6 @@ int replace(const char* file_path,
         tmp_path_size = strlen(file_path) + strlen(".tmp") + 1;
         tmp_path = malloc(tmp_path_size);
         snprintf(tmp_path, tmp_path_size, "%s.tmp", file_path);
-        tmp_path[tmp_path_size] = '\0';
 
         tmp_file = fopen(tmp_path, "w");
 
@@ -368,7 +401,11 @@ int replace(const char* file_path,
 
         fclose(tmp_file);
 
-        rename(tmp_path, file_path);
+        if(rename(tmp_path, file_path) != 0) {
+            fprintf(stderr, "could not modify file %s\n", file_path);
+            fprintf(stderr, "%s\n", strerror(errno));
+            return -1;
+        }
 
         free(tmp_path);
     }
@@ -381,7 +418,7 @@ int replace(const char* file_path,
 int replace_pattern_in_dir(const char *cards_dir,
                            char* pattern,
                            size_t pattern_len,
-                           char *replacement,
+                           const char *replacement,
                            size_t replacement_len)
 {
     if(cards_dir == NULL || pattern == NULL || replacement == NULL)
@@ -463,6 +500,354 @@ int write_index_entries(char *buffer,
     
     for(size_t i = 0; i < parent->child_num; i++)
         write_index_entries(buffer, write_pos, parent->children[i]);
+
+    return 0;
+}
+
+int replace_zheader_card(const char *card_file_path,
+                         const char *new_card)
+{
+    if(card_file_path == NULL || new_card == NULL)
+        return -1;
+
+    size_t card_file_path_len = strlen(card_file_path);
+    size_t new_card_len = strlen(new_card);
+
+    FILE *file = fopen(card_file_path, "r");
+    if(!file) {
+        fprintf(stderr, "could not open file %s\n", card_file_path);
+        return -1;
+    }
+
+    char c;
+    size_t buffer_size = 0;
+
+    while((c = fgetc(file)) != EOF)
+        buffer_size++;
+
+    if(buffer_size == 0) {
+        // fprintf(stderr, "file %s is empty, skipping...\n", card_file_path);
+        return -1;
+    }
+
+    char *buffer = malloc(buffer_size);
+    rewind(file);
+    fread(buffer, sizeof(char), buffer_size, file);
+    fclose(file);
+
+    ssize_t pos;
+
+    if((pos = get_first_coincidence(buffer,
+                                    buffer_size,
+                                    zheader,
+                                    zheader_len - 1)) < 0)
+    {
+        fprintf(stderr, "no zheader found\n");
+        return -1;
+    }
+
+    size_t npos = (size_t)pos;
+    size_t arg_pos;
+    size_t read_pos = npos + zheader_len;
+    size_t beg_pos = 0;
+    size_t end_pos = 0;
+    size_t brackets;
+    size_t sq_brackets;
+
+    for(size_t i = read_pos; i < buffer_size; i++) {
+
+        /* skip alt title */ 
+
+        if(buffer[i] == '[') {
+            arg_pos = 0;
+            sq_brackets = 1;
+
+            for(size_t j = i + 1; j < buffer_size; j++) {
+                if(sq_brackets == 0)
+                    break;
+                if(buffer[j] == '[')
+                    sq_brackets += 1;
+                if(buffer[j] == ']')
+                    sq_brackets -= 1;
+                arg_pos++;
+            }
+
+            if(sq_brackets != 0) {
+                fprintf(stderr, "inconsistent square brackets\n");
+                return -1;
+            }
+
+            if(read_pos == 0) {
+                fprintf(stderr, "could not get alt title argument\n");
+                return -1;
+            }
+
+            /* for(size_t i = 1; i < arg_pos; i++) {
+                printf("%c", buffer[read_pos + i]);
+            } */
+
+            read_pos += arg_pos + 1;
+
+            /* skip title */
+            
+            if(buffer[read_pos] == '{') {
+                arg_pos = 0;
+                brackets = 1;
+
+                for(size_t j = read_pos + 1; j < buffer_size; j++) {
+                    if(brackets == 0)
+                        break;
+                    if(buffer[j] == '{')
+                        brackets += 1;
+                    if(buffer[j] == '}')
+                        brackets -= 1;
+                    arg_pos++;
+                }
+
+                if(brackets != 0) {
+                    fprintf(stderr, "inconsistent brackets\n");
+                    return -1;
+                }
+
+                if(read_pos == 0) {
+                    fprintf(stderr, "could not get title argument\n");
+                    return -1;
+                }
+
+                /* printf("\n");
+                for(size_t i = 1; i < arg_pos; i++) {
+                    printf("%c", buffer[read_pos + i]);
+                } */
+
+                read_pos += arg_pos + 1;
+
+                /* skip tags */
+
+                if(buffer[read_pos] == '{') {
+                    arg_pos = 0;
+                    brackets = 1;
+
+                    for(size_t j = read_pos + 1; j < buffer_size; j++) {
+                        if(brackets == 0)
+                            break;
+                        if(buffer[j] == '{')
+                            brackets += 1;
+                        if(buffer[j] == '}')
+                            brackets -= 1;
+                        arg_pos++;
+                    }
+
+                    if(brackets != 0) {
+                        fprintf(stderr, "inconsistent brackets\n");
+                        return -1;
+                    }
+
+                    if(read_pos == 0) {
+                        fprintf(stderr, "could not get title argument\n");
+                        return -1;
+                    }
+
+                    /* printf("\n");
+                    for(size_t i = 1; i < arg_pos; i++) {
+                        printf("%c", buffer[read_pos + i]);
+                    } */
+
+                    read_pos += arg_pos + 1;
+                    beg_pos = read_pos + 1;
+
+                    /* get card number */
+
+                    if(buffer[read_pos] == '{') {
+                        arg_pos = 0;
+                        brackets = 1;
+
+                        for(size_t j = read_pos + 1; j < buffer_size; j++) {
+                            if(brackets == 0)
+                                break;
+                            if(buffer[j] == '{')
+                                brackets += 1;
+                            if(buffer[j] == '}')
+                                brackets -= 1;
+                            arg_pos++;
+                        }
+
+                        if(brackets != 0) {
+                            fprintf(stderr, "inconsistent brackets\n");
+                            return -1;
+                        }
+
+                        if(read_pos == 0) {
+                            fprintf(stderr, "could not get title argument\n");
+                            return -1;
+                        }
+
+                        /* printf("\n");
+                        for(size_t i = 1; i < arg_pos; i++) {
+                            printf("%c", buffer[read_pos + i]);
+                        }
+                        printf("\n"); */
+
+                        end_pos = read_pos + arg_pos;
+                        break;
+                    }
+                }
+            }
+            else {
+                fprintf(stderr, "could not get title argument\n");
+                return -1;
+            }
+
+            return 0;
+        }
+
+        /* or skip title */
+
+        else if(buffer[i] == '{') {
+            arg_pos = 0;
+            brackets = 1;
+
+            for(size_t j = i + 1; j < buffer_size; j++) {
+                if(brackets == 0)
+                    break;
+                if(buffer[j] == '{')
+                    brackets += 1;
+                if(buffer[j] == '}')
+                    brackets -= 1;
+                arg_pos++;
+            }
+
+            if(brackets != 0) {
+                fprintf(stderr, "inconsistent brackets\n");
+                return -1;
+            }
+
+            if(read_pos == 0) {
+                fprintf(stderr, "could not get title argument\n");
+                return -1;
+            }
+
+            /* for(size_t i = 1; i < arg_pos; i++) {
+                printf("%c", buffer[read_pos + i]);
+            } */
+
+            read_pos += arg_pos + 1;
+
+            /* skip tags */
+            
+            if(buffer[read_pos] == '{') {
+                arg_pos = 0;
+                brackets = 1;
+
+                for(size_t j = read_pos + 1; j < buffer_size; j++) {
+                    if(brackets == 0)
+                        break;
+                    if(buffer[j] == '{')
+                        brackets += 1;
+                    if(buffer[j] == '}')
+                        brackets -= 1;
+                    arg_pos++;
+                }
+
+                if(brackets != 0) {
+                    fprintf(stderr, "inconsistent brackets\n");
+                    return -1;
+                }
+
+                if(read_pos == 0) {
+                    fprintf(stderr, "could not get title argument\n");
+                    return -1;
+                }
+
+                /* printf("\n");
+                for(size_t i = 1; i < arg_pos; i++) {
+                    printf("%c", buffer[read_pos + i]);
+                } */
+
+                read_pos += arg_pos + 1;
+                beg_pos = read_pos + 1;
+
+                /* get card number */
+
+                if(buffer[read_pos] == '{') {
+                    arg_pos = 0;
+                    brackets = 1;
+
+                    for(size_t j = read_pos + 1; j < buffer_size; j++) {
+                        if(brackets == 0)
+                            break;
+                        if(buffer[j] == '{')
+                            brackets += 1;
+                        if(buffer[j] == '}')
+                            brackets -= 1;
+                        arg_pos++;
+                    }
+
+                    if(brackets != 0) {
+                        fprintf(stderr, "inconsistent brackets\n");
+                        return -1;
+                    }
+
+                    if(read_pos == 0) {
+                        fprintf(stderr, "could not get title argument\n");
+                        return -1;
+                    }
+
+                    /* printf("\n");
+                    for(size_t i = 1; i < arg_pos; i++) {
+                        printf("%c", buffer[read_pos + i]);
+                    }
+                    printf("\n"); */
+
+                    end_pos = read_pos + arg_pos;
+                    
+                    break;
+                }
+            }
+            else {
+                fprintf(stderr, "could not get title argument\n");
+                return -1;
+            }
+        }
+    }
+
+    // size_t old_num_len = end_pos - beg_pos; 
+    size_t new_buffer_size = beg_pos
+                             + new_card_len
+                             + (buffer_size - end_pos);
+    char *new_buffer = malloc(new_buffer_size);
+
+    memcpy(new_buffer, buffer, beg_pos);
+    memcpy(new_buffer + beg_pos, new_card, new_card_len);
+    memcpy(new_buffer + beg_pos + new_card_len,
+           buffer + end_pos, buffer_size - end_pos);
+
+    // new_buffer[new_buffer_size - 1] = '\0';
+
+    // printf("%s", new_buffer);
+
+    size_t tmp_file_path_len = card_file_path_len + strlen(".tmp") + 1;
+    char *tmp_file_path = malloc(tmp_file_path_len);
+    snprintf(tmp_file_path, tmp_file_path_len, "%s.tmp",
+                                               card_file_path);
+
+    // printf("%s\n", tmp_file_path);
+
+    /* overwrite card file */
+
+    FILE *tmp_file = fopen(tmp_file_path, "w");
+    if(!tmp_file) {
+        fprintf(stderr, "could not open temporary file %s\n", tmp_file_path);
+        return -1;
+    }
+
+    fwrite(new_buffer, sizeof(char), new_buffer_size, tmp_file);
+    fclose(tmp_file);
+
+    if(rename(tmp_file_path, card_file_path) != 0) {
+        fprintf(stderr, "could not modify file %s\n", card_file_path);
+        fprintf(stderr, "%s\n", strerror(errno));
+        return -1;
+    }
 
     return 0;
 }
@@ -560,7 +945,11 @@ int delete_card_from_main(const char *main_file,
         fwrite(new_buffer, sizeof(char), new_buffer_size, tmp_file);
         fclose(tmp_file);
 
-        rename(tmp_file_path, main_file);
+        if(rename(tmp_file_path, main_file) != 0) {
+            fprintf(stderr, "could not modify file %s\n", main_file);
+            fprintf(stderr, "%s\n", strerror(errno));
+            return -1;
+        }
 
         return 0;
     }
@@ -571,7 +960,7 @@ int delete_card_from_main(const char *main_file,
 
 }
 
-int insert_after_in_main(const char *main_file,
+int insert_before_in_main(const char *main_file,
                          const char *target_card,
                          const char *prev_card)
 {
@@ -676,7 +1065,11 @@ int insert_after_in_main(const char *main_file,
         fwrite(new_buffer, sizeof(char), new_buffer_size, tmp_file);
         fclose(tmp_file);
 
-        rename(tmp_file_path, main_file);
+        if(rename(tmp_file_path, main_file) != 0) {
+            fprintf(stderr, "could not modify file %s\n", main_file);
+            fprintf(stderr, "%s\n", strerror(errno));
+            return -1;
+        }
 
         return 0;
     }
@@ -685,7 +1078,7 @@ int insert_after_in_main(const char *main_file,
 
 }
 
-int insert_before_in_main(const char *main_file,
+int insert_after_in_main(const char *main_file,
                          const char *target_card,
                          const char *next_card)
 {
@@ -792,7 +1185,11 @@ int insert_before_in_main(const char *main_file,
         fwrite(new_buffer, sizeof(char), new_buffer_size, tmp_file);
         fclose(tmp_file);
 
-        rename(tmp_file_path, main_file);
+        if(rename(tmp_file_path, main_file) != 0) {
+            fprintf(stderr, "could not modify file %s\n", main_file);
+            fprintf(stderr, "%s\n", strerror(errno));
+            return -1;
+        }
 
         return 0;
     }
@@ -905,7 +1302,11 @@ int rename_in_main(const char *main_file,
         fwrite(new_buffer, sizeof(char), new_buffer_size, tmp_file);
         fclose(tmp_file);
 
-        rename(tmp_file_path, main_file);
+        if(rename(tmp_file_path, main_file) != 0) {
+            fprintf(stderr, "could not modify file %s\n", main_file);
+            fprintf(stderr, "%s\n", strerror(errno));
+            return -1;
+        }
         
         return 0;
     }
@@ -915,8 +1316,94 @@ int rename_in_main(const char *main_file,
     return -1;
 }
 
-// int create_first_card(const char* cards
+int create_first_card(const char* main_file) {
+    if(main_file == NULL)
+        return -1;
 
+    FILE* file = fopen(main_file, "r");
+    if(!file) {
+        fprintf(stderr, "could not open file %s\n", main_file);
+        return -1;
+    }
+
+    char c;
+    size_t buffer_size = 0;
+
+    while((c = fgetc(file)) != EOF)
+        buffer_size++;
+
+    if(buffer_size == 0) {
+        // fprintf(stderr, "file %s is empty, skipping...\n", main_file);
+        return -1;
+    }
+
+    char *buffer = malloc(buffer_size);
+    rewind(file);
+    fread(buffer, sizeof(char), buffer_size, file);
+    fclose(file);
+
+    ssize_t pos;
+
+    if((pos = get_first_coincidence(buffer,
+                                    buffer_size,
+                                    bdocument,
+                                    bdocument_len - 1)) < 0)
+    {
+        fprintf(stderr, "no beginning of document found\n");
+        return -1;
+    }
+
+    size_t npos = (size_t)pos;
+    size_t new_buffer_size = npos
+                             + bdocument_len
+                             + toc_len
+                             + first_card_len
+                             + edocument_len
+                             + 1;
+    char *new_buffer = malloc(new_buffer_size);
+
+    memcpy(new_buffer, buffer, npos + bdocument_len);
+    memcpy(new_buffer + npos + bdocument_len,
+           toc,
+           toc_len);
+    memcpy(new_buffer + npos + bdocument_len + toc_len,
+           first_card,
+           first_card_len);
+    memcpy(new_buffer + npos + bdocument_len + toc_len + first_card_len,
+           edocument,
+           edocument_len);
+
+    new_buffer[new_buffer_size - 1] = '\n';
+
+    // printf("%s", new_buffer);
+
+    /* overwrite main file */
+
+    size_t tmp_path_len = strlen(main_file) + strlen(".tmp") + 1;
+    char *tmp_path = malloc(tmp_path_len);
+    snprintf(tmp_path, tmp_path_len, "%s.tmp", main_file);
+
+    FILE *tmp_file = fopen(tmp_path, "w");
+    if(!tmp_file) {
+        fprintf(stderr, "could not create temporary main file\n");
+        return -1;
+    }
+
+    fwrite(new_buffer, sizeof(char), new_buffer_size, tmp_file);
+    free(new_buffer);
+
+    fclose(tmp_file);
+
+    if(rename(tmp_path, main_file) != 0) {
+        fprintf(stderr, "could not modify file %s\n", main_file);
+        fprintf(stderr, "%s\n", strerror(errno));
+        return -1;
+    }
+
+    free(tmp_path);
+
+    return 0;
+}
 
 /* tree structure and functions */
 
@@ -946,6 +1433,12 @@ int print_node_info(const struct node *n) {
 }
 
 struct node* find_node(struct node *parent, const char *name) {
+    if(parent == NULL || name == NULL)
+        return NULL;
+
+    if(strcmp(parent->label, name) == 0)
+        return parent;
+
     for(size_t i = 0; i < parent->child_num; i++) {
         struct node* child = parent->children[i];
         char* label = child->label;
@@ -961,7 +1454,7 @@ struct node* find_node(struct node *parent, const char *name) {
     return NULL;
 }
 
-const char* prev_card(const char *label) {
+char* prev_card(const char *label) {
     if(parse_node_label(label) < 0)
         return NULL;
 
@@ -1131,20 +1624,18 @@ int rename_subtree(struct node *parent,
 
     printf("renaming %s->%s\n", old_label, new_label);
 
-    char *pattern = construct_hyperref_pattern(old_label);
-    size_t pattern_len = strlen(pattern);
-    char *replacement = construct_hyperref_pattern(new_label);
-    size_t replacement_len = strlen(replacement);
+    char *old_hyperref = construct_hyperref_pattern(old_label);
+    size_t old_hyperref_len = strlen(old_hyperref);
+    char *new_hyperref = construct_hyperref_pattern(new_label);
+    size_t new_hyperref_len = strlen(new_hyperref);
 
     /* replace refs in every card */
 
     replace_pattern_in_dir(cards_dir,
-                           pattern,
-                           pattern_len,
-                           replacement,
-                           replacement_len);
-
-    /* replace zheader card numbers */
+                           old_hyperref,
+                           old_hyperref_len,
+                           new_hyperref,
+                           new_hyperref_len);
 
     /* rename entries in main file */
 
@@ -1157,10 +1648,15 @@ int rename_subtree(struct node *parent,
     char *old_card_path = construct_file_path_ext(cards_dir, old_label);
     char *new_card_path = construct_file_path_ext(cards_dir, new_label);
 
-    printf("%s\n", old_card_path);
-    printf("%s\n", new_card_path);
+    if(rename(old_card_path, new_card_path) != 0) {
+        fprintf(stderr, "could not modify file %s\n", new_card_path);
+        fprintf(stderr, "%s\n", strerror(errno));
+        return -1;
+    }
 
-    rename(old_card_path, new_card_path);
+    /* replace zheader card numbers */
+
+    replace_zheader_card(new_card_path, new_label);
 
     /* propagate */
 
@@ -1212,7 +1708,6 @@ int print_subtree_as_list(struct node *n) {
     
     return 0;
 }
-
 
 int get_zheader(const char *file_path,
                 char **title,
@@ -1808,4 +2303,14 @@ int fill_tree(struct node *root, const char *path) {
     closedir(dir);
 
     return 0;
+}
+
+const char* get_rightmost_child_label(struct node* parent) {
+    if(parent == NULL)
+        return NULL;
+
+    if(parent->child_num > 0)
+        return get_rightmost_child_label(parent->children[parent->child_num - 1]);
+
+    return parent->label;
 }

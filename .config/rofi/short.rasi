@@ -99,3 +99,10 @@ element alternate.normal {
     background-color: @crust;
     text-color: @fg0;
 }
+
+error-message, message {
+    padding: 60px 80px;
+    border-color: @orange;
+    background-color: @bg0;
+    text-color: @fg0;
+}

@@ -2,13 +2,8 @@
 #include <time.h>
 #include "functions.h"
 
-static char *deleted_replacement = "\\texttt{deleted card}";
-static size_t deleted_replacement_len = 21;
-
 int main(int argc, char **argv) {
     if(argc == 4) {
-        DIR *dir;
-
         const char* main_dir = strdup(argv[1]);
         const char* cards_dir = strdup(argv[2]);
         const char* card = strdup(argv[3]);
@@ -27,13 +22,6 @@ int main(int argc, char **argv) {
         /* sanitize and open directory path */
 
         cards_dir = sanitize_dir_path(cards_dir);
-        
-        dir = opendir(cards_dir);
-
-        if(!dir) {
-            fprintf(stderr, "no such directory \"%s\"\n", cards_dir);
-            return -1;
-        }
 
         /* create abstract tree */
 
@@ -45,14 +33,22 @@ int main(int argc, char **argv) {
         /* find card and parent */
 
         struct node *card_node = find_node(&root, card_no_ext);
-        struct node *parent_card = card_node->parent;
 
         if(card_node == NULL) {
             fprintf(stderr, "could not find card in tree\n");
             return -1;
         }
 
-        /* check in card has children */
+        /* if card is root, don't do anything */
+
+        struct node *parent_card = card_node->parent;
+
+        if(parent_card == NULL) {
+            fprintf(stderr, "cannot remove root card\n");
+            return -1;
+        }
+
+        /* check if card has children */
 
         if(card_node->child_num > 0) {
             fprintf(stderr, "could not delete %s, card has subcards\n",
@@ -62,18 +58,18 @@ int main(int argc, char **argv) {
 
         /* construct card path */
 
-        // char *card_path = construct_file_path(cards_dir, card);
+        char *card_path = construct_file_path(cards_dir, card);
 
         /* delete card */
 
-        // if(remove(card_path) == 0) {
-            // printf("card %s deleted\n", card_path);
-        // }
-        // else {
-            // fprintf(stderr, "failed to delete card %s\n", card_path);
-            // fprintf(stderr, "%s\n", strerror(errno));
-            // return -1;
-        // }
+        if(remove(card_path) == 0) {
+            printf("card %s deleted\n", card_path);
+        }
+        else {
+            fprintf(stderr, "failed to delete card %s\n", card_path);
+            fprintf(stderr, "%s\n", strerror(errno));
+            return -1;
+        }
 
         /* delete from main */
 
@@ -92,40 +88,24 @@ int main(int argc, char **argv) {
                                deleted_replacement,
                                deleted_replacement_len);
 
-        /* recusively backward rename sibling */
-        /* cards and update refs of renamed cards */
-
-        /* find card and rename siblings */
-
-        if(parent_card->parent == NULL) {
-            fprintf(stderr, "could not find parent card\n");
-            return -1;
-        }
-
-        /* find position among siblings */
-
-        char *prev = card_no_ext;
+        /* backward all succesor cards */
 
         size_t sibling_num = parent_card->child_num;
 
         for(size_t i = 0; i < sibling_num; i++) {
-            if(strcmp(parent_card->children[i]->label, card_no_ext) == 0) {
-                char *next = next_card(prev);
-
+            if(strcmp(card_no_ext, parent_card->children[i]->label) == 0) {
                 for(size_t j = i + 1; j < sibling_num; j++) {
-                    if(strcmp(parent_card->children[j]->label, next) == 0) {
+                    struct node* sibling = parent_card->children[j];
 
-                        /* rename and update refs recursively */
+                    char* label = strdup(sibling->label);
+                    char *prev_label = prev_card(label);
 
-                        rename_subtree(parent_card->children[j],
-                                       main_dir,
-                                       prev,
-                                       cards_dir);
-                    }
-
-                    prev = next;
-                    next = next_card(next);
+                    rename_subtree(parent_card->children[j],
+                                   main_dir,
+                                   prev_label,
+                                   cards_dir);
                 }
+
                 break;
             }
         }
