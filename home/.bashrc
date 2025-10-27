@@ -20,6 +20,7 @@ alias spotdl-al='$HOME/.local/bin/venv/bin/spotdl --output "$HOME/Music/{artist}
 alias spotdl-pl='$HOME/.local/bin/venv/bin/spotdl --output "$HOME/Music/{list-name}/{title}.{output-ext}"'
 alias spotdl-so='$HOME/.local/bin/venv/bin/spotdl --output "$HOME/Music/{title}.{output-ext}"'
 alias glow='glow -t'
+alias lsfonts="fc-list | awk -F: '{print $2}' | awk -F, '{print $1}' | sort -u"
 
 export UNZIP_DISABLE_ZIPBOMB_DETECTION=TRUE
 # export GTK_THEME=Adwaita-dark
