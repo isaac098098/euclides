@@ -295,6 +295,12 @@ s({trig = "tim", name = "Margin paragraph timestamp"},
     }
 ),
 
+s({trig = "mar", name = "Margin note"},
+    {
+		t("{\\setlength\\marginparwidth{50mm}\\marginpar{\\footnotesize "), i(1), t("}}")
+    }
+),
+
 s({trig = "zz", name = "Zettelkasten card header"},
     {
         c(1,

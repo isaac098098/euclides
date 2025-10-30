@@ -62,6 +62,7 @@ gvim
 vi
 unclutter
 scribus
+zoom
 ```
 
 ## AI
@@ -171,6 +172,7 @@ calc
 hyperfine
 man-pages
 opengl-man-pages
+pyenv
 ```
 
 ### `i3`
