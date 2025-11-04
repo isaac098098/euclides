@@ -29,3 +29,4 @@ export PATH="/usr/local/texlive/2024/bin/x86_64-linux:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 export PATH=$PATH:/home/isaac09809/.spicetify
 export PATH="$HOME/.pyenv/bin:$PATH"
+export PATH="$HOME/.elan/toolchains/leanprover--lean4---v4.24.0/bin:$PATH"

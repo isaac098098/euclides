@@ -17,9 +17,6 @@ then
         "Manga")
             dir="$HOME/notes/drawing/bib/manga/"
         ;;
-        "Vim")
-            dir="$HOME/documents/projects/visnp/bib/"
-        ;;
         "Combinatorics")
             dir="$HOME/documents/academic/im/semestre_1/combinatorics/"
         ;;
@@ -42,10 +39,10 @@ then
             dir="$HOME/documents/reading/"
         ;;
         "Graphics")
-            dir="$HOME/documents/reading/cs/graphics/"
+            dir="$HOME/documents/backup/cs/graphics/"
         ;;
         "Computers")
-            dir="$HOME/documents/reading/cs/"
+            dir="$HOME/documents/backup/cs/"
         ;;
         "All")
             dir="$HOME/documents/books/"
@@ -60,7 +57,6 @@ else
     echo "Figure"
     echo "Value"
     echo "Manga"
-    echo "Vim"
     echo "Combinatorics"
     echo "Graph Theory"
     echo "Algebraic Topology"

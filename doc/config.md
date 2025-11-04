@@ -63,6 +63,7 @@ vi
 unclutter
 scribus
 zoom
+libreoffice-still
 ```
 
 ## AI
@@ -154,6 +155,7 @@ pipewire-pulse
 wireplumber
 pipewire-alsa
 pipewire-jack
+alsa-firmware
 gst-plugin-pipewire
 brightnessctl
 alacritty
@@ -768,3 +770,9 @@ options bluetooth disable_ertm=1
 `ln -s /usr/lib/libxml2.so /usr/lib/libxml2.so.2`
 
 `sudo ln -sf /usr/lib/libx265.so.215 /usr/lib/libx265.so.212`
+
+## `pipewire`
+
+```
+$HOME/.config/pipewire/pipewire.conf.d/99-samplerate.conf
+```

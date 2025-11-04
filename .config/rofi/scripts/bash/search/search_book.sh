@@ -1,6 +1,6 @@
 #!/bin/bash
 
-dir="[books directory]"
+dir=[search dir]
 
 if [[ -n "$1" ]]; then
     killall rofi 2>/dev/null
