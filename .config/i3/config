@@ -294,7 +294,7 @@ bindsym $mod+t exec --no-startup-id killall unclutter
 # bindsym Shift+Print exec --no-startup-id bash -c 'maim -s "$HOME/pictures/screens/$(date +%Y-%m-%d-%H%M%S).png"'
 
 bindsym $mod+Shift+y exec --no-startup-id scrot -F "$HOME/pictures/screens/%Y%m%d-%H%M%S.png"
-bindsym $mod+Shift+u exec --no-startup-id bash -c 'maim -s "$HOME/pictures/screens/$(date +%Y-%m-%d-%H%M%S).png"'
+bindsym $mod+Shift+u exec --no-startup-id bash -c 'name=$(date +%Y-%m-%d-%H%M%S) && maim -s "$HOME/pictures/screens/$name.png" && xclip -selection clipboard -target image/png -i "$HOME/pictures/screens/$name.png"'
 
 # Nsxiv
 
@@ -314,8 +314,8 @@ bindsym $mod+x exec --no-startup-id lock_i3.sh
 
 # Scratchpad
 
-bindsym Ctrl+$mod y move scratchpad
-bindsym Ctrl+y [all] scratchpad show
+bindsym $mod+Shift+i move scratchpad
+bindsym Ctrl+i [all] scratchpad show
  
 # Twitch
 

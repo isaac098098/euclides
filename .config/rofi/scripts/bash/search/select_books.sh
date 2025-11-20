@@ -6,16 +6,16 @@ if [[ "$1" ]]
 then
     case "$1" in
         "Fundamentals")
-            dir="$HOME/notes/drawing/bib/fundamentals/"
+            dir="$HOME/documents/comm/resources/books/fundamentals/"
         ;;
         "Figure")
-            dir="$HOME/notes/drawing/bib/figure/"
+            dir="$HOME/documents/comm/resources/books/figure/"
         ;;
         "Value")
-            dir="$HOME/notes/drawing/bib/value/"
+            dir="$HOME/documents/comm/resources/books/value/"
         ;;
         "Manga")
-            dir="$HOME/notes/drawing/bib/manga/"
+            dir="$HOME/documents/comm/resources/books/manga/"
         ;;
         "Combinatorics")
             dir="$HOME/documents/academic/im/semestre_1/combinatorics/"
@@ -32,14 +32,20 @@ then
         "Category Theory")
             dir="$HOME/documents/academic/im/semestre_1/category_theory/bib/"
         ;;
+        "OpenGL")
+            dir="$HOME/documents/books/backup/cs/graphics/opengl/"
+        ;;
+        "Vulkan")
+            dir="$HOME/documents/books/backup/cs/graphics/vulkan/"
+        ;;
+        "Graphics")
+            dir="$HOME/documents/books/backup/cs/graphics/theory/"
+        ;;
         "Mathematics")
             dir="$HOME/documents/books/sciences/math/"
         ;;
         "Reading")
             dir="$HOME/documents/reading/"
-        ;;
-        "Graphics")
-            dir="$HOME/documents/backup/cs/graphics/"
         ;;
         "Computers")
             dir="$HOME/documents/backup/cs/"
@@ -62,9 +68,11 @@ else
     echo "Algebraic Topology"
     echo "Abstract Algebra"
     echo "Category Theory"
+    echo "OpenGL"
+    echo "Vulkan"
+    echo "Graphics"
     echo "Mathematics"
     echo "Reading"
-    echo "Graphics"
     echo "Computers"
     echo "All"
     

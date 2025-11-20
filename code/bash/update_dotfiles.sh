@@ -21,5 +21,3 @@ cp -r ~/.bash_profile ~/euclides/home
 cp -r ~/.bashrc ~/euclides/home
 cp -r ~/.vimrc ~/euclides/home
 cp -r ~/.xinitrc ~/euclides/home
-
-rsync -a --delete --itemize-changes --no-links --exclude 'bib' ~/notes/ ~/euclides/backup/notes/
