@@ -122,13 +122,34 @@ s({trig = "pen", name = "Perpendicular symbol", snippetType = "autosnippet"},
 		c(1,
 		    {
 		        {
-                    t("\\per"), i(1)
+                    t("\\perp"), i(1)
 		        },
 		        {
                     t("\\dashv"), i(1)
 		        }
 		    }
 		)
+    },
+    {condition = in_mathzone}
+),
+
+s({trig = "dow", name = "Down arrow", snippetType = "autosnippet"},
+    {
+        t("\\downarrow")
+    },
+    {condition = in_mathzone}
+),
+
+s({trig = "ek", name = "Rotated equal symbol", snippetType = "autosnippet"},
+    {
+        t("\\verteq")
+    },
+    {condition = in_mathzone}
+),
+
+s({trig = "din", name = "Square disjoint unioin", snippetType = "autosnippet"},
+    {
+        t("\\bigsqcup")
     },
     {condition = in_mathzone}
 ),

@@ -664,6 +664,9 @@ s({trig = "sbg", name = "Left triangle", snippetType = "autosnippet"},
                     i(1,"\\vartriangleleft")
                 },
                 {
+                    i(1,"\\unlhd")
+                },
+                {
                     i(1,"\\ntriangleleft")
                 }
             }

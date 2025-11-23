@@ -41,6 +41,9 @@ then
         "Graphics")
             dir="$HOME/documents/books/backup/cs/graphics/theory/"
         ;;
+        "Learning")
+            dir="$HOME/documents/reading/learning/"
+        ;;
         "Mathematics")
             dir="$HOME/documents/books/sciences/math/"
         ;;
@@ -71,6 +74,7 @@ else
     echo "OpenGL"
     echo "Vulkan"
     echo "Graphics"
+    echo "Learning"
     echo "Mathematics"
     echo "Reading"
     echo "Computers"

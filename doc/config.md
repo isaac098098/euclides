@@ -111,6 +111,8 @@ xclip
 
 ```
 man
+cppman
+opengl-man-pages
 nvidia
 neofetch
 kitty
@@ -173,7 +175,6 @@ openrgb-git (aur)
 calc
 hyperfine
 man-pages
-opengl-man-pages
 pyenv
 ```
 

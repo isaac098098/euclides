@@ -32,7 +32,7 @@ ctrl + shift + s
     rofi -show select_notes -config $HOME/.config/rofi/short.rasi -modes "select_notes:$HOME/.config/rofi/scripts/bash/notes/select_notes.sh"
 
 ctrl + shift + u
-    zathura $HOME/notes/current-notes/main.pdf
+    zathura $HOME/notes/current-notes/main.pdf 2>/dev/null
 
 ctrl + shift + w
     rofi -show swap_cards -config $HOME/.config/rofi/long.rasi -modes "swap_cards:$HOME/.config/rofi/scripts/bash/zettelkasten/swap_cards.sh"
@@ -41,7 +41,10 @@ ctrl + shift + x
     rofi -show insert_card -config $HOME/.config/rofi/long.rasi -modes "insert_card:$HOME/.config/rofi/scripts/bash/zettelkasten/insert_card.sh"
 
 ctrl + shift + y
-    zathura $HOME/zettelkasten/current/main.pdf
+    zathura $HOME/zettelkasten/current/main.pdf 2>/dev/null
+
+ctrl + shift + 0
+    zathura $HOME/documents/projects/latex_snippets/index.pdf 2>/dev/null
 
 alt + y
     open_todo.sh

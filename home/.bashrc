@@ -25,8 +25,15 @@ alias lsfonts="fc-list | awk -F: '{print $2}' | awk -F, '{print $1}' | sort -u"
 export UNZIP_DISABLE_ZIPBOMB_DETECTION=TRUE
 # export GTK_THEME=Adwaita-dark
 
-export PATH="/usr/local/texlive/2024/bin/x86_64-linux:$PATH"
+# export PATH="/usr/local/texlive/2024/bin/x86_64-linux:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 export PATH=$PATH:/home/isaac09809/.spicetify
-export PATH="$HOME/.pyenv/bin:$PATH"
+# export PATH="$HOME/.pyenv/bin:$PATH"
 export PATH="$HOME/.elan/toolchains/leanprover--lean4---v4.24.0/bin:$PATH"
+
+export CUDA_HOME=/opt/cuda
+export PATH=$CUDA_HOME/bin:$PATH
+export LD_LIBRARY_PATH=$CUDA_HOME/lib64:$LD_LIBRARY_PATH
+
+# export CC=gcc-13
+# export CXX=g++-13
