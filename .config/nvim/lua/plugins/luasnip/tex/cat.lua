@@ -92,7 +92,8 @@ s({trig = "op", name = "Dual morphism", snippetType = "autosnippet"},
                 }
             }
         )
-    }
+    },
+    {condition = in_mathzone}
 ),
 
 s({trig = "cat", name = "Category math bold", snippetType = "autosnippet"},
