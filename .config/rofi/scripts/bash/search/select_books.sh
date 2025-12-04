@@ -6,16 +6,16 @@ if [[ "$1" ]]
 then
     case "$1" in
         "Fundamentals")
-            dir="$HOME/documents/comm/resources/books/fundamentals/"
+            dir="$HOME/documents/books/backup/drawing_bib/fundamentals/"
         ;;
         "Figure")
-            dir="$HOME/documents/comm/resources/books/figure/"
+            dir="$HOME/documents/books/backup/drawing_bib/figure/"
         ;;
         "Value")
-            dir="$HOME/documents/comm/resources/books/value/"
+            dir="$HOME/documents/books/backup/drawing_bib/value/"
         ;;
         "Manga")
-            dir="$HOME/documents/comm/resources/books/manga/"
+            dir="$HOME/documents/books/backup/drawing_bib/manga/"
         ;;
         "Combinatorics")
             dir="$HOME/documents/academic/im/semestre_1/combinatorics/"
@@ -33,13 +33,13 @@ then
             dir="$HOME/documents/academic/im/semestre_1/category_theory/bib/"
         ;;
         "OpenGL")
-            dir="$HOME/documents/books/backup/cs/graphics/opengl/"
+            dir="$HOME/documents/books/backup/cybersecurity_bib/graphics/opengl/"
         ;;
         "Vulkan")
-            dir="$HOME/documents/books/backup/cs/graphics/vulkan/"
+            dir="$HOME/documents/books/backup/cybersecurity_bib/graphics/vulkan/"
         ;;
         "Graphics")
-            dir="$HOME/documents/books/backup/cs/graphics/theory/"
+            dir="$HOME/documents/books/backup/cybersecurity_bib/graphics/theory/"
         ;;
         "Learning")
             dir="$HOME/documents/reading/learning/"
@@ -49,9 +49,6 @@ then
         ;;
         "Reading")
             dir="$HOME/documents/reading/"
-        ;;
-        "Computers")
-            dir="$HOME/documents/backup/cs/"
         ;;
         "All")
             dir="$HOME/documents/books/"
@@ -77,7 +74,6 @@ else
     echo "Learning"
     echo "Mathematics"
     echo "Reading"
-    echo "Computers"
     echo "All"
     
     exit 0

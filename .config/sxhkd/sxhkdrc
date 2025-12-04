@@ -7,9 +7,6 @@ ctrl + shift + d
 ctrl + shift + e
     rofi -show edit_card -config $HOME/.config/rofi/long.rasi -modes "edit_card:$HOME/.config/rofi/scripts/bash/zettelkasten/edit_card.sh"
 
-ctrl + shift + h
-    rofi -show warmup -config "$HOME/.config/rofi/short.rasi" -modes "warmup:$HOME/.config/rofi/scripts/bash/ohter/warmup.sh"
-
 ctrl + shift + i
     rofi -show select_zettelkasten -config $HOME/.config/rofi/short.rasi -modes "select_zettelkasten:$HOME/.config/rofi/scripts/bash/zettelkasten/select_zettelkasten.sh"
 
