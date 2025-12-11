@@ -766,6 +766,12 @@ options btusb enable_autosuspend=0
 options bluetooth disable_ertm=1
 ```
 
+## Mount device as owned by user
+```
+id
+mount -o uid=[uid],gid=[gid] [dev] [mount_point]
+```
+
 # Undo
 
 `ln -s /usr/lib/libxml2.so /usr/lib/libxml2.so.2`

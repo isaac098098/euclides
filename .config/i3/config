@@ -241,7 +241,7 @@ client.background           $crust              $crust      $white      $crust  
 
 for_window [title="Friends List"] floating enable
 for_window [title="Steam Settings"] floating enable
-for_window [workspace=$ws5] layout tabbed
+for_window [workspace=$ws2] layout tabbed
 for_window [workspace=$ws7] layout tabbed
 for_window [workspace=$ws8] layout tabbed
 
@@ -340,5 +340,6 @@ for_window [class="amberol"] floating enable
 for_window [class="floating-term"] floating enable && 
 for_window [class="floating-term"] resize set 500 100
 for_window [class="sai2.exe"] floating enable
+for_window [class="En-croissant"] floating enable
 # for_window [class="mpv"] floating enable
 # for_window [class="Nsxiv"] floating enable
