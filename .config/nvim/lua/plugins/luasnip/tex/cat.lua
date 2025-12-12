@@ -89,6 +89,9 @@ s({trig = "op", name = "Dual morphism", snippetType = "autosnippet"},
                 },
                 {
                     t("\\ops{"), i(1), t("}")
+                },
+                {
+                    t("\\opu{"), i(1), t("}")
                 }
             }
         )
@@ -151,6 +154,20 @@ s({trig = "ek", name = "Rotated equal symbol", snippetType = "autosnippet"},
 s({trig = "din", name = "Square disjoint unioin", snippetType = "autosnippet"},
     {
         t("\\bigsqcup")
+    },
+    {condition = in_mathzone}
+),
+
+s({trig = "bla", name = "Big logic and", snippetType = "autosnippet"},
+    {
+        t("\\bigwedge")
+    },
+    {condition = in_mathzone}
+),
+
+s({trig = "blo", name = "Big logic or", snippetType = "autosnippet"},
+    {
+        t("\\bigvee")
     },
     {condition = in_mathzone}
 ),

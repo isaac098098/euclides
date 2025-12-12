@@ -186,10 +186,15 @@ s({trig = "mm", name = "Inline display", snippetType = "autosnippet"},
 ),
 
 s({trig = "en", name = "Generic environment"},
+		--   {
+		-- t("\\begin{"), i(1,"env"), t("}"),
+		-- t({"",""}), t("    "), d(2,get_visual),
+		-- t({"",""}), t("\\end{"), rep(1), t("}")
+		--   }
     {
-		t("\\begin{"), i(1,"env"), t("}"),
-		t({"",""}), t("    "), d(2,get_visual),
-		t({"",""}), t("\\end{"), rep(1), t("}")
+        t("\\begin{"), i(1,"env"), t("}"),
+        t({"",""}), d(2,get_visual),
+        t({"",""}), t("\\end{"), rep(1), t("}")
     }
 ),
 
@@ -2267,10 +2272,10 @@ s({trig = "ht", name = "Hat", snippetType = "autosnippet"},
         c(1,
             {
                 {
-                    t("\\hat{"), v(1,"..."), t("}")
+                    t("\\widehat{"), i(1), t("}")
                 },
                 {
-                    t("\\widehat{"), v(1,"..."), t("}")
+                    t("\\hat{"), i(1), t("}")
                 }
             }
         )
