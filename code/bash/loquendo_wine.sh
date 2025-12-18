@@ -1,5 +1,5 @@
 #!/bin/bash
-cd $HOME/.wine32/drive_c/Program\ Files/Loquendo/LTTS7/bin
-WINEPREFIX=~/.wine32 wine java -jar TTSDirector.jar
 
-
+cd $HOME/.wine/drive_c/Program\ Files\ \(x86\)/Loquendo/LTTS7/bin
+wine TTSDirector.exe 2>/dev/null &
+exit 0
