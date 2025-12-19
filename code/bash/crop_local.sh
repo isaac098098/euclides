@@ -35,9 +35,10 @@ if [ $# -eq 1 ]; then
 
             while IFS='=' read -r key value
             do
-                if [ "$key" = "out_time" ]; then
-                printf "\r%s" "$value"
-            fi
+                if [ "$key" = "out_time" ]
+                then
+                    printf "\r%s" "$value"
+                fi
             done
 
         echo " $name.mkv"

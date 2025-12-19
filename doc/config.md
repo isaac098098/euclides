@@ -772,11 +772,13 @@ id
 mount -o uid=[uid],gid=[gid] [dev] [mount_point]
 ```
 
-# Undo
+## `thunar` open terminal in folder
 
-`ln -s /usr/lib/libxml2.so /usr/lib/libxml2.so.2`
+```
+Edit -> Configure custom actions -> Open Terminal Here -> Command
 
-`sudo ln -sf /usr/lib/libx265.so.215 /usr/lib/libx265.so.212`
+cd %f && st
+```
 
 ## `pipewire`
 
