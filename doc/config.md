@@ -176,6 +176,7 @@ calc
 hyperfine
 man-pages
 pyenv
+vulkan-devel
 ```
 
 ### `i3`

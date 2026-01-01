@@ -38,6 +38,12 @@ then
         "Vulkan")
             dir="$HOME/documents/books/backup/cybersecurity_bib/graphics/vulkan/"
         ;;
+        "C")
+            dir="$HOME/documents/books/backup/cybersecurity_bib/languages/c/"
+        ;;
+        "C++")
+            dir="$HOME/documents/books/backup/cybersecurity_bib/languages/cpp/"
+        ;;
         "Graphics")
             dir="$HOME/documents/books/backup/cybersecurity_bib/graphics/theory/"
         ;;
@@ -70,6 +76,8 @@ else
     echo "Category Theory"
     echo "OpenGL"
     echo "Vulkan"
+    echo "C"
+    echo "C++"
     echo "Graphics"
     echo "Learning"
     echo "Mathematics"

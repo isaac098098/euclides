@@ -20,9 +20,8 @@ do
     -i ./"$file".mp4                    \
     -map 0:v:0                          \
     -map 0:a?                           \
-    -vf scale=1920:-1                   \
     -c:v hevc_nvenc                     \
-    $-preset p5                          \
+    -preset p5                          \
     -rc vbr_hq                          \
     -cq 30                              \
     -b:v 0                              \
@@ -40,5 +39,5 @@ do
     done
 
     ((count++))
-    printf " %s.mkv (%03d/%03d)\n" "$count" "$total"
+    printf " %s.mkv (%04d/%04d)\n" "$file" "$count" "$total"
 done
