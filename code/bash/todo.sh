@@ -25,7 +25,7 @@ case $1 in
         mv $HOME/todo/tmp.txt $HOME/todo/todo.txt
     ;;
     pull)
-        git pull
+        git -C "$HOME/todo" pull
     ;;
     push)
         git -C "$HOME/todo" add .

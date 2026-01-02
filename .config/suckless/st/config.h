@@ -5,9 +5,12 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-// static char *font = "Iosevka NF:size=11.6:weight=medium:antialias=true:autohint=true";
-static char *font = "CaskaydiaCove Nerd Font Mono:size=10.9:weight=semibold:antialias=true:autohint=true";
-static int borderpx = 10;
+static char *font = "Iosevka NF:size=9.6:weight=bold:antialias=true:autohint=true";
+// chscale = 0.90
+
+// static char *font = "CaskaydiaCove Nerd Font Mono:size=9.9:weight=semibold:antialias=true:autohint=true";
+// chscale = 0.93
+static int borderpx = 22;
 
 /*
  * What program is execed by st depends of these precedence rules:
@@ -28,7 +31,7 @@ char *vtiden = "\033[?6c";
 
 /* Kerning / character bounding-box multipliers */
 static float cwscale = 1.0;
-static float chscale = 1.0;
+static float chscale = 0.9;
 
 /*
  * word delimiter string
