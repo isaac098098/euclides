@@ -49,6 +49,7 @@ inoremap <C-e> <C-o>$
 
 set cursorline
 set cursorlineopt=number
+set statusline=\ 
 
 " normal line numbers
 hi LineNrBelow ctermfg=8
@@ -68,7 +69,7 @@ hi NonText ctermfg=0
 hi PmenuSel ctermfg=0 ctermbg=4
 hi Pmenu ctermfg=15 ctermbg=0
 hi PmenuSbar ctermfg=0 ctermbg=0
-hi StatusLine ctermfg=0 ctermbg=15
+hi StatusLine ctermfg=0 ctermbg=0 cterm=NONE
 hi StatusLineNC ctermfg=0 ctermbg=15
 hi VertSplit ctermfg=0 ctermbg=0
 hi QuickFixLine ctermfg=0 ctermbg=4
