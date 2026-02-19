@@ -128,7 +128,13 @@ int main() {
     refresh();
 
     if((c = getch()) == 'y') {
-        FILE *registry = fopen("registry.txt", "a");
+        const char *home = getenv("HOME");
+        const char *path = "/todo/registry.txt";
+        size_t registry_file_len = strlen(home) + strlen("/todo/registry.txt") + 1;
+        char registry_file[registry_file_len];
+        snprintf(registry_file, registry_file_len, "%s%s", home, path);
+
+        FILE *registry = fopen(registry_file, "a");
 
         if(!registry) {
             fprintf(stderr, "failed to open registry.txt!\n");
