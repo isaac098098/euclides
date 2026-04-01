@@ -27,18 +27,19 @@ set shortmess+=cClWIF
 set report=20
 set laststatus=0
 set completeopt=menu,noselect,menuone
-set fillchars+=eob:\ 
+set fillchars+=eob:\
 set fillchars=vert:\│
 
 nnoremap j gj
 nnoremap k gk
-nnoremap gp :pclose<CR>
-nnoremap co :cwindow<CR>
-nnoremap cO :cclose<CR>
+nnoremap gp <Cmd>silent! pclose<CR>
+nnoremap co <Cmd>silent! cwindow<CR>
+nnoremap cO <Cmd>silent! cclose<CR>
 nnoremap K <Cmd>silent! vertical Man <cword><CR>
-nnoremap mm :silent make all<Bar> redraw!<CR>
-nnoremap mr :silent make run <Bar> redraw!<CR>
-nnoremap mR :make run<CR>
+nnoremap mc <Cmd>silent make clean<Bar> redraw!<CR>
+nnoremap mm <Cmd>silent make<Bar> redraw!<CR>
+nnoremap mr <Cmd>vert terminal make run<CR>
+nnoremap md <Cmd>vert terminal make debug<CR>
 nnoremap u <Cmd>silent! undo<CR>
 nnoremap <C-r> <Cmd>silent! redo<CR>
 vnoremap <C-j> <Esc>
@@ -49,7 +50,7 @@ inoremap <C-e> <C-o>$
 
 set cursorline
 set cursorlineopt=number
-set statusline=\ 
+set statusline=\
 
 " normal line numbers
 hi LineNrBelow ctermfg=8
@@ -70,7 +71,9 @@ hi PmenuSel ctermfg=0 ctermbg=4
 hi Pmenu ctermfg=15 ctermbg=0
 hi PmenuSbar ctermfg=0 ctermbg=0
 hi StatusLine ctermfg=0 ctermbg=0 cterm=NONE
-hi StatusLineNC ctermfg=0 ctermbg=15
+hi StatusLineNC ctermfg=0 ctermbg=0 cterm=NONE
+hi StatusLineTerm ctermfg=0 ctermbg=0 cterm=NONE
+hi StatusLineTermNC ctermfg=0 ctermbg=0 cterm=NONE
 hi VertSplit ctermfg=0 ctermbg=0
 hi QuickFixLine ctermfg=0 ctermbg=4
 hi TabLineSel ctermfg=0 ctermbg=4
@@ -91,3 +94,13 @@ function! CloseManBuffers()
 endfunction
 
 nnoremap fj <Cmd>call CloseManBuffers()<CR>
+
+function! CloseTermBuffers()
+  for buf in getbufinfo({'bufloaded': 1})
+    if getbufvar(buf.bufnr, '&buftype') ==# 'terminal'
+      execute 'bwipeout' buf.bufnr
+    endif
+  endfor
+endfunction
+
+nnoremap ff <Cmd>call CloseTermBuffers()<CR>
