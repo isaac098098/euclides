@@ -31,7 +31,7 @@ char *vtiden = "\033[?6c";
 
 /* Kerning / character bounding-box multipliers */
 static float cwscale = 1.0;
-static float chscale = 0.9;
+static float chscale = 0.95;
 
 /*
  * word delimiter string
@@ -100,7 +100,7 @@ unsigned int tabspaces = 8;
 /* Terminal colors (16 first used in escape sequence) */
 static const char *colorname[] = {
 	/* 8 normal colors */
-	"#282A2E", // black
+	"#1D1F21", // black
 	"#CC6666", // red
 	"#B5BD68", // green
 	"#F0C674", // yellow
@@ -110,7 +110,7 @@ static const char *colorname[] = {
 	"#373B41", // gray
 
 	/* 8 bright colors */
-	"#373B41", // gray
+	"#1D1F21", // gray
 	"#CC6666", // red
 	"#B5BD68", // green
 	"#F0C674", // yellow

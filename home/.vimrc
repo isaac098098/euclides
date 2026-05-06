@@ -39,6 +39,7 @@ nnoremap K <Cmd>silent! vertical Man <cword><CR>
 nnoremap mc <Cmd>silent make clean<Bar> redraw!<CR>
 nnoremap mm <Cmd>silent make<Bar> redraw!<CR>
 nnoremap mr <Cmd>vert terminal make run<CR>
+nnoremap mR <Cmd>silent! make run<CR>
 nnoremap md <Cmd>vert terminal make debug<CR>
 nnoremap u <Cmd>silent! undo<CR>
 nnoremap <C-r> <Cmd>silent! redo<CR>

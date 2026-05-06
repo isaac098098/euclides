@@ -5,6 +5,7 @@ set recolor-keephue             "true"
 set selection-clipboard         clipboard
 set window-title-basename       "true"
 set statusbar-basename          "true"
+set scroll-step                 110.0
 unmap normal i
 map i mark_evaluate
 
@@ -44,6 +45,6 @@ set render-loading-fg           "#1d1f21" #00
 set inputbar-bg                 "#1d1f21" #00
 set inputbar-fg                 "#c5c8c6" #02
 
-set highlight-color             rgba(240,198,116,0) #0A
-set highlight-active-color      rgba(129,162,190,0) #0D
+set highlight-color             rgba(240,198,116,0)
+set highlight-active-color      rgba(129,162,190,0)
 
